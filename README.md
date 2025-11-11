@@ -11,7 +11,7 @@
 ## 快速开始
 
 ```bash
-composer require uapis/uapi-sdk-php
+composer require axt-team/uapi-sdk-php
 ```
 
 ```php
