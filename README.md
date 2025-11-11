@@ -1,6 +1,6 @@
 # uapi-sdk-php
 
-![Banner](./banner.png)
+![Banner](https://raw.githubusercontent.com/AxT-Team/uapi-sdk-php/main/banner.png)
 
 [![PHP](https://img.shields.io/badge/PHP-8.1+-777BB4?style=flat-square&logo=php&logoColor=white)](https://www.php.net/)
 [![Docs](https://img.shields.io/badge/Docs-uapis.cn-2EAE5D?style=flat-square)](https://uapis.cn/)
@@ -65,3 +65,4 @@ HTTP 层基于 Guzzle，构造函数会自动设置 Base URL、追加 `Authoriza
 ## 文档
 
 访问 [UApi文档首页](https://uapis.cn/docs/introduction) 并选择任意接口，向下滚动到 **快速启动** 区块即可看到最新的 PHP 示例代码。
+
