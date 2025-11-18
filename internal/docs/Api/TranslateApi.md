@@ -8,6 +8,7 @@ All URIs are relative to https://uapis.cn/api/v1, except if the operation define
 | ------------- | ------------- | ------------- |
 | [**getAiTranslateLanguages()**](TranslateApi.md#getAiTranslateLanguages) | **GET** /ai/translate/languages | 获取AI翻译支持的语言和配置 |
 | [**postAiTranslate()**](TranslateApi.md#postAiTranslate) | **POST** /ai/translate | AI智能翻译 |
+| [**postTranslateStream()**](TranslateApi.md#postTranslateStream) | **POST** /translate/stream | 流式翻译（中英互译） |
 | [**postTranslateText()**](TranslateApi.md#postTranslateText) | **POST** /translate/text | 多语言文本翻译 |
 
 
@@ -117,6 +118,62 @@ No authorization required
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `postTranslateStream()`
+
+```php
+postTranslateStream($post_translate_stream_request): string
+```
+
+流式翻译（中英互译）
+
+想让翻译结果像打字机一样逐字显示出来？这个流式翻译接口能实现这种效果。  ## 功能概述 不同于传统翻译API一次性返回完整结果，这个接口会实时地、一个字一个字地把翻译内容推给你（就像ChatGPT回复消息那样），非常适合用在聊天应用、直播字幕等需要即时反馈的场景。  ## 它能做什么 - **中英互译**：支持中文和英文之间的双向翻译 - **自动识别**：不确定源语言？设置为 `auto` 让我们自动检测 - **逐字返回**：翻译结果会像打字机一样逐字流式返回，用户体验更流畅 - **音频朗读**：部分翻译结果会附带音频链接，方便朗读  ## 支持的语言 目前专注于中英互译，支持以下选项： - `中文`（简体/繁体） - `英文` - `auto`（自动检测）
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\TranslateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$post_translate_stream_request = new \OpenAPI\Client\Model\PostTranslateStreamRequest(); // \OpenAPI\Client\Model\PostTranslateStreamRequest | 包含翻译参数的JSON对象
+
+try {
+    $result = $apiInstance->postTranslateStream($post_translate_stream_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TranslateApi->postTranslateStream: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_translate_stream_request** | [**\OpenAPI\Client\Model\PostTranslateStreamRequest**](../Model/PostTranslateStreamRequest.md)| 包含翻译参数的JSON对象 | |
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `text/event-stream`, `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

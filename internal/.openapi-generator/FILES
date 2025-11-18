@@ -270,6 +270,9 @@ docs/Model/PostTextMd5Request.md
 docs/Model/PostTextMd5Verify200Response.md
 docs/Model/PostTextMd5Verify400Response.md
 docs/Model/PostTextMd5VerifyRequest.md
+docs/Model/PostTranslateStream400Response.md
+docs/Model/PostTranslateStream500Response.md
+docs/Model/PostTranslateStreamRequest.md
 docs/Model/PostTranslateText200Response.md
 docs/Model/PostTranslateText400Response.md
 docs/Model/PostTranslateText500Response.md
@@ -550,6 +553,9 @@ lib/Model/PostTextMd5Request.php
 lib/Model/PostTextMd5Verify200Response.php
 lib/Model/PostTextMd5Verify400Response.php
 lib/Model/PostTextMd5VerifyRequest.php
+lib/Model/PostTranslateStream400Response.php
+lib/Model/PostTranslateStream500Response.php
+lib/Model/PostTranslateStreamRequest.php
 lib/Model/PostTranslateText200Response.php
 lib/Model/PostTranslateText400Response.php
 lib/Model/PostTranslateText500Response.php
@@ -559,3 +565,6 @@ lib/Model/PostWebTomarkdownAsync400Response.php
 lib/Model/SingleEndpoint.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/PostTranslateStream400ResponseTest.php
+test/Model/PostTranslateStream500ResponseTest.php
+test/Model/PostTranslateStreamRequestTest.php

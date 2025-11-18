@@ -209,6 +209,7 @@ class TranslateApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
     function getAiTranslateLanguages(array $args = []) { $path='/ai/translate/languages'; return $this->c->request('GET', $path, $args); }
     function postAiTranslate(array $args = []) { $path='/ai/translate'; return $this->c->request('POST', $path, $args); }
+    function postTranslateStream(array $args = []) { $path='/translate/stream'; return $this->c->request('POST', $path, $args); }
     function postTranslateText(array $args = []) { $path='/translate/text'; return $this->c->request('POST', $path, $args); }
 }
 class WebparseApi {

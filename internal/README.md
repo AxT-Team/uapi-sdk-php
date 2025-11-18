@@ -142,6 +142,7 @@ Class | Method | HTTP request | Description
 *TextApi* | [**postTextMd5Verify**](docs/Api/TextApi.md#posttextmd5verify) | **POST** /text/md5/verify | 校验MD5哈希值
 *TranslateApi* | [**getAiTranslateLanguages**](docs/Api/TranslateApi.md#getaitranslatelanguages) | **GET** /ai/translate/languages | 获取AI翻译支持的语言和配置
 *TranslateApi* | [**postAiTranslate**](docs/Api/TranslateApi.md#postaitranslate) | **POST** /ai/translate | AI智能翻译
+*TranslateApi* | [**postTranslateStream**](docs/Api/TranslateApi.md#posttranslatestream) | **POST** /translate/stream | 流式翻译（中英互译）
 *TranslateApi* | [**postTranslateText**](docs/Api/TranslateApi.md#posttranslatetext) | **POST** /translate/text | 多语言文本翻译
 *WebParseApi* | [**getWebTomarkdownAsyncStatus**](docs/Api/WebParseApi.md#getwebtomarkdownasyncstatus) | **GET** /web/tomarkdown/async/{task_id} | 查询网页转换任务状态和结果
 *WebParseApi* | [**getWebparseExtractimages**](docs/Api/WebParseApi.md#getwebparseextractimages) | **GET** /webparse/extractimages | 提取网页中的所有图片
@@ -402,6 +403,9 @@ Class | Method | HTTP request | Description
 - [PostTextMd5Verify200Response](docs/Model/PostTextMd5Verify200Response.md)
 - [PostTextMd5Verify400Response](docs/Model/PostTextMd5Verify400Response.md)
 - [PostTextMd5VerifyRequest](docs/Model/PostTextMd5VerifyRequest.md)
+- [PostTranslateStream400Response](docs/Model/PostTranslateStream400Response.md)
+- [PostTranslateStream500Response](docs/Model/PostTranslateStream500Response.md)
+- [PostTranslateStreamRequest](docs/Model/PostTranslateStreamRequest.md)
 - [PostTranslateText200Response](docs/Model/PostTranslateText200Response.md)
 - [PostTranslateText400Response](docs/Model/PostTranslateText400Response.md)
 - [PostTranslateText500Response](docs/Model/PostTranslateText500Response.md)
