@@ -106,127 +106,127 @@ class Client {
 }
 class ClipzyZaiXianJianTieBanApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getClipzyGet(array $args = []) { $path='/api/get'; return $this->c->request('GET', $path, $args); }
-    function getClipzyRaw(array $args = []) { $path='/api/raw/{id}'; if (array_key_exists('id', $args)) $path = str_replace('{'.'id'.'}', strval($args['id']), $path); return $this->c->request('GET', $path, $args); }
-    function postClipzyStore(array $args = []) { $path='/api/store'; return $this->c->request('POST', $path, $args); }
+    function getClipzyGet(array $args = []) { $path='/api/v1/api/get'; return $this->c->request('GET', $path, $args); }
+    function getClipzyRaw(array $args = []) { $path='/api/v1/api/raw/{id}'; if (array_key_exists('id', $args)) $path = str_replace('{'.'id'.'}', strval($args['id']), $path); return $this->c->request('GET', $path, $args); }
+    function postClipzyStore(array $args = []) { $path='/api/v1/api/store'; return $this->c->request('POST', $path, $args); }
 }
 class ConvertApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getConvertUnixtime(array $args = []) { $path='/convert/unixtime'; return $this->c->request('GET', $path, $args); }
-    function postConvertJson(array $args = []) { $path='/convert/json'; return $this->c->request('POST', $path, $args); }
+    function getConvertUnixtime(array $args = []) { $path='/api/v1/convert/unixtime'; return $this->c->request('GET', $path, $args); }
+    function postConvertJson(array $args = []) { $path='/api/v1/convert/json'; return $this->c->request('POST', $path, $args); }
 }
 class DailyApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getDailyNewsImage(array $args = []) { $path='/daily/news-image'; return $this->c->request('GET', $path, $args); }
+    function getDailyNewsImage(array $args = []) { $path='/api/v1/daily/news-image'; return $this->c->request('GET', $path, $args); }
 }
 class GameApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getGameEpicFree(array $args = []) { $path='/game/epic-free'; return $this->c->request('GET', $path, $args); }
-    function getGameMinecraftHistoryid(array $args = []) { $path='/game/minecraft/historyid'; return $this->c->request('GET', $path, $args); }
-    function getGameMinecraftServerstatus(array $args = []) { $path='/game/minecraft/serverstatus'; return $this->c->request('GET', $path, $args); }
-    function getGameMinecraftUserinfo(array $args = []) { $path='/game/minecraft/userinfo'; return $this->c->request('GET', $path, $args); }
-    function getGameSteamSummary(array $args = []) { $path='/game/steam/summary'; return $this->c->request('GET', $path, $args); }
+    function getGameEpicFree(array $args = []) { $path='/api/v1/game/epic-free'; return $this->c->request('GET', $path, $args); }
+    function getGameMinecraftHistoryid(array $args = []) { $path='/api/v1/game/minecraft/historyid'; return $this->c->request('GET', $path, $args); }
+    function getGameMinecraftServerstatus(array $args = []) { $path='/api/v1/game/minecraft/serverstatus'; return $this->c->request('GET', $path, $args); }
+    function getGameMinecraftUserinfo(array $args = []) { $path='/api/v1/game/minecraft/userinfo'; return $this->c->request('GET', $path, $args); }
+    function getGameSteamSummary(array $args = []) { $path='/api/v1/game/steam/summary'; return $this->c->request('GET', $path, $args); }
 }
 class ImageApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getAvatarGravatar(array $args = []) { $path='/avatar/gravatar'; return $this->c->request('GET', $path, $args); }
-    function getImageBingDaily(array $args = []) { $path='/image/bing-daily'; return $this->c->request('GET', $path, $args); }
-    function getImageMotou(array $args = []) { $path='/image/motou'; return $this->c->request('GET', $path, $args); }
-    function getImageQrcode(array $args = []) { $path='/image/qrcode'; return $this->c->request('GET', $path, $args); }
-    function getImageTobase64(array $args = []) { $path='/image/tobase64'; return $this->c->request('GET', $path, $args); }
-    function postImageCompress(array $args = []) { $path='/image/compress'; return $this->c->request('POST', $path, $args); }
-    function postImageFrombase64(array $args = []) { $path='/image/frombase64'; return $this->c->request('POST', $path, $args); }
-    function postImageMotou(array $args = []) { $path='/image/motou'; return $this->c->request('POST', $path, $args); }
-    function postImageSpeechless(array $args = []) { $path='/image/speechless'; return $this->c->request('POST', $path, $args); }
-    function postImageSvg(array $args = []) { $path='/image/svg'; return $this->c->request('POST', $path, $args); }
+    function getAvatarGravatar(array $args = []) { $path='/api/v1/avatar/gravatar'; return $this->c->request('GET', $path, $args); }
+    function getImageBingDaily(array $args = []) { $path='/api/v1/image/bing-daily'; return $this->c->request('GET', $path, $args); }
+    function getImageMotou(array $args = []) { $path='/api/v1/image/motou'; return $this->c->request('GET', $path, $args); }
+    function getImageQrcode(array $args = []) { $path='/api/v1/image/qrcode'; return $this->c->request('GET', $path, $args); }
+    function getImageTobase64(array $args = []) { $path='/api/v1/image/tobase64'; return $this->c->request('GET', $path, $args); }
+    function postImageCompress(array $args = []) { $path='/api/v1/image/compress'; return $this->c->request('POST', $path, $args); }
+    function postImageFrombase64(array $args = []) { $path='/api/v1/image/frombase64'; return $this->c->request('POST', $path, $args); }
+    function postImageMotou(array $args = []) { $path='/api/v1/image/motou'; return $this->c->request('POST', $path, $args); }
+    function postImageSpeechless(array $args = []) { $path='/api/v1/image/speechless'; return $this->c->request('POST', $path, $args); }
+    function postImageSvg(array $args = []) { $path='/api/v1/image/svg'; return $this->c->request('POST', $path, $args); }
 }
 class MiscApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getHistoryProgrammer(array $args = []) { $path='/history/programmer'; return $this->c->request('GET', $path, $args); }
-    function getHistoryProgrammerToday(array $args = []) { $path='/history/programmer/today'; return $this->c->request('GET', $path, $args); }
-    function getMiscHotboard(array $args = []) { $path='/misc/hotboard'; return $this->c->request('GET', $path, $args); }
-    function getMiscPhoneinfo(array $args = []) { $path='/misc/phoneinfo'; return $this->c->request('GET', $path, $args); }
-    function getMiscRandomnumber(array $args = []) { $path='/misc/randomnumber'; return $this->c->request('GET', $path, $args); }
-    function getMiscTimestamp(array $args = []) { $path='/misc/timestamp'; return $this->c->request('GET', $path, $args); }
-    function getMiscTrackingCarriers(array $args = []) { $path='/misc/tracking/carriers'; return $this->c->request('GET', $path, $args); }
-    function getMiscTrackingDetect(array $args = []) { $path='/misc/tracking/detect'; return $this->c->request('GET', $path, $args); }
-    function getMiscTrackingQuery(array $args = []) { $path='/misc/tracking/query'; return $this->c->request('GET', $path, $args); }
-    function getMiscWeather(array $args = []) { $path='/misc/weather'; return $this->c->request('GET', $path, $args); }
-    function getMiscWorldtime(array $args = []) { $path='/misc/worldtime'; return $this->c->request('GET', $path, $args); }
+    function getHistoryProgrammer(array $args = []) { $path='/api/v1/history/programmer'; return $this->c->request('GET', $path, $args); }
+    function getHistoryProgrammerToday(array $args = []) { $path='/api/v1/history/programmer/today'; return $this->c->request('GET', $path, $args); }
+    function getMiscHotboard(array $args = []) { $path='/api/v1/misc/hotboard'; return $this->c->request('GET', $path, $args); }
+    function getMiscPhoneinfo(array $args = []) { $path='/api/v1/misc/phoneinfo'; return $this->c->request('GET', $path, $args); }
+    function getMiscRandomnumber(array $args = []) { $path='/api/v1/misc/randomnumber'; return $this->c->request('GET', $path, $args); }
+    function getMiscTimestamp(array $args = []) { $path='/api/v1/misc/timestamp'; return $this->c->request('GET', $path, $args); }
+    function getMiscTrackingCarriers(array $args = []) { $path='/api/v1/misc/tracking/carriers'; return $this->c->request('GET', $path, $args); }
+    function getMiscTrackingDetect(array $args = []) { $path='/api/v1/misc/tracking/detect'; return $this->c->request('GET', $path, $args); }
+    function getMiscTrackingQuery(array $args = []) { $path='/api/v1/misc/tracking/query'; return $this->c->request('GET', $path, $args); }
+    function getMiscWeather(array $args = []) { $path='/api/v1/misc/weather'; return $this->c->request('GET', $path, $args); }
+    function getMiscWorldtime(array $args = []) { $path='/api/v1/misc/worldtime'; return $this->c->request('GET', $path, $args); }
 }
 class NetworkApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getNetworkDns(array $args = []) { $path='/network/dns'; return $this->c->request('GET', $path, $args); }
-    function getNetworkIcp(array $args = []) { $path='/network/icp'; return $this->c->request('GET', $path, $args); }
-    function getNetworkIpinfo(array $args = []) { $path='/network/ipinfo'; return $this->c->request('GET', $path, $args); }
-    function getNetworkMyip(array $args = []) { $path='/network/myip'; return $this->c->request('GET', $path, $args); }
-    function getNetworkPing(array $args = []) { $path='/network/ping'; return $this->c->request('GET', $path, $args); }
-    function getNetworkPingmyip(array $args = []) { $path='/network/pingmyip'; return $this->c->request('GET', $path, $args); }
-    function getNetworkPortscan(array $args = []) { $path='/network/portscan'; return $this->c->request('GET', $path, $args); }
-    function getNetworkUrlstatus(array $args = []) { $path='/network/urlstatus'; return $this->c->request('GET', $path, $args); }
-    function getNetworkWhois(array $args = []) { $path='/network/whois'; return $this->c->request('GET', $path, $args); }
-    function getNetworkWxdomain(array $args = []) { $path='/network/wxdomain'; return $this->c->request('GET', $path, $args); }
+    function getNetworkDns(array $args = []) { $path='/api/v1/network/dns'; return $this->c->request('GET', $path, $args); }
+    function getNetworkIcp(array $args = []) { $path='/api/v1/network/icp'; return $this->c->request('GET', $path, $args); }
+    function getNetworkIpinfo(array $args = []) { $path='/api/v1/network/ipinfo'; return $this->c->request('GET', $path, $args); }
+    function getNetworkMyip(array $args = []) { $path='/api/v1/network/myip'; return $this->c->request('GET', $path, $args); }
+    function getNetworkPing(array $args = []) { $path='/api/v1/network/ping'; return $this->c->request('GET', $path, $args); }
+    function getNetworkPingmyip(array $args = []) { $path='/api/v1/network/pingmyip'; return $this->c->request('GET', $path, $args); }
+    function getNetworkPortscan(array $args = []) { $path='/api/v1/network/portscan'; return $this->c->request('GET', $path, $args); }
+    function getNetworkUrlstatus(array $args = []) { $path='/api/v1/network/urlstatus'; return $this->c->request('GET', $path, $args); }
+    function getNetworkWhois(array $args = []) { $path='/api/v1/network/whois'; return $this->c->request('GET', $path, $args); }
+    function getNetworkWxdomain(array $args = []) { $path='/api/v1/network/wxdomain'; return $this->c->request('GET', $path, $args); }
 }
 class PoemApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getSaying(array $args = []) { $path='/saying'; return $this->c->request('GET', $path, $args); }
+    function getSaying(array $args = []) { $path='/api/v1/saying'; return $this->c->request('GET', $path, $args); }
 }
 class RandomApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getAnswerbookAsk(array $args = []) { $path='/answerbook/ask'; return $this->c->request('GET', $path, $args); }
-    function getRandomImage(array $args = []) { $path='/random/image'; return $this->c->request('GET', $path, $args); }
-    function getRandomString(array $args = []) { $path='/random/string'; return $this->c->request('GET', $path, $args); }
-    function postAnswerbookAsk(array $args = []) { $path='/answerbook/ask'; return $this->c->request('POST', $path, $args); }
+    function getAnswerbookAsk(array $args = []) { $path='/api/v1/answerbook/ask'; return $this->c->request('GET', $path, $args); }
+    function getRandomImage(array $args = []) { $path='/api/v1/random/image'; return $this->c->request('GET', $path, $args); }
+    function getRandomString(array $args = []) { $path='/api/v1/random/string'; return $this->c->request('GET', $path, $args); }
+    function postAnswerbookAsk(array $args = []) { $path='/api/v1/answerbook/ask'; return $this->c->request('POST', $path, $args); }
 }
 class SocialApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getGithubRepo(array $args = []) { $path='/github/repo'; return $this->c->request('GET', $path, $args); }
-    function getSocialBilibiliArchives(array $args = []) { $path='/social/bilibili/archives'; return $this->c->request('GET', $path, $args); }
-    function getSocialBilibiliLiveroom(array $args = []) { $path='/social/bilibili/liveroom'; return $this->c->request('GET', $path, $args); }
-    function getSocialBilibiliReplies(array $args = []) { $path='/social/bilibili/replies'; return $this->c->request('GET', $path, $args); }
-    function getSocialBilibiliUserinfo(array $args = []) { $path='/social/bilibili/userinfo'; return $this->c->request('GET', $path, $args); }
-    function getSocialBilibiliVideoinfo(array $args = []) { $path='/social/bilibili/videoinfo'; return $this->c->request('GET', $path, $args); }
-    function getSocialQqGroupinfo(array $args = []) { $path='/social/qq/groupinfo'; return $this->c->request('GET', $path, $args); }
-    function getSocialQqUserinfo(array $args = []) { $path='/social/qq/userinfo'; return $this->c->request('GET', $path, $args); }
+    function getGithubRepo(array $args = []) { $path='/api/v1/github/repo'; return $this->c->request('GET', $path, $args); }
+    function getSocialBilibiliArchives(array $args = []) { $path='/api/v1/social/bilibili/archives'; return $this->c->request('GET', $path, $args); }
+    function getSocialBilibiliLiveroom(array $args = []) { $path='/api/v1/social/bilibili/liveroom'; return $this->c->request('GET', $path, $args); }
+    function getSocialBilibiliReplies(array $args = []) { $path='/api/v1/social/bilibili/replies'; return $this->c->request('GET', $path, $args); }
+    function getSocialBilibiliUserinfo(array $args = []) { $path='/api/v1/social/bilibili/userinfo'; return $this->c->request('GET', $path, $args); }
+    function getSocialBilibiliVideoinfo(array $args = []) { $path='/api/v1/social/bilibili/videoinfo'; return $this->c->request('GET', $path, $args); }
+    function getSocialQqGroupinfo(array $args = []) { $path='/api/v1/social/qq/groupinfo'; return $this->c->request('GET', $path, $args); }
+    function getSocialQqUserinfo(array $args = []) { $path='/api/v1/social/qq/userinfo'; return $this->c->request('GET', $path, $args); }
 }
 class StatusApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getStatusRatelimit(array $args = []) { $path='/status/ratelimit'; return $this->c->request('GET', $path, $args); }
-    function getStatusUsage(array $args = []) { $path='/status/usage'; return $this->c->request('GET', $path, $args); }
+    function getStatusRatelimit(array $args = []) { $path='/api/v1/status/ratelimit'; return $this->c->request('GET', $path, $args); }
+    function getStatusUsage(array $args = []) { $path='/api/v1/status/usage'; return $this->c->request('GET', $path, $args); }
 }
 class TextApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getTextMd5(array $args = []) { $path='/text/md5'; return $this->c->request('GET', $path, $args); }
-    function postTextAesDecrypt(array $args = []) { $path='/text/aes/decrypt'; return $this->c->request('POST', $path, $args); }
-    function postTextAesEncrypt(array $args = []) { $path='/text/aes/encrypt'; return $this->c->request('POST', $path, $args); }
-    function postTextAnalyze(array $args = []) { $path='/text/analyze'; return $this->c->request('POST', $path, $args); }
-    function postTextBase64Decode(array $args = []) { $path='/text/base64/decode'; return $this->c->request('POST', $path, $args); }
-    function postTextBase64Encode(array $args = []) { $path='/text/base64/encode'; return $this->c->request('POST', $path, $args); }
-    function postTextMd5(array $args = []) { $path='/text/md5'; return $this->c->request('POST', $path, $args); }
-    function postTextMd5Verify(array $args = []) { $path='/text/md5/verify'; return $this->c->request('POST', $path, $args); }
+    function getTextMd5(array $args = []) { $path='/api/v1/text/md5'; return $this->c->request('GET', $path, $args); }
+    function postTextAesDecrypt(array $args = []) { $path='/api/v1/text/aes/decrypt'; return $this->c->request('POST', $path, $args); }
+    function postTextAesEncrypt(array $args = []) { $path='/api/v1/text/aes/encrypt'; return $this->c->request('POST', $path, $args); }
+    function postTextAnalyze(array $args = []) { $path='/api/v1/text/analyze'; return $this->c->request('POST', $path, $args); }
+    function postTextBase64Decode(array $args = []) { $path='/api/v1/text/base64/decode'; return $this->c->request('POST', $path, $args); }
+    function postTextBase64Encode(array $args = []) { $path='/api/v1/text/base64/encode'; return $this->c->request('POST', $path, $args); }
+    function postTextMd5(array $args = []) { $path='/api/v1/text/md5'; return $this->c->request('POST', $path, $args); }
+    function postTextMd5Verify(array $args = []) { $path='/api/v1/text/md5/verify'; return $this->c->request('POST', $path, $args); }
 }
 class TranslateApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getAiTranslateLanguages(array $args = []) { $path='/ai/translate/languages'; return $this->c->request('GET', $path, $args); }
-    function postAiTranslate(array $args = []) { $path='/ai/translate'; return $this->c->request('POST', $path, $args); }
-    function postTranslateStream(array $args = []) { $path='/translate/stream'; return $this->c->request('POST', $path, $args); }
-    function postTranslateText(array $args = []) { $path='/translate/text'; return $this->c->request('POST', $path, $args); }
+    function getAiTranslateLanguages(array $args = []) { $path='/api/v1/ai/translate/languages'; return $this->c->request('GET', $path, $args); }
+    function postAiTranslate(array $args = []) { $path='/api/v1/ai/translate'; return $this->c->request('POST', $path, $args); }
+    function postTranslateStream(array $args = []) { $path='/api/v1/translate/stream'; return $this->c->request('POST', $path, $args); }
+    function postTranslateText(array $args = []) { $path='/api/v1/translate/text'; return $this->c->request('POST', $path, $args); }
 }
 class WebparseApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getWebTomarkdownAsyncStatus(array $args = []) { $path='/web/tomarkdown/async/{task_id}'; if (array_key_exists('task_id', $args)) $path = str_replace('{'.'task_id'.'}', strval($args['task_id']), $path); return $this->c->request('GET', $path, $args); }
-    function getWebparseExtractimages(array $args = []) { $path='/webparse/extractimages'; return $this->c->request('GET', $path, $args); }
-    function getWebparseMetadata(array $args = []) { $path='/webparse/metadata'; return $this->c->request('GET', $path, $args); }
-    function postWebTomarkdownAsync(array $args = []) { $path='/web/tomarkdown/async'; return $this->c->request('POST', $path, $args); }
+    function getWebTomarkdownAsyncStatus(array $args = []) { $path='/api/v1/web/tomarkdown/async/{task_id}'; if (array_key_exists('task_id', $args)) $path = str_replace('{'.'task_id'.'}', strval($args['task_id']), $path); return $this->c->request('GET', $path, $args); }
+    function getWebparseExtractimages(array $args = []) { $path='/api/v1/webparse/extractimages'; return $this->c->request('GET', $path, $args); }
+    function getWebparseMetadata(array $args = []) { $path='/api/v1/webparse/metadata'; return $this->c->request('GET', $path, $args); }
+    function postWebTomarkdownAsync(array $args = []) { $path='/api/v1/web/tomarkdown/async'; return $this->c->request('POST', $path, $args); }
 }
 class MinGanCiShiBieApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getSensitiveWordAnalyzeQuery(array $args = []) { $path='/sensitive-word/analyze-query'; return $this->c->request('GET', $path, $args); }
-    function postSensitiveWordAnalyze(array $args = []) { $path='/sensitive-word/analyze'; return $this->c->request('POST', $path, $args); }
-    function postSensitiveWordQuickCheck(array $args = []) { $path='/text/profanitycheck'; return $this->c->request('POST', $path, $args); }
+    function getSensitiveWordAnalyzeQuery(array $args = []) { $path='/api/v1/sensitive-word/analyze-query'; return $this->c->request('GET', $path, $args); }
+    function postSensitiveWordAnalyze(array $args = []) { $path='/api/v1/sensitive-word/analyze'; return $this->c->request('POST', $path, $args); }
+    function postSensitiveWordQuickCheck(array $args = []) { $path='/api/v1/text/profanitycheck'; return $this->c->request('POST', $path, $args); }
 }
 class ZhiNengSouSuoApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getSearchEngines(array $args = []) { $path='/search/engines'; return $this->c->request('GET', $path, $args); }
-    function postSearchAggregate(array $args = []) { $path='/search/aggregate'; return $this->c->request('POST', $path, $args); }
+    function getSearchEngines(array $args = []) { $path='/api/v1/search/engines'; return $this->c->request('GET', $path, $args); }
+    function postSearchAggregate(array $args = []) { $path='/api/v1/search/aggregate'; return $this->c->request('POST', $path, $args); }
 }
