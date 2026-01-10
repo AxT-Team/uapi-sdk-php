@@ -106,127 +106,698 @@ class Client {
 }
 class ClipzyZaiXianJianTieBanApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getClipzyGet(array $args = []) { $path='/api/v1/api/get'; return $this->c->request('GET', $path, $args); }
-    function getClipzyRaw(array $args = []) { $path='/api/v1/api/raw/{id}'; if (array_key_exists('id', $args)) $path = str_replace('{'.'id'.'}', strval($args['id']), $path); return $this->c->request('GET', $path, $args); }
-    function postClipzyStore(array $args = []) { $path='/api/v1/api/store'; return $this->c->request('POST', $path, $args); }
+    function getClipzyGet(array $args = []) {
+        $path='/api/v1/api/get';
+        $query = [];
+        $body = [];
+        if (array_key_exists('id', $args)) $query['id'] = $args['id'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getClipzyRaw(array $args = []) {
+        $path='/api/v1/api/raw/{id}';
+        $query = [];
+        $body = [];
+        if (array_key_exists('id', $args)) $path = str_replace('{'.'id'.'}', strval($args['id']), $path);
+        if (array_key_exists('key', $args)) $query['key'] = $args['key'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function postClipzyStore(array $args = []) {
+        $path='/api/v1/api/store';
+        $query = [];
+        $body = [];
+        if (array_key_exists('compressedData', $args)) $body['compressedData'] = $args['compressedData'];
+        if (array_key_exists('ttl', $args)) $body['ttl'] = $args['ttl'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
 }
 class ConvertApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getConvertUnixtime(array $args = []) { $path='/api/v1/convert/unixtime'; return $this->c->request('GET', $path, $args); }
-    function postConvertJson(array $args = []) { $path='/api/v1/convert/json'; return $this->c->request('POST', $path, $args); }
+    function getConvertUnixtime(array $args = []) {
+        $path='/api/v1/convert/unixtime';
+        $query = [];
+        $body = [];
+        if (array_key_exists('time', $args)) $query['time'] = $args['time'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function postConvertJson(array $args = []) {
+        $path='/api/v1/convert/json';
+        $query = [];
+        $body = [];
+        if (array_key_exists('content', $args)) $body['content'] = $args['content'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
 }
 class DailyApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getDailyNewsImage(array $args = []) { $path='/api/v1/daily/news-image'; return $this->c->request('GET', $path, $args); }
+    function getDailyNewsImage(array $args = []) {
+        $path='/api/v1/daily/news-image';
+        $query = [];
+        $body = [];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
 }
 class GameApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getGameEpicFree(array $args = []) { $path='/api/v1/game/epic-free'; return $this->c->request('GET', $path, $args); }
-    function getGameMinecraftHistoryid(array $args = []) { $path='/api/v1/game/minecraft/historyid'; return $this->c->request('GET', $path, $args); }
-    function getGameMinecraftServerstatus(array $args = []) { $path='/api/v1/game/minecraft/serverstatus'; return $this->c->request('GET', $path, $args); }
-    function getGameMinecraftUserinfo(array $args = []) { $path='/api/v1/game/minecraft/userinfo'; return $this->c->request('GET', $path, $args); }
-    function getGameSteamSummary(array $args = []) { $path='/api/v1/game/steam/summary'; return $this->c->request('GET', $path, $args); }
+    function getGameEpicFree(array $args = []) {
+        $path='/api/v1/game/epic-free';
+        $query = [];
+        $body = [];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getGameMinecraftHistoryid(array $args = []) {
+        $path='/api/v1/game/minecraft/historyid';
+        $query = [];
+        $body = [];
+        if (array_key_exists('name', $args)) $query['name'] = $args['name'];
+        if (array_key_exists('uuid', $args)) $query['uuid'] = $args['uuid'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getGameMinecraftServerstatus(array $args = []) {
+        $path='/api/v1/game/minecraft/serverstatus';
+        $query = [];
+        $body = [];
+        if (array_key_exists('server', $args)) $query['server'] = $args['server'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getGameMinecraftUserinfo(array $args = []) {
+        $path='/api/v1/game/minecraft/userinfo';
+        $query = [];
+        $body = [];
+        if (array_key_exists('username', $args)) $query['username'] = $args['username'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getGameSteamSummary(array $args = []) {
+        $path='/api/v1/game/steam/summary';
+        $query = [];
+        $body = [];
+        if (array_key_exists('steamid', $args)) $query['steamid'] = $args['steamid'];
+        if (array_key_exists('id', $args)) $query['id'] = $args['id'];
+        if (array_key_exists('id3', $args)) $query['id3'] = $args['id3'];
+        if (array_key_exists('key', $args)) $query['key'] = $args['key'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
 }
 class ImageApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getAvatarGravatar(array $args = []) { $path='/api/v1/avatar/gravatar'; return $this->c->request('GET', $path, $args); }
-    function getImageBingDaily(array $args = []) { $path='/api/v1/image/bing-daily'; return $this->c->request('GET', $path, $args); }
-    function getImageMotou(array $args = []) { $path='/api/v1/image/motou'; return $this->c->request('GET', $path, $args); }
-    function getImageQrcode(array $args = []) { $path='/api/v1/image/qrcode'; return $this->c->request('GET', $path, $args); }
-    function getImageTobase64(array $args = []) { $path='/api/v1/image/tobase64'; return $this->c->request('GET', $path, $args); }
-    function postImageCompress(array $args = []) { $path='/api/v1/image/compress'; return $this->c->request('POST', $path, $args); }
-    function postImageFrombase64(array $args = []) { $path='/api/v1/image/frombase64'; return $this->c->request('POST', $path, $args); }
-    function postImageMotou(array $args = []) { $path='/api/v1/image/motou'; return $this->c->request('POST', $path, $args); }
-    function postImageSpeechless(array $args = []) { $path='/api/v1/image/speechless'; return $this->c->request('POST', $path, $args); }
-    function postImageSvg(array $args = []) { $path='/api/v1/image/svg'; return $this->c->request('POST', $path, $args); }
+    function getAvatarGravatar(array $args = []) {
+        $path='/api/v1/avatar/gravatar';
+        $query = [];
+        $body = [];
+        if (array_key_exists('email', $args)) $query['email'] = $args['email'];
+        if (array_key_exists('hash', $args)) $query['hash'] = $args['hash'];
+        if (array_key_exists('s', $args)) $query['s'] = $args['s'];
+        if (array_key_exists('d', $args)) $query['d'] = $args['d'];
+        if (array_key_exists('r', $args)) $query['r'] = $args['r'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getImageBingDaily(array $args = []) {
+        $path='/api/v1/image/bing-daily';
+        $query = [];
+        $body = [];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getImageMotou(array $args = []) {
+        $path='/api/v1/image/motou';
+        $query = [];
+        $body = [];
+        if (array_key_exists('qq', $args)) $query['qq'] = $args['qq'];
+        if (array_key_exists('bg_color', $args)) $query['bg_color'] = $args['bg_color'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getImageQrcode(array $args = []) {
+        $path='/api/v1/image/qrcode';
+        $query = [];
+        $body = [];
+        if (array_key_exists('text', $args)) $query['text'] = $args['text'];
+        if (array_key_exists('size', $args)) $query['size'] = $args['size'];
+        if (array_key_exists('format', $args)) $query['format'] = $args['format'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getImageTobase64(array $args = []) {
+        $path='/api/v1/image/tobase64';
+        $query = [];
+        $body = [];
+        if (array_key_exists('url', $args)) $query['url'] = $args['url'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function postImageCompress(array $args = []) {
+        $path='/api/v1/image/compress';
+        $query = [];
+        $body = [];
+        if (array_key_exists('level', $args)) $query['level'] = $args['level'];
+        if (array_key_exists('format', $args)) $query['format'] = $args['format'];
+        if (array_key_exists('file', $args)) $body['file'] = $args['file'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postImageFrombase64(array $args = []) {
+        $path='/api/v1/image/frombase64';
+        $query = [];
+        $body = [];
+        if (array_key_exists('imageData', $args)) $body['imageData'] = $args['imageData'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postImageMotou(array $args = []) {
+        $path='/api/v1/image/motou';
+        $query = [];
+        $body = [];
+        if (array_key_exists('bg_color', $args)) $body['bg_color'] = $args['bg_color'];
+        if (array_key_exists('file', $args)) $body['file'] = $args['file'];
+        if (array_key_exists('image_url', $args)) $body['image_url'] = $args['image_url'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postImageSpeechless(array $args = []) {
+        $path='/api/v1/image/speechless';
+        $query = [];
+        $body = [];
+        if (array_key_exists('bottom_text', $args)) $body['bottom_text'] = $args['bottom_text'];
+        if (array_key_exists('top_text', $args)) $body['top_text'] = $args['top_text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postImageSvg(array $args = []) {
+        $path='/api/v1/image/svg';
+        $query = [];
+        $body = [];
+        if (array_key_exists('format', $args)) $query['format'] = $args['format'];
+        if (array_key_exists('width', $args)) $query['width'] = $args['width'];
+        if (array_key_exists('height', $args)) $query['height'] = $args['height'];
+        if (array_key_exists('quality', $args)) $query['quality'] = $args['quality'];
+        if (array_key_exists('file', $args)) $body['file'] = $args['file'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
 }
 class MiscApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getHistoryProgrammer(array $args = []) { $path='/api/v1/history/programmer'; return $this->c->request('GET', $path, $args); }
-    function getHistoryProgrammerToday(array $args = []) { $path='/api/v1/history/programmer/today'; return $this->c->request('GET', $path, $args); }
-    function getMiscHotboard(array $args = []) { $path='/api/v1/misc/hotboard'; return $this->c->request('GET', $path, $args); }
-    function getMiscPhoneinfo(array $args = []) { $path='/api/v1/misc/phoneinfo'; return $this->c->request('GET', $path, $args); }
-    function getMiscRandomnumber(array $args = []) { $path='/api/v1/misc/randomnumber'; return $this->c->request('GET', $path, $args); }
-    function getMiscTimestamp(array $args = []) { $path='/api/v1/misc/timestamp'; return $this->c->request('GET', $path, $args); }
-    function getMiscTrackingCarriers(array $args = []) { $path='/api/v1/misc/tracking/carriers'; return $this->c->request('GET', $path, $args); }
-    function getMiscTrackingDetect(array $args = []) { $path='/api/v1/misc/tracking/detect'; return $this->c->request('GET', $path, $args); }
-    function getMiscTrackingQuery(array $args = []) { $path='/api/v1/misc/tracking/query'; return $this->c->request('GET', $path, $args); }
-    function getMiscWeather(array $args = []) { $path='/api/v1/misc/weather'; return $this->c->request('GET', $path, $args); }
-    function getMiscWorldtime(array $args = []) { $path='/api/v1/misc/worldtime'; return $this->c->request('GET', $path, $args); }
+    function getHistoryProgrammer(array $args = []) {
+        $path='/api/v1/history/programmer';
+        $query = [];
+        $body = [];
+        if (array_key_exists('month', $args)) $query['month'] = $args['month'];
+        if (array_key_exists('day', $args)) $query['day'] = $args['day'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getHistoryProgrammerToday(array $args = []) {
+        $path='/api/v1/history/programmer/today';
+        $query = [];
+        $body = [];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getMiscHotboard(array $args = []) {
+        $path='/api/v1/misc/hotboard';
+        $query = [];
+        $body = [];
+        if (array_key_exists('type', $args)) $query['type'] = $args['type'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getMiscPhoneinfo(array $args = []) {
+        $path='/api/v1/misc/phoneinfo';
+        $query = [];
+        $body = [];
+        if (array_key_exists('phone', $args)) $query['phone'] = $args['phone'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getMiscRandomnumber(array $args = []) {
+        $path='/api/v1/misc/randomnumber';
+        $query = [];
+        $body = [];
+        if (array_key_exists('min', $args)) $query['min'] = $args['min'];
+        if (array_key_exists('max', $args)) $query['max'] = $args['max'];
+        if (array_key_exists('count', $args)) $query['count'] = $args['count'];
+        if (array_key_exists('allow_repeat', $args)) $query['allow_repeat'] = $args['allow_repeat'];
+        if (array_key_exists('allow_decimal', $args)) $query['allow_decimal'] = $args['allow_decimal'];
+        if (array_key_exists('decimal_places', $args)) $query['decimal_places'] = $args['decimal_places'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getMiscTimestamp(array $args = []) {
+        $path='/api/v1/misc/timestamp';
+        $query = [];
+        $body = [];
+        if (array_key_exists('ts', $args)) $query['ts'] = $args['ts'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getMiscTrackingCarriers(array $args = []) {
+        $path='/api/v1/misc/tracking/carriers';
+        $query = [];
+        $body = [];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getMiscTrackingDetect(array $args = []) {
+        $path='/api/v1/misc/tracking/detect';
+        $query = [];
+        $body = [];
+        if (array_key_exists('tracking_number', $args)) $query['tracking_number'] = $args['tracking_number'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getMiscTrackingQuery(array $args = []) {
+        $path='/api/v1/misc/tracking/query';
+        $query = [];
+        $body = [];
+        if (array_key_exists('tracking_number', $args)) $query['tracking_number'] = $args['tracking_number'];
+        if (array_key_exists('carrier_code', $args)) $query['carrier_code'] = $args['carrier_code'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getMiscWeather(array $args = []) {
+        $path='/api/v1/misc/weather';
+        $query = [];
+        $body = [];
+        if (array_key_exists('city', $args)) $query['city'] = $args['city'];
+        if (array_key_exists('adcode', $args)) $query['adcode'] = $args['adcode'];
+        if (array_key_exists('extended', $args)) $query['extended'] = $args['extended'];
+        if (array_key_exists('indices', $args)) $query['indices'] = $args['indices'];
+        if (array_key_exists('forecast', $args)) $query['forecast'] = $args['forecast'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getMiscWorldtime(array $args = []) {
+        $path='/api/v1/misc/worldtime';
+        $query = [];
+        $body = [];
+        if (array_key_exists('city', $args)) $query['city'] = $args['city'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function postMiscDateDiff(array $args = []) {
+        $path='/api/v1/misc/date-diff';
+        $query = [];
+        $body = [];
+        if (array_key_exists('end_date', $args)) $body['end_date'] = $args['end_date'];
+        if (array_key_exists('format', $args)) $body['format'] = $args['format'];
+        if (array_key_exists('start_date', $args)) $body['start_date'] = $args['start_date'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
 }
 class NetworkApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getNetworkDns(array $args = []) { $path='/api/v1/network/dns'; return $this->c->request('GET', $path, $args); }
-    function getNetworkIcp(array $args = []) { $path='/api/v1/network/icp'; return $this->c->request('GET', $path, $args); }
-    function getNetworkIpinfo(array $args = []) { $path='/api/v1/network/ipinfo'; return $this->c->request('GET', $path, $args); }
-    function getNetworkMyip(array $args = []) { $path='/api/v1/network/myip'; return $this->c->request('GET', $path, $args); }
-    function getNetworkPing(array $args = []) { $path='/api/v1/network/ping'; return $this->c->request('GET', $path, $args); }
-    function getNetworkPingmyip(array $args = []) { $path='/api/v1/network/pingmyip'; return $this->c->request('GET', $path, $args); }
-    function getNetworkPortscan(array $args = []) { $path='/api/v1/network/portscan'; return $this->c->request('GET', $path, $args); }
-    function getNetworkUrlstatus(array $args = []) { $path='/api/v1/network/urlstatus'; return $this->c->request('GET', $path, $args); }
-    function getNetworkWhois(array $args = []) { $path='/api/v1/network/whois'; return $this->c->request('GET', $path, $args); }
-    function getNetworkWxdomain(array $args = []) { $path='/api/v1/network/wxdomain'; return $this->c->request('GET', $path, $args); }
+    function getNetworkDns(array $args = []) {
+        $path='/api/v1/network/dns';
+        $query = [];
+        $body = [];
+        if (array_key_exists('domain', $args)) $query['domain'] = $args['domain'];
+        if (array_key_exists('type', $args)) $query['type'] = $args['type'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getNetworkIcp(array $args = []) {
+        $path='/api/v1/network/icp';
+        $query = [];
+        $body = [];
+        if (array_key_exists('domain', $args)) $query['domain'] = $args['domain'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getNetworkIpinfo(array $args = []) {
+        $path='/api/v1/network/ipinfo';
+        $query = [];
+        $body = [];
+        if (array_key_exists('ip', $args)) $query['ip'] = $args['ip'];
+        if (array_key_exists('source', $args)) $query['source'] = $args['source'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getNetworkMyip(array $args = []) {
+        $path='/api/v1/network/myip';
+        $query = [];
+        $body = [];
+        if (array_key_exists('source', $args)) $query['source'] = $args['source'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getNetworkPing(array $args = []) {
+        $path='/api/v1/network/ping';
+        $query = [];
+        $body = [];
+        if (array_key_exists('host', $args)) $query['host'] = $args['host'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getNetworkPingmyip(array $args = []) {
+        $path='/api/v1/network/pingmyip';
+        $query = [];
+        $body = [];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getNetworkPortscan(array $args = []) {
+        $path='/api/v1/network/portscan';
+        $query = [];
+        $body = [];
+        if (array_key_exists('host', $args)) $query['host'] = $args['host'];
+        if (array_key_exists('port', $args)) $query['port'] = $args['port'];
+        if (array_key_exists('protocol', $args)) $query['protocol'] = $args['protocol'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getNetworkUrlstatus(array $args = []) {
+        $path='/api/v1/network/urlstatus';
+        $query = [];
+        $body = [];
+        if (array_key_exists('url', $args)) $query['url'] = $args['url'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getNetworkWhois(array $args = []) {
+        $path='/api/v1/network/whois';
+        $query = [];
+        $body = [];
+        if (array_key_exists('domain', $args)) $query['domain'] = $args['domain'];
+        if (array_key_exists('format', $args)) $query['format'] = $args['format'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getNetworkWxdomain(array $args = []) {
+        $path='/api/v1/network/wxdomain';
+        $query = [];
+        $body = [];
+        if (array_key_exists('domain', $args)) $query['domain'] = $args['domain'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
 }
 class PoemApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getSaying(array $args = []) { $path='/api/v1/saying'; return $this->c->request('GET', $path, $args); }
+    function getSaying(array $args = []) {
+        $path='/api/v1/saying';
+        $query = [];
+        $body = [];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
 }
 class RandomApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getAnswerbookAsk(array $args = []) { $path='/api/v1/answerbook/ask'; return $this->c->request('GET', $path, $args); }
-    function getRandomImage(array $args = []) { $path='/api/v1/random/image'; return $this->c->request('GET', $path, $args); }
-    function getRandomString(array $args = []) { $path='/api/v1/random/string'; return $this->c->request('GET', $path, $args); }
-    function postAnswerbookAsk(array $args = []) { $path='/api/v1/answerbook/ask'; return $this->c->request('POST', $path, $args); }
+    function getAnswerbookAsk(array $args = []) {
+        $path='/api/v1/answerbook/ask';
+        $query = [];
+        $body = [];
+        if (array_key_exists('question', $args)) $query['question'] = $args['question'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getRandomImage(array $args = []) {
+        $path='/api/v1/random/image';
+        $query = [];
+        $body = [];
+        if (array_key_exists('category', $args)) $query['category'] = $args['category'];
+        if (array_key_exists('type', $args)) $query['type'] = $args['type'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getRandomString(array $args = []) {
+        $path='/api/v1/random/string';
+        $query = [];
+        $body = [];
+        if (array_key_exists('length', $args)) $query['length'] = $args['length'];
+        if (array_key_exists('type', $args)) $query['type'] = $args['type'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function postAnswerbookAsk(array $args = []) {
+        $path='/api/v1/answerbook/ask';
+        $query = [];
+        $body = [];
+        if (array_key_exists('question', $args)) $body['question'] = $args['question'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
 }
 class SocialApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getGithubRepo(array $args = []) { $path='/api/v1/github/repo'; return $this->c->request('GET', $path, $args); }
-    function getSocialBilibiliArchives(array $args = []) { $path='/api/v1/social/bilibili/archives'; return $this->c->request('GET', $path, $args); }
-    function getSocialBilibiliLiveroom(array $args = []) { $path='/api/v1/social/bilibili/liveroom'; return $this->c->request('GET', $path, $args); }
-    function getSocialBilibiliReplies(array $args = []) { $path='/api/v1/social/bilibili/replies'; return $this->c->request('GET', $path, $args); }
-    function getSocialBilibiliUserinfo(array $args = []) { $path='/api/v1/social/bilibili/userinfo'; return $this->c->request('GET', $path, $args); }
-    function getSocialBilibiliVideoinfo(array $args = []) { $path='/api/v1/social/bilibili/videoinfo'; return $this->c->request('GET', $path, $args); }
-    function getSocialQqGroupinfo(array $args = []) { $path='/api/v1/social/qq/groupinfo'; return $this->c->request('GET', $path, $args); }
-    function getSocialQqUserinfo(array $args = []) { $path='/api/v1/social/qq/userinfo'; return $this->c->request('GET', $path, $args); }
+    function getGithubRepo(array $args = []) {
+        $path='/api/v1/github/repo';
+        $query = [];
+        $body = [];
+        if (array_key_exists('repo', $args)) $query['repo'] = $args['repo'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getSocialBilibiliArchives(array $args = []) {
+        $path='/api/v1/social/bilibili/archives';
+        $query = [];
+        $body = [];
+        if (array_key_exists('mid', $args)) $query['mid'] = $args['mid'];
+        if (array_key_exists('keywords', $args)) $query['keywords'] = $args['keywords'];
+        if (array_key_exists('orderby', $args)) $query['orderby'] = $args['orderby'];
+        if (array_key_exists('ps', $args)) $query['ps'] = $args['ps'];
+        if (array_key_exists('pn', $args)) $query['pn'] = $args['pn'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getSocialBilibiliLiveroom(array $args = []) {
+        $path='/api/v1/social/bilibili/liveroom';
+        $query = [];
+        $body = [];
+        if (array_key_exists('mid', $args)) $query['mid'] = $args['mid'];
+        if (array_key_exists('room_id', $args)) $query['room_id'] = $args['room_id'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getSocialBilibiliReplies(array $args = []) {
+        $path='/api/v1/social/bilibili/replies';
+        $query = [];
+        $body = [];
+        if (array_key_exists('oid', $args)) $query['oid'] = $args['oid'];
+        if (array_key_exists('sort', $args)) $query['sort'] = $args['sort'];
+        if (array_key_exists('ps', $args)) $query['ps'] = $args['ps'];
+        if (array_key_exists('pn', $args)) $query['pn'] = $args['pn'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getSocialBilibiliUserinfo(array $args = []) {
+        $path='/api/v1/social/bilibili/userinfo';
+        $query = [];
+        $body = [];
+        if (array_key_exists('uid', $args)) $query['uid'] = $args['uid'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getSocialBilibiliVideoinfo(array $args = []) {
+        $path='/api/v1/social/bilibili/videoinfo';
+        $query = [];
+        $body = [];
+        if (array_key_exists('aid', $args)) $query['aid'] = $args['aid'];
+        if (array_key_exists('bvid', $args)) $query['bvid'] = $args['bvid'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getSocialQqGroupinfo(array $args = []) {
+        $path='/api/v1/social/qq/groupinfo';
+        $query = [];
+        $body = [];
+        if (array_key_exists('group_id', $args)) $query['group_id'] = $args['group_id'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getSocialQqUserinfo(array $args = []) {
+        $path='/api/v1/social/qq/userinfo';
+        $query = [];
+        $body = [];
+        if (array_key_exists('qq', $args)) $query['qq'] = $args['qq'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
 }
 class StatusApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getStatusRatelimit(array $args = []) { $path='/api/v1/status/ratelimit'; return $this->c->request('GET', $path, $args); }
-    function getStatusUsage(array $args = []) { $path='/api/v1/status/usage'; return $this->c->request('GET', $path, $args); }
+    function getStatusRatelimit(array $args = []) {
+        $path='/api/v1/status/ratelimit';
+        $query = [];
+        $body = [];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getStatusUsage(array $args = []) {
+        $path='/api/v1/status/usage';
+        $query = [];
+        $body = [];
+        if (array_key_exists('path', $args)) $query['path'] = $args['path'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
 }
 class TextApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getTextMd5(array $args = []) { $path='/api/v1/text/md5'; return $this->c->request('GET', $path, $args); }
-    function postTextAesDecrypt(array $args = []) { $path='/api/v1/text/aes/decrypt'; return $this->c->request('POST', $path, $args); }
-    function postTextAesEncrypt(array $args = []) { $path='/api/v1/text/aes/encrypt'; return $this->c->request('POST', $path, $args); }
-    function postTextAnalyze(array $args = []) { $path='/api/v1/text/analyze'; return $this->c->request('POST', $path, $args); }
-    function postTextBase64Decode(array $args = []) { $path='/api/v1/text/base64/decode'; return $this->c->request('POST', $path, $args); }
-    function postTextBase64Encode(array $args = []) { $path='/api/v1/text/base64/encode'; return $this->c->request('POST', $path, $args); }
-    function postTextMd5(array $args = []) { $path='/api/v1/text/md5'; return $this->c->request('POST', $path, $args); }
-    function postTextMd5Verify(array $args = []) { $path='/api/v1/text/md5/verify'; return $this->c->request('POST', $path, $args); }
+    function getTextMd5(array $args = []) {
+        $path='/api/v1/text/md5';
+        $query = [];
+        $body = [];
+        if (array_key_exists('text', $args)) $query['text'] = $args['text'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function postTextAesDecrypt(array $args = []) {
+        $path='/api/v1/text/aes/decrypt';
+        $query = [];
+        $body = [];
+        if (array_key_exists('key', $args)) $body['key'] = $args['key'];
+        if (array_key_exists('nonce', $args)) $body['nonce'] = $args['nonce'];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postTextAesDecryptAdvanced(array $args = []) {
+        $path='/api/v1/text/aes/decrypt-advanced';
+        $query = [];
+        $body = [];
+        if (array_key_exists('iv', $args)) $body['iv'] = $args['iv'];
+        if (array_key_exists('key', $args)) $body['key'] = $args['key'];
+        if (array_key_exists('mode', $args)) $body['mode'] = $args['mode'];
+        if (array_key_exists('padding', $args)) $body['padding'] = $args['padding'];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postTextAesEncrypt(array $args = []) {
+        $path='/api/v1/text/aes/encrypt';
+        $query = [];
+        $body = [];
+        if (array_key_exists('key', $args)) $body['key'] = $args['key'];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postTextAesEncryptAdvanced(array $args = []) {
+        $path='/api/v1/text/aes/encrypt-advanced';
+        $query = [];
+        $body = [];
+        if (array_key_exists('iv', $args)) $body['iv'] = $args['iv'];
+        if (array_key_exists('key', $args)) $body['key'] = $args['key'];
+        if (array_key_exists('mode', $args)) $body['mode'] = $args['mode'];
+        if (array_key_exists('output_format', $args)) $body['output_format'] = $args['output_format'];
+        if (array_key_exists('padding', $args)) $body['padding'] = $args['padding'];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postTextAnalyze(array $args = []) {
+        $path='/api/v1/text/analyze';
+        $query = [];
+        $body = [];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postTextBase64Decode(array $args = []) {
+        $path='/api/v1/text/base64/decode';
+        $query = [];
+        $body = [];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postTextBase64Encode(array $args = []) {
+        $path='/api/v1/text/base64/encode';
+        $query = [];
+        $body = [];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postTextConvert(array $args = []) {
+        $path='/api/v1/text/convert';
+        $query = [];
+        $body = [];
+        if (array_key_exists('from', $args)) $body['from'] = $args['from'];
+        if (array_key_exists('options', $args)) $body['options'] = $args['options'];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        if (array_key_exists('to', $args)) $body['to'] = $args['to'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postTextMd5(array $args = []) {
+        $path='/api/v1/text/md5';
+        $query = [];
+        $body = [];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postTextMd5Verify(array $args = []) {
+        $path='/api/v1/text/md5/verify';
+        $query = [];
+        $body = [];
+        if (array_key_exists('hash', $args)) $body['hash'] = $args['hash'];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
 }
 class TranslateApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getAiTranslateLanguages(array $args = []) { $path='/api/v1/ai/translate/languages'; return $this->c->request('GET', $path, $args); }
-    function postAiTranslate(array $args = []) { $path='/api/v1/ai/translate'; return $this->c->request('POST', $path, $args); }
-    function postTranslateStream(array $args = []) { $path='/api/v1/translate/stream'; return $this->c->request('POST', $path, $args); }
-    function postTranslateText(array $args = []) { $path='/api/v1/translate/text'; return $this->c->request('POST', $path, $args); }
+    function getAiTranslateLanguages(array $args = []) {
+        $path='/api/v1/ai/translate/languages';
+        $query = [];
+        $body = [];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function postAiTranslate(array $args = []) {
+        $path='/api/v1/ai/translate';
+        $query = [];
+        $body = [];
+        if (array_key_exists('target_lang', $args)) $query['target_lang'] = $args['target_lang'];
+        if (array_key_exists('context', $args)) $body['context'] = $args['context'];
+        if (array_key_exists('fast_mode', $args)) $body['fast_mode'] = $args['fast_mode'];
+        if (array_key_exists('max_concurrency', $args)) $body['max_concurrency'] = $args['max_concurrency'];
+        if (array_key_exists('preserve_format', $args)) $body['preserve_format'] = $args['preserve_format'];
+        if (array_key_exists('source_lang', $args)) $body['source_lang'] = $args['source_lang'];
+        if (array_key_exists('style', $args)) $body['style'] = $args['style'];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        if (array_key_exists('texts', $args)) $body['texts'] = $args['texts'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postTranslateStream(array $args = []) {
+        $path='/api/v1/translate/stream';
+        $query = [];
+        $body = [];
+        if (array_key_exists('from_lang', $args)) $body['from_lang'] = $args['from_lang'];
+        if (array_key_exists('query', $args)) $body['query'] = $args['query'];
+        if (array_key_exists('to_lang', $args)) $body['to_lang'] = $args['to_lang'];
+        if (array_key_exists('tone', $args)) $body['tone'] = $args['tone'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postTranslateText(array $args = []) {
+        $path='/api/v1/translate/text';
+        $query = [];
+        $body = [];
+        if (array_key_exists('to_lang', $args)) $query['to_lang'] = $args['to_lang'];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
 }
 class WebparseApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getWebTomarkdownAsyncStatus(array $args = []) { $path='/api/v1/web/tomarkdown/async/{task_id}'; if (array_key_exists('task_id', $args)) $path = str_replace('{'.'task_id'.'}', strval($args['task_id']), $path); return $this->c->request('GET', $path, $args); }
-    function getWebparseExtractimages(array $args = []) { $path='/api/v1/webparse/extractimages'; return $this->c->request('GET', $path, $args); }
-    function getWebparseMetadata(array $args = []) { $path='/api/v1/webparse/metadata'; return $this->c->request('GET', $path, $args); }
-    function postWebTomarkdownAsync(array $args = []) { $path='/api/v1/web/tomarkdown/async'; return $this->c->request('POST', $path, $args); }
+    function getWebTomarkdownAsyncStatus(array $args = []) {
+        $path='/api/v1/web/tomarkdown/async/{task_id}';
+        $query = [];
+        $body = [];
+        if (array_key_exists('task_id', $args)) $path = str_replace('{'.'task_id'.'}', strval($args['task_id']), $path);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getWebparseExtractimages(array $args = []) {
+        $path='/api/v1/webparse/extractimages';
+        $query = [];
+        $body = [];
+        if (array_key_exists('url', $args)) $query['url'] = $args['url'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getWebparseMetadata(array $args = []) {
+        $path='/api/v1/webparse/metadata';
+        $query = [];
+        $body = [];
+        if (array_key_exists('url', $args)) $query['url'] = $args['url'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function postWebTomarkdownAsync(array $args = []) {
+        $path='/api/v1/web/tomarkdown/async';
+        $query = [];
+        $body = [];
+        if (array_key_exists('url', $args)) $query['url'] = $args['url'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
 }
 class MinGanCiShiBieApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getSensitiveWordAnalyzeQuery(array $args = []) { $path='/api/v1/sensitive-word/analyze-query'; return $this->c->request('GET', $path, $args); }
-    function postSensitiveWordAnalyze(array $args = []) { $path='/api/v1/sensitive-word/analyze'; return $this->c->request('POST', $path, $args); }
-    function postSensitiveWordQuickCheck(array $args = []) { $path='/api/v1/text/profanitycheck'; return $this->c->request('POST', $path, $args); }
+    function getSensitiveWordAnalyzeQuery(array $args = []) {
+        $path='/api/v1/sensitive-word/analyze-query';
+        $query = [];
+        $body = [];
+        if (array_key_exists('keyword', $args)) $query['keyword'] = $args['keyword'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function postSensitiveWordAnalyze(array $args = []) {
+        $path='/api/v1/sensitive-word/analyze';
+        $query = [];
+        $body = [];
+        if (array_key_exists('keywords', $args)) $body['keywords'] = $args['keywords'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postSensitiveWordQuickCheck(array $args = []) {
+        $path='/api/v1/text/profanitycheck';
+        $query = [];
+        $body = [];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
 }
 class ZhiNengSouSuoApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
-    function getSearchEngines(array $args = []) { $path='/api/v1/search/engines'; return $this->c->request('GET', $path, $args); }
-    function postSearchAggregate(array $args = []) { $path='/api/v1/search/aggregate'; return $this->c->request('POST', $path, $args); }
+    function getSearchEngines(array $args = []) {
+        $path='/api/v1/search/engines';
+        $query = [];
+        $body = [];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function postSearchAggregate(array $args = []) {
+        $path='/api/v1/search/aggregate';
+        $query = [];
+        $body = [];
+        if (array_key_exists('fetch_full', $args)) $body['fetch_full'] = $args['fetch_full'];
+        if (array_key_exists('filetype', $args)) $body['filetype'] = $args['filetype'];
+        if (array_key_exists('query', $args)) $body['query'] = $args['query'];
+        if (array_key_exists('site', $args)) $body['site'] = $args['site'];
+        if (array_key_exists('sort', $args)) $body['sort'] = $args['sort'];
+        if (array_key_exists('time_range', $args)) $body['time_range'] = $args['time_range'];
+        if (array_key_exists('timeout_ms', $args)) $body['timeout_ms'] = $args['timeout_ms'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
 }
