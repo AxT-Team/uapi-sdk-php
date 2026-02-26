@@ -57,7 +57,6 @@ class GetNetworkUrlstatus200Response implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'status' => 'int',
         'url' => 'string'
     ];
@@ -70,7 +69,6 @@ class GetNetworkUrlstatus200Response implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
         'status' => null,
         'url' => null
     ];
@@ -81,7 +79,6 @@ class GetNetworkUrlstatus200Response implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
         'status' => false,
         'url' => false
     ];
@@ -172,7 +169,6 @@ class GetNetworkUrlstatus200Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'status' => 'status',
         'url' => 'url'
     ];
@@ -183,7 +179,6 @@ class GetNetworkUrlstatus200Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'status' => 'setStatus',
         'url' => 'setUrl'
     ];
@@ -194,7 +189,6 @@ class GetNetworkUrlstatus200Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'status' => 'getStatus',
         'url' => 'getUrl'
     ];
@@ -256,7 +250,6 @@ class GetNetworkUrlstatus200Response implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
     }
@@ -304,33 +297,6 @@ class GetNetworkUrlstatus200Response implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
      * Gets status
      *
      * @return int|null
@@ -343,7 +309,7 @@ class GetNetworkUrlstatus200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets status
      *
-     * @param int|null $status HTTP响应状态码
+     * @param int|null $status 目标不可达或请求失败时固定为 0。
      *
      * @return self
      */

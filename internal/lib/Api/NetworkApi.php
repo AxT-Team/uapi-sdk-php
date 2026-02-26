@@ -764,7 +764,7 @@ class NetworkApi
     /**
      * Operation getNetworkIpinfo
      *
-     * 查询指定IP或域名的归属信息
+     * 查询 IP
      *
      * @param  string $ip 你需要查询的公网IP地址或域名（支持IPv4和IPv6）。 (required)
      * @param  string|null $source 查询的数据源。如果留空，将使用默认的数据库。如果设置为 &#x60;commercial&#x60;，将调用商业级API，返回更详细的地理位置信息，但响应时间可能会稍长。 (optional)
@@ -783,7 +783,7 @@ class NetworkApi
     /**
      * Operation getNetworkIpinfoWithHttpInfo
      *
-     * 查询指定IP或域名的归属信息
+     * 查询 IP
      *
      * @param  string $ip 你需要查询的公网IP地址或域名（支持IPv4和IPv6）。 (required)
      * @param  string|null $source 查询的数据源。如果留空，将使用默认的数据库。如果设置为 &#x60;commercial&#x60;，将调用商业级API，返回更详细的地理位置信息，但响应时间可能会稍长。 (optional)
@@ -911,7 +911,7 @@ class NetworkApi
     /**
      * Operation getNetworkIpinfoAsync
      *
-     * 查询指定IP或域名的归属信息
+     * 查询 IP
      *
      * @param  string $ip 你需要查询的公网IP地址或域名（支持IPv4和IPv6）。 (required)
      * @param  string|null $source 查询的数据源。如果留空，将使用默认的数据库。如果设置为 &#x60;commercial&#x60;，将调用商业级API，返回更详细的地理位置信息，但响应时间可能会稍长。 (optional)
@@ -933,7 +933,7 @@ class NetworkApi
     /**
      * Operation getNetworkIpinfoAsyncWithHttpInfo
      *
-     * 查询指定IP或域名的归属信息
+     * 查询 IP
      *
      * @param  string $ip 你需要查询的公网IP地址或域名（支持IPv4和IPv6）。 (required)
      * @param  string|null $source 查询的数据源。如果留空，将使用默认的数据库。如果设置为 &#x60;commercial&#x60;，将调用商业级API，返回更详细的地理位置信息，但响应时间可能会稍长。 (optional)
@@ -1090,14 +1090,14 @@ class NetworkApi
     /**
      * Operation getNetworkMyip
      *
-     * 获取你的公网IP及归属信息
+     * 查询我的 IP
      *
      * @param  string|null $source 查询的数据源。如果留空，将使用默认的数据库。如果设置为 &#x60;commercial&#x60;，将调用商业级API，返回更详细的地理位置信息，但响应时间可能会稍长。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNetworkMyip'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetNetworkIpinfo200Response|\OpenAPI\Client\Model\GetNetworkMyip400Response|\OpenAPI\Client\Model\GetNetworkMyip500Response
+     * @return \OpenAPI\Client\Model\GetNetworkMyip200Response|\OpenAPI\Client\Model\GetNetworkMyip400Response|\OpenAPI\Client\Model\GetNetworkMyip500Response
      */
     public function getNetworkMyip($source = null, string $contentType = self::contentTypes['getNetworkMyip'][0])
     {
@@ -1108,14 +1108,14 @@ class NetworkApi
     /**
      * Operation getNetworkMyipWithHttpInfo
      *
-     * 获取你的公网IP及归属信息
+     * 查询我的 IP
      *
      * @param  string|null $source 查询的数据源。如果留空，将使用默认的数据库。如果设置为 &#x60;commercial&#x60;，将调用商业级API，返回更详细的地理位置信息，但响应时间可能会稍长。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNetworkMyip'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetNetworkIpinfo200Response|\OpenAPI\Client\Model\GetNetworkMyip400Response|\OpenAPI\Client\Model\GetNetworkMyip500Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GetNetworkMyip200Response|\OpenAPI\Client\Model\GetNetworkMyip400Response|\OpenAPI\Client\Model\GetNetworkMyip500Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getNetworkMyipWithHttpInfo($source = null, string $contentType = self::contentTypes['getNetworkMyip'][0])
     {
@@ -1147,7 +1147,7 @@ class NetworkApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\GetNetworkIpinfo200Response',
+                        '\OpenAPI\Client\Model\GetNetworkMyip200Response',
                         $request,
                         $response,
                     );
@@ -1181,7 +1181,7 @@ class NetworkApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\GetNetworkIpinfo200Response',
+                '\OpenAPI\Client\Model\GetNetworkMyip200Response',
                 $request,
                 $response,
             );
@@ -1190,7 +1190,7 @@ class NetworkApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GetNetworkIpinfo200Response',
+                        '\OpenAPI\Client\Model\GetNetworkMyip200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1221,7 +1221,7 @@ class NetworkApi
     /**
      * Operation getNetworkMyipAsync
      *
-     * 获取你的公网IP及归属信息
+     * 查询我的 IP
      *
      * @param  string|null $source 查询的数据源。如果留空，将使用默认的数据库。如果设置为 &#x60;commercial&#x60;，将调用商业级API，返回更详细的地理位置信息，但响应时间可能会稍长。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNetworkMyip'] to see the possible values for this operation
@@ -1242,7 +1242,7 @@ class NetworkApi
     /**
      * Operation getNetworkMyipAsyncWithHttpInfo
      *
-     * 获取你的公网IP及归属信息
+     * 查询我的 IP
      *
      * @param  string|null $source 查询的数据源。如果留空，将使用默认的数据库。如果设置为 &#x60;commercial&#x60;，将调用商业级API，返回更详细的地理位置信息，但响应时间可能会稍长。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNetworkMyip'] to see the possible values for this operation
@@ -1252,7 +1252,7 @@ class NetworkApi
      */
     public function getNetworkMyipAsyncWithHttpInfo($source = null, string $contentType = self::contentTypes['getNetworkMyip'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\GetNetworkIpinfo200Response';
+        $returnType = '\OpenAPI\Client\Model\GetNetworkMyip200Response';
         $request = $this->getNetworkMyipRequest($source, $contentType);
 
         return $this->client
@@ -1381,7 +1381,7 @@ class NetworkApi
     /**
      * Operation getNetworkPing
      *
-     * 从服务器Ping指定主机
+     * Ping 主机
      *
      * @param  string $host 你需要 Ping 的目标主机，可以是域名或IP地址。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNetworkPing'] to see the possible values for this operation
@@ -1399,7 +1399,7 @@ class NetworkApi
     /**
      * Operation getNetworkPingWithHttpInfo
      *
-     * 从服务器Ping指定主机
+     * Ping 主机
      *
      * @param  string $host 你需要 Ping 的目标主机，可以是域名或IP地址。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNetworkPing'] to see the possible values for this operation
@@ -1512,7 +1512,7 @@ class NetworkApi
     /**
      * Operation getNetworkPingAsync
      *
-     * 从服务器Ping指定主机
+     * Ping 主机
      *
      * @param  string $host 你需要 Ping 的目标主机，可以是域名或IP地址。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNetworkPing'] to see the possible values for this operation
@@ -1533,7 +1533,7 @@ class NetworkApi
     /**
      * Operation getNetworkPingAsyncWithHttpInfo
      *
-     * 从服务器Ping指定主机
+     * Ping 主机
      *
      * @param  string $host 你需要 Ping 的目标主机，可以是域名或IP地址。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNetworkPing'] to see the possible values for this operation
@@ -1678,7 +1678,7 @@ class NetworkApi
     /**
      * Operation getNetworkPingmyip
      *
-     * 从服务器Ping你的客户端IP
+     * Ping 我的 IP
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNetworkPingmyip'] to see the possible values for this operation
      *
@@ -1695,7 +1695,7 @@ class NetworkApi
     /**
      * Operation getNetworkPingmyipWithHttpInfo
      *
-     * 从服务器Ping你的客户端IP
+     * Ping 我的 IP
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNetworkPingmyip'] to see the possible values for this operation
      *
@@ -1807,7 +1807,7 @@ class NetworkApi
     /**
      * Operation getNetworkPingmyipAsync
      *
-     * 从服务器Ping你的客户端IP
+     * Ping 我的 IP
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNetworkPingmyip'] to see the possible values for this operation
      *
@@ -1827,7 +1827,7 @@ class NetworkApi
     /**
      * Operation getNetworkPingmyipAsyncWithHttpInfo
      *
-     * 从服务器Ping你的客户端IP
+     * Ping 我的 IP
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNetworkPingmyip'] to see the possible values for this operation
      *
@@ -1954,7 +1954,7 @@ class NetworkApi
     /**
      * Operation getNetworkPortscan
      *
-     * 扫描远程主机的指定端口
+     * 端口扫描
      *
      * @param  string $host 需要扫描的目标主机，可以是域名或IP地址。 (required)
      * @param  int $port 需要扫描的端口号，范围是 1 到 65535。 (required)
@@ -1974,7 +1974,7 @@ class NetworkApi
     /**
      * Operation getNetworkPortscanWithHttpInfo
      *
-     * 扫描远程主机的指定端口
+     * 端口扫描
      *
      * @param  string $host 需要扫描的目标主机，可以是域名或IP地址。 (required)
      * @param  int $port 需要扫描的端口号，范围是 1 到 65535。 (required)
@@ -2089,7 +2089,7 @@ class NetworkApi
     /**
      * Operation getNetworkPortscanAsync
      *
-     * 扫描远程主机的指定端口
+     * 端口扫描
      *
      * @param  string $host 需要扫描的目标主机，可以是域名或IP地址。 (required)
      * @param  int $port 需要扫描的端口号，范围是 1 到 65535。 (required)
@@ -2112,7 +2112,7 @@ class NetworkApi
     /**
      * Operation getNetworkPortscanAsyncWithHttpInfo
      *
-     * 扫描远程主机的指定端口
+     * 端口扫描
      *
      * @param  string $host 需要扫描的目标主机，可以是域名或IP地址。 (required)
      * @param  int $port 需要扫描的端口号，范围是 1 到 65535。 (required)

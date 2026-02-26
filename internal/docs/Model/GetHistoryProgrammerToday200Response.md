@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **int** |  | [optional]
 **message** | **string** |  | [optional]
 **date** | **string** |  | [optional]
 **events** | [**\OpenAPI\Client\Model\GetHistoryProgrammerToday200ResponseEventsInner[]**](GetHistoryProgrammerToday200ResponseEventsInner.md) |  | [optional]

@@ -137,7 +137,7 @@ class WebParseApi
     /**
      * Operation getWebTomarkdownAsyncStatus
      *
-     * 查询网页转换任务状态和结果
+     * 转换任务状态
      *
      * @param  string $task_id 任务ID（由提交接口返回） (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebTomarkdownAsyncStatus'] to see the possible values for this operation
@@ -155,7 +155,7 @@ class WebParseApi
     /**
      * Operation getWebTomarkdownAsyncStatusWithHttpInfo
      *
-     * 查询网页转换任务状态和结果
+     * 转换任务状态
      *
      * @param  string $task_id 任务ID（由提交接口返回） (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebTomarkdownAsyncStatus'] to see the possible values for this operation
@@ -254,7 +254,7 @@ class WebParseApi
     /**
      * Operation getWebTomarkdownAsyncStatusAsync
      *
-     * 查询网页转换任务状态和结果
+     * 转换任务状态
      *
      * @param  string $task_id 任务ID（由提交接口返回） (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebTomarkdownAsyncStatus'] to see the possible values for this operation
@@ -275,7 +275,7 @@ class WebParseApi
     /**
      * Operation getWebTomarkdownAsyncStatusAsyncWithHttpInfo
      *
-     * 查询网页转换任务状态和结果
+     * 转换任务状态
      *
      * @param  string $task_id 任务ID（由提交接口返回） (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebTomarkdownAsyncStatus'] to see the possible values for this operation
@@ -419,7 +419,7 @@ class WebParseApi
     /**
      * Operation getWebparseExtractimages
      *
-     * 提取网页中的所有图片
+     * 提取网页图片
      *
      * @param  string $url 需要提取图片的网页URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebparseExtractimages'] to see the possible values for this operation
@@ -437,7 +437,7 @@ class WebParseApi
     /**
      * Operation getWebparseExtractimagesWithHttpInfo
      *
-     * 提取网页中的所有图片
+     * 提取网页图片
      *
      * @param  string $url 需要提取图片的网页URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebparseExtractimages'] to see the possible values for this operation
@@ -550,7 +550,7 @@ class WebParseApi
     /**
      * Operation getWebparseExtractimagesAsync
      *
-     * 提取网页中的所有图片
+     * 提取网页图片
      *
      * @param  string $url 需要提取图片的网页URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebparseExtractimages'] to see the possible values for this operation
@@ -571,7 +571,7 @@ class WebParseApi
     /**
      * Operation getWebparseExtractimagesAsyncWithHttpInfo
      *
-     * 提取网页中的所有图片
+     * 提取网页图片
      *
      * @param  string $url 需要提取图片的网页URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebparseExtractimages'] to see the possible values for this operation
@@ -716,7 +716,7 @@ class WebParseApi
     /**
      * Operation getWebparseMetadata
      *
-     * 抓取并解析网页的元数据
+     * 提取网页元数据
      *
      * @param  string $url 需要提取元数据的网页URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebparseMetadata'] to see the possible values for this operation
@@ -734,7 +734,7 @@ class WebParseApi
     /**
      * Operation getWebparseMetadataWithHttpInfo
      *
-     * 抓取并解析网页的元数据
+     * 提取网页元数据
      *
      * @param  string $url 需要提取元数据的网页URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebparseMetadata'] to see the possible values for this operation
@@ -847,7 +847,7 @@ class WebParseApi
     /**
      * Operation getWebparseMetadataAsync
      *
-     * 抓取并解析网页的元数据
+     * 提取网页元数据
      *
      * @param  string $url 需要提取元数据的网页URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebparseMetadata'] to see the possible values for this operation
@@ -868,7 +868,7 @@ class WebParseApi
     /**
      * Operation getWebparseMetadataAsyncWithHttpInfo
      *
-     * 抓取并解析网页的元数据
+     * 提取网页元数据
      *
      * @param  string $url 需要提取元数据的网页URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebparseMetadata'] to see the possible values for this operation
@@ -1013,7 +1013,7 @@ class WebParseApi
     /**
      * Operation postWebTomarkdownAsync
      *
-     * 深度抓取网页转Markdown
+     * 网页转 Markdown
      *
      * @param  string $url 需要转换的网页URL。URL必须经过编码。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postWebTomarkdownAsync'] to see the possible values for this operation
@@ -1031,7 +1031,7 @@ class WebParseApi
     /**
      * Operation postWebTomarkdownAsyncWithHttpInfo
      *
-     * 深度抓取网页转Markdown
+     * 网页转 Markdown
      *
      * @param  string $url 需要转换的网页URL。URL必须经过编码。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postWebTomarkdownAsync'] to see the possible values for this operation
@@ -1130,7 +1130,7 @@ class WebParseApi
     /**
      * Operation postWebTomarkdownAsyncAsync
      *
-     * 深度抓取网页转Markdown
+     * 网页转 Markdown
      *
      * @param  string $url 需要转换的网页URL。URL必须经过编码。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postWebTomarkdownAsync'] to see the possible values for this operation
@@ -1151,7 +1151,7 @@ class WebParseApi
     /**
      * Operation postWebTomarkdownAsyncAsyncWithHttpInfo
      *
-     * 深度抓取网页转Markdown
+     * 网页转 Markdown
      *
      * @param  string $url 需要转换的网页URL。URL必须经过编码。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postWebTomarkdownAsync'] to see the possible values for this operation

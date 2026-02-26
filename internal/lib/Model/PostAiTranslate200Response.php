@@ -57,7 +57,6 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'message' => 'string',
         'is_batch' => 'bool',
         'data' => '\OpenAPI\Client\Model\PostAiTranslate200ResponseData',
@@ -75,7 +74,6 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
         'message' => null,
         'is_batch' => null,
         'data' => null,
@@ -91,7 +89,6 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
         'message' => false,
         'is_batch' => false,
         'data' => false,
@@ -187,7 +184,6 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'message' => 'message',
         'is_batch' => 'is_batch',
         'data' => 'data',
@@ -203,7 +199,6 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'message' => 'setMessage',
         'is_batch' => 'setIsBatch',
         'data' => 'setData',
@@ -219,7 +214,6 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'message' => 'getMessage',
         'is_batch' => 'getIsBatch',
         'data' => 'getData',
@@ -286,7 +280,6 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('is_batch', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
@@ -337,33 +330,6 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
 
     /**
      * Gets message

@@ -61,7 +61,9 @@ class PostSearchAggregateRequest implements ModelInterface, ArrayAccess, \JsonSe
         'site' => 'string',
         'filetype' => 'string',
         'fetch_full' => 'bool',
-        'timeout_ms' => 'int'
+        'timeout_ms' => 'int',
+        'sort' => 'string',
+        'time_range' => 'string'
     ];
 
     /**
@@ -76,7 +78,9 @@ class PostSearchAggregateRequest implements ModelInterface, ArrayAccess, \JsonSe
         'site' => null,
         'filetype' => null,
         'fetch_full' => null,
-        'timeout_ms' => null
+        'timeout_ms' => null,
+        'sort' => null,
+        'time_range' => null
     ];
 
     /**
@@ -89,7 +93,9 @@ class PostSearchAggregateRequest implements ModelInterface, ArrayAccess, \JsonSe
         'site' => false,
         'filetype' => false,
         'fetch_full' => false,
-        'timeout_ms' => false
+        'timeout_ms' => false,
+        'sort' => false,
+        'time_range' => false
     ];
 
     /**
@@ -182,7 +188,9 @@ class PostSearchAggregateRequest implements ModelInterface, ArrayAccess, \JsonSe
         'site' => 'site',
         'filetype' => 'filetype',
         'fetch_full' => 'fetch_full',
-        'timeout_ms' => 'timeout_ms'
+        'timeout_ms' => 'timeout_ms',
+        'sort' => 'sort',
+        'time_range' => 'time_range'
     ];
 
     /**
@@ -195,7 +203,9 @@ class PostSearchAggregateRequest implements ModelInterface, ArrayAccess, \JsonSe
         'site' => 'setSite',
         'filetype' => 'setFiletype',
         'fetch_full' => 'setFetchFull',
-        'timeout_ms' => 'setTimeoutMs'
+        'timeout_ms' => 'setTimeoutMs',
+        'sort' => 'setSort',
+        'time_range' => 'setTimeRange'
     ];
 
     /**
@@ -208,7 +218,9 @@ class PostSearchAggregateRequest implements ModelInterface, ArrayAccess, \JsonSe
         'site' => 'getSite',
         'filetype' => 'getFiletype',
         'fetch_full' => 'getFetchFull',
-        'timeout_ms' => 'getTimeoutMs'
+        'timeout_ms' => 'getTimeoutMs',
+        'sort' => 'getSort',
+        'time_range' => 'getTimeRange'
     ];
 
     /**
@@ -252,6 +264,40 @@ class PostSearchAggregateRequest implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
+    public const SORT_RELEVANCE = 'relevance';
+    public const SORT_DATE = 'date';
+    public const TIME_RANGE_DAY = 'day';
+    public const TIME_RANGE_WEEK = 'week';
+    public const TIME_RANGE_MONTH = 'month';
+    public const TIME_RANGE_YEAR = 'year';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSortAllowableValues()
+    {
+        return [
+            self::SORT_RELEVANCE,
+            self::SORT_DATE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTimeRangeAllowableValues()
+    {
+        return [
+            self::TIME_RANGE_DAY,
+            self::TIME_RANGE_WEEK,
+            self::TIME_RANGE_MONTH,
+            self::TIME_RANGE_YEAR,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -272,7 +318,9 @@ class PostSearchAggregateRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('site', $data ?? [], null);
         $this->setIfExists('filetype', $data ?? [], null);
         $this->setIfExists('fetch_full', $data ?? [], false);
-        $this->setIfExists('timeout_ms', $data ?? [], 3000);
+        $this->setIfExists('timeout_ms', $data ?? [], 8000);
+        $this->setIfExists('sort', $data ?? [], 'relevance');
+        $this->setIfExists('time_range', $data ?? [], null);
     }
 
     /**
@@ -305,6 +353,24 @@ class PostSearchAggregateRequest implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['query'] === null) {
             $invalidProperties[] = "'query' can't be null";
         }
+        $allowedValues = $this->getSortAllowableValues();
+        if (!is_null($this->container['sort']) && !in_array($this->container['sort'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'sort', must be one of '%s'",
+                $this->container['sort'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTimeRangeAllowableValues();
+        if (!is_null($this->container['time_range']) && !in_array($this->container['time_range'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'time_range', must be one of '%s'",
+                $this->container['time_range'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -451,6 +517,80 @@ class PostSearchAggregateRequest implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable timeout_ms cannot be null');
         }
         $this->container['timeout_ms'] = $timeout_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets sort
+     *
+     * @return string|null
+     */
+    public function getSort()
+    {
+        return $this->container['sort'];
+    }
+
+    /**
+     * Sets sort
+     *
+     * @param string|null $sort 排序方式
+     *
+     * @return self
+     */
+    public function setSort($sort)
+    {
+        if (is_null($sort)) {
+            throw new \InvalidArgumentException('non-nullable sort cannot be null');
+        }
+        $allowedValues = $this->getSortAllowableValues();
+        if (!in_array($sort, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sort', must be one of '%s'",
+                    $sort,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sort'] = $sort;
+
+        return $this;
+    }
+
+    /**
+     * Gets time_range
+     *
+     * @return string|null
+     */
+    public function getTimeRange()
+    {
+        return $this->container['time_range'];
+    }
+
+    /**
+     * Sets time_range
+     *
+     * @param string|null $time_range 时间范围过滤
+     *
+     * @return self
+     */
+    public function setTimeRange($time_range)
+    {
+        if (is_null($time_range)) {
+            throw new \InvalidArgumentException('non-nullable time_range cannot be null');
+        }
+        $allowedValues = $this->getTimeRangeAllowableValues();
+        if (!in_array($time_range, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'time_range', must be one of '%s'",
+                    $time_range,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['time_range'] = $time_range;
 
         return $this;
     }

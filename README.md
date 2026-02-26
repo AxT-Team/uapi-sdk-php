@@ -1,6 +1,6 @@
 # uapi-sdk-php
 
-![Banner](https://raw.githubusercontent.com/uapis/uapi-sdk-php/main/banner.png)
+![Banner](https://raw.githubusercontent.com/AxT-Team/uapi-sdk-php/main/banner.png)
 
 [![PHP](https://img.shields.io/badge/PHP-8.1+-777BB4?style=flat-square&logo=php&logoColor=white)](https://www.php.net/)
 [![Docs](https://img.shields.io/badge/Docs-uapis.cn-2EAE5D?style=flat-square)](https://uapis.cn/)
@@ -11,7 +11,7 @@
 ## 快速开始
 
 ```bash
-composer require uapis/uapi-sdk-php
+composer require AxT-Team/uapi-sdk-php
 ```
 
 ```php

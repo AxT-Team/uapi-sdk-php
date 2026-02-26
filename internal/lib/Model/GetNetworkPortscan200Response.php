@@ -57,7 +57,6 @@ class GetNetworkPortscan200Response implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'ip' => 'string',
         'port' => 'int',
         'port_status' => 'string',
@@ -72,7 +71,6 @@ class GetNetworkPortscan200Response implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
         'ip' => null,
         'port' => null,
         'port_status' => null,
@@ -85,7 +83,6 @@ class GetNetworkPortscan200Response implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
         'ip' => false,
         'port' => false,
         'port_status' => false,
@@ -178,7 +175,6 @@ class GetNetworkPortscan200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'ip' => 'ip',
         'port' => 'port',
         'port_status' => 'port_status',
@@ -191,7 +187,6 @@ class GetNetworkPortscan200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'ip' => 'setIp',
         'port' => 'setPort',
         'port_status' => 'setPortStatus',
@@ -204,7 +199,6 @@ class GetNetworkPortscan200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'ip' => 'getIp',
         'port' => 'getPort',
         'port_status' => 'getPortStatus',
@@ -268,7 +262,6 @@ class GetNetworkPortscan200Response implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('ip', $data ?? [], null);
         $this->setIfExists('port', $data ?? [], null);
         $this->setIfExists('port_status', $data ?? [], null);
@@ -316,33 +309,6 @@ class GetNetworkPortscan200Response implements ModelInterface, ArrayAccess, \Jso
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
 
     /**
      * Gets ip

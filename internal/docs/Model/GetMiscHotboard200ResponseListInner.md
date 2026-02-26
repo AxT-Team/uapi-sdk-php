@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **index** | **int** |  | [optional]
 **title** | **string** |  | [optional]
 **url** | **string** |  | [optional]
+**cover** | **string** | 封面图 URL，音乐类热榜返回专辑封面，其他平台无此字段。 | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

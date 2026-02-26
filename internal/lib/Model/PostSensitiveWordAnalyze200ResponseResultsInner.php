@@ -58,11 +58,9 @@ class PostSensitiveWordAnalyze200ResponseResultsInner implements ModelInterface,
       */
     protected static $openAPITypes = [
         'k' => 'string',
-        'r' => 'string',
-        's' => 'float[]',
-        'v' => 'string[]',
-        't' => 'string[]',
-        'd' => 'string'
+        'label' => 'string',
+        'category' => 'string',
+        'confidence' => 'float'
     ];
 
     /**
@@ -74,11 +72,9 @@ class PostSensitiveWordAnalyze200ResponseResultsInner implements ModelInterface,
       */
     protected static $openAPIFormats = [
         'k' => null,
-        'r' => null,
-        's' => null,
-        'v' => null,
-        't' => null,
-        'd' => null
+        'label' => null,
+        'category' => null,
+        'confidence' => null
     ];
 
     /**
@@ -88,11 +84,9 @@ class PostSensitiveWordAnalyze200ResponseResultsInner implements ModelInterface,
       */
     protected static array $openAPINullables = [
         'k' => false,
-        'r' => false,
-        's' => false,
-        'v' => false,
-        't' => false,
-        'd' => false
+        'label' => false,
+        'category' => false,
+        'confidence' => false
     ];
 
     /**
@@ -182,11 +176,9 @@ class PostSensitiveWordAnalyze200ResponseResultsInner implements ModelInterface,
      */
     protected static $attributeMap = [
         'k' => 'k',
-        'r' => 'r',
-        's' => 's',
-        'v' => 'v',
-        't' => 't',
-        'd' => 'd'
+        'label' => 'label',
+        'category' => 'category',
+        'confidence' => 'confidence'
     ];
 
     /**
@@ -196,11 +188,9 @@ class PostSensitiveWordAnalyze200ResponseResultsInner implements ModelInterface,
      */
     protected static $setters = [
         'k' => 'setK',
-        'r' => 'setR',
-        's' => 'setS',
-        'v' => 'setV',
-        't' => 'setT',
-        'd' => 'setD'
+        'label' => 'setLabel',
+        'category' => 'setCategory',
+        'confidence' => 'setConfidence'
     ];
 
     /**
@@ -210,11 +200,9 @@ class PostSensitiveWordAnalyze200ResponseResultsInner implements ModelInterface,
      */
     protected static $getters = [
         'k' => 'getK',
-        'r' => 'getR',
-        's' => 'getS',
-        'v' => 'getV',
-        't' => 'getT',
-        'd' => 'getD'
+        'label' => 'getLabel',
+        'category' => 'getCategory',
+        'confidence' => 'getConfidence'
     ];
 
     /**
@@ -258,6 +246,42 @@ class PostSensitiveWordAnalyze200ResponseResultsInner implements ModelInterface,
         return self::$openAPIModelName;
     }
 
+    public const LABEL_SENSITIVE = 'sensitive';
+    public const LABEL_NORMAL = 'normal';
+    public const CATEGORY_SAFE = 'safe';
+    public const CATEGORY_THREAT = 'threat';
+    public const CATEGORY_PORN = 'porn';
+    public const CATEGORY_FRAUD = 'fraud';
+    public const CATEGORY_INSULT = 'insult';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLabelAllowableValues()
+    {
+        return [
+            self::LABEL_SENSITIVE,
+            self::LABEL_NORMAL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCategoryAllowableValues()
+    {
+        return [
+            self::CATEGORY_SAFE,
+            self::CATEGORY_THREAT,
+            self::CATEGORY_PORN,
+            self::CATEGORY_FRAUD,
+            self::CATEGORY_INSULT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -275,11 +299,9 @@ class PostSensitiveWordAnalyze200ResponseResultsInner implements ModelInterface,
     public function __construct(?array $data = null)
     {
         $this->setIfExists('k', $data ?? [], null);
-        $this->setIfExists('r', $data ?? [], null);
-        $this->setIfExists('s', $data ?? [], null);
-        $this->setIfExists('v', $data ?? [], null);
-        $this->setIfExists('t', $data ?? [], null);
-        $this->setIfExists('d', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('category', $data ?? [], null);
+        $this->setIfExists('confidence', $data ?? [], null);
     }
 
     /**
@@ -308,6 +330,32 @@ class PostSensitiveWordAnalyze200ResponseResultsInner implements ModelInterface,
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getLabelAllowableValues();
+        if (!is_null($this->container['label']) && !in_array($this->container['label'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'label', must be one of '%s'",
+                $this->container['label'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCategoryAllowableValues();
+        if (!is_null($this->container['category']) && !in_array($this->container['category'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'category', must be one of '%s'",
+                $this->container['category'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['confidence']) && ($this->container['confidence'] > 1)) {
+            $invalidProperties[] = "invalid value for 'confidence', must be smaller than or equal to 1.";
+        }
+
+        if (!is_null($this->container['confidence']) && ($this->container['confidence'] < 0)) {
+            $invalidProperties[] = "invalid value for 'confidence', must be bigger than or equal to 0.";
+        }
 
         return $invalidProperties;
     }
@@ -352,136 +400,110 @@ class PostSensitiveWordAnalyze200ResponseResultsInner implements ModelInterface,
     }
 
     /**
-     * Gets r
+     * Gets label
      *
      * @return string|null
      */
-    public function getR()
+    public function getLabel()
     {
-        return $this->container['r'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets r
+     * Sets label
      *
-     * @param string|null $r r
+     * @param string|null $label label
      *
      * @return self
      */
-    public function setR($r)
+    public function setLabel($label)
     {
-        if (is_null($r)) {
-            throw new \InvalidArgumentException('non-nullable r cannot be null');
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
-        $this->container['r'] = $r;
+        $allowedValues = $this->getLabelAllowableValues();
+        if (!in_array($label, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'label', must be one of '%s'",
+                    $label,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['label'] = $label;
 
         return $this;
     }
 
     /**
-     * Gets s
-     *
-     * @return float[]|null
-     */
-    public function getS()
-    {
-        return $this->container['s'];
-    }
-
-    /**
-     * Sets s
-     *
-     * @param float[]|null $s s
-     *
-     * @return self
-     */
-    public function setS($s)
-    {
-        if (is_null($s)) {
-            throw new \InvalidArgumentException('non-nullable s cannot be null');
-        }
-        $this->container['s'] = $s;
-
-        return $this;
-    }
-
-    /**
-     * Gets v
-     *
-     * @return string[]|null
-     */
-    public function getV()
-    {
-        return $this->container['v'];
-    }
-
-    /**
-     * Sets v
-     *
-     * @param string[]|null $v v
-     *
-     * @return self
-     */
-    public function setV($v)
-    {
-        if (is_null($v)) {
-            throw new \InvalidArgumentException('non-nullable v cannot be null');
-        }
-        $this->container['v'] = $v;
-
-        return $this;
-    }
-
-    /**
-     * Gets t
-     *
-     * @return string[]|null
-     */
-    public function getT()
-    {
-        return $this->container['t'];
-    }
-
-    /**
-     * Sets t
-     *
-     * @param string[]|null $t t
-     *
-     * @return self
-     */
-    public function setT($t)
-    {
-        if (is_null($t)) {
-            throw new \InvalidArgumentException('non-nullable t cannot be null');
-        }
-        $this->container['t'] = $t;
-
-        return $this;
-    }
-
-    /**
-     * Gets d
+     * Gets category
      *
      * @return string|null
      */
-    public function getD()
+    public function getCategory()
     {
-        return $this->container['d'];
+        return $this->container['category'];
     }
 
     /**
-     * Sets d
+     * Sets category
      *
-     * @param string|null $d d
+     * @param string|null $category category
      *
      * @return self
      */
-    public function setD($d)
+    public function setCategory($category)
     {
-        if (is_null($d)) {
-            throw new \InvalidArgumentException('non-nullable d cannot be null');
+        if (is_null($category)) {
+            throw new \InvalidArgumentException('non-nullable category cannot be null');
         }
-        $this->container['d'] = $d;
+        $allowedValues = $this->getCategoryAllowableValues();
+        if (!in_array($category, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'category', must be one of '%s'",
+                    $category,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets confidence
+     *
+     * @return float|null
+     */
+    public function getConfidence()
+    {
+        return $this->container['confidence'];
+    }
+
+    /**
+     * Sets confidence
+     *
+     * @param float|null $confidence confidence
+     *
+     * @return self
+     */
+    public function setConfidence($confidence)
+    {
+        if (is_null($confidence)) {
+            throw new \InvalidArgumentException('non-nullable confidence cannot be null');
+        }
+
+        if (($confidence > 1)) {
+            throw new \InvalidArgumentException('invalid value for $confidence when calling PostSensitiveWordAnalyze200ResponseResultsInner., must be smaller than or equal to 1.');
+        }
+        if (($confidence < 0)) {
+            throw new \InvalidArgumentException('invalid value for $confidence when calling PostSensitiveWordAnalyze200ResponseResultsInner., must be bigger than or equal to 0.');
+        }
+
+        $this->container['confidence'] = $confidence;
 
         return $this;
     }

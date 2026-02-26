@@ -58,7 +58,6 @@ class GetNetworkPing200Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'avg' => 'float',
-        'code' => 'int',
         'host' => 'string',
         'ip' => 'string',
         'location' => 'string',
@@ -75,7 +74,6 @@ class GetNetworkPing200Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'avg' => null,
-        'code' => null,
         'host' => null,
         'ip' => null,
         'location' => null,
@@ -90,7 +88,6 @@ class GetNetworkPing200Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'avg' => false,
-        'code' => false,
         'host' => false,
         'ip' => false,
         'location' => false,
@@ -185,7 +182,6 @@ class GetNetworkPing200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'avg' => 'avg',
-        'code' => 'code',
         'host' => 'host',
         'ip' => 'ip',
         'location' => 'location',
@@ -200,7 +196,6 @@ class GetNetworkPing200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'avg' => 'setAvg',
-        'code' => 'setCode',
         'host' => 'setHost',
         'ip' => 'setIp',
         'location' => 'setLocation',
@@ -215,7 +210,6 @@ class GetNetworkPing200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'avg' => 'getAvg',
-        'code' => 'getCode',
         'host' => 'getHost',
         'ip' => 'getIp',
         'location' => 'getLocation',
@@ -281,7 +275,6 @@ class GetNetworkPing200Response implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('avg', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('host', $data ?? [], null);
         $this->setIfExists('ip', $data ?? [], null);
         $this->setIfExists('location', $data ?? [], null);
@@ -354,33 +347,6 @@ class GetNetworkPing200Response implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable avg cannot be null');
         }
         $this->container['avg'] = $avg;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
 
         return $this;
     }

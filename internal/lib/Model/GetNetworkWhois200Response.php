@@ -57,7 +57,6 @@ class GetNetworkWhois200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'whois' => 'object'
     ];
 
@@ -69,7 +68,6 @@ class GetNetworkWhois200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
         'whois' => null
     ];
 
@@ -79,7 +77,6 @@ class GetNetworkWhois200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
         'whois' => false
     ];
 
@@ -169,7 +166,6 @@ class GetNetworkWhois200Response implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'whois' => 'whois'
     ];
 
@@ -179,7 +175,6 @@ class GetNetworkWhois200Response implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'whois' => 'setWhois'
     ];
 
@@ -189,7 +184,6 @@ class GetNetworkWhois200Response implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'whois' => 'getWhois'
     ];
 
@@ -250,7 +244,6 @@ class GetNetworkWhois200Response implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('whois', $data ?? [], null);
     }
 
@@ -295,33 +288,6 @@ class GetNetworkWhois200Response implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
 
     /**
      * Gets whois

@@ -57,9 +57,7 @@ class GetSocialQqGroupinfo404Response implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'details' => 'object',
-        'message' => 'string'
+        'error' => 'string'
     ];
 
     /**
@@ -70,9 +68,7 @@ class GetSocialQqGroupinfo404Response implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'details' => null,
-        'message' => null
+        'error' => null
     ];
 
     /**
@@ -81,9 +77,7 @@ class GetSocialQqGroupinfo404Response implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'details' => false,
-        'message' => false
+        'error' => false
     ];
 
     /**
@@ -172,9 +166,7 @@ class GetSocialQqGroupinfo404Response implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'details' => 'details',
-        'message' => 'message'
+        'error' => 'error'
     ];
 
     /**
@@ -183,9 +175,7 @@ class GetSocialQqGroupinfo404Response implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'details' => 'setDetails',
-        'message' => 'setMessage'
+        'error' => 'setError'
     ];
 
     /**
@@ -194,9 +184,7 @@ class GetSocialQqGroupinfo404Response implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'details' => 'getDetails',
-        'message' => 'getMessage'
+        'error' => 'getError'
     ];
 
     /**
@@ -256,9 +244,7 @@ class GetSocialQqGroupinfo404Response implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('details', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('error', $data ?? [], null);
     }
 
     /**
@@ -304,82 +290,28 @@ class GetSocialQqGroupinfo404Response implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets code
+     * Gets error
      *
      * @return string|null
      */
-    public function getCode()
+    public function getError()
     {
-        return $this->container['code'];
+        return $this->container['error'];
     }
 
     /**
-     * Sets code
+     * Sets error
      *
-     * @param string|null $code code
+     * @param string|null $error error
      *
      * @return self
      */
-    public function setCode($code)
+    public function setError($error)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($error)) {
+            throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets details
-     *
-     * @return object|null
-     */
-    public function getDetails()
-    {
-        return $this->container['details'];
-    }
-
-    /**
-     * Sets details
-     *
-     * @param object|null $details details
-     *
-     * @return self
-     */
-    public function setDetails($details)
-    {
-        if (is_null($details)) {
-            throw new \InvalidArgumentException('non-nullable details cannot be null');
-        }
-        $this->container['details'] = $details;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string|null $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-        $this->container['message'] = $message;
+        $this->container['error'] = $error;
 
         return $this;
     }

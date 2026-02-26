@@ -58,7 +58,6 @@ class GetMiscWeather500Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'code' => 'string',
-        'details' => 'object',
         'message' => 'string'
     ];
 
@@ -71,7 +70,6 @@ class GetMiscWeather500Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'code' => null,
-        'details' => null,
         'message' => null
     ];
 
@@ -82,7 +80,6 @@ class GetMiscWeather500Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'code' => false,
-        'details' => false,
         'message' => false
     ];
 
@@ -173,7 +170,6 @@ class GetMiscWeather500Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'code' => 'code',
-        'details' => 'details',
         'message' => 'message'
     ];
 
@@ -184,7 +180,6 @@ class GetMiscWeather500Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'code' => 'setCode',
-        'details' => 'setDetails',
         'message' => 'setMessage'
     ];
 
@@ -195,7 +190,6 @@ class GetMiscWeather500Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'code' => 'getCode',
-        'details' => 'getDetails',
         'message' => 'getMessage'
     ];
 
@@ -257,7 +251,6 @@ class GetMiscWeather500Response implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('details', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
     }
 
@@ -326,33 +319,6 @@ class GetMiscWeather500Response implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
         $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets details
-     *
-     * @return object|null
-     */
-    public function getDetails()
-    {
-        return $this->container['details'];
-    }
-
-    /**
-     * Sets details
-     *
-     * @param object|null $details details
-     *
-     * @return self
-     */
-    public function setDetails($details)
-    {
-        if (is_null($details)) {
-            throw new \InvalidArgumentException('non-nullable details cannot be null');
-        }
-        $this->container['details'] = $details;
 
         return $this;
     }

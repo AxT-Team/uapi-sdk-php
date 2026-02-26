@@ -6,7 +6,7 @@ All URIs are relative to https://uapis.cn/api/v1, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getStatusRatelimit()**](StatusApi.md#getStatusRatelimit) | **GET** /status/ratelimit | 获取API限流器实时状态 |
+| [**getStatusRatelimit()**](StatusApi.md#getStatusRatelimit) | **GET** /status/ratelimit | 限流状态 |
 | [**getStatusUsage()**](StatusApi.md#getStatusUsage) | **GET** /status/usage | 获取API端点使用统计 |
 
 
@@ -16,7 +16,7 @@ All URIs are relative to https://uapis.cn/api/v1, except if the operation define
 getStatusRatelimit($authorization): \OpenAPI\Client\Model\GetStatusRatelimit200Response
 ```
 
-获取API限流器实时状态
+限流状态
 
 想了解我们API的当前负载情况吗？这个接口为你提供了服务的“心电图”。  ## 功能概述 此接口返回我们后端自适应限流器的实时状态。你可以看到当前并发请求数、并发上限、系统负载、请求接受/拒绝数等核心指标。这对于监控API健康状况和性能表现至关重要。  > [!IMPORTANT] > 此接口为管理接口，需要提供有效的管理员级别API密钥才能访问。  ### 认证方式 请在请求头中添加 `Authorization: Bearer <你的API密钥>`。
 

@@ -137,7 +137,7 @@ class TranslateApi
     /**
      * Operation getAiTranslateLanguages
      *
-     * 获取AI翻译支持的语言和配置
+     * AI翻译配置
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAiTranslateLanguages'] to see the possible values for this operation
      *
@@ -154,7 +154,7 @@ class TranslateApi
     /**
      * Operation getAiTranslateLanguagesWithHttpInfo
      *
-     * 获取AI翻译支持的语言和配置
+     * AI翻译配置
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAiTranslateLanguages'] to see the possible values for this operation
      *
@@ -238,7 +238,7 @@ class TranslateApi
     /**
      * Operation getAiTranslateLanguagesAsync
      *
-     * 获取AI翻译支持的语言和配置
+     * AI翻译配置
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAiTranslateLanguages'] to see the possible values for this operation
      *
@@ -258,7 +258,7 @@ class TranslateApi
     /**
      * Operation getAiTranslateLanguagesAsyncWithHttpInfo
      *
-     * 获取AI翻译支持的语言和配置
+     * AI翻译配置
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAiTranslateLanguages'] to see the possible values for this operation
      *
@@ -962,7 +962,7 @@ class TranslateApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/event-stream', 'application/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1024,7 +1024,7 @@ class TranslateApi
     /**
      * Operation postTranslateText
      *
-     * 多语言文本翻译
+     * 翻译
      *
      * @param  string $to_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
      * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request 包含待翻译文本的JSON对象 (required)
@@ -1043,7 +1043,7 @@ class TranslateApi
     /**
      * Operation postTranslateTextWithHttpInfo
      *
-     * 多语言文本翻译
+     * 翻译
      *
      * @param  string $to_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
      * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request 包含待翻译文本的JSON对象 (required)
@@ -1157,7 +1157,7 @@ class TranslateApi
     /**
      * Operation postTranslateTextAsync
      *
-     * 多语言文本翻译
+     * 翻译
      *
      * @param  string $to_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
      * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request 包含待翻译文本的JSON对象 (required)
@@ -1179,7 +1179,7 @@ class TranslateApi
     /**
      * Operation postTranslateTextAsyncWithHttpInfo
      *
-     * 多语言文本翻译
+     * 翻译
      *
      * @param  string $to_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
      * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request 包含待翻译文本的JSON对象 (required)

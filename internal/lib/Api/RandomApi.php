@@ -137,7 +137,7 @@ class RandomApi
     /**
      * Operation getAnswerbookAsk
      *
-     * 获取答案之书的神秘答案 (GET)
+     * 答案之书
      *
      * @param  string $question 你想要提问的问题。问题不能为空。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnswerbookAsk'] to see the possible values for this operation
@@ -155,7 +155,7 @@ class RandomApi
     /**
      * Operation getAnswerbookAskWithHttpInfo
      *
-     * 获取答案之书的神秘答案 (GET)
+     * 答案之书
      *
      * @param  string $question 你想要提问的问题。问题不能为空。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnswerbookAsk'] to see the possible values for this operation
@@ -268,7 +268,7 @@ class RandomApi
     /**
      * Operation getAnswerbookAskAsync
      *
-     * 获取答案之书的神秘答案 (GET)
+     * 答案之书
      *
      * @param  string $question 你想要提问的问题。问题不能为空。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnswerbookAsk'] to see the possible values for this operation
@@ -289,7 +289,7 @@ class RandomApi
     /**
      * Operation getAnswerbookAskAsyncWithHttpInfo
      *
-     * 获取答案之书的神秘答案 (GET)
+     * 答案之书
      *
      * @param  string $question 你想要提问的问题。问题不能为空。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnswerbookAsk'] to see the possible values for this operation
@@ -434,10 +434,10 @@ class RandomApi
     /**
      * Operation getRandomImage
      *
-     * 随机二次元、风景、动漫图片壁纸
+     * 随机图片
      *
-     * @param  string|null $category （可选）指定图片主类别。  **支持的主类别：** - &#x60;furry&#x60;（福瑞，UapiPro服务器） - &#x60;bq&#x60;（表情包/趣图，UapiPro服务器） - &#x60;acg&#x60;（二次元动漫，UapiPro服务器） - &#x60;ai_drawing&#x60;（AI绘画，外部图床） - &#x60;general_anime&#x60;（动漫图，外部图床） - &#x60;landscape&#x60;（风景图，外部图床） - &#x60;mobile_wallpaper&#x60;（手机壁纸，外部图床） - &#x60;pc_wallpaper&#x60;（电脑壁纸，外部图床） - &#x60;anime&#x60;（混合动漫，UapiPro服务器acg + 外部图床general_anime）  &gt; [!TIP] &gt; 如果不指定，将从所有图片中随机抽取（不包含 &#x60;ikun&#x60; 和 &#x60;ai_drawing&#x60;）。 (optional)
-     * @param  string|null $type （可选，仅UapiPro服务器图片支持）指定图片子类别。  - **furry**: &#x60;z4k&#x60;, &#x60;szs8k&#x60;, &#x60;s4k&#x60;, &#x60;4k&#x60; - **bq**: &#x60;youshou&#x60;, &#x60;xiongmao&#x60;, &#x60;waiguoren&#x60;, &#x60;maomao&#x60;, &#x60;ikun&#x60;, &#x60;eciyuan&#x60; - **acg**: &#x60;pc&#x60;, &#x60;mb&#x60;  &gt; [!TIP] &gt; 外部图床类别和 &#x60;anime&#x60; 混合类别不支持 &#x60;type&#x60; 参数。 (optional)
+     * @param  string|null $category （可选）指定图片主类别。  **支持的主类别：** - &#x60;acg&#x60;（二次元动漫，UapiPro服务器） - &#x60;landscape&#x60;（风景图，外部图床） - &#x60;anime&#x60;（混合动漫） - &#x60;pc_wallpaper&#x60;（电脑壁纸，外部图床） - &#x60;mobile_wallpaper&#x60;（手机壁纸，外部图床） - &#x60;general_anime&#x60;（动漫图，外部图床） - &#x60;ai_drawing&#x60;（AI绘画，外部图床） - &#x60;bq&#x60;（表情包/趣图，UapiPro服务器） - &#x60;furry&#x60;（福瑞，UapiPro服务器）  &gt; [!TIP] &gt; 如果不指定，将从所有图片中随机抽取（不包含 &#x60;ikun&#x60; 和 &#x60;ai_drawing&#x60;）。 (optional)
+     * @param  string|null $type （可选，仅UapiPro服务器图片支持）指定图片子类别。  - **bq**: &#x60;xiongmao&#x60;, &#x60;waiguoren&#x60;, &#x60;maomao&#x60;, &#x60;ikun&#x60;, &#x60;eciyuan&#x60; - **acg**: &#x60;pc&#x60;, &#x60;mb&#x60; - **furry**: &#x60;z4k&#x60;, &#x60;szs8k&#x60;, &#x60;s4k&#x60;, &#x60;4k&#x60;  &gt; [!TIP] &gt; 外部图床类别和 &#x60;anime&#x60; 混合类别不支持 &#x60;type&#x60; 参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRandomImage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -453,10 +453,10 @@ class RandomApi
     /**
      * Operation getRandomImageWithHttpInfo
      *
-     * 随机二次元、风景、动漫图片壁纸
+     * 随机图片
      *
-     * @param  string|null $category （可选）指定图片主类别。  **支持的主类别：** - &#x60;furry&#x60;（福瑞，UapiPro服务器） - &#x60;bq&#x60;（表情包/趣图，UapiPro服务器） - &#x60;acg&#x60;（二次元动漫，UapiPro服务器） - &#x60;ai_drawing&#x60;（AI绘画，外部图床） - &#x60;general_anime&#x60;（动漫图，外部图床） - &#x60;landscape&#x60;（风景图，外部图床） - &#x60;mobile_wallpaper&#x60;（手机壁纸，外部图床） - &#x60;pc_wallpaper&#x60;（电脑壁纸，外部图床） - &#x60;anime&#x60;（混合动漫，UapiPro服务器acg + 外部图床general_anime）  &gt; [!TIP] &gt; 如果不指定，将从所有图片中随机抽取（不包含 &#x60;ikun&#x60; 和 &#x60;ai_drawing&#x60;）。 (optional)
-     * @param  string|null $type （可选，仅UapiPro服务器图片支持）指定图片子类别。  - **furry**: &#x60;z4k&#x60;, &#x60;szs8k&#x60;, &#x60;s4k&#x60;, &#x60;4k&#x60; - **bq**: &#x60;youshou&#x60;, &#x60;xiongmao&#x60;, &#x60;waiguoren&#x60;, &#x60;maomao&#x60;, &#x60;ikun&#x60;, &#x60;eciyuan&#x60; - **acg**: &#x60;pc&#x60;, &#x60;mb&#x60;  &gt; [!TIP] &gt; 外部图床类别和 &#x60;anime&#x60; 混合类别不支持 &#x60;type&#x60; 参数。 (optional)
+     * @param  string|null $category （可选）指定图片主类别。  **支持的主类别：** - &#x60;acg&#x60;（二次元动漫，UapiPro服务器） - &#x60;landscape&#x60;（风景图，外部图床） - &#x60;anime&#x60;（混合动漫） - &#x60;pc_wallpaper&#x60;（电脑壁纸，外部图床） - &#x60;mobile_wallpaper&#x60;（手机壁纸，外部图床） - &#x60;general_anime&#x60;（动漫图，外部图床） - &#x60;ai_drawing&#x60;（AI绘画，外部图床） - &#x60;bq&#x60;（表情包/趣图，UapiPro服务器） - &#x60;furry&#x60;（福瑞，UapiPro服务器）  &gt; [!TIP] &gt; 如果不指定，将从所有图片中随机抽取（不包含 &#x60;ikun&#x60; 和 &#x60;ai_drawing&#x60;）。 (optional)
+     * @param  string|null $type （可选，仅UapiPro服务器图片支持）指定图片子类别。  - **bq**: &#x60;xiongmao&#x60;, &#x60;waiguoren&#x60;, &#x60;maomao&#x60;, &#x60;ikun&#x60;, &#x60;eciyuan&#x60; - **acg**: &#x60;pc&#x60;, &#x60;mb&#x60; - **furry**: &#x60;z4k&#x60;, &#x60;szs8k&#x60;, &#x60;s4k&#x60;, &#x60;4k&#x60;  &gt; [!TIP] &gt; 外部图床类别和 &#x60;anime&#x60; 混合类别不支持 &#x60;type&#x60; 参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRandomImage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -567,10 +567,10 @@ class RandomApi
     /**
      * Operation getRandomImageAsync
      *
-     * 随机二次元、风景、动漫图片壁纸
+     * 随机图片
      *
-     * @param  string|null $category （可选）指定图片主类别。  **支持的主类别：** - &#x60;furry&#x60;（福瑞，UapiPro服务器） - &#x60;bq&#x60;（表情包/趣图，UapiPro服务器） - &#x60;acg&#x60;（二次元动漫，UapiPro服务器） - &#x60;ai_drawing&#x60;（AI绘画，外部图床） - &#x60;general_anime&#x60;（动漫图，外部图床） - &#x60;landscape&#x60;（风景图，外部图床） - &#x60;mobile_wallpaper&#x60;（手机壁纸，外部图床） - &#x60;pc_wallpaper&#x60;（电脑壁纸，外部图床） - &#x60;anime&#x60;（混合动漫，UapiPro服务器acg + 外部图床general_anime）  &gt; [!TIP] &gt; 如果不指定，将从所有图片中随机抽取（不包含 &#x60;ikun&#x60; 和 &#x60;ai_drawing&#x60;）。 (optional)
-     * @param  string|null $type （可选，仅UapiPro服务器图片支持）指定图片子类别。  - **furry**: &#x60;z4k&#x60;, &#x60;szs8k&#x60;, &#x60;s4k&#x60;, &#x60;4k&#x60; - **bq**: &#x60;youshou&#x60;, &#x60;xiongmao&#x60;, &#x60;waiguoren&#x60;, &#x60;maomao&#x60;, &#x60;ikun&#x60;, &#x60;eciyuan&#x60; - **acg**: &#x60;pc&#x60;, &#x60;mb&#x60;  &gt; [!TIP] &gt; 外部图床类别和 &#x60;anime&#x60; 混合类别不支持 &#x60;type&#x60; 参数。 (optional)
+     * @param  string|null $category （可选）指定图片主类别。  **支持的主类别：** - &#x60;acg&#x60;（二次元动漫，UapiPro服务器） - &#x60;landscape&#x60;（风景图，外部图床） - &#x60;anime&#x60;（混合动漫） - &#x60;pc_wallpaper&#x60;（电脑壁纸，外部图床） - &#x60;mobile_wallpaper&#x60;（手机壁纸，外部图床） - &#x60;general_anime&#x60;（动漫图，外部图床） - &#x60;ai_drawing&#x60;（AI绘画，外部图床） - &#x60;bq&#x60;（表情包/趣图，UapiPro服务器） - &#x60;furry&#x60;（福瑞，UapiPro服务器）  &gt; [!TIP] &gt; 如果不指定，将从所有图片中随机抽取（不包含 &#x60;ikun&#x60; 和 &#x60;ai_drawing&#x60;）。 (optional)
+     * @param  string|null $type （可选，仅UapiPro服务器图片支持）指定图片子类别。  - **bq**: &#x60;xiongmao&#x60;, &#x60;waiguoren&#x60;, &#x60;maomao&#x60;, &#x60;ikun&#x60;, &#x60;eciyuan&#x60; - **acg**: &#x60;pc&#x60;, &#x60;mb&#x60; - **furry**: &#x60;z4k&#x60;, &#x60;szs8k&#x60;, &#x60;s4k&#x60;, &#x60;4k&#x60;  &gt; [!TIP] &gt; 外部图床类别和 &#x60;anime&#x60; 混合类别不支持 &#x60;type&#x60; 参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRandomImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -589,10 +589,10 @@ class RandomApi
     /**
      * Operation getRandomImageAsyncWithHttpInfo
      *
-     * 随机二次元、风景、动漫图片壁纸
+     * 随机图片
      *
-     * @param  string|null $category （可选）指定图片主类别。  **支持的主类别：** - &#x60;furry&#x60;（福瑞，UapiPro服务器） - &#x60;bq&#x60;（表情包/趣图，UapiPro服务器） - &#x60;acg&#x60;（二次元动漫，UapiPro服务器） - &#x60;ai_drawing&#x60;（AI绘画，外部图床） - &#x60;general_anime&#x60;（动漫图，外部图床） - &#x60;landscape&#x60;（风景图，外部图床） - &#x60;mobile_wallpaper&#x60;（手机壁纸，外部图床） - &#x60;pc_wallpaper&#x60;（电脑壁纸，外部图床） - &#x60;anime&#x60;（混合动漫，UapiPro服务器acg + 外部图床general_anime）  &gt; [!TIP] &gt; 如果不指定，将从所有图片中随机抽取（不包含 &#x60;ikun&#x60; 和 &#x60;ai_drawing&#x60;）。 (optional)
-     * @param  string|null $type （可选，仅UapiPro服务器图片支持）指定图片子类别。  - **furry**: &#x60;z4k&#x60;, &#x60;szs8k&#x60;, &#x60;s4k&#x60;, &#x60;4k&#x60; - **bq**: &#x60;youshou&#x60;, &#x60;xiongmao&#x60;, &#x60;waiguoren&#x60;, &#x60;maomao&#x60;, &#x60;ikun&#x60;, &#x60;eciyuan&#x60; - **acg**: &#x60;pc&#x60;, &#x60;mb&#x60;  &gt; [!TIP] &gt; 外部图床类别和 &#x60;anime&#x60; 混合类别不支持 &#x60;type&#x60; 参数。 (optional)
+     * @param  string|null $category （可选）指定图片主类别。  **支持的主类别：** - &#x60;acg&#x60;（二次元动漫，UapiPro服务器） - &#x60;landscape&#x60;（风景图，外部图床） - &#x60;anime&#x60;（混合动漫） - &#x60;pc_wallpaper&#x60;（电脑壁纸，外部图床） - &#x60;mobile_wallpaper&#x60;（手机壁纸，外部图床） - &#x60;general_anime&#x60;（动漫图，外部图床） - &#x60;ai_drawing&#x60;（AI绘画，外部图床） - &#x60;bq&#x60;（表情包/趣图，UapiPro服务器） - &#x60;furry&#x60;（福瑞，UapiPro服务器）  &gt; [!TIP] &gt; 如果不指定，将从所有图片中随机抽取（不包含 &#x60;ikun&#x60; 和 &#x60;ai_drawing&#x60;）。 (optional)
+     * @param  string|null $type （可选，仅UapiPro服务器图片支持）指定图片子类别。  - **bq**: &#x60;xiongmao&#x60;, &#x60;waiguoren&#x60;, &#x60;maomao&#x60;, &#x60;ikun&#x60;, &#x60;eciyuan&#x60; - **acg**: &#x60;pc&#x60;, &#x60;mb&#x60; - **furry**: &#x60;z4k&#x60;, &#x60;szs8k&#x60;, &#x60;s4k&#x60;, &#x60;4k&#x60;  &gt; [!TIP] &gt; 外部图床类别和 &#x60;anime&#x60; 混合类别不支持 &#x60;type&#x60; 参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRandomImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -642,8 +642,8 @@ class RandomApi
     /**
      * Create request for operation 'getRandomImage'
      *
-     * @param  string|null $category （可选）指定图片主类别。  **支持的主类别：** - &#x60;furry&#x60;（福瑞，UapiPro服务器） - &#x60;bq&#x60;（表情包/趣图，UapiPro服务器） - &#x60;acg&#x60;（二次元动漫，UapiPro服务器） - &#x60;ai_drawing&#x60;（AI绘画，外部图床） - &#x60;general_anime&#x60;（动漫图，外部图床） - &#x60;landscape&#x60;（风景图，外部图床） - &#x60;mobile_wallpaper&#x60;（手机壁纸，外部图床） - &#x60;pc_wallpaper&#x60;（电脑壁纸，外部图床） - &#x60;anime&#x60;（混合动漫，UapiPro服务器acg + 外部图床general_anime）  &gt; [!TIP] &gt; 如果不指定，将从所有图片中随机抽取（不包含 &#x60;ikun&#x60; 和 &#x60;ai_drawing&#x60;）。 (optional)
-     * @param  string|null $type （可选，仅UapiPro服务器图片支持）指定图片子类别。  - **furry**: &#x60;z4k&#x60;, &#x60;szs8k&#x60;, &#x60;s4k&#x60;, &#x60;4k&#x60; - **bq**: &#x60;youshou&#x60;, &#x60;xiongmao&#x60;, &#x60;waiguoren&#x60;, &#x60;maomao&#x60;, &#x60;ikun&#x60;, &#x60;eciyuan&#x60; - **acg**: &#x60;pc&#x60;, &#x60;mb&#x60;  &gt; [!TIP] &gt; 外部图床类别和 &#x60;anime&#x60; 混合类别不支持 &#x60;type&#x60; 参数。 (optional)
+     * @param  string|null $category （可选）指定图片主类别。  **支持的主类别：** - &#x60;acg&#x60;（二次元动漫，UapiPro服务器） - &#x60;landscape&#x60;（风景图，外部图床） - &#x60;anime&#x60;（混合动漫） - &#x60;pc_wallpaper&#x60;（电脑壁纸，外部图床） - &#x60;mobile_wallpaper&#x60;（手机壁纸，外部图床） - &#x60;general_anime&#x60;（动漫图，外部图床） - &#x60;ai_drawing&#x60;（AI绘画，外部图床） - &#x60;bq&#x60;（表情包/趣图，UapiPro服务器） - &#x60;furry&#x60;（福瑞，UapiPro服务器）  &gt; [!TIP] &gt; 如果不指定，将从所有图片中随机抽取（不包含 &#x60;ikun&#x60; 和 &#x60;ai_drawing&#x60;）。 (optional)
+     * @param  string|null $type （可选，仅UapiPro服务器图片支持）指定图片子类别。  - **bq**: &#x60;xiongmao&#x60;, &#x60;waiguoren&#x60;, &#x60;maomao&#x60;, &#x60;ikun&#x60;, &#x60;eciyuan&#x60; - **acg**: &#x60;pc&#x60;, &#x60;mb&#x60; - **furry**: &#x60;z4k&#x60;, &#x60;szs8k&#x60;, &#x60;s4k&#x60;, &#x60;4k&#x60;  &gt; [!TIP] &gt; 外部图床类别和 &#x60;anime&#x60; 混合类别不支持 &#x60;type&#x60; 参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRandomImage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -740,7 +740,7 @@ class RandomApi
     /**
      * Operation getRandomString
      *
-     * 生成高度可定制的随机字符串
+     * 随机字符串
      *
      * @param  int|null $length 你希望生成的字符串的长度。有效范围是 1 到 1024。 (optional, default to 16)
      * @param  string|null $type 指定构成字符串的字符类型。 (optional, default to 'alphanumeric')
@@ -759,7 +759,7 @@ class RandomApi
     /**
      * Operation getRandomStringWithHttpInfo
      *
-     * 生成高度可定制的随机字符串
+     * 随机字符串
      *
      * @param  int|null $length 你希望生成的字符串的长度。有效范围是 1 到 1024。 (optional, default to 16)
      * @param  string|null $type 指定构成字符串的字符类型。 (optional, default to 'alphanumeric')
@@ -873,7 +873,7 @@ class RandomApi
     /**
      * Operation getRandomStringAsync
      *
-     * 生成高度可定制的随机字符串
+     * 随机字符串
      *
      * @param  int|null $length 你希望生成的字符串的长度。有效范围是 1 到 1024。 (optional, default to 16)
      * @param  string|null $type 指定构成字符串的字符类型。 (optional, default to 'alphanumeric')
@@ -895,7 +895,7 @@ class RandomApi
     /**
      * Operation getRandomStringAsyncWithHttpInfo
      *
-     * 生成高度可定制的随机字符串
+     * 随机字符串
      *
      * @param  int|null $length 你希望生成的字符串的长度。有效范围是 1 到 1024。 (optional, default to 16)
      * @param  string|null $type 指定构成字符串的字符类型。 (optional, default to 'alphanumeric')
@@ -1046,7 +1046,7 @@ class RandomApi
     /**
      * Operation postAnswerbookAsk
      *
-     * 获取答案之书的神秘答案 (POST)
+     * 答案之书 (POST)
      *
      * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request 包含问题的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAnswerbookAsk'] to see the possible values for this operation
@@ -1064,7 +1064,7 @@ class RandomApi
     /**
      * Operation postAnswerbookAskWithHttpInfo
      *
-     * 获取答案之书的神秘答案 (POST)
+     * 答案之书 (POST)
      *
      * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request 包含问题的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAnswerbookAsk'] to see the possible values for this operation
@@ -1177,7 +1177,7 @@ class RandomApi
     /**
      * Operation postAnswerbookAskAsync
      *
-     * 获取答案之书的神秘答案 (POST)
+     * 答案之书 (POST)
      *
      * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request 包含问题的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAnswerbookAsk'] to see the possible values for this operation
@@ -1198,7 +1198,7 @@ class RandomApi
     /**
      * Operation postAnswerbookAskAsyncWithHttpInfo
      *
-     * 获取答案之书的神秘答案 (POST)
+     * 答案之书 (POST)
      *
      * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request 包含问题的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAnswerbookAsk'] to see the possible values for this operation

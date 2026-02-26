@@ -57,7 +57,6 @@ class GetGameMinecraftServerstatus200Response implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'favicon_url' => 'string',
         'ip' => 'string',
         'max_players' => 'int',
@@ -77,7 +76,6 @@ class GetGameMinecraftServerstatus200Response implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
         'favicon_url' => null,
         'ip' => null,
         'max_players' => null,
@@ -95,7 +93,6 @@ class GetGameMinecraftServerstatus200Response implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
         'favicon_url' => false,
         'ip' => false,
         'max_players' => false,
@@ -193,7 +190,6 @@ class GetGameMinecraftServerstatus200Response implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'favicon_url' => 'favicon_url',
         'ip' => 'ip',
         'max_players' => 'max_players',
@@ -211,7 +207,6 @@ class GetGameMinecraftServerstatus200Response implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'favicon_url' => 'setFaviconUrl',
         'ip' => 'setIp',
         'max_players' => 'setMaxPlayers',
@@ -229,7 +224,6 @@ class GetGameMinecraftServerstatus200Response implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'favicon_url' => 'getFaviconUrl',
         'ip' => 'getIp',
         'max_players' => 'getMaxPlayers',
@@ -298,7 +292,6 @@ class GetGameMinecraftServerstatus200Response implements ModelInterface, ArrayAc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('favicon_url', $data ?? [], null);
         $this->setIfExists('ip', $data ?? [], null);
         $this->setIfExists('max_players', $data ?? [], null);
@@ -351,33 +344,6 @@ class GetGameMinecraftServerstatus200Response implements ModelInterface, ArrayAc
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code 状态码，200代表成功。
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
 
     /**
      * Gets favicon_url

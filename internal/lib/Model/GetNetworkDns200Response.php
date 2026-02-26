@@ -57,7 +57,6 @@ class GetNetworkDns200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'domain' => 'string',
         'error' => 'string',
         'records' => '\OpenAPI\Client\Model\GetNetworkDns200ResponseRecordsInner[]',
@@ -72,7 +71,6 @@ class GetNetworkDns200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
         'domain' => null,
         'error' => null,
         'records' => null,
@@ -85,7 +83,6 @@ class GetNetworkDns200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
         'domain' => false,
         'error' => false,
         'records' => false,
@@ -178,7 +175,6 @@ class GetNetworkDns200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'domain' => 'domain',
         'error' => 'error',
         'records' => 'records',
@@ -191,7 +187,6 @@ class GetNetworkDns200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'domain' => 'setDomain',
         'error' => 'setError',
         'records' => 'setRecords',
@@ -204,7 +199,6 @@ class GetNetworkDns200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'domain' => 'getDomain',
         'error' => 'getError',
         'records' => 'getRecords',
@@ -268,7 +262,6 @@ class GetNetworkDns200Response implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('error', $data ?? [], null);
         $this->setIfExists('records', $data ?? [], null);
@@ -316,33 +309,6 @@ class GetNetworkDns200Response implements ModelInterface, ArrayAccess, \JsonSeri
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
 
     /**
      * Gets domain

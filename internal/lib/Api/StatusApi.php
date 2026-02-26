@@ -131,7 +131,7 @@ class StatusApi
     /**
      * Operation getStatusRatelimit
      *
-     * 获取API限流器实时状态
+     * 限流状态
      *
      * @param  string $authorization Bearer类型的API密钥认证头。例如：&#x60;Bearer sk-xxx&#x60; (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStatusRatelimit'] to see the possible values for this operation
@@ -149,7 +149,7 @@ class StatusApi
     /**
      * Operation getStatusRatelimitWithHttpInfo
      *
-     * 获取API限流器实时状态
+     * 限流状态
      *
      * @param  string $authorization Bearer类型的API密钥认证头。例如：&#x60;Bearer sk-xxx&#x60; (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStatusRatelimit'] to see the possible values for this operation
@@ -248,7 +248,7 @@ class StatusApi
     /**
      * Operation getStatusRatelimitAsync
      *
-     * 获取API限流器实时状态
+     * 限流状态
      *
      * @param  string $authorization Bearer类型的API密钥认证头。例如：&#x60;Bearer sk-xxx&#x60; (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStatusRatelimit'] to see the possible values for this operation
@@ -269,7 +269,7 @@ class StatusApi
     /**
      * Operation getStatusRatelimitAsyncWithHttpInfo
      *
-     * 获取API限流器实时状态
+     * 限流状态
      *
      * @param  string $authorization Bearer类型的API密钥认证头。例如：&#x60;Bearer sk-xxx&#x60; (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStatusRatelimit'] to see the possible values for this operation
@@ -416,7 +416,7 @@ class StatusApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetStatusUsage200Response|\OpenAPI\Client\Model\GetStatusRatelimit401Response|\OpenAPI\Client\Model\GetStatusUsage404Response|\OpenAPI\Client\Model\GetStatusUsage500Response
+     * @return \OpenAPI\Client\Model\GetStatusUsage200Response|\OpenAPI\Client\Model\GetStatusUsage404Response
      */
     public function getStatusUsage($path = null, string $contentType = self::contentTypes['getStatusUsage'][0])
     {
@@ -434,7 +434,7 @@ class StatusApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetStatusUsage200Response|\OpenAPI\Client\Model\GetStatusRatelimit401Response|\OpenAPI\Client\Model\GetStatusUsage404Response|\OpenAPI\Client\Model\GetStatusUsage500Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GetStatusUsage200Response|\OpenAPI\Client\Model\GetStatusUsage404Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStatusUsageWithHttpInfo($path = null, string $contentType = self::contentTypes['getStatusUsage'][0])
     {
@@ -470,21 +470,9 @@ class StatusApi
                         $request,
                         $response,
                     );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\GetStatusRatelimit401Response',
-                        $request,
-                        $response,
-                    );
                 case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\GetStatusUsage404Response',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\GetStatusUsage500Response',
                         $request,
                         $response,
                     );
@@ -520,26 +508,10 @@ class StatusApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GetStatusRatelimit401Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\GetStatusUsage404Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GetStatusUsage500Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

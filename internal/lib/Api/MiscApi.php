@@ -80,7 +80,16 @@ class MiscApi
         'getHistoryProgrammerToday' => [
             'application/json',
         ],
+        'getMiscDistrict' => [
+            'application/json',
+        ],
+        'getMiscHolidayCalendar' => [
+            'application/json',
+        ],
         'getMiscHotboard' => [
+            'application/json',
+        ],
+        'getMiscLunartime' => [
             'application/json',
         ],
         'getMiscPhoneinfo' => [
@@ -105,6 +114,9 @@ class MiscApi
             'application/json',
         ],
         'getMiscWorldtime' => [
+            'application/json',
+        ],
+        'postMiscDateDiff' => [
             'application/json',
         ],
     ];
@@ -158,7 +170,7 @@ class MiscApi
     /**
      * Operation getHistoryProgrammer
      *
-     * 获取指定日期的程序员历史事件
+     * 程序员历史事件
      *
      * @param  int $month 月份，1-12之间的整数。 (required)
      * @param  int $day 日期，1-31之间的整数。 (required)
@@ -177,7 +189,7 @@ class MiscApi
     /**
      * Operation getHistoryProgrammerWithHttpInfo
      *
-     * 获取指定日期的程序员历史事件
+     * 程序员历史事件
      *
      * @param  int $month 月份，1-12之间的整数。 (required)
      * @param  int $day 日期，1-31之间的整数。 (required)
@@ -291,7 +303,7 @@ class MiscApi
     /**
      * Operation getHistoryProgrammerAsync
      *
-     * 获取指定日期的程序员历史事件
+     * 程序员历史事件
      *
      * @param  int $month 月份，1-12之间的整数。 (required)
      * @param  int $day 日期，1-31之间的整数。 (required)
@@ -313,7 +325,7 @@ class MiscApi
     /**
      * Operation getHistoryProgrammerAsyncWithHttpInfo
      *
-     * 获取指定日期的程序员历史事件
+     * 程序员历史事件
      *
      * @param  int $month 月份，1-12之间的整数。 (required)
      * @param  int $day 日期，1-31之间的整数。 (required)
@@ -488,7 +500,7 @@ class MiscApi
     /**
      * Operation getHistoryProgrammerToday
      *
-     * 获取今天的程序员历史事件
+     * 程序员历史上的今天
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHistoryProgrammerToday'] to see the possible values for this operation
      *
@@ -505,7 +517,7 @@ class MiscApi
     /**
      * Operation getHistoryProgrammerTodayWithHttpInfo
      *
-     * 获取今天的程序员历史事件
+     * 程序员历史上的今天
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHistoryProgrammerToday'] to see the possible values for this operation
      *
@@ -603,7 +615,7 @@ class MiscApi
     /**
      * Operation getHistoryProgrammerTodayAsync
      *
-     * 获取今天的程序员历史事件
+     * 程序员历史上的今天
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHistoryProgrammerToday'] to see the possible values for this operation
      *
@@ -623,7 +635,7 @@ class MiscApi
     /**
      * Operation getHistoryProgrammerTodayAsyncWithHttpInfo
      *
-     * 获取今天的程序员历史事件
+     * 程序员历史上的今天
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHistoryProgrammerToday'] to see the possible values for this operation
      *
@@ -748,38 +760,799 @@ class MiscApi
     }
 
     /**
+     * Operation getMiscDistrict
+     *
+     * Adcode 国内外行政区域查询
+     *
+     * @param  string|null $keywords 关键词搜索（城市名、区县名，支持中英文）。 (optional)
+     * @param  string|null $adcode 中国行政区划代码精确查询（如 &#x60;110000&#x60;），同时返回下级行政区。 (optional)
+     * @param  float|null $lat 纬度，与 &#x60;lng&#x60; 配合使用，坐标反查附近地点。 (optional)
+     * @param  float|null $lng 经度，与 &#x60;lat&#x60; 配合使用。 (optional)
+     * @param  string|null $level 过滤行政级别。 (optional)
+     * @param  string|null $country 过滤国家代码（ISO 3166-1 alpha-2），如 &#x60;CN&#x60;、&#x60;JP&#x60;、&#x60;US&#x60;、&#x60;GB&#x60;。 (optional)
+     * @param  int|null $limit 返回数量上限，默认 &#x60;20&#x60;，最大 &#x60;100&#x60;。 (optional, default to 20)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscDistrict'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\GetMiscDistrict200Response|\OpenAPI\Client\Model\GetMiscDistrict400Response
+     */
+    public function getMiscDistrict($keywords = null, $adcode = null, $lat = null, $lng = null, $level = null, $country = null, $limit = 20, string $contentType = self::contentTypes['getMiscDistrict'][0])
+    {
+        list($response) = $this->getMiscDistrictWithHttpInfo($keywords, $adcode, $lat, $lng, $level, $country, $limit, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getMiscDistrictWithHttpInfo
+     *
+     * Adcode 国内外行政区域查询
+     *
+     * @param  string|null $keywords 关键词搜索（城市名、区县名，支持中英文）。 (optional)
+     * @param  string|null $adcode 中国行政区划代码精确查询（如 &#x60;110000&#x60;），同时返回下级行政区。 (optional)
+     * @param  float|null $lat 纬度，与 &#x60;lng&#x60; 配合使用，坐标反查附近地点。 (optional)
+     * @param  float|null $lng 经度，与 &#x60;lat&#x60; 配合使用。 (optional)
+     * @param  string|null $level 过滤行政级别。 (optional)
+     * @param  string|null $country 过滤国家代码（ISO 3166-1 alpha-2），如 &#x60;CN&#x60;、&#x60;JP&#x60;、&#x60;US&#x60;、&#x60;GB&#x60;。 (optional)
+     * @param  int|null $limit 返回数量上限，默认 &#x60;20&#x60;，最大 &#x60;100&#x60;。 (optional, default to 20)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscDistrict'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\GetMiscDistrict200Response|\OpenAPI\Client\Model\GetMiscDistrict400Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getMiscDistrictWithHttpInfo($keywords = null, $adcode = null, $lat = null, $lng = null, $level = null, $country = null, $limit = 20, string $contentType = self::contentTypes['getMiscDistrict'][0])
+    {
+        $request = $this->getMiscDistrictRequest($keywords, $adcode, $lat, $lng, $level, $country, $limit, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\GetMiscDistrict200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\GetMiscDistrict400Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\GetMiscDistrict200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GetMiscDistrict200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GetMiscDistrict400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getMiscDistrictAsync
+     *
+     * Adcode 国内外行政区域查询
+     *
+     * @param  string|null $keywords 关键词搜索（城市名、区县名，支持中英文）。 (optional)
+     * @param  string|null $adcode 中国行政区划代码精确查询（如 &#x60;110000&#x60;），同时返回下级行政区。 (optional)
+     * @param  float|null $lat 纬度，与 &#x60;lng&#x60; 配合使用，坐标反查附近地点。 (optional)
+     * @param  float|null $lng 经度，与 &#x60;lat&#x60; 配合使用。 (optional)
+     * @param  string|null $level 过滤行政级别。 (optional)
+     * @param  string|null $country 过滤国家代码（ISO 3166-1 alpha-2），如 &#x60;CN&#x60;、&#x60;JP&#x60;、&#x60;US&#x60;、&#x60;GB&#x60;。 (optional)
+     * @param  int|null $limit 返回数量上限，默认 &#x60;20&#x60;，最大 &#x60;100&#x60;。 (optional, default to 20)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscDistrict'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMiscDistrictAsync($keywords = null, $adcode = null, $lat = null, $lng = null, $level = null, $country = null, $limit = 20, string $contentType = self::contentTypes['getMiscDistrict'][0])
+    {
+        return $this->getMiscDistrictAsyncWithHttpInfo($keywords, $adcode, $lat, $lng, $level, $country, $limit, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getMiscDistrictAsyncWithHttpInfo
+     *
+     * Adcode 国内外行政区域查询
+     *
+     * @param  string|null $keywords 关键词搜索（城市名、区县名，支持中英文）。 (optional)
+     * @param  string|null $adcode 中国行政区划代码精确查询（如 &#x60;110000&#x60;），同时返回下级行政区。 (optional)
+     * @param  float|null $lat 纬度，与 &#x60;lng&#x60; 配合使用，坐标反查附近地点。 (optional)
+     * @param  float|null $lng 经度，与 &#x60;lat&#x60; 配合使用。 (optional)
+     * @param  string|null $level 过滤行政级别。 (optional)
+     * @param  string|null $country 过滤国家代码（ISO 3166-1 alpha-2），如 &#x60;CN&#x60;、&#x60;JP&#x60;、&#x60;US&#x60;、&#x60;GB&#x60;。 (optional)
+     * @param  int|null $limit 返回数量上限，默认 &#x60;20&#x60;，最大 &#x60;100&#x60;。 (optional, default to 20)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscDistrict'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMiscDistrictAsyncWithHttpInfo($keywords = null, $adcode = null, $lat = null, $lng = null, $level = null, $country = null, $limit = 20, string $contentType = self::contentTypes['getMiscDistrict'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\GetMiscDistrict200Response';
+        $request = $this->getMiscDistrictRequest($keywords, $adcode, $lat, $lng, $level, $country, $limit, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getMiscDistrict'
+     *
+     * @param  string|null $keywords 关键词搜索（城市名、区县名，支持中英文）。 (optional)
+     * @param  string|null $adcode 中国行政区划代码精确查询（如 &#x60;110000&#x60;），同时返回下级行政区。 (optional)
+     * @param  float|null $lat 纬度，与 &#x60;lng&#x60; 配合使用，坐标反查附近地点。 (optional)
+     * @param  float|null $lng 经度，与 &#x60;lat&#x60; 配合使用。 (optional)
+     * @param  string|null $level 过滤行政级别。 (optional)
+     * @param  string|null $country 过滤国家代码（ISO 3166-1 alpha-2），如 &#x60;CN&#x60;、&#x60;JP&#x60;、&#x60;US&#x60;、&#x60;GB&#x60;。 (optional)
+     * @param  int|null $limit 返回数量上限，默认 &#x60;20&#x60;，最大 &#x60;100&#x60;。 (optional, default to 20)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscDistrict'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getMiscDistrictRequest($keywords = null, $adcode = null, $lat = null, $lng = null, $level = null, $country = null, $limit = 20, string $contentType = self::contentTypes['getMiscDistrict'][0])
+    {
+
+
+
+
+
+
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling MiscApi.getMiscDistrict, must be smaller than or equal to 100.');
+        }
+        
+
+        $resourcePath = '/misc/district';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $keywords,
+            'keywords', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $adcode,
+            'adcode', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $lat,
+            'lat', // param base name
+            'number', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $lng,
+            'lng', // param base name
+            'number', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $level,
+            'level', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $country,
+            'country', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getMiscHolidayCalendar
+     *
+     * 查询节假日与万年历
+     *
+     * @param  string|null $date 按天查询时填写这个参数，例如查某一天。格式：&#x60;YYYY-MM-DD&#x60;。和 &#x60;month&#x60;、&#x60;year&#x60; 三选一。 (optional)
+     * @param  string|null $month 按月查询时填写这个参数，例如查某个月。格式：&#x60;YYYY-MM&#x60;。和 &#x60;date&#x60;、&#x60;year&#x60; 三选一。 (optional)
+     * @param  string|null $year 按年查询时填写这个参数，例如查某一年。格式：&#x60;YYYY&#x60;。和 &#x60;date&#x60;、&#x60;month&#x60; 三选一。 (optional)
+     * @param  string|null $timezone 时区名称，默认 Asia/Shanghai。 (optional, default to 'Asia/Shanghai')
+     * @param  string|null $holiday_type 节日筛选类型，默认 all。 (optional, default to 'all')
+     * @param  bool|null $include_nearby 是否返回前后最近节日，仅 date 模式生效，默认 false。month/year 模式会忽略此参数。 (optional, default to false)
+     * @param  int|null $nearby_limit 返回最近节日数量限制，默认 7，最大 30。仅 date 模式 + include_nearby&#x3D;true 生效。 (optional, default to 7)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHolidayCalendar'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\GetMiscHolidayCalendar200Response|\OpenAPI\Client\Model\GetMiscHolidayCalendar400Response
+     */
+    public function getMiscHolidayCalendar($date = null, $month = null, $year = null, $timezone = 'Asia/Shanghai', $holiday_type = 'all', $include_nearby = false, $nearby_limit = 7, string $contentType = self::contentTypes['getMiscHolidayCalendar'][0])
+    {
+        list($response) = $this->getMiscHolidayCalendarWithHttpInfo($date, $month, $year, $timezone, $holiday_type, $include_nearby, $nearby_limit, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getMiscHolidayCalendarWithHttpInfo
+     *
+     * 查询节假日与万年历
+     *
+     * @param  string|null $date 按天查询时填写这个参数，例如查某一天。格式：&#x60;YYYY-MM-DD&#x60;。和 &#x60;month&#x60;、&#x60;year&#x60; 三选一。 (optional)
+     * @param  string|null $month 按月查询时填写这个参数，例如查某个月。格式：&#x60;YYYY-MM&#x60;。和 &#x60;date&#x60;、&#x60;year&#x60; 三选一。 (optional)
+     * @param  string|null $year 按年查询时填写这个参数，例如查某一年。格式：&#x60;YYYY&#x60;。和 &#x60;date&#x60;、&#x60;month&#x60; 三选一。 (optional)
+     * @param  string|null $timezone 时区名称，默认 Asia/Shanghai。 (optional, default to 'Asia/Shanghai')
+     * @param  string|null $holiday_type 节日筛选类型，默认 all。 (optional, default to 'all')
+     * @param  bool|null $include_nearby 是否返回前后最近节日，仅 date 模式生效，默认 false。month/year 模式会忽略此参数。 (optional, default to false)
+     * @param  int|null $nearby_limit 返回最近节日数量限制，默认 7，最大 30。仅 date 模式 + include_nearby&#x3D;true 生效。 (optional, default to 7)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHolidayCalendar'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\GetMiscHolidayCalendar200Response|\OpenAPI\Client\Model\GetMiscHolidayCalendar400Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getMiscHolidayCalendarWithHttpInfo($date = null, $month = null, $year = null, $timezone = 'Asia/Shanghai', $holiday_type = 'all', $include_nearby = false, $nearby_limit = 7, string $contentType = self::contentTypes['getMiscHolidayCalendar'][0])
+    {
+        $request = $this->getMiscHolidayCalendarRequest($date, $month, $year, $timezone, $holiday_type, $include_nearby, $nearby_limit, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\GetMiscHolidayCalendar200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\GetMiscHolidayCalendar400Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\GetMiscHolidayCalendar200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GetMiscHolidayCalendar200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GetMiscHolidayCalendar400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getMiscHolidayCalendarAsync
+     *
+     * 查询节假日与万年历
+     *
+     * @param  string|null $date 按天查询时填写这个参数，例如查某一天。格式：&#x60;YYYY-MM-DD&#x60;。和 &#x60;month&#x60;、&#x60;year&#x60; 三选一。 (optional)
+     * @param  string|null $month 按月查询时填写这个参数，例如查某个月。格式：&#x60;YYYY-MM&#x60;。和 &#x60;date&#x60;、&#x60;year&#x60; 三选一。 (optional)
+     * @param  string|null $year 按年查询时填写这个参数，例如查某一年。格式：&#x60;YYYY&#x60;。和 &#x60;date&#x60;、&#x60;month&#x60; 三选一。 (optional)
+     * @param  string|null $timezone 时区名称，默认 Asia/Shanghai。 (optional, default to 'Asia/Shanghai')
+     * @param  string|null $holiday_type 节日筛选类型，默认 all。 (optional, default to 'all')
+     * @param  bool|null $include_nearby 是否返回前后最近节日，仅 date 模式生效，默认 false。month/year 模式会忽略此参数。 (optional, default to false)
+     * @param  int|null $nearby_limit 返回最近节日数量限制，默认 7，最大 30。仅 date 模式 + include_nearby&#x3D;true 生效。 (optional, default to 7)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHolidayCalendar'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMiscHolidayCalendarAsync($date = null, $month = null, $year = null, $timezone = 'Asia/Shanghai', $holiday_type = 'all', $include_nearby = false, $nearby_limit = 7, string $contentType = self::contentTypes['getMiscHolidayCalendar'][0])
+    {
+        return $this->getMiscHolidayCalendarAsyncWithHttpInfo($date, $month, $year, $timezone, $holiday_type, $include_nearby, $nearby_limit, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getMiscHolidayCalendarAsyncWithHttpInfo
+     *
+     * 查询节假日与万年历
+     *
+     * @param  string|null $date 按天查询时填写这个参数，例如查某一天。格式：&#x60;YYYY-MM-DD&#x60;。和 &#x60;month&#x60;、&#x60;year&#x60; 三选一。 (optional)
+     * @param  string|null $month 按月查询时填写这个参数，例如查某个月。格式：&#x60;YYYY-MM&#x60;。和 &#x60;date&#x60;、&#x60;year&#x60; 三选一。 (optional)
+     * @param  string|null $year 按年查询时填写这个参数，例如查某一年。格式：&#x60;YYYY&#x60;。和 &#x60;date&#x60;、&#x60;month&#x60; 三选一。 (optional)
+     * @param  string|null $timezone 时区名称，默认 Asia/Shanghai。 (optional, default to 'Asia/Shanghai')
+     * @param  string|null $holiday_type 节日筛选类型，默认 all。 (optional, default to 'all')
+     * @param  bool|null $include_nearby 是否返回前后最近节日，仅 date 模式生效，默认 false。month/year 模式会忽略此参数。 (optional, default to false)
+     * @param  int|null $nearby_limit 返回最近节日数量限制，默认 7，最大 30。仅 date 模式 + include_nearby&#x3D;true 生效。 (optional, default to 7)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHolidayCalendar'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMiscHolidayCalendarAsyncWithHttpInfo($date = null, $month = null, $year = null, $timezone = 'Asia/Shanghai', $holiday_type = 'all', $include_nearby = false, $nearby_limit = 7, string $contentType = self::contentTypes['getMiscHolidayCalendar'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\GetMiscHolidayCalendar200Response';
+        $request = $this->getMiscHolidayCalendarRequest($date, $month, $year, $timezone, $holiday_type, $include_nearby, $nearby_limit, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getMiscHolidayCalendar'
+     *
+     * @param  string|null $date 按天查询时填写这个参数，例如查某一天。格式：&#x60;YYYY-MM-DD&#x60;。和 &#x60;month&#x60;、&#x60;year&#x60; 三选一。 (optional)
+     * @param  string|null $month 按月查询时填写这个参数，例如查某个月。格式：&#x60;YYYY-MM&#x60;。和 &#x60;date&#x60;、&#x60;year&#x60; 三选一。 (optional)
+     * @param  string|null $year 按年查询时填写这个参数，例如查某一年。格式：&#x60;YYYY&#x60;。和 &#x60;date&#x60;、&#x60;month&#x60; 三选一。 (optional)
+     * @param  string|null $timezone 时区名称，默认 Asia/Shanghai。 (optional, default to 'Asia/Shanghai')
+     * @param  string|null $holiday_type 节日筛选类型，默认 all。 (optional, default to 'all')
+     * @param  bool|null $include_nearby 是否返回前后最近节日，仅 date 模式生效，默认 false。month/year 模式会忽略此参数。 (optional, default to false)
+     * @param  int|null $nearby_limit 返回最近节日数量限制，默认 7，最大 30。仅 date 模式 + include_nearby&#x3D;true 生效。 (optional, default to 7)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHolidayCalendar'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getMiscHolidayCalendarRequest($date = null, $month = null, $year = null, $timezone = 'Asia/Shanghai', $holiday_type = 'all', $include_nearby = false, $nearby_limit = 7, string $contentType = self::contentTypes['getMiscHolidayCalendar'][0])
+    {
+
+        if ($date !== null && !preg_match("/^\\d{4}-\\d{2}-\\d{2}$/", $date)) {
+            throw new \InvalidArgumentException("invalid value for \"date\" when calling MiscApi.getMiscHolidayCalendar, must conform to the pattern /^\\d{4}-\\d{2}-\\d{2}$/.");
+        }
+        
+        if ($month !== null && !preg_match("/^\\d{4}-\\d{2}$/", $month)) {
+            throw new \InvalidArgumentException("invalid value for \"month\" when calling MiscApi.getMiscHolidayCalendar, must conform to the pattern /^\\d{4}-\\d{2}$/.");
+        }
+        
+        if ($year !== null && !preg_match("/^\\d{4}$/", $year)) {
+            throw new \InvalidArgumentException("invalid value for \"year\" when calling MiscApi.getMiscHolidayCalendar, must conform to the pattern /^\\d{4}$/.");
+        }
+        
+
+
+
+        if ($nearby_limit !== null && $nearby_limit > 30) {
+            throw new \InvalidArgumentException('invalid value for "$nearby_limit" when calling MiscApi.getMiscHolidayCalendar, must be smaller than or equal to 30.');
+        }
+        
+
+        $resourcePath = '/misc/holiday-calendar';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $date,
+            'date', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $month,
+            'month', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $year,
+            'year', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $timezone,
+            'timezone', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $holiday_type,
+            'holiday_type', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_nearby,
+            'include_nearby', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $nearby_limit,
+            'nearby_limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getMiscHotboard
      *
-     * 获取多平台实时热榜
+     * 查询热榜
      *
      * @param  string $type 你想要查询的热榜平台。支持多种主流平台类型，详见下方[可选值](#可选值)表格。 (required)
+     * @param  int|null $time 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 (optional)
+     * @param  string|null $keyword 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 (optional)
+     * @param  int|null $time_start 搜索模式必填：搜索起始时间戳（毫秒）。 (optional)
+     * @param  int|null $time_end 搜索模式必填：搜索结束时间戳（毫秒）。 (optional)
+     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional, default to 50)
+     * @param  bool|null $sources 设为 true 时列出所有可用的历史数据源，忽略其他参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHotboard'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\GetMiscHotboard200Response|\OpenAPI\Client\Model\GetMiscHotboard400Response|\OpenAPI\Client\Model\GetMiscHotboard500Response|\OpenAPI\Client\Model\GetMiscHotboard502Response
      */
-    public function getMiscHotboard($type, string $contentType = self::contentTypes['getMiscHotboard'][0])
+    public function getMiscHotboard($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = 50, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
     {
-        list($response) = $this->getMiscHotboardWithHttpInfo($type, $contentType);
+        list($response) = $this->getMiscHotboardWithHttpInfo($type, $time, $keyword, $time_start, $time_end, $limit, $sources, $contentType);
         return $response;
     }
 
     /**
      * Operation getMiscHotboardWithHttpInfo
      *
-     * 获取多平台实时热榜
+     * 查询热榜
      *
      * @param  string $type 你想要查询的热榜平台。支持多种主流平台类型，详见下方[可选值](#可选值)表格。 (required)
+     * @param  int|null $time 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 (optional)
+     * @param  string|null $keyword 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 (optional)
+     * @param  int|null $time_start 搜索模式必填：搜索起始时间戳（毫秒）。 (optional)
+     * @param  int|null $time_end 搜索模式必填：搜索结束时间戳（毫秒）。 (optional)
+     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional, default to 50)
+     * @param  bool|null $sources 设为 true 时列出所有可用的历史数据源，忽略其他参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHotboard'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\GetMiscHotboard200Response|\OpenAPI\Client\Model\GetMiscHotboard400Response|\OpenAPI\Client\Model\GetMiscHotboard500Response|\OpenAPI\Client\Model\GetMiscHotboard502Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMiscHotboardWithHttpInfo($type, string $contentType = self::contentTypes['getMiscHotboard'][0])
+    public function getMiscHotboardWithHttpInfo($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = 50, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
     {
-        $request = $this->getMiscHotboardRequest($type, $contentType);
+        $request = $this->getMiscHotboardRequest($type, $time, $keyword, $time_start, $time_end, $limit, $sources, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -895,17 +1668,23 @@ class MiscApi
     /**
      * Operation getMiscHotboardAsync
      *
-     * 获取多平台实时热榜
+     * 查询热榜
      *
      * @param  string $type 你想要查询的热榜平台。支持多种主流平台类型，详见下方[可选值](#可选值)表格。 (required)
+     * @param  int|null $time 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 (optional)
+     * @param  string|null $keyword 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 (optional)
+     * @param  int|null $time_start 搜索模式必填：搜索起始时间戳（毫秒）。 (optional)
+     * @param  int|null $time_end 搜索模式必填：搜索结束时间戳（毫秒）。 (optional)
+     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional, default to 50)
+     * @param  bool|null $sources 设为 true 时列出所有可用的历史数据源，忽略其他参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHotboard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMiscHotboardAsync($type, string $contentType = self::contentTypes['getMiscHotboard'][0])
+    public function getMiscHotboardAsync($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = 50, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
     {
-        return $this->getMiscHotboardAsyncWithHttpInfo($type, $contentType)
+        return $this->getMiscHotboardAsyncWithHttpInfo($type, $time, $keyword, $time_start, $time_end, $limit, $sources, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -916,18 +1695,24 @@ class MiscApi
     /**
      * Operation getMiscHotboardAsyncWithHttpInfo
      *
-     * 获取多平台实时热榜
+     * 查询热榜
      *
      * @param  string $type 你想要查询的热榜平台。支持多种主流平台类型，详见下方[可选值](#可选值)表格。 (required)
+     * @param  int|null $time 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 (optional)
+     * @param  string|null $keyword 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 (optional)
+     * @param  int|null $time_start 搜索模式必填：搜索起始时间戳（毫秒）。 (optional)
+     * @param  int|null $time_end 搜索模式必填：搜索结束时间戳（毫秒）。 (optional)
+     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional, default to 50)
+     * @param  bool|null $sources 设为 true 时列出所有可用的历史数据源，忽略其他参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHotboard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMiscHotboardAsyncWithHttpInfo($type, string $contentType = self::contentTypes['getMiscHotboard'][0])
+    public function getMiscHotboardAsyncWithHttpInfo($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = 50, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
     {
         $returnType = '\OpenAPI\Client\Model\GetMiscHotboard200Response';
-        $request = $this->getMiscHotboardRequest($type, $contentType);
+        $request = $this->getMiscHotboardRequest($type, $time, $keyword, $time_start, $time_end, $limit, $sources, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -969,12 +1754,18 @@ class MiscApi
      * Create request for operation 'getMiscHotboard'
      *
      * @param  string $type 你想要查询的热榜平台。支持多种主流平台类型，详见下方[可选值](#可选值)表格。 (required)
+     * @param  int|null $time 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 (optional)
+     * @param  string|null $keyword 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 (optional)
+     * @param  int|null $time_start 搜索模式必填：搜索起始时间戳（毫秒）。 (optional)
+     * @param  int|null $time_end 搜索模式必填：搜索结束时间戳（毫秒）。 (optional)
+     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional, default to 50)
+     * @param  bool|null $sources 设为 true 时列出所有可用的历史数据源，忽略其他参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHotboard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getMiscHotboardRequest($type, string $contentType = self::contentTypes['getMiscHotboard'][0])
+    public function getMiscHotboardRequest($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = 50, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
     {
 
         // verify the required parameter 'type' is set
@@ -983,6 +1774,15 @@ class MiscApi
                 'Missing the required parameter $type when calling getMiscHotboard'
             );
         }
+
+
+
+
+
+        if ($limit !== null && $limit > 200) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling MiscApi.getMiscHotboard, must be smaller than or equal to 200.');
+        }
+        
 
 
         $resourcePath = '/misc/hotboard';
@@ -1000,6 +1800,352 @@ class MiscApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $time,
+            'time', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $keyword,
+            'keyword', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $time_start,
+            'time_start', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $time_end,
+            'time_end', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sources,
+            'sources', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getMiscLunartime
+     *
+     * 查询农历时间
+     *
+     * @param  string|null $ts Unix 时间戳，支持 10 位秒级或 13 位毫秒级。不传则默认当前时间。 (optional)
+     * @param  string|null $timezone 时区名称。支持 IANA 时区（如 Asia/Shanghai）和别名（Shanghai、Beijing）。默认 Asia/Shanghai。 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscLunartime'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\GetMiscLunartime200Response|\OpenAPI\Client\Model\GetMiscLunartime400Response
+     */
+    public function getMiscLunartime($ts = null, $timezone = null, string $contentType = self::contentTypes['getMiscLunartime'][0])
+    {
+        list($response) = $this->getMiscLunartimeWithHttpInfo($ts, $timezone, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getMiscLunartimeWithHttpInfo
+     *
+     * 查询农历时间
+     *
+     * @param  string|null $ts Unix 时间戳，支持 10 位秒级或 13 位毫秒级。不传则默认当前时间。 (optional)
+     * @param  string|null $timezone 时区名称。支持 IANA 时区（如 Asia/Shanghai）和别名（Shanghai、Beijing）。默认 Asia/Shanghai。 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscLunartime'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\GetMiscLunartime200Response|\OpenAPI\Client\Model\GetMiscLunartime400Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getMiscLunartimeWithHttpInfo($ts = null, $timezone = null, string $contentType = self::contentTypes['getMiscLunartime'][0])
+    {
+        $request = $this->getMiscLunartimeRequest($ts, $timezone, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\GetMiscLunartime200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\GetMiscLunartime400Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\GetMiscLunartime200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GetMiscLunartime200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GetMiscLunartime400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getMiscLunartimeAsync
+     *
+     * 查询农历时间
+     *
+     * @param  string|null $ts Unix 时间戳，支持 10 位秒级或 13 位毫秒级。不传则默认当前时间。 (optional)
+     * @param  string|null $timezone 时区名称。支持 IANA 时区（如 Asia/Shanghai）和别名（Shanghai、Beijing）。默认 Asia/Shanghai。 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscLunartime'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMiscLunartimeAsync($ts = null, $timezone = null, string $contentType = self::contentTypes['getMiscLunartime'][0])
+    {
+        return $this->getMiscLunartimeAsyncWithHttpInfo($ts, $timezone, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getMiscLunartimeAsyncWithHttpInfo
+     *
+     * 查询农历时间
+     *
+     * @param  string|null $ts Unix 时间戳，支持 10 位秒级或 13 位毫秒级。不传则默认当前时间。 (optional)
+     * @param  string|null $timezone 时区名称。支持 IANA 时区（如 Asia/Shanghai）和别名（Shanghai、Beijing）。默认 Asia/Shanghai。 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscLunartime'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMiscLunartimeAsyncWithHttpInfo($ts = null, $timezone = null, string $contentType = self::contentTypes['getMiscLunartime'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\GetMiscLunartime200Response';
+        $request = $this->getMiscLunartimeRequest($ts, $timezone, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getMiscLunartime'
+     *
+     * @param  string|null $ts Unix 时间戳，支持 10 位秒级或 13 位毫秒级。不传则默认当前时间。 (optional)
+     * @param  string|null $timezone 时区名称。支持 IANA 时区（如 Asia/Shanghai）和别名（Shanghai、Beijing）。默认 Asia/Shanghai。 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscLunartime'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getMiscLunartimeRequest($ts = null, $timezone = null, string $contentType = self::contentTypes['getMiscLunartime'][0])
+    {
+
+
+
+
+        $resourcePath = '/misc/lunartime';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ts,
+            'ts', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $timezone,
+            'timezone', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
 
 
@@ -1061,7 +2207,7 @@ class MiscApi
     /**
      * Operation getMiscPhoneinfo
      *
-     * 查询手机号码归属地信息
+     * 查询手机归属地
      *
      * @param  string $phone 需要查询的11位中国大陆手机号码。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscPhoneinfo'] to see the possible values for this operation
@@ -1079,7 +2225,7 @@ class MiscApi
     /**
      * Operation getMiscPhoneinfoWithHttpInfo
      *
-     * 查询手机号码归属地信息
+     * 查询手机归属地
      *
      * @param  string $phone 需要查询的11位中国大陆手机号码。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscPhoneinfo'] to see the possible values for this operation
@@ -1192,7 +2338,7 @@ class MiscApi
     /**
      * Operation getMiscPhoneinfoAsync
      *
-     * 查询手机号码归属地信息
+     * 查询手机归属地
      *
      * @param  string $phone 需要查询的11位中国大陆手机号码。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscPhoneinfo'] to see the possible values for this operation
@@ -1213,7 +2359,7 @@ class MiscApi
     /**
      * Operation getMiscPhoneinfoAsyncWithHttpInfo
      *
-     * 查询手机号码归属地信息
+     * 查询手机归属地
      *
      * @param  string $phone 需要查询的11位中国大陆手机号码。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscPhoneinfo'] to see the possible values for this operation
@@ -1358,7 +2504,7 @@ class MiscApi
     /**
      * Operation getMiscRandomnumber
      *
-     * 生成高度可定制的随机数
+     * 随机数生成
      *
      * @param  int|null $min 生成随机数的最小值（包含）。 (optional, default to 1)
      * @param  int|null $max 生成随机数的最大值（包含）。 (optional, default to 100)
@@ -1381,7 +2527,7 @@ class MiscApi
     /**
      * Operation getMiscRandomnumberWithHttpInfo
      *
-     * 生成高度可定制的随机数
+     * 随机数生成
      *
      * @param  int|null $min 生成随机数的最小值（包含）。 (optional, default to 1)
      * @param  int|null $max 生成随机数的最大值（包含）。 (optional, default to 100)
@@ -1485,7 +2631,7 @@ class MiscApi
     /**
      * Operation getMiscRandomnumberAsync
      *
-     * 生成高度可定制的随机数
+     * 随机数生成
      *
      * @param  int|null $min 生成随机数的最小值（包含）。 (optional, default to 1)
      * @param  int|null $max 生成随机数的最大值（包含）。 (optional, default to 100)
@@ -1511,7 +2657,7 @@ class MiscApi
     /**
      * Operation getMiscRandomnumberAsyncWithHttpInfo
      *
-     * 生成高度可定制的随机数
+     * 随机数生成
      *
      * @param  int|null $min 生成随机数的最小值（包含）。 (optional, default to 1)
      * @param  int|null $max 生成随机数的最大值（包含）。 (optional, default to 100)
@@ -2528,15 +3674,16 @@ class MiscApi
      *
      * @param  string $tracking_number 快递单号，通常是一串10-20位的数字或字母数字组合。 (required)
      * @param  string|null $carrier_code 快递公司编码（可选）。不填写时系统会自动识别，填写后可加快查询速度。 (optional)
+     * @param  string|null $phone 收件人手机尾号，4位数字（可选）。部分快递公司需要验证手机尾号才能查询详细物流信息。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscTrackingQuery'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\GetMiscTrackingQuery200Response|\OpenAPI\Client\Model\GetMiscTrackingQuery400Response|\OpenAPI\Client\Model\GetMiscTrackingQuery404Response
      */
-    public function getMiscTrackingQuery($tracking_number, $carrier_code = null, string $contentType = self::contentTypes['getMiscTrackingQuery'][0])
+    public function getMiscTrackingQuery($tracking_number, $carrier_code = null, $phone = null, string $contentType = self::contentTypes['getMiscTrackingQuery'][0])
     {
-        list($response) = $this->getMiscTrackingQueryWithHttpInfo($tracking_number, $carrier_code, $contentType);
+        list($response) = $this->getMiscTrackingQueryWithHttpInfo($tracking_number, $carrier_code, $phone, $contentType);
         return $response;
     }
 
@@ -2547,15 +3694,16 @@ class MiscApi
      *
      * @param  string $tracking_number 快递单号，通常是一串10-20位的数字或字母数字组合。 (required)
      * @param  string|null $carrier_code 快递公司编码（可选）。不填写时系统会自动识别，填写后可加快查询速度。 (optional)
+     * @param  string|null $phone 收件人手机尾号，4位数字（可选）。部分快递公司需要验证手机尾号才能查询详细物流信息。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscTrackingQuery'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\GetMiscTrackingQuery200Response|\OpenAPI\Client\Model\GetMiscTrackingQuery400Response|\OpenAPI\Client\Model\GetMiscTrackingQuery404Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMiscTrackingQueryWithHttpInfo($tracking_number, $carrier_code = null, string $contentType = self::contentTypes['getMiscTrackingQuery'][0])
+    public function getMiscTrackingQueryWithHttpInfo($tracking_number, $carrier_code = null, $phone = null, string $contentType = self::contentTypes['getMiscTrackingQuery'][0])
     {
-        $request = $this->getMiscTrackingQueryRequest($tracking_number, $carrier_code, $contentType);
+        $request = $this->getMiscTrackingQueryRequest($tracking_number, $carrier_code, $phone, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2661,14 +3809,15 @@ class MiscApi
      *
      * @param  string $tracking_number 快递单号，通常是一串10-20位的数字或字母数字组合。 (required)
      * @param  string|null $carrier_code 快递公司编码（可选）。不填写时系统会自动识别，填写后可加快查询速度。 (optional)
+     * @param  string|null $phone 收件人手机尾号，4位数字（可选）。部分快递公司需要验证手机尾号才能查询详细物流信息。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscTrackingQuery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMiscTrackingQueryAsync($tracking_number, $carrier_code = null, string $contentType = self::contentTypes['getMiscTrackingQuery'][0])
+    public function getMiscTrackingQueryAsync($tracking_number, $carrier_code = null, $phone = null, string $contentType = self::contentTypes['getMiscTrackingQuery'][0])
     {
-        return $this->getMiscTrackingQueryAsyncWithHttpInfo($tracking_number, $carrier_code, $contentType)
+        return $this->getMiscTrackingQueryAsyncWithHttpInfo($tracking_number, $carrier_code, $phone, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2683,15 +3832,16 @@ class MiscApi
      *
      * @param  string $tracking_number 快递单号，通常是一串10-20位的数字或字母数字组合。 (required)
      * @param  string|null $carrier_code 快递公司编码（可选）。不填写时系统会自动识别，填写后可加快查询速度。 (optional)
+     * @param  string|null $phone 收件人手机尾号，4位数字（可选）。部分快递公司需要验证手机尾号才能查询详细物流信息。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscTrackingQuery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMiscTrackingQueryAsyncWithHttpInfo($tracking_number, $carrier_code = null, string $contentType = self::contentTypes['getMiscTrackingQuery'][0])
+    public function getMiscTrackingQueryAsyncWithHttpInfo($tracking_number, $carrier_code = null, $phone = null, string $contentType = self::contentTypes['getMiscTrackingQuery'][0])
     {
         $returnType = '\OpenAPI\Client\Model\GetMiscTrackingQuery200Response';
-        $request = $this->getMiscTrackingQueryRequest($tracking_number, $carrier_code, $contentType);
+        $request = $this->getMiscTrackingQueryRequest($tracking_number, $carrier_code, $phone, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2734,12 +3884,13 @@ class MiscApi
      *
      * @param  string $tracking_number 快递单号，通常是一串10-20位的数字或字母数字组合。 (required)
      * @param  string|null $carrier_code 快递公司编码（可选）。不填写时系统会自动识别，填写后可加快查询速度。 (optional)
+     * @param  string|null $phone 收件人手机尾号，4位数字（可选）。部分快递公司需要验证手机尾号才能查询详细物流信息。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscTrackingQuery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getMiscTrackingQueryRequest($tracking_number, $carrier_code = null, string $contentType = self::contentTypes['getMiscTrackingQuery'][0])
+    public function getMiscTrackingQueryRequest($tracking_number, $carrier_code = null, $phone = null, string $contentType = self::contentTypes['getMiscTrackingQuery'][0])
     {
 
         // verify the required parameter 'tracking_number' is set
@@ -2750,6 +3901,10 @@ class MiscApi
         }
 
 
+        if ($phone !== null && !preg_match("/^\\d{4}$/", $phone)) {
+            throw new \InvalidArgumentException("invalid value for \"phone\" when calling MiscApi.getMiscTrackingQuery, must conform to the pattern /^\\d{4}$/.");
+        }
+        
 
         $resourcePath = '/misc/tracking/query';
         $formParams = [];
@@ -2771,6 +3926,15 @@ class MiscApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $carrier_code,
             'carrier_code', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $phone,
+            'phone', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2836,38 +4000,50 @@ class MiscApi
     /**
      * Operation getMiscWeather
      *
-     * 查询实时天气信息
+     * 查询天气
      *
-     * @param  string|null $city 标准的城市名称，如 &#39;北京&#39;, &#39;上海市&#39;, &#39;福田区&#39;。请使用官方的省、市、区县行政区划名称。 (optional)
-     * @param  string|null $adcode 高德地图的6位数字城市编码。例如，北京市的Adcode是 &#39;110000&#39;。使用Adcode查询更准确、更快速。 (optional)
+     * @param  string|null $city 城市名称，支持中文（&#x60;北京&#x60;）和英文（&#x60;Tokyo&#x60;）。可选参数，不传时会尝试 IP 自动定位。 (optional)
+     * @param  string|null $adcode 城市行政区划代码（如 &#x60;110000&#x60;），优先级高于 city。可选参数，不传时会尝试 IP 自动定位。 (optional)
+     * @param  bool|null $extended 返回扩展气象字段（体感温度、能见度、气压、紫外线、降水量、云量、空气质量指数及污染物分项数据）。 (optional)
+     * @param  bool|null $forecast 返回多天预报数据（最多7天），含白天夜间天气、风向风力、日出日落等。 (optional)
+     * @param  bool|null $hourly 返回逐小时预报（24小时），含温度、天气、风向风速、湿度、降水概率等。 (optional)
+     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），每5分钟一个数据点，共24个。 (optional)
+     * @param  bool|null $indices 返回18项生活指数（穿衣、紫外线、洗车、晾晒、空调、感冒、运动、舒适度、出行、钓鱼、过敏、防晒、心情、啤酒、雨伞、交通、空气净化器、花粉）。 (optional)
+     * @param  string|null $lang 返回语言。&#x60;zh&#x60; 返回中文（默认），&#x60;en&#x60; 返回英文。城市名翻译覆盖 7000+ 城市。生活指数（&#x60;indices&#x60;）目前仅支持中文。 (optional, default to 'zh')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWeather'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetMiscWeather200Response|\OpenAPI\Client\Model\GetMiscWeather400Response|\OpenAPI\Client\Model\GetMiscWeather410Response|\OpenAPI\Client\Model\GetMiscWeather500Response|\OpenAPI\Client\Model\GetMiscWeather502Response
+     * @return \OpenAPI\Client\Model\GetMiscWeather200Response|\OpenAPI\Client\Model\GetMiscWeather400Response|\OpenAPI\Client\Model\GetMiscWeather404Response|\OpenAPI\Client\Model\GetMiscWeather500Response|\OpenAPI\Client\Model\GetMiscWeather503Response
      */
-    public function getMiscWeather($city = null, $adcode = null, string $contentType = self::contentTypes['getMiscWeather'][0])
+    public function getMiscWeather($city = null, $adcode = null, $extended = null, $forecast = null, $hourly = null, $minutely = null, $indices = null, $lang = 'zh', string $contentType = self::contentTypes['getMiscWeather'][0])
     {
-        list($response) = $this->getMiscWeatherWithHttpInfo($city, $adcode, $contentType);
+        list($response) = $this->getMiscWeatherWithHttpInfo($city, $adcode, $extended, $forecast, $hourly, $minutely, $indices, $lang, $contentType);
         return $response;
     }
 
     /**
      * Operation getMiscWeatherWithHttpInfo
      *
-     * 查询实时天气信息
+     * 查询天气
      *
-     * @param  string|null $city 标准的城市名称，如 &#39;北京&#39;, &#39;上海市&#39;, &#39;福田区&#39;。请使用官方的省、市、区县行政区划名称。 (optional)
-     * @param  string|null $adcode 高德地图的6位数字城市编码。例如，北京市的Adcode是 &#39;110000&#39;。使用Adcode查询更准确、更快速。 (optional)
+     * @param  string|null $city 城市名称，支持中文（&#x60;北京&#x60;）和英文（&#x60;Tokyo&#x60;）。可选参数，不传时会尝试 IP 自动定位。 (optional)
+     * @param  string|null $adcode 城市行政区划代码（如 &#x60;110000&#x60;），优先级高于 city。可选参数，不传时会尝试 IP 自动定位。 (optional)
+     * @param  bool|null $extended 返回扩展气象字段（体感温度、能见度、气压、紫外线、降水量、云量、空气质量指数及污染物分项数据）。 (optional)
+     * @param  bool|null $forecast 返回多天预报数据（最多7天），含白天夜间天气、风向风力、日出日落等。 (optional)
+     * @param  bool|null $hourly 返回逐小时预报（24小时），含温度、天气、风向风速、湿度、降水概率等。 (optional)
+     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），每5分钟一个数据点，共24个。 (optional)
+     * @param  bool|null $indices 返回18项生活指数（穿衣、紫外线、洗车、晾晒、空调、感冒、运动、舒适度、出行、钓鱼、过敏、防晒、心情、啤酒、雨伞、交通、空气净化器、花粉）。 (optional)
+     * @param  string|null $lang 返回语言。&#x60;zh&#x60; 返回中文（默认），&#x60;en&#x60; 返回英文。城市名翻译覆盖 7000+ 城市。生活指数（&#x60;indices&#x60;）目前仅支持中文。 (optional, default to 'zh')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWeather'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetMiscWeather200Response|\OpenAPI\Client\Model\GetMiscWeather400Response|\OpenAPI\Client\Model\GetMiscWeather410Response|\OpenAPI\Client\Model\GetMiscWeather500Response|\OpenAPI\Client\Model\GetMiscWeather502Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GetMiscWeather200Response|\OpenAPI\Client\Model\GetMiscWeather400Response|\OpenAPI\Client\Model\GetMiscWeather404Response|\OpenAPI\Client\Model\GetMiscWeather500Response|\OpenAPI\Client\Model\GetMiscWeather503Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMiscWeatherWithHttpInfo($city = null, $adcode = null, string $contentType = self::contentTypes['getMiscWeather'][0])
+    public function getMiscWeatherWithHttpInfo($city = null, $adcode = null, $extended = null, $forecast = null, $hourly = null, $minutely = null, $indices = null, $lang = 'zh', string $contentType = self::contentTypes['getMiscWeather'][0])
     {
-        $request = $this->getMiscWeatherRequest($city, $adcode, $contentType);
+        $request = $this->getMiscWeatherRequest($city, $adcode, $extended, $forecast, $hourly, $minutely, $indices, $lang, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2905,9 +4081,9 @@ class MiscApi
                         $request,
                         $response,
                     );
-                case 410:
+                case 404:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\GetMiscWeather410Response',
+                        '\OpenAPI\Client\Model\GetMiscWeather404Response',
                         $request,
                         $response,
                     );
@@ -2917,9 +4093,9 @@ class MiscApi
                         $request,
                         $response,
                     );
-                case 502:
+                case 503:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\GetMiscWeather502Response',
+                        '\OpenAPI\Client\Model\GetMiscWeather503Response',
                         $request,
                         $response,
                     );
@@ -2963,10 +4139,10 @@ class MiscApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 410:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GetMiscWeather410Response',
+                        '\OpenAPI\Client\Model\GetMiscWeather404Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2979,10 +4155,10 @@ class MiscApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 502:
+                case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GetMiscWeather502Response',
+                        '\OpenAPI\Client\Model\GetMiscWeather503Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2997,18 +4173,24 @@ class MiscApi
     /**
      * Operation getMiscWeatherAsync
      *
-     * 查询实时天气信息
+     * 查询天气
      *
-     * @param  string|null $city 标准的城市名称，如 &#39;北京&#39;, &#39;上海市&#39;, &#39;福田区&#39;。请使用官方的省、市、区县行政区划名称。 (optional)
-     * @param  string|null $adcode 高德地图的6位数字城市编码。例如，北京市的Adcode是 &#39;110000&#39;。使用Adcode查询更准确、更快速。 (optional)
+     * @param  string|null $city 城市名称，支持中文（&#x60;北京&#x60;）和英文（&#x60;Tokyo&#x60;）。可选参数，不传时会尝试 IP 自动定位。 (optional)
+     * @param  string|null $adcode 城市行政区划代码（如 &#x60;110000&#x60;），优先级高于 city。可选参数，不传时会尝试 IP 自动定位。 (optional)
+     * @param  bool|null $extended 返回扩展气象字段（体感温度、能见度、气压、紫外线、降水量、云量、空气质量指数及污染物分项数据）。 (optional)
+     * @param  bool|null $forecast 返回多天预报数据（最多7天），含白天夜间天气、风向风力、日出日落等。 (optional)
+     * @param  bool|null $hourly 返回逐小时预报（24小时），含温度、天气、风向风速、湿度、降水概率等。 (optional)
+     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），每5分钟一个数据点，共24个。 (optional)
+     * @param  bool|null $indices 返回18项生活指数（穿衣、紫外线、洗车、晾晒、空调、感冒、运动、舒适度、出行、钓鱼、过敏、防晒、心情、啤酒、雨伞、交通、空气净化器、花粉）。 (optional)
+     * @param  string|null $lang 返回语言。&#x60;zh&#x60; 返回中文（默认），&#x60;en&#x60; 返回英文。城市名翻译覆盖 7000+ 城市。生活指数（&#x60;indices&#x60;）目前仅支持中文。 (optional, default to 'zh')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWeather'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMiscWeatherAsync($city = null, $adcode = null, string $contentType = self::contentTypes['getMiscWeather'][0])
+    public function getMiscWeatherAsync($city = null, $adcode = null, $extended = null, $forecast = null, $hourly = null, $minutely = null, $indices = null, $lang = 'zh', string $contentType = self::contentTypes['getMiscWeather'][0])
     {
-        return $this->getMiscWeatherAsyncWithHttpInfo($city, $adcode, $contentType)
+        return $this->getMiscWeatherAsyncWithHttpInfo($city, $adcode, $extended, $forecast, $hourly, $minutely, $indices, $lang, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3019,19 +4201,25 @@ class MiscApi
     /**
      * Operation getMiscWeatherAsyncWithHttpInfo
      *
-     * 查询实时天气信息
+     * 查询天气
      *
-     * @param  string|null $city 标准的城市名称，如 &#39;北京&#39;, &#39;上海市&#39;, &#39;福田区&#39;。请使用官方的省、市、区县行政区划名称。 (optional)
-     * @param  string|null $adcode 高德地图的6位数字城市编码。例如，北京市的Adcode是 &#39;110000&#39;。使用Adcode查询更准确、更快速。 (optional)
+     * @param  string|null $city 城市名称，支持中文（&#x60;北京&#x60;）和英文（&#x60;Tokyo&#x60;）。可选参数，不传时会尝试 IP 自动定位。 (optional)
+     * @param  string|null $adcode 城市行政区划代码（如 &#x60;110000&#x60;），优先级高于 city。可选参数，不传时会尝试 IP 自动定位。 (optional)
+     * @param  bool|null $extended 返回扩展气象字段（体感温度、能见度、气压、紫外线、降水量、云量、空气质量指数及污染物分项数据）。 (optional)
+     * @param  bool|null $forecast 返回多天预报数据（最多7天），含白天夜间天气、风向风力、日出日落等。 (optional)
+     * @param  bool|null $hourly 返回逐小时预报（24小时），含温度、天气、风向风速、湿度、降水概率等。 (optional)
+     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），每5分钟一个数据点，共24个。 (optional)
+     * @param  bool|null $indices 返回18项生活指数（穿衣、紫外线、洗车、晾晒、空调、感冒、运动、舒适度、出行、钓鱼、过敏、防晒、心情、啤酒、雨伞、交通、空气净化器、花粉）。 (optional)
+     * @param  string|null $lang 返回语言。&#x60;zh&#x60; 返回中文（默认），&#x60;en&#x60; 返回英文。城市名翻译覆盖 7000+ 城市。生活指数（&#x60;indices&#x60;）目前仅支持中文。 (optional, default to 'zh')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWeather'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMiscWeatherAsyncWithHttpInfo($city = null, $adcode = null, string $contentType = self::contentTypes['getMiscWeather'][0])
+    public function getMiscWeatherAsyncWithHttpInfo($city = null, $adcode = null, $extended = null, $forecast = null, $hourly = null, $minutely = null, $indices = null, $lang = 'zh', string $contentType = self::contentTypes['getMiscWeather'][0])
     {
         $returnType = '\OpenAPI\Client\Model\GetMiscWeather200Response';
-        $request = $this->getMiscWeatherRequest($city, $adcode, $contentType);
+        $request = $this->getMiscWeatherRequest($city, $adcode, $extended, $forecast, $hourly, $minutely, $indices, $lang, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3072,15 +4260,27 @@ class MiscApi
     /**
      * Create request for operation 'getMiscWeather'
      *
-     * @param  string|null $city 标准的城市名称，如 &#39;北京&#39;, &#39;上海市&#39;, &#39;福田区&#39;。请使用官方的省、市、区县行政区划名称。 (optional)
-     * @param  string|null $adcode 高德地图的6位数字城市编码。例如，北京市的Adcode是 &#39;110000&#39;。使用Adcode查询更准确、更快速。 (optional)
+     * @param  string|null $city 城市名称，支持中文（&#x60;北京&#x60;）和英文（&#x60;Tokyo&#x60;）。可选参数，不传时会尝试 IP 自动定位。 (optional)
+     * @param  string|null $adcode 城市行政区划代码（如 &#x60;110000&#x60;），优先级高于 city。可选参数，不传时会尝试 IP 自动定位。 (optional)
+     * @param  bool|null $extended 返回扩展气象字段（体感温度、能见度、气压、紫外线、降水量、云量、空气质量指数及污染物分项数据）。 (optional)
+     * @param  bool|null $forecast 返回多天预报数据（最多7天），含白天夜间天气、风向风力、日出日落等。 (optional)
+     * @param  bool|null $hourly 返回逐小时预报（24小时），含温度、天气、风向风速、湿度、降水概率等。 (optional)
+     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），每5分钟一个数据点，共24个。 (optional)
+     * @param  bool|null $indices 返回18项生活指数（穿衣、紫外线、洗车、晾晒、空调、感冒、运动、舒适度、出行、钓鱼、过敏、防晒、心情、啤酒、雨伞、交通、空气净化器、花粉）。 (optional)
+     * @param  string|null $lang 返回语言。&#x60;zh&#x60; 返回中文（默认），&#x60;en&#x60; 返回英文。城市名翻译覆盖 7000+ 城市。生活指数（&#x60;indices&#x60;）目前仅支持中文。 (optional, default to 'zh')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWeather'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getMiscWeatherRequest($city = null, $adcode = null, string $contentType = self::contentTypes['getMiscWeather'][0])
+    public function getMiscWeatherRequest($city = null, $adcode = null, $extended = null, $forecast = null, $hourly = null, $minutely = null, $indices = null, $lang = 'zh', string $contentType = self::contentTypes['getMiscWeather'][0])
     {
+
+
+
+
+
+
 
 
 
@@ -3105,6 +4305,60 @@ class MiscApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $adcode,
             'adcode', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $extended,
+            'extended', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $forecast,
+            'forecast', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $hourly,
+            'hourly', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $minutely,
+            'minutely', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $indices,
+            'indices', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $lang,
+            'lang', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -3170,7 +4424,7 @@ class MiscApi
     /**
      * Operation getMiscWorldtime
      *
-     * 查询全球任意时区的时间
+     * 查询世界时间
      *
      * @param  string $city 你需要查询的城市或地区，请使用标准的 IANA 时区数据库名称，例如 &#39;Shanghai&#39;, &#39;Asia/Tokyo&#39;, &#39;America/New_York&#39;。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWorldtime'] to see the possible values for this operation
@@ -3188,7 +4442,7 @@ class MiscApi
     /**
      * Operation getMiscWorldtimeWithHttpInfo
      *
-     * 查询全球任意时区的时间
+     * 查询世界时间
      *
      * @param  string $city 你需要查询的城市或地区，请使用标准的 IANA 时区数据库名称，例如 &#39;Shanghai&#39;, &#39;Asia/Tokyo&#39;, &#39;America/New_York&#39;。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWorldtime'] to see the possible values for this operation
@@ -3301,7 +4555,7 @@ class MiscApi
     /**
      * Operation getMiscWorldtimeAsync
      *
-     * 查询全球任意时区的时间
+     * 查询世界时间
      *
      * @param  string $city 你需要查询的城市或地区，请使用标准的 IANA 时区数据库名称，例如 &#39;Shanghai&#39;, &#39;Asia/Tokyo&#39;, &#39;America/New_York&#39;。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWorldtime'] to see the possible values for this operation
@@ -3322,7 +4576,7 @@ class MiscApi
     /**
      * Operation getMiscWorldtimeAsyncWithHttpInfo
      *
-     * 查询全球任意时区的时间
+     * 查询世界时间
      *
      * @param  string $city 你需要查询的城市或地区，请使用标准的 IANA 时区数据库名称，例如 &#39;Shanghai&#39;, &#39;Asia/Tokyo&#39;, &#39;America/New_York&#39;。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWorldtime'] to see the possible values for this operation
@@ -3458,6 +4712,287 @@ class MiscApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation postMiscDateDiff
+     *
+     * 计算两个日期之间的时间差值
+     *
+     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request 包含日期信息的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postMiscDateDiff'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\PostMiscDateDiff200Response|\OpenAPI\Client\Model\PostMiscDateDiff400Response
+     */
+    public function postMiscDateDiff($post_misc_date_diff_request, string $contentType = self::contentTypes['postMiscDateDiff'][0])
+    {
+        list($response) = $this->postMiscDateDiffWithHttpInfo($post_misc_date_diff_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation postMiscDateDiffWithHttpInfo
+     *
+     * 计算两个日期之间的时间差值
+     *
+     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request 包含日期信息的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postMiscDateDiff'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\PostMiscDateDiff200Response|\OpenAPI\Client\Model\PostMiscDateDiff400Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postMiscDateDiffWithHttpInfo($post_misc_date_diff_request, string $contentType = self::contentTypes['postMiscDateDiff'][0])
+    {
+        $request = $this->postMiscDateDiffRequest($post_misc_date_diff_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PostMiscDateDiff200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PostMiscDateDiff400Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\PostMiscDateDiff200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PostMiscDateDiff200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PostMiscDateDiff400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postMiscDateDiffAsync
+     *
+     * 计算两个日期之间的时间差值
+     *
+     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request 包含日期信息的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postMiscDateDiff'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postMiscDateDiffAsync($post_misc_date_diff_request, string $contentType = self::contentTypes['postMiscDateDiff'][0])
+    {
+        return $this->postMiscDateDiffAsyncWithHttpInfo($post_misc_date_diff_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postMiscDateDiffAsyncWithHttpInfo
+     *
+     * 计算两个日期之间的时间差值
+     *
+     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request 包含日期信息的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postMiscDateDiff'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postMiscDateDiffAsyncWithHttpInfo($post_misc_date_diff_request, string $contentType = self::contentTypes['postMiscDateDiff'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\PostMiscDateDiff200Response';
+        $request = $this->postMiscDateDiffRequest($post_misc_date_diff_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postMiscDateDiff'
+     *
+     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request 包含日期信息的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postMiscDateDiff'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postMiscDateDiffRequest($post_misc_date_diff_request, string $contentType = self::contentTypes['postMiscDateDiff'][0])
+    {
+
+        // verify the required parameter 'post_misc_date_diff_request' is set
+        if ($post_misc_date_diff_request === null || (is_array($post_misc_date_diff_request) && count($post_misc_date_diff_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $post_misc_date_diff_request when calling postMiscDateDiff'
+            );
+        }
+
+
+        $resourcePath = '/misc/date-diff';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($post_misc_date_diff_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($post_misc_date_diff_request));
+            } else {
+                $httpBody = $post_misc_date_diff_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

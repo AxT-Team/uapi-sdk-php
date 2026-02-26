@@ -57,7 +57,6 @@ class GetHistoryProgrammerToday200Response implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'message' => 'string',
         'date' => 'string',
         'events' => '\OpenAPI\Client\Model\GetHistoryProgrammerToday200ResponseEventsInner[]'
@@ -71,7 +70,6 @@ class GetHistoryProgrammerToday200Response implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
         'message' => null,
         'date' => null,
         'events' => null
@@ -83,7 +81,6 @@ class GetHistoryProgrammerToday200Response implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
         'message' => false,
         'date' => false,
         'events' => false
@@ -175,7 +172,6 @@ class GetHistoryProgrammerToday200Response implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'message' => 'message',
         'date' => 'date',
         'events' => 'events'
@@ -187,7 +183,6 @@ class GetHistoryProgrammerToday200Response implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'message' => 'setMessage',
         'date' => 'setDate',
         'events' => 'setEvents'
@@ -199,7 +194,6 @@ class GetHistoryProgrammerToday200Response implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'message' => 'getMessage',
         'date' => 'getDate',
         'events' => 'getEvents'
@@ -262,7 +256,6 @@ class GetHistoryProgrammerToday200Response implements ModelInterface, ArrayAcces
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('date', $data ?? [], null);
         $this->setIfExists('events', $data ?? [], null);
@@ -309,33 +302,6 @@ class GetHistoryProgrammerToday200Response implements ModelInterface, ArrayAcces
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
 
     /**
      * Gets message

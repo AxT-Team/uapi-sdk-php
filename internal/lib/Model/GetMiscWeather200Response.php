@@ -57,15 +57,32 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'adcode' => 'string',
-        'city' => 'string',
-        'humidity' => 'int',
         'province' => 'string',
-        'report_time' => 'string',
-        'temperature' => 'int',
+        'city' => 'string',
+        'adcode' => 'string',
         'weather' => 'string',
+        'temperature' => 'float',
         'wind_direction' => 'string',
-        'wind_power' => 'string'
+        'wind_power' => 'string',
+        'humidity' => 'float',
+        'report_time' => 'string',
+        'feels_like' => 'float',
+        'visibility' => 'float',
+        'pressure' => 'float',
+        'uv' => 'float',
+        'precipitation' => 'float',
+        'cloud' => 'float',
+        'aqi' => 'float',
+        'aqi_level' => 'float',
+        'aqi_category' => 'string',
+        'aqi_primary' => 'string',
+        'air_pollutants' => '\OpenAPI\Client\Model\GetMiscWeather200ResponseAirPollutants',
+        'temp_max' => 'float',
+        'temp_min' => 'float',
+        'forecast' => '\OpenAPI\Client\Model\GetMiscWeather200ResponseForecastInner[]',
+        'hourly_forecast' => '\OpenAPI\Client\Model\GetMiscWeather200ResponseHourlyForecastInner[]',
+        'minutely_precip' => '\OpenAPI\Client\Model\GetMiscWeather200ResponseMinutelyPrecip',
+        'life_indices' => '\OpenAPI\Client\Model\GetMiscWeather200ResponseLifeIndices'
     ];
 
     /**
@@ -76,15 +93,32 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'adcode' => null,
-        'city' => null,
-        'humidity' => null,
         'province' => null,
-        'report_time' => null,
-        'temperature' => null,
+        'city' => null,
+        'adcode' => null,
         'weather' => null,
+        'temperature' => null,
         'wind_direction' => null,
-        'wind_power' => null
+        'wind_power' => null,
+        'humidity' => null,
+        'report_time' => null,
+        'feels_like' => null,
+        'visibility' => null,
+        'pressure' => null,
+        'uv' => null,
+        'precipitation' => null,
+        'cloud' => null,
+        'aqi' => null,
+        'aqi_level' => null,
+        'aqi_category' => null,
+        'aqi_primary' => null,
+        'air_pollutants' => null,
+        'temp_max' => null,
+        'temp_min' => null,
+        'forecast' => null,
+        'hourly_forecast' => null,
+        'minutely_precip' => null,
+        'life_indices' => null
     ];
 
     /**
@@ -93,15 +127,32 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'adcode' => false,
-        'city' => false,
-        'humidity' => false,
         'province' => false,
-        'report_time' => false,
-        'temperature' => false,
+        'city' => false,
+        'adcode' => false,
         'weather' => false,
+        'temperature' => false,
         'wind_direction' => false,
-        'wind_power' => false
+        'wind_power' => false,
+        'humidity' => false,
+        'report_time' => false,
+        'feels_like' => false,
+        'visibility' => false,
+        'pressure' => false,
+        'uv' => false,
+        'precipitation' => false,
+        'cloud' => false,
+        'aqi' => false,
+        'aqi_level' => false,
+        'aqi_category' => false,
+        'aqi_primary' => false,
+        'air_pollutants' => false,
+        'temp_max' => false,
+        'temp_min' => false,
+        'forecast' => false,
+        'hourly_forecast' => false,
+        'minutely_precip' => false,
+        'life_indices' => false
     ];
 
     /**
@@ -190,15 +241,32 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'adcode' => 'adcode',
-        'city' => 'city',
-        'humidity' => 'humidity',
         'province' => 'province',
-        'report_time' => 'report_time',
-        'temperature' => 'temperature',
+        'city' => 'city',
+        'adcode' => 'adcode',
         'weather' => 'weather',
+        'temperature' => 'temperature',
         'wind_direction' => 'wind_direction',
-        'wind_power' => 'wind_power'
+        'wind_power' => 'wind_power',
+        'humidity' => 'humidity',
+        'report_time' => 'report_time',
+        'feels_like' => 'feels_like',
+        'visibility' => 'visibility',
+        'pressure' => 'pressure',
+        'uv' => 'uv',
+        'precipitation' => 'precipitation',
+        'cloud' => 'cloud',
+        'aqi' => 'aqi',
+        'aqi_level' => 'aqi_level',
+        'aqi_category' => 'aqi_category',
+        'aqi_primary' => 'aqi_primary',
+        'air_pollutants' => 'air_pollutants',
+        'temp_max' => 'temp_max',
+        'temp_min' => 'temp_min',
+        'forecast' => 'forecast',
+        'hourly_forecast' => 'hourly_forecast',
+        'minutely_precip' => 'minutely_precip',
+        'life_indices' => 'life_indices'
     ];
 
     /**
@@ -207,15 +275,32 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'adcode' => 'setAdcode',
-        'city' => 'setCity',
-        'humidity' => 'setHumidity',
         'province' => 'setProvince',
-        'report_time' => 'setReportTime',
-        'temperature' => 'setTemperature',
+        'city' => 'setCity',
+        'adcode' => 'setAdcode',
         'weather' => 'setWeather',
+        'temperature' => 'setTemperature',
         'wind_direction' => 'setWindDirection',
-        'wind_power' => 'setWindPower'
+        'wind_power' => 'setWindPower',
+        'humidity' => 'setHumidity',
+        'report_time' => 'setReportTime',
+        'feels_like' => 'setFeelsLike',
+        'visibility' => 'setVisibility',
+        'pressure' => 'setPressure',
+        'uv' => 'setUv',
+        'precipitation' => 'setPrecipitation',
+        'cloud' => 'setCloud',
+        'aqi' => 'setAqi',
+        'aqi_level' => 'setAqiLevel',
+        'aqi_category' => 'setAqiCategory',
+        'aqi_primary' => 'setAqiPrimary',
+        'air_pollutants' => 'setAirPollutants',
+        'temp_max' => 'setTempMax',
+        'temp_min' => 'setTempMin',
+        'forecast' => 'setForecast',
+        'hourly_forecast' => 'setHourlyForecast',
+        'minutely_precip' => 'setMinutelyPrecip',
+        'life_indices' => 'setLifeIndices'
     ];
 
     /**
@@ -224,15 +309,32 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'adcode' => 'getAdcode',
-        'city' => 'getCity',
-        'humidity' => 'getHumidity',
         'province' => 'getProvince',
-        'report_time' => 'getReportTime',
-        'temperature' => 'getTemperature',
+        'city' => 'getCity',
+        'adcode' => 'getAdcode',
         'weather' => 'getWeather',
+        'temperature' => 'getTemperature',
         'wind_direction' => 'getWindDirection',
-        'wind_power' => 'getWindPower'
+        'wind_power' => 'getWindPower',
+        'humidity' => 'getHumidity',
+        'report_time' => 'getReportTime',
+        'feels_like' => 'getFeelsLike',
+        'visibility' => 'getVisibility',
+        'pressure' => 'getPressure',
+        'uv' => 'getUv',
+        'precipitation' => 'getPrecipitation',
+        'cloud' => 'getCloud',
+        'aqi' => 'getAqi',
+        'aqi_level' => 'getAqiLevel',
+        'aqi_category' => 'getAqiCategory',
+        'aqi_primary' => 'getAqiPrimary',
+        'air_pollutants' => 'getAirPollutants',
+        'temp_max' => 'getTempMax',
+        'temp_min' => 'getTempMin',
+        'forecast' => 'getForecast',
+        'hourly_forecast' => 'getHourlyForecast',
+        'minutely_precip' => 'getMinutelyPrecip',
+        'life_indices' => 'getLifeIndices'
     ];
 
     /**
@@ -292,15 +394,32 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('adcode', $data ?? [], null);
-        $this->setIfExists('city', $data ?? [], null);
-        $this->setIfExists('humidity', $data ?? [], null);
         $this->setIfExists('province', $data ?? [], null);
-        $this->setIfExists('report_time', $data ?? [], null);
-        $this->setIfExists('temperature', $data ?? [], null);
+        $this->setIfExists('city', $data ?? [], null);
+        $this->setIfExists('adcode', $data ?? [], null);
         $this->setIfExists('weather', $data ?? [], null);
+        $this->setIfExists('temperature', $data ?? [], null);
         $this->setIfExists('wind_direction', $data ?? [], null);
         $this->setIfExists('wind_power', $data ?? [], null);
+        $this->setIfExists('humidity', $data ?? [], null);
+        $this->setIfExists('report_time', $data ?? [], null);
+        $this->setIfExists('feels_like', $data ?? [], null);
+        $this->setIfExists('visibility', $data ?? [], null);
+        $this->setIfExists('pressure', $data ?? [], null);
+        $this->setIfExists('uv', $data ?? [], null);
+        $this->setIfExists('precipitation', $data ?? [], null);
+        $this->setIfExists('cloud', $data ?? [], null);
+        $this->setIfExists('aqi', $data ?? [], null);
+        $this->setIfExists('aqi_level', $data ?? [], null);
+        $this->setIfExists('aqi_category', $data ?? [], null);
+        $this->setIfExists('aqi_primary', $data ?? [], null);
+        $this->setIfExists('air_pollutants', $data ?? [], null);
+        $this->setIfExists('temp_max', $data ?? [], null);
+        $this->setIfExists('temp_min', $data ?? [], null);
+        $this->setIfExists('forecast', $data ?? [], null);
+        $this->setIfExists('hourly_forecast', $data ?? [], null);
+        $this->setIfExists('minutely_precip', $data ?? [], null);
+        $this->setIfExists('life_indices', $data ?? [], null);
     }
 
     /**
@@ -346,28 +465,28 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets adcode
+     * Gets province
      *
      * @return string|null
      */
-    public function getAdcode()
+    public function getProvince()
     {
-        return $this->container['adcode'];
+        return $this->container['province'];
     }
 
     /**
-     * Sets adcode
+     * Sets province
      *
-     * @param string|null $adcode adcode
+     * @param string|null $province 省份
      *
      * @return self
      */
-    public function setAdcode($adcode)
+    public function setProvince($province)
     {
-        if (is_null($adcode)) {
-            throw new \InvalidArgumentException('non-nullable adcode cannot be null');
+        if (is_null($province)) {
+            throw new \InvalidArgumentException('non-nullable province cannot be null');
         }
-        $this->container['adcode'] = $adcode;
+        $this->container['province'] = $province;
 
         return $this;
     }
@@ -385,7 +504,7 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets city
      *
-     * @param string|null $city city
+     * @param string|null $city 城市名
      *
      * @return self
      */
@@ -400,109 +519,28 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets humidity
-     *
-     * @return int|null
-     */
-    public function getHumidity()
-    {
-        return $this->container['humidity'];
-    }
-
-    /**
-     * Sets humidity
-     *
-     * @param int|null $humidity humidity
-     *
-     * @return self
-     */
-    public function setHumidity($humidity)
-    {
-        if (is_null($humidity)) {
-            throw new \InvalidArgumentException('non-nullable humidity cannot be null');
-        }
-        $this->container['humidity'] = $humidity;
-
-        return $this;
-    }
-
-    /**
-     * Gets province
+     * Gets adcode
      *
      * @return string|null
      */
-    public function getProvince()
+    public function getAdcode()
     {
-        return $this->container['province'];
+        return $this->container['adcode'];
     }
 
     /**
-     * Sets province
+     * Sets adcode
      *
-     * @param string|null $province province
+     * @param string|null $adcode 行政区划代码（部分数据源可能为空）
      *
      * @return self
      */
-    public function setProvince($province)
+    public function setAdcode($adcode)
     {
-        if (is_null($province)) {
-            throw new \InvalidArgumentException('non-nullable province cannot be null');
+        if (is_null($adcode)) {
+            throw new \InvalidArgumentException('non-nullable adcode cannot be null');
         }
-        $this->container['province'] = $province;
-
-        return $this;
-    }
-
-    /**
-     * Gets report_time
-     *
-     * @return string|null
-     */
-    public function getReportTime()
-    {
-        return $this->container['report_time'];
-    }
-
-    /**
-     * Sets report_time
-     *
-     * @param string|null $report_time report_time
-     *
-     * @return self
-     */
-    public function setReportTime($report_time)
-    {
-        if (is_null($report_time)) {
-            throw new \InvalidArgumentException('non-nullable report_time cannot be null');
-        }
-        $this->container['report_time'] = $report_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets temperature
-     *
-     * @return int|null
-     */
-    public function getTemperature()
-    {
-        return $this->container['temperature'];
-    }
-
-    /**
-     * Sets temperature
-     *
-     * @param int|null $temperature temperature
-     *
-     * @return self
-     */
-    public function setTemperature($temperature)
-    {
-        if (is_null($temperature)) {
-            throw new \InvalidArgumentException('non-nullable temperature cannot be null');
-        }
-        $this->container['temperature'] = $temperature;
+        $this->container['adcode'] = $adcode;
 
         return $this;
     }
@@ -520,7 +558,7 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets weather
      *
-     * @param string|null $weather weather
+     * @param string|null $weather 天气状况描述。默认返回中文，传 `lang=en` 时返回英文。非固定枚举。
      *
      * @return self
      */
@@ -530,6 +568,33 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable weather cannot be null');
         }
         $this->container['weather'] = $weather;
+
+        return $this;
+    }
+
+    /**
+     * Gets temperature
+     *
+     * @return float|null
+     */
+    public function getTemperature()
+    {
+        return $this->container['temperature'];
+    }
+
+    /**
+     * Sets temperature
+     *
+     * @param float|null $temperature 当前温度 °C
+     *
+     * @return self
+     */
+    public function setTemperature($temperature)
+    {
+        if (is_null($temperature)) {
+            throw new \InvalidArgumentException('non-nullable temperature cannot be null');
+        }
+        $this->container['temperature'] = $temperature;
 
         return $this;
     }
@@ -547,7 +612,7 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets wind_direction
      *
-     * @param string|null $wind_direction wind_direction
+     * @param string|null $wind_direction 风向
      *
      * @return self
      */
@@ -574,7 +639,7 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets wind_power
      *
-     * @param string|null $wind_power wind_power
+     * @param string|null $wind_power 风力等级
      *
      * @return self
      */
@@ -584,6 +649,519 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable wind_power cannot be null');
         }
         $this->container['wind_power'] = $wind_power;
+
+        return $this;
+    }
+
+    /**
+     * Gets humidity
+     *
+     * @return float|null
+     */
+    public function getHumidity()
+    {
+        return $this->container['humidity'];
+    }
+
+    /**
+     * Sets humidity
+     *
+     * @param float|null $humidity 相对湿度 %
+     *
+     * @return self
+     */
+    public function setHumidity($humidity)
+    {
+        if (is_null($humidity)) {
+            throw new \InvalidArgumentException('non-nullable humidity cannot be null');
+        }
+        $this->container['humidity'] = $humidity;
+
+        return $this;
+    }
+
+    /**
+     * Gets report_time
+     *
+     * @return string|null
+     */
+    public function getReportTime()
+    {
+        return $this->container['report_time'];
+    }
+
+    /**
+     * Sets report_time
+     *
+     * @param string|null $report_time 数据更新时间
+     *
+     * @return self
+     */
+    public function setReportTime($report_time)
+    {
+        if (is_null($report_time)) {
+            throw new \InvalidArgumentException('non-nullable report_time cannot be null');
+        }
+        $this->container['report_time'] = $report_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets feels_like
+     *
+     * @return float|null
+     */
+    public function getFeelsLike()
+    {
+        return $this->container['feels_like'];
+    }
+
+    /**
+     * Sets feels_like
+     *
+     * @param float|null $feels_like 体感温度 °C（extended=true 时返回）
+     *
+     * @return self
+     */
+    public function setFeelsLike($feels_like)
+    {
+        if (is_null($feels_like)) {
+            throw new \InvalidArgumentException('non-nullable feels_like cannot be null');
+        }
+        $this->container['feels_like'] = $feels_like;
+
+        return $this;
+    }
+
+    /**
+     * Gets visibility
+     *
+     * @return float|null
+     */
+    public function getVisibility()
+    {
+        return $this->container['visibility'];
+    }
+
+    /**
+     * Sets visibility
+     *
+     * @param float|null $visibility 能见度 km（extended=true 时返回）
+     *
+     * @return self
+     */
+    public function setVisibility($visibility)
+    {
+        if (is_null($visibility)) {
+            throw new \InvalidArgumentException('non-nullable visibility cannot be null');
+        }
+        $this->container['visibility'] = $visibility;
+
+        return $this;
+    }
+
+    /**
+     * Gets pressure
+     *
+     * @return float|null
+     */
+    public function getPressure()
+    {
+        return $this->container['pressure'];
+    }
+
+    /**
+     * Sets pressure
+     *
+     * @param float|null $pressure 气压 hPa（extended=true 时返回）
+     *
+     * @return self
+     */
+    public function setPressure($pressure)
+    {
+        if (is_null($pressure)) {
+            throw new \InvalidArgumentException('non-nullable pressure cannot be null');
+        }
+        $this->container['pressure'] = $pressure;
+
+        return $this;
+    }
+
+    /**
+     * Gets uv
+     *
+     * @return float|null
+     */
+    public function getUv()
+    {
+        return $this->container['uv'];
+    }
+
+    /**
+     * Sets uv
+     *
+     * @param float|null $uv 紫外线指数（extended=true 时返回）
+     *
+     * @return self
+     */
+    public function setUv($uv)
+    {
+        if (is_null($uv)) {
+            throw new \InvalidArgumentException('non-nullable uv cannot be null');
+        }
+        $this->container['uv'] = $uv;
+
+        return $this;
+    }
+
+    /**
+     * Gets precipitation
+     *
+     * @return float|null
+     */
+    public function getPrecipitation()
+    {
+        return $this->container['precipitation'];
+    }
+
+    /**
+     * Sets precipitation
+     *
+     * @param float|null $precipitation 当前降水量 mm（extended=true 时返回）
+     *
+     * @return self
+     */
+    public function setPrecipitation($precipitation)
+    {
+        if (is_null($precipitation)) {
+            throw new \InvalidArgumentException('non-nullable precipitation cannot be null');
+        }
+        $this->container['precipitation'] = $precipitation;
+
+        return $this;
+    }
+
+    /**
+     * Gets cloud
+     *
+     * @return float|null
+     */
+    public function getCloud()
+    {
+        return $this->container['cloud'];
+    }
+
+    /**
+     * Sets cloud
+     *
+     * @param float|null $cloud 云量 %（extended=true 时返回）
+     *
+     * @return self
+     */
+    public function setCloud($cloud)
+    {
+        if (is_null($cloud)) {
+            throw new \InvalidArgumentException('non-nullable cloud cannot be null');
+        }
+        $this->container['cloud'] = $cloud;
+
+        return $this;
+    }
+
+    /**
+     * Gets aqi
+     *
+     * @return float|null
+     */
+    public function getAqi()
+    {
+        return $this->container['aqi'];
+    }
+
+    /**
+     * Sets aqi
+     *
+     * @param float|null $aqi 空气质量指数 0-500（extended=true 时返回）
+     *
+     * @return self
+     */
+    public function setAqi($aqi)
+    {
+        if (is_null($aqi)) {
+            throw new \InvalidArgumentException('non-nullable aqi cannot be null');
+        }
+        $this->container['aqi'] = $aqi;
+
+        return $this;
+    }
+
+    /**
+     * Gets aqi_level
+     *
+     * @return float|null
+     */
+    public function getAqiLevel()
+    {
+        return $this->container['aqi_level'];
+    }
+
+    /**
+     * Sets aqi_level
+     *
+     * @param float|null $aqi_level AQI 等级 1-6（extended=true 时返回）
+     *
+     * @return self
+     */
+    public function setAqiLevel($aqi_level)
+    {
+        if (is_null($aqi_level)) {
+            throw new \InvalidArgumentException('non-nullable aqi_level cannot be null');
+        }
+        $this->container['aqi_level'] = $aqi_level;
+
+        return $this;
+    }
+
+    /**
+     * Gets aqi_category
+     *
+     * @return string|null
+     */
+    public function getAqiCategory()
+    {
+        return $this->container['aqi_category'];
+    }
+
+    /**
+     * Sets aqi_category
+     *
+     * @param string|null $aqi_category AQI 等级描述（优/良/轻度污染/中度污染/重度污染/严重污染）（extended=true 时返回）
+     *
+     * @return self
+     */
+    public function setAqiCategory($aqi_category)
+    {
+        if (is_null($aqi_category)) {
+            throw new \InvalidArgumentException('non-nullable aqi_category cannot be null');
+        }
+        $this->container['aqi_category'] = $aqi_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets aqi_primary
+     *
+     * @return string|null
+     */
+    public function getAqiPrimary()
+    {
+        return $this->container['aqi_primary'];
+    }
+
+    /**
+     * Sets aqi_primary
+     *
+     * @param string|null $aqi_primary 主要污染物（如 PM2.5、PM10、O3 等）（extended=true 时返回）
+     *
+     * @return self
+     */
+    public function setAqiPrimary($aqi_primary)
+    {
+        if (is_null($aqi_primary)) {
+            throw new \InvalidArgumentException('non-nullable aqi_primary cannot be null');
+        }
+        $this->container['aqi_primary'] = $aqi_primary;
+
+        return $this;
+    }
+
+    /**
+     * Gets air_pollutants
+     *
+     * @return \OpenAPI\Client\Model\GetMiscWeather200ResponseAirPollutants|null
+     */
+    public function getAirPollutants()
+    {
+        return $this->container['air_pollutants'];
+    }
+
+    /**
+     * Sets air_pollutants
+     *
+     * @param \OpenAPI\Client\Model\GetMiscWeather200ResponseAirPollutants|null $air_pollutants air_pollutants
+     *
+     * @return self
+     */
+    public function setAirPollutants($air_pollutants)
+    {
+        if (is_null($air_pollutants)) {
+            throw new \InvalidArgumentException('non-nullable air_pollutants cannot be null');
+        }
+        $this->container['air_pollutants'] = $air_pollutants;
+
+        return $this;
+    }
+
+    /**
+     * Gets temp_max
+     *
+     * @return float|null
+     */
+    public function getTempMax()
+    {
+        return $this->container['temp_max'];
+    }
+
+    /**
+     * Sets temp_max
+     *
+     * @param float|null $temp_max 当天最高温 °C（forecast=true 时返回）
+     *
+     * @return self
+     */
+    public function setTempMax($temp_max)
+    {
+        if (is_null($temp_max)) {
+            throw new \InvalidArgumentException('non-nullable temp_max cannot be null');
+        }
+        $this->container['temp_max'] = $temp_max;
+
+        return $this;
+    }
+
+    /**
+     * Gets temp_min
+     *
+     * @return float|null
+     */
+    public function getTempMin()
+    {
+        return $this->container['temp_min'];
+    }
+
+    /**
+     * Sets temp_min
+     *
+     * @param float|null $temp_min 当天最低温 °C（forecast=true 时返回）
+     *
+     * @return self
+     */
+    public function setTempMin($temp_min)
+    {
+        if (is_null($temp_min)) {
+            throw new \InvalidArgumentException('non-nullable temp_min cannot be null');
+        }
+        $this->container['temp_min'] = $temp_min;
+
+        return $this;
+    }
+
+    /**
+     * Gets forecast
+     *
+     * @return \OpenAPI\Client\Model\GetMiscWeather200ResponseForecastInner[]|null
+     */
+    public function getForecast()
+    {
+        return $this->container['forecast'];
+    }
+
+    /**
+     * Sets forecast
+     *
+     * @param \OpenAPI\Client\Model\GetMiscWeather200ResponseForecastInner[]|null $forecast 多天天气预报，最多7天（forecast=true 时返回）
+     *
+     * @return self
+     */
+    public function setForecast($forecast)
+    {
+        if (is_null($forecast)) {
+            throw new \InvalidArgumentException('non-nullable forecast cannot be null');
+        }
+        $this->container['forecast'] = $forecast;
+
+        return $this;
+    }
+
+    /**
+     * Gets hourly_forecast
+     *
+     * @return \OpenAPI\Client\Model\GetMiscWeather200ResponseHourlyForecastInner[]|null
+     */
+    public function getHourlyForecast()
+    {
+        return $this->container['hourly_forecast'];
+    }
+
+    /**
+     * Sets hourly_forecast
+     *
+     * @param \OpenAPI\Client\Model\GetMiscWeather200ResponseHourlyForecastInner[]|null $hourly_forecast 逐小时预报，最多24小时（hourly=true 时返回）
+     *
+     * @return self
+     */
+    public function setHourlyForecast($hourly_forecast)
+    {
+        if (is_null($hourly_forecast)) {
+            throw new \InvalidArgumentException('non-nullable hourly_forecast cannot be null');
+        }
+        $this->container['hourly_forecast'] = $hourly_forecast;
+
+        return $this;
+    }
+
+    /**
+     * Gets minutely_precip
+     *
+     * @return \OpenAPI\Client\Model\GetMiscWeather200ResponseMinutelyPrecip|null
+     */
+    public function getMinutelyPrecip()
+    {
+        return $this->container['minutely_precip'];
+    }
+
+    /**
+     * Sets minutely_precip
+     *
+     * @param \OpenAPI\Client\Model\GetMiscWeather200ResponseMinutelyPrecip|null $minutely_precip minutely_precip
+     *
+     * @return self
+     */
+    public function setMinutelyPrecip($minutely_precip)
+    {
+        if (is_null($minutely_precip)) {
+            throw new \InvalidArgumentException('non-nullable minutely_precip cannot be null');
+        }
+        $this->container['minutely_precip'] = $minutely_precip;
+
+        return $this;
+    }
+
+    /**
+     * Gets life_indices
+     *
+     * @return \OpenAPI\Client\Model\GetMiscWeather200ResponseLifeIndices|null
+     */
+    public function getLifeIndices()
+    {
+        return $this->container['life_indices'];
+    }
+
+    /**
+     * Sets life_indices
+     *
+     * @param \OpenAPI\Client\Model\GetMiscWeather200ResponseLifeIndices|null $life_indices life_indices
+     *
+     * @return self
+     */
+    public function setLifeIndices($life_indices)
+    {
+        if (is_null($life_indices)) {
+            throw new \InvalidArgumentException('non-nullable life_indices cannot be null');
+        }
+        $this->container['life_indices'] = $life_indices;
 
         return $this;
     }

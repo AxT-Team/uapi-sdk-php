@@ -57,7 +57,6 @@ class PostImageFrombase64200Response implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'image_url' => 'string',
         'msg' => 'string'
     ];
@@ -70,7 +69,6 @@ class PostImageFrombase64200Response implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
         'image_url' => null,
         'msg' => null
     ];
@@ -81,7 +79,6 @@ class PostImageFrombase64200Response implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
         'image_url' => false,
         'msg' => false
     ];
@@ -172,7 +169,6 @@ class PostImageFrombase64200Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'image_url' => 'image_url',
         'msg' => 'msg'
     ];
@@ -183,7 +179,6 @@ class PostImageFrombase64200Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'image_url' => 'setImageUrl',
         'msg' => 'setMsg'
     ];
@@ -194,7 +189,6 @@ class PostImageFrombase64200Response implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'image_url' => 'getImageUrl',
         'msg' => 'getMsg'
     ];
@@ -256,7 +250,6 @@ class PostImageFrombase64200Response implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('msg', $data ?? [], null);
     }
@@ -302,33 +295,6 @@ class PostImageFrombase64200Response implements ModelInterface, ArrayAccess, \Js
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code 状态码，200代表成功。
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
 
     /**
      * Gets image_url

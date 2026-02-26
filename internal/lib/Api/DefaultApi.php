@@ -140,7 +140,7 @@ class DefaultApi
     /**
      * Operation getSearchEngines
      *
-     * 获取搜索引擎信息
+     * 搜索引擎配置
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchEngines'] to see the possible values for this operation
      *
@@ -157,7 +157,7 @@ class DefaultApi
     /**
      * Operation getSearchEnginesWithHttpInfo
      *
-     * 获取搜索引擎信息
+     * 搜索引擎配置
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchEngines'] to see the possible values for this operation
      *
@@ -241,7 +241,7 @@ class DefaultApi
     /**
      * Operation getSearchEnginesAsync
      *
-     * 获取搜索引擎信息
+     * 搜索引擎配置
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchEngines'] to see the possible values for this operation
      *
@@ -261,7 +261,7 @@ class DefaultApi
     /**
      * Operation getSearchEnginesAsyncWithHttpInfo
      *
-     * 获取搜索引擎信息
+     * 搜索引擎配置
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchEngines'] to see the possible values for this operation
      *
@@ -388,7 +388,7 @@ class DefaultApi
     /**
      * Operation getSensitiveWordAnalyzeQuery
      *
-     * 查询参数分析
+     * 敏感词分析 (GET)
      *
      * @param  string $keyword 要分析的关键词，最长50字符。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSensitiveWordAnalyzeQuery'] to see the possible values for this operation
@@ -406,7 +406,7 @@ class DefaultApi
     /**
      * Operation getSensitiveWordAnalyzeQueryWithHttpInfo
      *
-     * 查询参数分析
+     * 敏感词分析 (GET)
      *
      * @param  string $keyword 要分析的关键词，最长50字符。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSensitiveWordAnalyzeQuery'] to see the possible values for this operation
@@ -519,7 +519,7 @@ class DefaultApi
     /**
      * Operation getSensitiveWordAnalyzeQueryAsync
      *
-     * 查询参数分析
+     * 敏感词分析 (GET)
      *
      * @param  string $keyword 要分析的关键词，最长50字符。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSensitiveWordAnalyzeQuery'] to see the possible values for this operation
@@ -540,7 +540,7 @@ class DefaultApi
     /**
      * Operation getSensitiveWordAnalyzeQueryAsyncWithHttpInfo
      *
-     * 查询参数分析
+     * 敏感词分析 (GET)
      *
      * @param  string $keyword 要分析的关键词，最长50字符。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSensitiveWordAnalyzeQuery'] to see the possible values for this operation

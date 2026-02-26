@@ -57,7 +57,6 @@ class GetAiTranslateLanguages200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'message' => 'string',
         'data' => '\OpenAPI\Client\Model\GetAiTranslateLanguages200ResponseData',
         'performance' => '\OpenAPI\Client\Model\GetAiTranslateLanguages200ResponsePerformance'
@@ -71,7 +70,6 @@ class GetAiTranslateLanguages200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
         'message' => null,
         'data' => null,
         'performance' => null
@@ -83,7 +81,6 @@ class GetAiTranslateLanguages200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
         'message' => false,
         'data' => false,
         'performance' => false
@@ -175,7 +172,6 @@ class GetAiTranslateLanguages200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'message' => 'message',
         'data' => 'data',
         'performance' => 'performance'
@@ -187,7 +183,6 @@ class GetAiTranslateLanguages200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'message' => 'setMessage',
         'data' => 'setData',
         'performance' => 'setPerformance'
@@ -199,7 +194,6 @@ class GetAiTranslateLanguages200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'message' => 'getMessage',
         'data' => 'getData',
         'performance' => 'getPerformance'
@@ -262,7 +256,6 @@ class GetAiTranslateLanguages200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
         $this->setIfExists('performance', $data ?? [], null);
@@ -309,33 +302,6 @@ class GetAiTranslateLanguages200Response implements ModelInterface, ArrayAccess,
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
 
     /**
      * Gets message

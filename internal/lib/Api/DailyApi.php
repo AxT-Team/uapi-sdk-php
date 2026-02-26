@@ -128,7 +128,7 @@ class DailyApi
     /**
      * Operation getDailyNewsImage
      *
-     * 生成每日新闻摘要图片
+     * 每日新闻图
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyNewsImage'] to see the possible values for this operation
      *
@@ -145,7 +145,7 @@ class DailyApi
     /**
      * Operation getDailyNewsImageWithHttpInfo
      *
-     * 生成每日新闻摘要图片
+     * 每日新闻图
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyNewsImage'] to see the possible values for this operation
      *
@@ -257,7 +257,7 @@ class DailyApi
     /**
      * Operation getDailyNewsImageAsync
      *
-     * 生成每日新闻摘要图片
+     * 每日新闻图
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyNewsImage'] to see the possible values for this operation
      *
@@ -277,7 +277,7 @@ class DailyApi
     /**
      * Operation getDailyNewsImageAsyncWithHttpInfo
      *
-     * 生成每日新闻摘要图片
+     * 每日新闻图
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyNewsImage'] to see the possible values for this operation
      *

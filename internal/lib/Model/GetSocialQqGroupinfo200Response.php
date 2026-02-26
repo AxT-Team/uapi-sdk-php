@@ -63,7 +63,18 @@ class GetSocialQqGroupinfo200Response implements ModelInterface, ArrayAccess, \J
         'description' => 'string',
         'tag' => 'string',
         'join_url' => 'string',
-        'last_updated' => 'string'
+        'last_updated' => 'string',
+        'member_count' => 'int',
+        'max_member_count' => 'int',
+        'active_member_num' => 'int',
+        'owner_uin' => 'string',
+        'owner_uid' => 'string',
+        'create_time' => 'int',
+        'create_time_str' => 'string',
+        'group_grade' => 'int',
+        'group_memo' => 'string',
+        'cert_type' => 'int',
+        'cert_text' => 'string'
     ];
 
     /**
@@ -80,7 +91,18 @@ class GetSocialQqGroupinfo200Response implements ModelInterface, ArrayAccess, \J
         'description' => null,
         'tag' => null,
         'join_url' => null,
-        'last_updated' => null
+        'last_updated' => null,
+        'member_count' => null,
+        'max_member_count' => null,
+        'active_member_num' => null,
+        'owner_uin' => null,
+        'owner_uid' => null,
+        'create_time' => null,
+        'create_time_str' => null,
+        'group_grade' => null,
+        'group_memo' => null,
+        'cert_type' => null,
+        'cert_text' => null
     ];
 
     /**
@@ -95,7 +117,18 @@ class GetSocialQqGroupinfo200Response implements ModelInterface, ArrayAccess, \J
         'description' => false,
         'tag' => false,
         'join_url' => false,
-        'last_updated' => false
+        'last_updated' => false,
+        'member_count' => false,
+        'max_member_count' => false,
+        'active_member_num' => false,
+        'owner_uin' => false,
+        'owner_uid' => false,
+        'create_time' => false,
+        'create_time_str' => false,
+        'group_grade' => false,
+        'group_memo' => false,
+        'cert_type' => false,
+        'cert_text' => false
     ];
 
     /**
@@ -190,7 +223,18 @@ class GetSocialQqGroupinfo200Response implements ModelInterface, ArrayAccess, \J
         'description' => 'description',
         'tag' => 'tag',
         'join_url' => 'join_url',
-        'last_updated' => 'last_updated'
+        'last_updated' => 'last_updated',
+        'member_count' => 'member_count',
+        'max_member_count' => 'max_member_count',
+        'active_member_num' => 'active_member_num',
+        'owner_uin' => 'owner_uin',
+        'owner_uid' => 'owner_uid',
+        'create_time' => 'create_time',
+        'create_time_str' => 'create_time_str',
+        'group_grade' => 'group_grade',
+        'group_memo' => 'group_memo',
+        'cert_type' => 'cert_type',
+        'cert_text' => 'cert_text'
     ];
 
     /**
@@ -205,7 +249,18 @@ class GetSocialQqGroupinfo200Response implements ModelInterface, ArrayAccess, \J
         'description' => 'setDescription',
         'tag' => 'setTag',
         'join_url' => 'setJoinUrl',
-        'last_updated' => 'setLastUpdated'
+        'last_updated' => 'setLastUpdated',
+        'member_count' => 'setMemberCount',
+        'max_member_count' => 'setMaxMemberCount',
+        'active_member_num' => 'setActiveMemberNum',
+        'owner_uin' => 'setOwnerUin',
+        'owner_uid' => 'setOwnerUid',
+        'create_time' => 'setCreateTime',
+        'create_time_str' => 'setCreateTimeStr',
+        'group_grade' => 'setGroupGrade',
+        'group_memo' => 'setGroupMemo',
+        'cert_type' => 'setCertType',
+        'cert_text' => 'setCertText'
     ];
 
     /**
@@ -220,7 +275,18 @@ class GetSocialQqGroupinfo200Response implements ModelInterface, ArrayAccess, \J
         'description' => 'getDescription',
         'tag' => 'getTag',
         'join_url' => 'getJoinUrl',
-        'last_updated' => 'getLastUpdated'
+        'last_updated' => 'getLastUpdated',
+        'member_count' => 'getMemberCount',
+        'max_member_count' => 'getMaxMemberCount',
+        'active_member_num' => 'getActiveMemberNum',
+        'owner_uin' => 'getOwnerUin',
+        'owner_uid' => 'getOwnerUid',
+        'create_time' => 'getCreateTime',
+        'create_time_str' => 'getCreateTimeStr',
+        'group_grade' => 'getGroupGrade',
+        'group_memo' => 'getGroupMemo',
+        'cert_type' => 'getCertType',
+        'cert_text' => 'getCertText'
     ];
 
     /**
@@ -287,6 +353,17 @@ class GetSocialQqGroupinfo200Response implements ModelInterface, ArrayAccess, \J
         $this->setIfExists('tag', $data ?? [], null);
         $this->setIfExists('join_url', $data ?? [], null);
         $this->setIfExists('last_updated', $data ?? [], null);
+        $this->setIfExists('member_count', $data ?? [], null);
+        $this->setIfExists('max_member_count', $data ?? [], null);
+        $this->setIfExists('active_member_num', $data ?? [], null);
+        $this->setIfExists('owner_uin', $data ?? [], null);
+        $this->setIfExists('owner_uid', $data ?? [], null);
+        $this->setIfExists('create_time', $data ?? [], null);
+        $this->setIfExists('create_time_str', $data ?? [], null);
+        $this->setIfExists('group_grade', $data ?? [], null);
+        $this->setIfExists('group_memo', $data ?? [], null);
+        $this->setIfExists('cert_type', $data ?? [], null);
+        $this->setIfExists('cert_text', $data ?? [], null);
     }
 
     /**
@@ -516,6 +593,303 @@ class GetSocialQqGroupinfo200Response implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable last_updated cannot be null');
         }
         $this->container['last_updated'] = $last_updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets member_count
+     *
+     * @return int|null
+     */
+    public function getMemberCount()
+    {
+        return $this->container['member_count'];
+    }
+
+    /**
+     * Sets member_count
+     *
+     * @param int|null $member_count 当前成员数
+     *
+     * @return self
+     */
+    public function setMemberCount($member_count)
+    {
+        if (is_null($member_count)) {
+            throw new \InvalidArgumentException('non-nullable member_count cannot be null');
+        }
+        $this->container['member_count'] = $member_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_member_count
+     *
+     * @return int|null
+     */
+    public function getMaxMemberCount()
+    {
+        return $this->container['max_member_count'];
+    }
+
+    /**
+     * Sets max_member_count
+     *
+     * @param int|null $max_member_count 最大成员数
+     *
+     * @return self
+     */
+    public function setMaxMemberCount($max_member_count)
+    {
+        if (is_null($max_member_count)) {
+            throw new \InvalidArgumentException('non-nullable max_member_count cannot be null');
+        }
+        $this->container['max_member_count'] = $max_member_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets active_member_num
+     *
+     * @return int|null
+     */
+    public function getActiveMemberNum()
+    {
+        return $this->container['active_member_num'];
+    }
+
+    /**
+     * Sets active_member_num
+     *
+     * @param int|null $active_member_num 活跃成员数（可选，部分群有此数据）
+     *
+     * @return self
+     */
+    public function setActiveMemberNum($active_member_num)
+    {
+        if (is_null($active_member_num)) {
+            throw new \InvalidArgumentException('non-nullable active_member_num cannot be null');
+        }
+        $this->container['active_member_num'] = $active_member_num;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner_uin
+     *
+     * @return string|null
+     */
+    public function getOwnerUin()
+    {
+        return $this->container['owner_uin'];
+    }
+
+    /**
+     * Sets owner_uin
+     *
+     * @param string|null $owner_uin 群主QQ号（可选）
+     *
+     * @return self
+     */
+    public function setOwnerUin($owner_uin)
+    {
+        if (is_null($owner_uin)) {
+            throw new \InvalidArgumentException('non-nullable owner_uin cannot be null');
+        }
+        $this->container['owner_uin'] = $owner_uin;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner_uid
+     *
+     * @return string|null
+     */
+    public function getOwnerUid()
+    {
+        return $this->container['owner_uid'];
+    }
+
+    /**
+     * Sets owner_uid
+     *
+     * @param string|null $owner_uid 群主UID（可选）
+     *
+     * @return self
+     */
+    public function setOwnerUid($owner_uid)
+    {
+        if (is_null($owner_uid)) {
+            throw new \InvalidArgumentException('non-nullable owner_uid cannot be null');
+        }
+        $this->container['owner_uid'] = $owner_uid;
+
+        return $this;
+    }
+
+    /**
+     * Gets create_time
+     *
+     * @return int|null
+     */
+    public function getCreateTime()
+    {
+        return $this->container['create_time'];
+    }
+
+    /**
+     * Sets create_time
+     *
+     * @param int|null $create_time 建群时间戳（Unix时间戳，可选）
+     *
+     * @return self
+     */
+    public function setCreateTime($create_time)
+    {
+        if (is_null($create_time)) {
+            throw new \InvalidArgumentException('non-nullable create_time cannot be null');
+        }
+        $this->container['create_time'] = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets create_time_str
+     *
+     * @return string|null
+     */
+    public function getCreateTimeStr()
+    {
+        return $this->container['create_time_str'];
+    }
+
+    /**
+     * Sets create_time_str
+     *
+     * @param string|null $create_time_str 建群时间格式化字符串（可选）
+     *
+     * @return self
+     */
+    public function setCreateTimeStr($create_time_str)
+    {
+        if (is_null($create_time_str)) {
+            throw new \InvalidArgumentException('non-nullable create_time_str cannot be null');
+        }
+        $this->container['create_time_str'] = $create_time_str;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_grade
+     *
+     * @return int|null
+     */
+    public function getGroupGrade()
+    {
+        return $this->container['group_grade'];
+    }
+
+    /**
+     * Sets group_grade
+     *
+     * @param int|null $group_grade 群等级（可选）
+     *
+     * @return self
+     */
+    public function setGroupGrade($group_grade)
+    {
+        if (is_null($group_grade)) {
+            throw new \InvalidArgumentException('non-nullable group_grade cannot be null');
+        }
+        $this->container['group_grade'] = $group_grade;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_memo
+     *
+     * @return string|null
+     */
+    public function getGroupMemo()
+    {
+        return $this->container['group_memo'];
+    }
+
+    /**
+     * Sets group_memo
+     *
+     * @param string|null $group_memo 群公告/简介（可选）
+     *
+     * @return self
+     */
+    public function setGroupMemo($group_memo)
+    {
+        if (is_null($group_memo)) {
+            throw new \InvalidArgumentException('non-nullable group_memo cannot be null');
+        }
+        $this->container['group_memo'] = $group_memo;
+
+        return $this;
+    }
+
+    /**
+     * Gets cert_type
+     *
+     * @return int|null
+     */
+    public function getCertType()
+    {
+        return $this->container['cert_type'];
+    }
+
+    /**
+     * Sets cert_type
+     *
+     * @param int|null $cert_type 认证类型（0=未认证，可选）
+     *
+     * @return self
+     */
+    public function setCertType($cert_type)
+    {
+        if (is_null($cert_type)) {
+            throw new \InvalidArgumentException('non-nullable cert_type cannot be null');
+        }
+        $this->container['cert_type'] = $cert_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets cert_text
+     *
+     * @return string|null
+     */
+    public function getCertText()
+    {
+        return $this->container['cert_text'];
+    }
+
+    /**
+     * Sets cert_text
+     *
+     * @param string|null $cert_text 认证说明文本（可选）
+     *
+     * @return self
+     */
+    public function setCertText($cert_text)
+    {
+        if (is_null($cert_text)) {
+            throw new \InvalidArgumentException('non-nullable cert_text cannot be null');
+        }
+        $this->container['cert_text'] = $cert_text;
 
         return $this;
     }

@@ -27,5 +27,6 @@ Name | Type | Description | Notes
 **languages** | **array<string,int>** |  | [optional]
 **collaborators** | [**\OpenAPI\Client\Model\GetGithubRepo200ResponseCollaboratorsInner[]**](GetGithubRepo200ResponseCollaboratorsInner.md) |  | [optional]
 **maintainers** | [**\OpenAPI\Client\Model\GetGithubRepo200ResponseCollaboratorsInner[]**](GetGithubRepo200ResponseCollaboratorsInner.md) |  | [optional]
+**latest_release** | [**\OpenAPI\Client\Model\GetGithubRepo200ResponseLatestRelease**](GetGithubRepo200ResponseLatestRelease.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

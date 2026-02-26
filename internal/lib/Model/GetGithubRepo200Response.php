@@ -79,7 +79,8 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
         'updated_at' => '\DateTime',
         'languages' => 'array<string,int>',
         'collaborators' => '\OpenAPI\Client\Model\GetGithubRepo200ResponseCollaboratorsInner[]',
-        'maintainers' => '\OpenAPI\Client\Model\GetGithubRepo200ResponseCollaboratorsInner[]'
+        'maintainers' => '\OpenAPI\Client\Model\GetGithubRepo200ResponseCollaboratorsInner[]',
+        'latest_release' => '\OpenAPI\Client\Model\GetGithubRepo200ResponseLatestRelease'
     ];
 
     /**
@@ -112,7 +113,8 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
         'updated_at' => 'date-time',
         'languages' => null,
         'collaborators' => null,
-        'maintainers' => null
+        'maintainers' => null,
+        'latest_release' => null
     ];
 
     /**
@@ -143,7 +145,8 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
         'updated_at' => false,
         'languages' => false,
         'collaborators' => true,
-        'maintainers' => false
+        'maintainers' => false,
+        'latest_release' => true
     ];
 
     /**
@@ -254,7 +257,8 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
         'updated_at' => 'updated_at',
         'languages' => 'languages',
         'collaborators' => 'collaborators',
-        'maintainers' => 'maintainers'
+        'maintainers' => 'maintainers',
+        'latest_release' => 'latest_release'
     ];
 
     /**
@@ -285,7 +289,8 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
         'updated_at' => 'setUpdatedAt',
         'languages' => 'setLanguages',
         'collaborators' => 'setCollaborators',
-        'maintainers' => 'setMaintainers'
+        'maintainers' => 'setMaintainers',
+        'latest_release' => 'setLatestRelease'
     ];
 
     /**
@@ -316,7 +321,8 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
         'updated_at' => 'getUpdatedAt',
         'languages' => 'getLanguages',
         'collaborators' => 'getCollaborators',
-        'maintainers' => 'getMaintainers'
+        'maintainers' => 'getMaintainers',
+        'latest_release' => 'getLatestRelease'
     ];
 
     /**
@@ -399,6 +405,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('languages', $data ?? [], null);
         $this->setIfExists('collaborators', $data ?? [], null);
         $this->setIfExists('maintainers', $data ?? [], null);
+        $this->setIfExists('latest_release', $data ?? [], null);
     }
 
     /**
@@ -1067,6 +1074,40 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable maintainers cannot be null');
         }
         $this->container['maintainers'] = $maintainers;
+
+        return $this;
+    }
+
+    /**
+     * Gets latest_release
+     *
+     * @return \OpenAPI\Client\Model\GetGithubRepo200ResponseLatestRelease|null
+     */
+    public function getLatestRelease()
+    {
+        return $this->container['latest_release'];
+    }
+
+    /**
+     * Sets latest_release
+     *
+     * @param \OpenAPI\Client\Model\GetGithubRepo200ResponseLatestRelease|null $latest_release latest_release
+     *
+     * @return self
+     */
+    public function setLatestRelease($latest_release)
+    {
+        if (is_null($latest_release)) {
+            array_push($this->openAPINullablesSetToNull, 'latest_release');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('latest_release', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['latest_release'] = $latest_release;
 
         return $this;
     }

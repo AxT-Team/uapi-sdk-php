@@ -231,6 +231,9 @@ class ImageApi {
         if (array_key_exists('text', $args)) $query['text'] = $args['text'];
         if (array_key_exists('size', $args)) $query['size'] = $args['size'];
         if (array_key_exists('format', $args)) $query['format'] = $args['format'];
+        if (array_key_exists('transparent', $args)) $query['transparent'] = $args['transparent'];
+        if (array_key_exists('fgcolor', $args)) $query['fgcolor'] = $args['fgcolor'];
+        if (array_key_exists('bgcolor', $args)) $query['bgcolor'] = $args['bgcolor'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
     }
     function getImageTobase64(array $args = []) {
@@ -263,6 +266,14 @@ class ImageApi {
         if (array_key_exists('bg_color', $args)) $body['bg_color'] = $args['bg_color'];
         if (array_key_exists('file', $args)) $body['file'] = $args['file'];
         if (array_key_exists('image_url', $args)) $body['image_url'] = $args['image_url'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
+    }
+    function postImageNsfw(array $args = []) {
+        $path='/api/v1/image/nsfw';
+        $query = [];
+        $body = [];
+        if (array_key_exists('file', $args)) $body['file'] = $args['file'];
+        if (array_key_exists('url', $args)) $body['url'] = $args['url'];
         return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
     }
     function postImageSpeechless(array $args = []) {
@@ -301,11 +312,51 @@ class MiscApi {
         $body = [];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
     }
+    function getMiscDistrict(array $args = []) {
+        $path='/api/v1/misc/district';
+        $query = [];
+        $body = [];
+        if (array_key_exists('keywords', $args)) $query['keywords'] = $args['keywords'];
+        if (array_key_exists('adcode', $args)) $query['adcode'] = $args['adcode'];
+        if (array_key_exists('lat', $args)) $query['lat'] = $args['lat'];
+        if (array_key_exists('lng', $args)) $query['lng'] = $args['lng'];
+        if (array_key_exists('level', $args)) $query['level'] = $args['level'];
+        if (array_key_exists('country', $args)) $query['country'] = $args['country'];
+        if (array_key_exists('limit', $args)) $query['limit'] = $args['limit'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getMiscHolidayCalendar(array $args = []) {
+        $path='/api/v1/misc/holiday-calendar';
+        $query = [];
+        $body = [];
+        if (array_key_exists('date', $args)) $query['date'] = $args['date'];
+        if (array_key_exists('month', $args)) $query['month'] = $args['month'];
+        if (array_key_exists('year', $args)) $query['year'] = $args['year'];
+        if (array_key_exists('timezone', $args)) $query['timezone'] = $args['timezone'];
+        if (array_key_exists('holiday_type', $args)) $query['holiday_type'] = $args['holiday_type'];
+        if (array_key_exists('include_nearby', $args)) $query['include_nearby'] = $args['include_nearby'];
+        if (array_key_exists('nearby_limit', $args)) $query['nearby_limit'] = $args['nearby_limit'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
     function getMiscHotboard(array $args = []) {
         $path='/api/v1/misc/hotboard';
         $query = [];
         $body = [];
         if (array_key_exists('type', $args)) $query['type'] = $args['type'];
+        if (array_key_exists('time', $args)) $query['time'] = $args['time'];
+        if (array_key_exists('keyword', $args)) $query['keyword'] = $args['keyword'];
+        if (array_key_exists('time_start', $args)) $query['time_start'] = $args['time_start'];
+        if (array_key_exists('time_end', $args)) $query['time_end'] = $args['time_end'];
+        if (array_key_exists('limit', $args)) $query['limit'] = $args['limit'];
+        if (array_key_exists('sources', $args)) $query['sources'] = $args['sources'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
+    }
+    function getMiscLunartime(array $args = []) {
+        $path='/api/v1/misc/lunartime';
+        $query = [];
+        $body = [];
+        if (array_key_exists('ts', $args)) $query['ts'] = $args['ts'];
+        if (array_key_exists('timezone', $args)) $query['timezone'] = $args['timezone'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
     }
     function getMiscPhoneinfo(array $args = []) {
@@ -353,6 +404,7 @@ class MiscApi {
         $body = [];
         if (array_key_exists('tracking_number', $args)) $query['tracking_number'] = $args['tracking_number'];
         if (array_key_exists('carrier_code', $args)) $query['carrier_code'] = $args['carrier_code'];
+        if (array_key_exists('phone', $args)) $query['phone'] = $args['phone'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
     }
     function getMiscWeather(array $args = []) {
@@ -362,8 +414,11 @@ class MiscApi {
         if (array_key_exists('city', $args)) $query['city'] = $args['city'];
         if (array_key_exists('adcode', $args)) $query['adcode'] = $args['adcode'];
         if (array_key_exists('extended', $args)) $query['extended'] = $args['extended'];
-        if (array_key_exists('indices', $args)) $query['indices'] = $args['indices'];
         if (array_key_exists('forecast', $args)) $query['forecast'] = $args['forecast'];
+        if (array_key_exists('hourly', $args)) $query['hourly'] = $args['hourly'];
+        if (array_key_exists('minutely', $args)) $query['minutely'] = $args['minutely'];
+        if (array_key_exists('indices', $args)) $query['indices'] = $args['indices'];
+        if (array_key_exists('lang', $args)) $query['lang'] = $args['lang'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body);
     }
     function getMiscWorldtime(array $args = []) {

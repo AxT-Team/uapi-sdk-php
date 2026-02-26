@@ -128,7 +128,7 @@ class PoemApi
     /**
      * Operation getSaying
      *
-     * 随机获取一句诗词或名言
+     * 一言
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSaying'] to see the possible values for this operation
      *
@@ -145,7 +145,7 @@ class PoemApi
     /**
      * Operation getSayingWithHttpInfo
      *
-     * 随机获取一句诗词或名言
+     * 一言
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSaying'] to see the possible values for this operation
      *
@@ -243,7 +243,7 @@ class PoemApi
     /**
      * Operation getSayingAsync
      *
-     * 随机获取一句诗词或名言
+     * 一言
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSaying'] to see the possible values for this operation
      *
@@ -263,7 +263,7 @@ class PoemApi
     /**
      * Operation getSayingAsyncWithHttpInfo
      *
-     * 随机获取一句诗词或名言
+     * 一言
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSaying'] to see the possible values for this operation
      *

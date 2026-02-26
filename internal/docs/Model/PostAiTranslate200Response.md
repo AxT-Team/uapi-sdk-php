@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **int** |  | [optional]
 **message** | **string** |  | [optional]
 **is_batch** | **bool** | 标识是否为批量翻译请求。 | [optional]
 **data** | [**\OpenAPI\Client\Model\PostAiTranslate200ResponseData**](PostAiTranslate200ResponseData.md) |  | [optional]

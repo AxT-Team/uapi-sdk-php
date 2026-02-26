@@ -57,7 +57,6 @@ class GetConvertUnixtime200Response implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'datetime' => 'string',
         'timestamp' => 'int'
     ];
@@ -70,7 +69,6 @@ class GetConvertUnixtime200Response implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
         'datetime' => null,
         'timestamp' => null
     ];
@@ -81,7 +79,6 @@ class GetConvertUnixtime200Response implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
         'datetime' => false,
         'timestamp' => false
     ];
@@ -172,7 +169,6 @@ class GetConvertUnixtime200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'datetime' => 'datetime',
         'timestamp' => 'timestamp'
     ];
@@ -183,7 +179,6 @@ class GetConvertUnixtime200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'datetime' => 'setDatetime',
         'timestamp' => 'setTimestamp'
     ];
@@ -194,7 +189,6 @@ class GetConvertUnixtime200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'datetime' => 'getDatetime',
         'timestamp' => 'getTimestamp'
     ];
@@ -256,7 +250,6 @@ class GetConvertUnixtime200Response implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('datetime', $data ?? [], null);
         $this->setIfExists('timestamp', $data ?? [], null);
     }
@@ -302,33 +295,6 @@ class GetConvertUnixtime200Response implements ModelInterface, ArrayAccess, \Jso
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code 状态码，200代表操作成功。
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
 
     /**
      * Gets datetime

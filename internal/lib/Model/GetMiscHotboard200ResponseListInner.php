@@ -61,7 +61,8 @@ class GetMiscHotboard200ResponseListInner implements ModelInterface, ArrayAccess
         'hot_value' => 'string',
         'index' => 'int',
         'title' => 'string',
-        'url' => 'string'
+        'url' => 'string',
+        'cover' => 'string'
     ];
 
     /**
@@ -76,7 +77,8 @@ class GetMiscHotboard200ResponseListInner implements ModelInterface, ArrayAccess
         'hot_value' => null,
         'index' => null,
         'title' => null,
-        'url' => null
+        'url' => null,
+        'cover' => null
     ];
 
     /**
@@ -89,7 +91,8 @@ class GetMiscHotboard200ResponseListInner implements ModelInterface, ArrayAccess
         'hot_value' => false,
         'index' => false,
         'title' => false,
-        'url' => false
+        'url' => false,
+        'cover' => false
     ];
 
     /**
@@ -182,7 +185,8 @@ class GetMiscHotboard200ResponseListInner implements ModelInterface, ArrayAccess
         'hot_value' => 'hot_value',
         'index' => 'index',
         'title' => 'title',
-        'url' => 'url'
+        'url' => 'url',
+        'cover' => 'cover'
     ];
 
     /**
@@ -195,7 +199,8 @@ class GetMiscHotboard200ResponseListInner implements ModelInterface, ArrayAccess
         'hot_value' => 'setHotValue',
         'index' => 'setIndex',
         'title' => 'setTitle',
-        'url' => 'setUrl'
+        'url' => 'setUrl',
+        'cover' => 'setCover'
     ];
 
     /**
@@ -208,7 +213,8 @@ class GetMiscHotboard200ResponseListInner implements ModelInterface, ArrayAccess
         'hot_value' => 'getHotValue',
         'index' => 'getIndex',
         'title' => 'getTitle',
-        'url' => 'getUrl'
+        'url' => 'getUrl',
+        'cover' => 'getCover'
     ];
 
     /**
@@ -273,6 +279,7 @@ class GetMiscHotboard200ResponseListInner implements ModelInterface, ArrayAccess
         $this->setIfExists('index', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('cover', $data ?? [], null);
     }
 
     /**
@@ -448,6 +455,33 @@ class GetMiscHotboard200ResponseListInner implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
         $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets cover
+     *
+     * @return string|null
+     */
+    public function getCover()
+    {
+        return $this->container['cover'];
+    }
+
+    /**
+     * Sets cover
+     *
+     * @param string|null $cover 封面图 URL，音乐类热榜返回专辑封面，其他平台无此字段。
+     *
+     * @return self
+     */
+    public function setCover($cover)
+    {
+        if (is_null($cover)) {
+            throw new \InvalidArgumentException('non-nullable cover cannot be null');
+        }
+        $this->container['cover'] = $cover;
 
         return $this;
     }

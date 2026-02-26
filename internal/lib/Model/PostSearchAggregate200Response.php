@@ -418,7 +418,7 @@ class PostSearchAggregate200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets sources
      *
-     * @param \OpenAPI\Client\Model\PostSearchAggregate200ResponseSourcesInner[]|null $sources 各搜索引擎的结果数量统计
+     * @param \OpenAPI\Client\Model\PostSearchAggregate200ResponseSourcesInner[]|null $sources 各搜索源的结果统计
      *
      * @return self
      */

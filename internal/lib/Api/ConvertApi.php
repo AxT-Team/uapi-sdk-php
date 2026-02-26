@@ -131,7 +131,7 @@ class ConvertApi
     /**
      * Operation getConvertUnixtime
      *
-     * Unix时间戳与日期字符串双向转换
+     * 时间戳转换
      *
      * @param  string $time 一个智能时间参数，可传入Unix时间戳（10位或13位）或标准日期字符串（如 &#39;2023-10-27 10:30:00&#39;），系统将自动识别并转换。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConvertUnixtime'] to see the possible values for this operation
@@ -149,7 +149,7 @@ class ConvertApi
     /**
      * Operation getConvertUnixtimeWithHttpInfo
      *
-     * Unix时间戳与日期字符串双向转换
+     * 时间戳转换
      *
      * @param  string $time 一个智能时间参数，可传入Unix时间戳（10位或13位）或标准日期字符串（如 &#39;2023-10-27 10:30:00&#39;），系统将自动识别并转换。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConvertUnixtime'] to see the possible values for this operation
@@ -248,7 +248,7 @@ class ConvertApi
     /**
      * Operation getConvertUnixtimeAsync
      *
-     * Unix时间戳与日期字符串双向转换
+     * 时间戳转换
      *
      * @param  string $time 一个智能时间参数，可传入Unix时间戳（10位或13位）或标准日期字符串（如 &#39;2023-10-27 10:30:00&#39;），系统将自动识别并转换。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConvertUnixtime'] to see the possible values for this operation
@@ -269,7 +269,7 @@ class ConvertApi
     /**
      * Operation getConvertUnixtimeAsyncWithHttpInfo
      *
-     * Unix时间戳与日期字符串双向转换
+     * 时间戳转换
      *
      * @param  string $time 一个智能时间参数，可传入Unix时间戳（10位或13位）或标准日期字符串（如 &#39;2023-10-27 10:30:00&#39;），系统将自动识别并转换。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConvertUnixtime'] to see the possible values for this operation
@@ -414,7 +414,7 @@ class ConvertApi
     /**
      * Operation postConvertJson
      *
-     * 美化并格式化JSON字符串
+     * JSON 格式化
      *
      * @param  \OpenAPI\Client\Model\PostConvertJsonRequest $post_convert_json_request 这是一个JSON对象，里面必须包含一个名为 &#x60;content&#x60; 的字段。这个字段的值，就是你希望格式化的、原始的JSON字符串。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postConvertJson'] to see the possible values for this operation
@@ -432,7 +432,7 @@ class ConvertApi
     /**
      * Operation postConvertJsonWithHttpInfo
      *
-     * 美化并格式化JSON字符串
+     * JSON 格式化
      *
      * @param  \OpenAPI\Client\Model\PostConvertJsonRequest $post_convert_json_request 这是一个JSON对象，里面必须包含一个名为 &#x60;content&#x60; 的字段。这个字段的值，就是你希望格式化的、原始的JSON字符串。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postConvertJson'] to see the possible values for this operation
@@ -531,7 +531,7 @@ class ConvertApi
     /**
      * Operation postConvertJsonAsync
      *
-     * 美化并格式化JSON字符串
+     * JSON 格式化
      *
      * @param  \OpenAPI\Client\Model\PostConvertJsonRequest $post_convert_json_request 这是一个JSON对象，里面必须包含一个名为 &#x60;content&#x60; 的字段。这个字段的值，就是你希望格式化的、原始的JSON字符串。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postConvertJson'] to see the possible values for this operation
@@ -552,7 +552,7 @@ class ConvertApi
     /**
      * Operation postConvertJsonAsyncWithHttpInfo
      *
-     * 美化并格式化JSON字符串
+     * JSON 格式化
      *
      * @param  \OpenAPI\Client\Model\PostConvertJsonRequest $post_convert_json_request 这是一个JSON对象，里面必须包含一个名为 &#x60;content&#x60; 的字段。这个字段的值，就是你希望格式化的、原始的JSON字符串。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postConvertJson'] to see the possible values for this operation

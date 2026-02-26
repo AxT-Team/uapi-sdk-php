@@ -140,7 +140,7 @@ class GameApi
     /**
      * Operation getGameEpicFree
      *
-     * 获取Epic Games免费游戏
+     * Epic 免费游戏
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameEpicFree'] to see the possible values for this operation
      *
@@ -157,7 +157,7 @@ class GameApi
     /**
      * Operation getGameEpicFreeWithHttpInfo
      *
-     * 获取Epic Games免费游戏
+     * Epic 免费游戏
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameEpicFree'] to see the possible values for this operation
      *
@@ -255,7 +255,7 @@ class GameApi
     /**
      * Operation getGameEpicFreeAsync
      *
-     * 获取Epic Games免费游戏
+     * Epic 免费游戏
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameEpicFree'] to see the possible values for this operation
      *
@@ -275,7 +275,7 @@ class GameApi
     /**
      * Operation getGameEpicFreeAsyncWithHttpInfo
      *
-     * 获取Epic Games免费游戏
+     * Epic 免费游戏
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameEpicFree'] to see the possible values for this operation
      *
@@ -402,36 +402,38 @@ class GameApi
     /**
      * Operation getGameMinecraftHistoryid
      *
-     * 查询Minecraft玩家历史用户名
+     * 查询 MC 曾用名
      *
-     * @param  string $uuid 玩家的 Minecraft UUID，请务必使用32位无破折号的格式。 (required)
+     * @param  string|null $name 玩家的 Minecraft 用户名。使用此参数查询时，会返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家）。 (optional)
+     * @param  string|null $uuid 玩家的 Minecraft UUID，支持带连字符或不带连字符格式。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftHistoryid'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\GetGameMinecraftHistoryid200Response|\OpenAPI\Client\Model\GetGameMinecraftHistoryid400Response|\OpenAPI\Client\Model\GetGameMinecraftHistoryid404Response|\OpenAPI\Client\Model\GetGameMinecraftHistoryid502Response
      */
-    public function getGameMinecraftHistoryid($uuid, string $contentType = self::contentTypes['getGameMinecraftHistoryid'][0])
+    public function getGameMinecraftHistoryid($name = null, $uuid = null, string $contentType = self::contentTypes['getGameMinecraftHistoryid'][0])
     {
-        list($response) = $this->getGameMinecraftHistoryidWithHttpInfo($uuid, $contentType);
+        list($response) = $this->getGameMinecraftHistoryidWithHttpInfo($name, $uuid, $contentType);
         return $response;
     }
 
     /**
      * Operation getGameMinecraftHistoryidWithHttpInfo
      *
-     * 查询Minecraft玩家历史用户名
+     * 查询 MC 曾用名
      *
-     * @param  string $uuid 玩家的 Minecraft UUID，请务必使用32位无破折号的格式。 (required)
+     * @param  string|null $name 玩家的 Minecraft 用户名。使用此参数查询时，会返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家）。 (optional)
+     * @param  string|null $uuid 玩家的 Minecraft UUID，支持带连字符或不带连字符格式。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftHistoryid'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\GetGameMinecraftHistoryid200Response|\OpenAPI\Client\Model\GetGameMinecraftHistoryid400Response|\OpenAPI\Client\Model\GetGameMinecraftHistoryid404Response|\OpenAPI\Client\Model\GetGameMinecraftHistoryid502Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getGameMinecraftHistoryidWithHttpInfo($uuid, string $contentType = self::contentTypes['getGameMinecraftHistoryid'][0])
+    public function getGameMinecraftHistoryidWithHttpInfo($name = null, $uuid = null, string $contentType = self::contentTypes['getGameMinecraftHistoryid'][0])
     {
-        $request = $this->getGameMinecraftHistoryidRequest($uuid, $contentType);
+        $request = $this->getGameMinecraftHistoryidRequest($name, $uuid, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -547,17 +549,18 @@ class GameApi
     /**
      * Operation getGameMinecraftHistoryidAsync
      *
-     * 查询Minecraft玩家历史用户名
+     * 查询 MC 曾用名
      *
-     * @param  string $uuid 玩家的 Minecraft UUID，请务必使用32位无破折号的格式。 (required)
+     * @param  string|null $name 玩家的 Minecraft 用户名。使用此参数查询时，会返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家）。 (optional)
+     * @param  string|null $uuid 玩家的 Minecraft UUID，支持带连字符或不带连字符格式。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftHistoryid'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGameMinecraftHistoryidAsync($uuid, string $contentType = self::contentTypes['getGameMinecraftHistoryid'][0])
+    public function getGameMinecraftHistoryidAsync($name = null, $uuid = null, string $contentType = self::contentTypes['getGameMinecraftHistoryid'][0])
     {
-        return $this->getGameMinecraftHistoryidAsyncWithHttpInfo($uuid, $contentType)
+        return $this->getGameMinecraftHistoryidAsyncWithHttpInfo($name, $uuid, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -568,18 +571,19 @@ class GameApi
     /**
      * Operation getGameMinecraftHistoryidAsyncWithHttpInfo
      *
-     * 查询Minecraft玩家历史用户名
+     * 查询 MC 曾用名
      *
-     * @param  string $uuid 玩家的 Minecraft UUID，请务必使用32位无破折号的格式。 (required)
+     * @param  string|null $name 玩家的 Minecraft 用户名。使用此参数查询时，会返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家）。 (optional)
+     * @param  string|null $uuid 玩家的 Minecraft UUID，支持带连字符或不带连字符格式。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftHistoryid'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGameMinecraftHistoryidAsyncWithHttpInfo($uuid, string $contentType = self::contentTypes['getGameMinecraftHistoryid'][0])
+    public function getGameMinecraftHistoryidAsyncWithHttpInfo($name = null, $uuid = null, string $contentType = self::contentTypes['getGameMinecraftHistoryid'][0])
     {
         $returnType = '\OpenAPI\Client\Model\GetGameMinecraftHistoryid200Response';
-        $request = $this->getGameMinecraftHistoryidRequest($uuid, $contentType);
+        $request = $this->getGameMinecraftHistoryidRequest($name, $uuid, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -620,21 +624,17 @@ class GameApi
     /**
      * Create request for operation 'getGameMinecraftHistoryid'
      *
-     * @param  string $uuid 玩家的 Minecraft UUID，请务必使用32位无破折号的格式。 (required)
+     * @param  string|null $name 玩家的 Minecraft 用户名。使用此参数查询时，会返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家）。 (optional)
+     * @param  string|null $uuid 玩家的 Minecraft UUID，支持带连字符或不带连字符格式。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftHistoryid'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getGameMinecraftHistoryidRequest($uuid, string $contentType = self::contentTypes['getGameMinecraftHistoryid'][0])
+    public function getGameMinecraftHistoryidRequest($name = null, $uuid = null, string $contentType = self::contentTypes['getGameMinecraftHistoryid'][0])
     {
 
-        // verify the required parameter 'uuid' is set
-        if ($uuid === null || (is_array($uuid) && count($uuid) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $uuid when calling getGameMinecraftHistoryid'
-            );
-        }
+
 
 
         $resourcePath = '/game/minecraft/historyid';
@@ -646,12 +646,21 @@ class GameApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $name,
+            'name', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $uuid,
             'uuid', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 
@@ -713,7 +722,7 @@ class GameApi
     /**
      * Operation getGameMinecraftServerstatus
      *
-     * 查询Minecraft服务器状态
+     * 查询 MC 服务器
      *
      * @param  string $server Minecraft服务器的地址，可以是域名（如 &#x60;hypixel.net&#x60;）或 &#x60;IP:端口&#x60; 的形式（如 &#x60;mc.example.com:25565&#x60;）。如果省略端口，将默认使用 &#x60;25565&#x60;。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftServerstatus'] to see the possible values for this operation
@@ -731,7 +740,7 @@ class GameApi
     /**
      * Operation getGameMinecraftServerstatusWithHttpInfo
      *
-     * 查询Minecraft服务器状态
+     * 查询 MC 服务器
      *
      * @param  string $server Minecraft服务器的地址，可以是域名（如 &#x60;hypixel.net&#x60;）或 &#x60;IP:端口&#x60; 的形式（如 &#x60;mc.example.com:25565&#x60;）。如果省略端口，将默认使用 &#x60;25565&#x60;。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftServerstatus'] to see the possible values for this operation
@@ -858,7 +867,7 @@ class GameApi
     /**
      * Operation getGameMinecraftServerstatusAsync
      *
-     * 查询Minecraft服务器状态
+     * 查询 MC 服务器
      *
      * @param  string $server Minecraft服务器的地址，可以是域名（如 &#x60;hypixel.net&#x60;）或 &#x60;IP:端口&#x60; 的形式（如 &#x60;mc.example.com:25565&#x60;）。如果省略端口，将默认使用 &#x60;25565&#x60;。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftServerstatus'] to see the possible values for this operation
@@ -879,7 +888,7 @@ class GameApi
     /**
      * Operation getGameMinecraftServerstatusAsyncWithHttpInfo
      *
-     * 查询Minecraft服务器状态
+     * 查询 MC 服务器
      *
      * @param  string $server Minecraft服务器的地址，可以是域名（如 &#x60;hypixel.net&#x60;）或 &#x60;IP:端口&#x60; 的形式（如 &#x60;mc.example.com:25565&#x60;）。如果省略端口，将默认使用 &#x60;25565&#x60;。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftServerstatus'] to see the possible values for this operation
@@ -1024,14 +1033,14 @@ class GameApi
     /**
      * Operation getGameMinecraftUserinfo
      *
-     * 查询Minecraft玩家信息
+     * 查询 MC 玩家
      *
      * @param  string $username 玩家的 Minecraft 游戏内名称（正版ID）。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftUserinfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetGameMinecraftUserinfo200Response|\OpenAPI\Client\Model\GetGameMinecraftUserinfo400Response|\OpenAPI\Client\Model\GetGameMinecraftUserinfo404Response|\OpenAPI\Client\Model\GetGameMinecraftHistoryid502Response
+     * @return \OpenAPI\Client\Model\GetGameMinecraftUserinfo200Response|\OpenAPI\Client\Model\GetGameMinecraftUserinfo400Response|\OpenAPI\Client\Model\GetGameMinecraftUserinfo404Response|\OpenAPI\Client\Model\GetGameMinecraftUserinfo502Response
      */
     public function getGameMinecraftUserinfo($username, string $contentType = self::contentTypes['getGameMinecraftUserinfo'][0])
     {
@@ -1042,14 +1051,14 @@ class GameApi
     /**
      * Operation getGameMinecraftUserinfoWithHttpInfo
      *
-     * 查询Minecraft玩家信息
+     * 查询 MC 玩家
      *
      * @param  string $username 玩家的 Minecraft 游戏内名称（正版ID）。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftUserinfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetGameMinecraftUserinfo200Response|\OpenAPI\Client\Model\GetGameMinecraftUserinfo400Response|\OpenAPI\Client\Model\GetGameMinecraftUserinfo404Response|\OpenAPI\Client\Model\GetGameMinecraftHistoryid502Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GetGameMinecraftUserinfo200Response|\OpenAPI\Client\Model\GetGameMinecraftUserinfo400Response|\OpenAPI\Client\Model\GetGameMinecraftUserinfo404Response|\OpenAPI\Client\Model\GetGameMinecraftUserinfo502Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGameMinecraftUserinfoWithHttpInfo($username, string $contentType = self::contentTypes['getGameMinecraftUserinfo'][0])
     {
@@ -1099,7 +1108,7 @@ class GameApi
                     );
                 case 502:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\GetGameMinecraftHistoryid502Response',
+                        '\OpenAPI\Client\Model\GetGameMinecraftUserinfo502Response',
                         $request,
                         $response,
                     );
@@ -1154,7 +1163,7 @@ class GameApi
                 case 502:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GetGameMinecraftHistoryid502Response',
+                        '\OpenAPI\Client\Model\GetGameMinecraftUserinfo502Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1169,7 +1178,7 @@ class GameApi
     /**
      * Operation getGameMinecraftUserinfoAsync
      *
-     * 查询Minecraft玩家信息
+     * 查询 MC 玩家
      *
      * @param  string $username 玩家的 Minecraft 游戏内名称（正版ID）。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftUserinfo'] to see the possible values for this operation
@@ -1190,7 +1199,7 @@ class GameApi
     /**
      * Operation getGameMinecraftUserinfoAsyncWithHttpInfo
      *
-     * 查询Minecraft玩家信息
+     * 查询 MC 玩家
      *
      * @param  string $username 玩家的 Minecraft 游戏内名称（正版ID）。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGameMinecraftUserinfo'] to see the possible values for this operation
@@ -1335,7 +1344,7 @@ class GameApi
     /**
      * Operation getGameSteamSummary
      *
-     * 获取Steam用户公开摘要
+     * 查询 Steam 用户
      *
      * @param  string|null $steamid 用户的 Steam 标识。可以是以下任意一种格式： - 纯数字的 **SteamID64** - 用户的 **自定义 URL 名称** (Vanity URL) - 完整的 **个人资料链接** (包含 SteamID64 或自定义名称) - 好友代码 (如 &#x60;22202&#x60;) (optional)
      * @param  string|null $id 用户的 Steam 自定义URL名称（Vanity URL）。例如个人资料链接中 &#x60;/id/&#x60; 后面的部分。 (optional)
@@ -1356,7 +1365,7 @@ class GameApi
     /**
      * Operation getGameSteamSummaryWithHttpInfo
      *
-     * 获取Steam用户公开摘要
+     * 查询 Steam 用户
      *
      * @param  string|null $steamid 用户的 Steam 标识。可以是以下任意一种格式： - 纯数字的 **SteamID64** - 用户的 **自定义 URL 名称** (Vanity URL) - 完整的 **个人资料链接** (包含 SteamID64 或自定义名称) - 好友代码 (如 &#x60;22202&#x60;) (optional)
      * @param  string|null $id 用户的 Steam 自定义URL名称（Vanity URL）。例如个人资料链接中 &#x60;/id/&#x60; 后面的部分。 (optional)
@@ -1500,7 +1509,7 @@ class GameApi
     /**
      * Operation getGameSteamSummaryAsync
      *
-     * 获取Steam用户公开摘要
+     * 查询 Steam 用户
      *
      * @param  string|null $steamid 用户的 Steam 标识。可以是以下任意一种格式： - 纯数字的 **SteamID64** - 用户的 **自定义 URL 名称** (Vanity URL) - 完整的 **个人资料链接** (包含 SteamID64 或自定义名称) - 好友代码 (如 &#x60;22202&#x60;) (optional)
      * @param  string|null $id 用户的 Steam 自定义URL名称（Vanity URL）。例如个人资料链接中 &#x60;/id/&#x60; 后面的部分。 (optional)
@@ -1524,7 +1533,7 @@ class GameApi
     /**
      * Operation getGameSteamSummaryAsyncWithHttpInfo
      *
-     * 获取Steam用户公开摘要
+     * 查询 Steam 用户
      *
      * @param  string|null $steamid 用户的 Steam 标识。可以是以下任意一种格式： - 纯数字的 **SteamID64** - 用户的 **自定义 URL 名称** (Vanity URL) - 完整的 **个人资料链接** (包含 SteamID64 或自定义名称) - 好友代码 (如 &#x60;22202&#x60;) (optional)
      * @param  string|null $id 用户的 Steam 自定义URL名称（Vanity URL）。例如个人资料链接中 &#x60;/id/&#x60; 后面的部分。 (optional)

@@ -60,7 +60,6 @@ class GetGameSteamSummary200Response implements ModelInterface, ArrayAccess, \Js
         'avatar' => 'string',
         'avatarfull' => 'string',
         'avatarmedium' => 'string',
-        'code' => 'int',
         'communityvisibilitystate' => 'int',
         'loccountrycode' => 'string',
         'personaname' => 'string',
@@ -85,7 +84,6 @@ class GetGameSteamSummary200Response implements ModelInterface, ArrayAccess, \Js
         'avatar' => null,
         'avatarfull' => null,
         'avatarmedium' => null,
-        'code' => null,
         'communityvisibilitystate' => null,
         'loccountrycode' => null,
         'personaname' => null,
@@ -108,7 +106,6 @@ class GetGameSteamSummary200Response implements ModelInterface, ArrayAccess, \Js
         'avatar' => false,
         'avatarfull' => false,
         'avatarmedium' => false,
-        'code' => false,
         'communityvisibilitystate' => false,
         'loccountrycode' => false,
         'personaname' => false,
@@ -211,7 +208,6 @@ class GetGameSteamSummary200Response implements ModelInterface, ArrayAccess, \Js
         'avatar' => 'avatar',
         'avatarfull' => 'avatarfull',
         'avatarmedium' => 'avatarmedium',
-        'code' => 'code',
         'communityvisibilitystate' => 'communityvisibilitystate',
         'loccountrycode' => 'loccountrycode',
         'personaname' => 'personaname',
@@ -234,7 +230,6 @@ class GetGameSteamSummary200Response implements ModelInterface, ArrayAccess, \Js
         'avatar' => 'setAvatar',
         'avatarfull' => 'setAvatarfull',
         'avatarmedium' => 'setAvatarmedium',
-        'code' => 'setCode',
         'communityvisibilitystate' => 'setCommunityvisibilitystate',
         'loccountrycode' => 'setLoccountrycode',
         'personaname' => 'setPersonaname',
@@ -257,7 +252,6 @@ class GetGameSteamSummary200Response implements ModelInterface, ArrayAccess, \Js
         'avatar' => 'getAvatar',
         'avatarfull' => 'getAvatarfull',
         'avatarmedium' => 'getAvatarmedium',
-        'code' => 'getCode',
         'communityvisibilitystate' => 'getCommunityvisibilitystate',
         'loccountrycode' => 'getLoccountrycode',
         'personaname' => 'getPersonaname',
@@ -331,7 +325,6 @@ class GetGameSteamSummary200Response implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('avatar', $data ?? [], null);
         $this->setIfExists('avatarfull', $data ?? [], null);
         $this->setIfExists('avatarmedium', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('communityvisibilitystate', $data ?? [], null);
         $this->setIfExists('loccountrycode', $data ?? [], null);
         $this->setIfExists('personaname', $data ?? [], null);
@@ -464,33 +457,6 @@ class GetGameSteamSummary200Response implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable avatarmedium cannot be null');
         }
         $this->container['avatarmedium'] = $avatarmedium;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code 状态码，200代表成功。
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
 
         return $this;
     }

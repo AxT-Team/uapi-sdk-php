@@ -149,7 +149,7 @@ class SocialApi
     /**
      * Operation getGithubRepo
      *
-     * 获取GitHub仓库信息
+     * 查询 GitHub 仓库
      *
      * @param  string $repo 目标仓库的标识，格式为 &#x60;owner/repo&#x60;。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGithubRepo'] to see the possible values for this operation
@@ -167,7 +167,7 @@ class SocialApi
     /**
      * Operation getGithubRepoWithHttpInfo
      *
-     * 获取GitHub仓库信息
+     * 查询 GitHub 仓库
      *
      * @param  string $repo 目标仓库的标识，格式为 &#x60;owner/repo&#x60;。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGithubRepo'] to see the possible values for this operation
@@ -280,7 +280,7 @@ class SocialApi
     /**
      * Operation getGithubRepoAsync
      *
-     * 获取GitHub仓库信息
+     * 查询 GitHub 仓库
      *
      * @param  string $repo 目标仓库的标识，格式为 &#x60;owner/repo&#x60;。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGithubRepo'] to see the possible values for this operation
@@ -301,7 +301,7 @@ class SocialApi
     /**
      * Operation getGithubRepoAsyncWithHttpInfo
      *
-     * 获取GitHub仓库信息
+     * 查询 GitHub 仓库
      *
      * @param  string $repo 目标仓库的标识，格式为 &#x60;owner/repo&#x60;。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGithubRepo'] to see the possible values for this operation
@@ -446,7 +446,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliArchives
      *
-     * 获取Bilibili用户投稿列表
+     * 查询 B站投稿
      *
      * @param  string $mid B站用户的mid（用户ID） (required)
      * @param  string|null $keywords 搜索关键词，可为空 (optional)
@@ -468,7 +468,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliArchivesWithHttpInfo
      *
-     * 获取Bilibili用户投稿列表
+     * 查询 B站投稿
      *
      * @param  string $mid B站用户的mid（用户ID） (required)
      * @param  string|null $keywords 搜索关键词，可为空 (optional)
@@ -599,7 +599,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliArchivesAsync
      *
-     * 获取Bilibili用户投稿列表
+     * 查询 B站投稿
      *
      * @param  string $mid B站用户的mid（用户ID） (required)
      * @param  string|null $keywords 搜索关键词，可为空 (optional)
@@ -624,7 +624,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliArchivesAsyncWithHttpInfo
      *
-     * 获取Bilibili用户投稿列表
+     * 查询 B站投稿
      *
      * @param  string $mid B站用户的mid（用户ID） (required)
      * @param  string|null $keywords 搜索关键词，可为空 (optional)
@@ -817,7 +817,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliLiveroom
      *
-     * 获取Bilibili直播间信息
+     * 查询 B站直播间
      *
      * @param  string|null $mid 主播的用户ID (&#x60;mid&#x60;)。与 &#x60;room_id&#x60; 任选其一。 (optional)
      * @param  string|null $room_id 直播间ID，可以是长号（真实ID）或短号（靓号）。与 &#x60;mid&#x60; 任选其一。 (optional)
@@ -836,7 +836,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliLiveroomWithHttpInfo
      *
-     * 获取Bilibili直播间信息
+     * 查询 B站直播间
      *
      * @param  string|null $mid 主播的用户ID (&#x60;mid&#x60;)。与 &#x60;room_id&#x60; 任选其一。 (optional)
      * @param  string|null $room_id 直播间ID，可以是长号（真实ID）或短号（靓号）。与 &#x60;mid&#x60; 任选其一。 (optional)
@@ -922,7 +922,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliLiveroomAsync
      *
-     * 获取Bilibili直播间信息
+     * 查询 B站直播间
      *
      * @param  string|null $mid 主播的用户ID (&#x60;mid&#x60;)。与 &#x60;room_id&#x60; 任选其一。 (optional)
      * @param  string|null $room_id 直播间ID，可以是长号（真实ID）或短号（靓号）。与 &#x60;mid&#x60; 任选其一。 (optional)
@@ -944,7 +944,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliLiveroomAsyncWithHttpInfo
      *
-     * 获取Bilibili直播间信息
+     * 查询 B站直播间
      *
      * @param  string|null $mid 主播的用户ID (&#x60;mid&#x60;)。与 &#x60;room_id&#x60; 任选其一。 (optional)
      * @param  string|null $room_id 直播间ID，可以是长号（真实ID）或短号（靓号）。与 &#x60;mid&#x60; 任选其一。 (optional)
@@ -1095,10 +1095,10 @@ class SocialApi
     /**
      * Operation getSocialBilibiliReplies
      *
-     * 获取Bilibili视频评论
+     * 查询 B站评论
      *
      * @param  string $oid 目标评论区的ID。对于视频，这通常就是它的 &#x60;aid&#x60;。 (required)
-     * @param  string|null $sort 排序方式。&#x60;0&#x60;&#x3D;按时间, &#x60;1&#x60;&#x3D;按点赞, &#x60;2&#x60;&#x3D;按回复。默认为 &#x60;0&#x60;。 (optional)
+     * @param  string|null $sort 排序方式。支持 &#x60;0/time&#x60;（按时间）、&#x60;1/like&#x60;（按点赞）、&#x60;2/reply&#x60;（按回复数）、&#x60;3/hot/hottest/最热&#x60;（按最热）。默认为 &#x60;0/time&#x60;。 (optional)
      * @param  string|null $ps 每页获取的评论数量，范围是1到20。默认为 &#x60;20&#x60;。 (optional)
      * @param  string|null $pn 要获取的页码，从1开始。默认为 &#x60;1&#x60;。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialBilibiliReplies'] to see the possible values for this operation
@@ -1116,10 +1116,10 @@ class SocialApi
     /**
      * Operation getSocialBilibiliRepliesWithHttpInfo
      *
-     * 获取Bilibili视频评论
+     * 查询 B站评论
      *
      * @param  string $oid 目标评论区的ID。对于视频，这通常就是它的 &#x60;aid&#x60;。 (required)
-     * @param  string|null $sort 排序方式。&#x60;0&#x60;&#x3D;按时间, &#x60;1&#x60;&#x3D;按点赞, &#x60;2&#x60;&#x3D;按回复。默认为 &#x60;0&#x60;。 (optional)
+     * @param  string|null $sort 排序方式。支持 &#x60;0/time&#x60;（按时间）、&#x60;1/like&#x60;（按点赞）、&#x60;2/reply&#x60;（按回复数）、&#x60;3/hot/hottest/最热&#x60;（按最热）。默认为 &#x60;0/time&#x60;。 (optional)
      * @param  string|null $ps 每页获取的评论数量，范围是1到20。默认为 &#x60;20&#x60;。 (optional)
      * @param  string|null $pn 要获取的页码，从1开始。默认为 &#x60;1&#x60;。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialBilibiliReplies'] to see the possible values for this operation
@@ -1204,10 +1204,10 @@ class SocialApi
     /**
      * Operation getSocialBilibiliRepliesAsync
      *
-     * 获取Bilibili视频评论
+     * 查询 B站评论
      *
      * @param  string $oid 目标评论区的ID。对于视频，这通常就是它的 &#x60;aid&#x60;。 (required)
-     * @param  string|null $sort 排序方式。&#x60;0&#x60;&#x3D;按时间, &#x60;1&#x60;&#x3D;按点赞, &#x60;2&#x60;&#x3D;按回复。默认为 &#x60;0&#x60;。 (optional)
+     * @param  string|null $sort 排序方式。支持 &#x60;0/time&#x60;（按时间）、&#x60;1/like&#x60;（按点赞）、&#x60;2/reply&#x60;（按回复数）、&#x60;3/hot/hottest/最热&#x60;（按最热）。默认为 &#x60;0/time&#x60;。 (optional)
      * @param  string|null $ps 每页获取的评论数量，范围是1到20。默认为 &#x60;20&#x60;。 (optional)
      * @param  string|null $pn 要获取的页码，从1开始。默认为 &#x60;1&#x60;。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialBilibiliReplies'] to see the possible values for this operation
@@ -1228,10 +1228,10 @@ class SocialApi
     /**
      * Operation getSocialBilibiliRepliesAsyncWithHttpInfo
      *
-     * 获取Bilibili视频评论
+     * 查询 B站评论
      *
      * @param  string $oid 目标评论区的ID。对于视频，这通常就是它的 &#x60;aid&#x60;。 (required)
-     * @param  string|null $sort 排序方式。&#x60;0&#x60;&#x3D;按时间, &#x60;1&#x60;&#x3D;按点赞, &#x60;2&#x60;&#x3D;按回复。默认为 &#x60;0&#x60;。 (optional)
+     * @param  string|null $sort 排序方式。支持 &#x60;0/time&#x60;（按时间）、&#x60;1/like&#x60;（按点赞）、&#x60;2/reply&#x60;（按回复数）、&#x60;3/hot/hottest/最热&#x60;（按最热）。默认为 &#x60;0/time&#x60;。 (optional)
      * @param  string|null $ps 每页获取的评论数量，范围是1到20。默认为 &#x60;20&#x60;。 (optional)
      * @param  string|null $pn 要获取的页码，从1开始。默认为 &#x60;1&#x60;。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialBilibiliReplies'] to see the possible values for this operation
@@ -1284,7 +1284,7 @@ class SocialApi
      * Create request for operation 'getSocialBilibiliReplies'
      *
      * @param  string $oid 目标评论区的ID。对于视频，这通常就是它的 &#x60;aid&#x60;。 (required)
-     * @param  string|null $sort 排序方式。&#x60;0&#x60;&#x3D;按时间, &#x60;1&#x60;&#x3D;按点赞, &#x60;2&#x60;&#x3D;按回复。默认为 &#x60;0&#x60;。 (optional)
+     * @param  string|null $sort 排序方式。支持 &#x60;0/time&#x60;（按时间）、&#x60;1/like&#x60;（按点赞）、&#x60;2/reply&#x60;（按回复数）、&#x60;3/hot/hottest/最热&#x60;（按最热）。默认为 &#x60;0/time&#x60;。 (optional)
      * @param  string|null $ps 每页获取的评论数量，范围是1到20。默认为 &#x60;20&#x60;。 (optional)
      * @param  string|null $pn 要获取的页码，从1开始。默认为 &#x60;1&#x60;。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialBilibiliReplies'] to see the possible values for this operation
@@ -1409,7 +1409,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliUserinfo
      *
-     * 查询Bilibili用户信息
+     * 查询 B站用户
      *
      * @param  string $uid Bilibili用户的UID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialBilibiliUserinfo'] to see the possible values for this operation
@@ -1427,7 +1427,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliUserinfoWithHttpInfo
      *
-     * 查询Bilibili用户信息
+     * 查询 B站用户
      *
      * @param  string $uid Bilibili用户的UID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialBilibiliUserinfo'] to see the possible values for this operation
@@ -1554,7 +1554,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliUserinfoAsync
      *
-     * 查询Bilibili用户信息
+     * 查询 B站用户
      *
      * @param  string $uid Bilibili用户的UID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialBilibiliUserinfo'] to see the possible values for this operation
@@ -1575,7 +1575,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliUserinfoAsyncWithHttpInfo
      *
-     * 查询Bilibili用户信息
+     * 查询 B站用户
      *
      * @param  string $uid Bilibili用户的UID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialBilibiliUserinfo'] to see the possible values for this operation
@@ -1720,7 +1720,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliVideoinfo
      *
-     * 获取Bilibili视频详细信息
+     * 查询 B站视频
      *
      * @param  string|null $aid 视频的AV号 (aid)，纯数字格式。&#x60;aid&#x60;和&#x60;bvid&#x60;任选其一即可。 (optional)
      * @param  string|null $bvid 视频的BV号 (bvid)，例如 &#x60;BV117411r7R1&#x60;。&#x60;aid&#x60;和&#x60;bvid&#x60;任选其一即可。 (optional)
@@ -1739,7 +1739,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliVideoinfoWithHttpInfo
      *
-     * 获取Bilibili视频详细信息
+     * 查询 B站视频
      *
      * @param  string|null $aid 视频的AV号 (aid)，纯数字格式。&#x60;aid&#x60;和&#x60;bvid&#x60;任选其一即可。 (optional)
      * @param  string|null $bvid 视频的BV号 (bvid)，例如 &#x60;BV117411r7R1&#x60;。&#x60;aid&#x60;和&#x60;bvid&#x60;任选其一即可。 (optional)
@@ -1825,7 +1825,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliVideoinfoAsync
      *
-     * 获取Bilibili视频详细信息
+     * 查询 B站视频
      *
      * @param  string|null $aid 视频的AV号 (aid)，纯数字格式。&#x60;aid&#x60;和&#x60;bvid&#x60;任选其一即可。 (optional)
      * @param  string|null $bvid 视频的BV号 (bvid)，例如 &#x60;BV117411r7R1&#x60;。&#x60;aid&#x60;和&#x60;bvid&#x60;任选其一即可。 (optional)
@@ -1847,7 +1847,7 @@ class SocialApi
     /**
      * Operation getSocialBilibiliVideoinfoAsyncWithHttpInfo
      *
-     * 获取Bilibili视频详细信息
+     * 查询 B站视频
      *
      * @param  string|null $aid 视频的AV号 (aid)，纯数字格式。&#x60;aid&#x60;和&#x60;bvid&#x60;任选其一即可。 (optional)
      * @param  string|null $bvid 视频的BV号 (bvid)，例如 &#x60;BV117411r7R1&#x60;。&#x60;aid&#x60;和&#x60;bvid&#x60;任选其一即可。 (optional)
@@ -1998,14 +1998,14 @@ class SocialApi
     /**
      * Operation getSocialQqGroupinfo
      *
-     * 获取QQ群名称、头像、简介
+     * 查询 QQ 群信息
      *
      * @param  string $group_id QQ群号，长度5-12位 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialQqGroupinfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetSocialQqGroupinfo200Response|\OpenAPI\Client\Model\GetSocialQqGroupinfo400Response|\OpenAPI\Client\Model\GetSocialQqGroupinfo404Response|\OpenAPI\Client\Model\GetSocialQqGroupinfo500Response
+     * @return \OpenAPI\Client\Model\GetSocialQqGroupinfo200Response|\OpenAPI\Client\Model\GetSocialQqGroupinfo400Response|\OpenAPI\Client\Model\GetSocialQqGroupinfo404Response
      */
     public function getSocialQqGroupinfo($group_id, string $contentType = self::contentTypes['getSocialQqGroupinfo'][0])
     {
@@ -2016,14 +2016,14 @@ class SocialApi
     /**
      * Operation getSocialQqGroupinfoWithHttpInfo
      *
-     * 获取QQ群名称、头像、简介
+     * 查询 QQ 群信息
      *
      * @param  string $group_id QQ群号，长度5-12位 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialQqGroupinfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetSocialQqGroupinfo200Response|\OpenAPI\Client\Model\GetSocialQqGroupinfo400Response|\OpenAPI\Client\Model\GetSocialQqGroupinfo404Response|\OpenAPI\Client\Model\GetSocialQqGroupinfo500Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GetSocialQqGroupinfo200Response|\OpenAPI\Client\Model\GetSocialQqGroupinfo400Response|\OpenAPI\Client\Model\GetSocialQqGroupinfo404Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSocialQqGroupinfoWithHttpInfo($group_id, string $contentType = self::contentTypes['getSocialQqGroupinfo'][0])
     {
@@ -2068,12 +2068,6 @@ class SocialApi
                 case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\GetSocialQqGroupinfo404Response',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\GetSocialQqGroupinfo500Response',
                         $request,
                         $response,
                     );
@@ -2125,14 +2119,6 @@ class SocialApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GetSocialQqGroupinfo500Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -2143,7 +2129,7 @@ class SocialApi
     /**
      * Operation getSocialQqGroupinfoAsync
      *
-     * 获取QQ群名称、头像、简介
+     * 查询 QQ 群信息
      *
      * @param  string $group_id QQ群号，长度5-12位 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialQqGroupinfo'] to see the possible values for this operation
@@ -2164,7 +2150,7 @@ class SocialApi
     /**
      * Operation getSocialQqGroupinfoAsyncWithHttpInfo
      *
-     * 获取QQ群名称、头像、简介
+     * 查询 QQ 群信息
      *
      * @param  string $group_id QQ群号，长度5-12位 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialQqGroupinfo'] to see the possible values for this operation
@@ -2309,7 +2295,7 @@ class SocialApi
     /**
      * Operation getSocialQqUserinfo
      *
-     * 独家获取QQ号头像、昵称
+     * 查询 QQ 信息
      *
      * @param  string $qq 需要查询的QQ号 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialQqUserinfo'] to see the possible values for this operation
@@ -2327,7 +2313,7 @@ class SocialApi
     /**
      * Operation getSocialQqUserinfoWithHttpInfo
      *
-     * 独家获取QQ号头像、昵称
+     * 查询 QQ 信息
      *
      * @param  string $qq 需要查询的QQ号 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialQqUserinfo'] to see the possible values for this operation
@@ -2440,7 +2426,7 @@ class SocialApi
     /**
      * Operation getSocialQqUserinfoAsync
      *
-     * 独家获取QQ号头像、昵称
+     * 查询 QQ 信息
      *
      * @param  string $qq 需要查询的QQ号 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialQqUserinfo'] to see the possible values for this operation
@@ -2461,7 +2447,7 @@ class SocialApi
     /**
      * Operation getSocialQqUserinfoAsyncWithHttpInfo
      *
-     * 独家获取QQ号头像、昵称
+     * 查询 QQ 信息
      *
      * @param  string $qq 需要查询的QQ号 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSocialQqUserinfo'] to see the possible values for this operation

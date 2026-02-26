@@ -57,8 +57,8 @@ class GetStatusUsage200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'endpoints' => '\OpenAPI\Client\Model\EndpointsAggregateEndpointsInner[]',
-        'unaggregated' => '\OpenAPI\Client\Model\EndpointsAggregateUnaggregated',
+        'endpoints' => '\OpenAPI\Client\Model\GetStatusUsage200ResponseAnyOfEndpointsInner[]',
+        'unaggregated' => '\OpenAPI\Client\Model\GetStatusUsage200ResponseAnyOfUnaggregated',
         'path' => 'string',
         'count' => 'int'
     ];
@@ -313,7 +313,7 @@ class GetStatusUsage200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets endpoints
      *
-     * @return \OpenAPI\Client\Model\EndpointsAggregateEndpointsInner[]|null
+     * @return \OpenAPI\Client\Model\GetStatusUsage200ResponseAnyOfEndpointsInner[]|null
      */
     public function getEndpoints()
     {
@@ -323,7 +323,7 @@ class GetStatusUsage200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets endpoints
      *
-     * @param \OpenAPI\Client\Model\EndpointsAggregateEndpointsInner[]|null $endpoints endpoints
+     * @param \OpenAPI\Client\Model\GetStatusUsage200ResponseAnyOfEndpointsInner[]|null $endpoints endpoints
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class GetStatusUsage200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets unaggregated
      *
-     * @return \OpenAPI\Client\Model\EndpointsAggregateUnaggregated|null
+     * @return \OpenAPI\Client\Model\GetStatusUsage200ResponseAnyOfUnaggregated|null
      */
     public function getUnaggregated()
     {
@@ -350,7 +350,7 @@ class GetStatusUsage200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets unaggregated
      *
-     * @param \OpenAPI\Client\Model\EndpointsAggregateUnaggregated|null $unaggregated unaggregated
+     * @param \OpenAPI\Client\Model\GetStatusUsage200ResponseAnyOfUnaggregated|null $unaggregated unaggregated
      *
      * @return self
      */

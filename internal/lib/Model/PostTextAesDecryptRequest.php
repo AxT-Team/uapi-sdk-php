@@ -379,7 +379,7 @@ class PostTextAesDecryptRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets nonce
      *
-     * @param string $nonce 16�ֽڵ�IV/Nonce����Ϊ16���ַ�
+     * @param string $nonce 16字节的IV/Nonce，必须为16个字符
      *
      * @return self
      */

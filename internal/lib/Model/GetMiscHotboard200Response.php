@@ -59,7 +59,12 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPITypes = [
         'list' => '\OpenAPI\Client\Model\GetMiscHotboard200ResponseListInner[]',
         'type' => 'string',
-        'update_time' => 'string'
+        'update_time' => 'string',
+        'snapshot_time' => 'int',
+        'keyword' => 'string',
+        'count' => 'int',
+        'results' => '\OpenAPI\Client\Model\GetMiscHotboard200ResponseResultsInner[]',
+        'sources' => 'string[]'
     ];
 
     /**
@@ -72,7 +77,12 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPIFormats = [
         'list' => null,
         'type' => null,
-        'update_time' => null
+        'update_time' => null,
+        'snapshot_time' => null,
+        'keyword' => null,
+        'count' => null,
+        'results' => null,
+        'sources' => null
     ];
 
     /**
@@ -83,7 +93,12 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     protected static array $openAPINullables = [
         'list' => false,
         'type' => false,
-        'update_time' => false
+        'update_time' => false,
+        'snapshot_time' => false,
+        'keyword' => false,
+        'count' => false,
+        'results' => false,
+        'sources' => false
     ];
 
     /**
@@ -174,7 +189,12 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     protected static $attributeMap = [
         'list' => 'list',
         'type' => 'type',
-        'update_time' => 'update_time'
+        'update_time' => 'update_time',
+        'snapshot_time' => 'snapshot_time',
+        'keyword' => 'keyword',
+        'count' => 'count',
+        'results' => 'results',
+        'sources' => 'sources'
     ];
 
     /**
@@ -185,7 +205,12 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     protected static $setters = [
         'list' => 'setList',
         'type' => 'setType',
-        'update_time' => 'setUpdateTime'
+        'update_time' => 'setUpdateTime',
+        'snapshot_time' => 'setSnapshotTime',
+        'keyword' => 'setKeyword',
+        'count' => 'setCount',
+        'results' => 'setResults',
+        'sources' => 'setSources'
     ];
 
     /**
@@ -196,7 +221,12 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     protected static $getters = [
         'list' => 'getList',
         'type' => 'getType',
-        'update_time' => 'getUpdateTime'
+        'update_time' => 'getUpdateTime',
+        'snapshot_time' => 'getSnapshotTime',
+        'keyword' => 'getKeyword',
+        'count' => 'getCount',
+        'results' => 'getResults',
+        'sources' => 'getSources'
     ];
 
     /**
@@ -259,6 +289,11 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('list', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('update_time', $data ?? [], null);
+        $this->setIfExists('snapshot_time', $data ?? [], null);
+        $this->setIfExists('keyword', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('sources', $data ?? [], null);
     }
 
     /**
@@ -380,6 +415,141 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable update_time cannot be null');
         }
         $this->container['update_time'] = $update_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets snapshot_time
+     *
+     * @return int|null
+     */
+    public function getSnapshotTime()
+    {
+        return $this->container['snapshot_time'];
+    }
+
+    /**
+     * Sets snapshot_time
+     *
+     * @param int|null $snapshot_time 时光机模式返回的快照实际时间戳（毫秒）。
+     *
+     * @return self
+     */
+    public function setSnapshotTime($snapshot_time)
+    {
+        if (is_null($snapshot_time)) {
+            throw new \InvalidArgumentException('non-nullable snapshot_time cannot be null');
+        }
+        $this->container['snapshot_time'] = $snapshot_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets keyword
+     *
+     * @return string|null
+     */
+    public function getKeyword()
+    {
+        return $this->container['keyword'];
+    }
+
+    /**
+     * Sets keyword
+     *
+     * @param string|null $keyword 搜索模式返回的搜索关键词。
+     *
+     * @return self
+     */
+    public function setKeyword($keyword)
+    {
+        if (is_null($keyword)) {
+            throw new \InvalidArgumentException('non-nullable keyword cannot be null');
+        }
+        $this->container['keyword'] = $keyword;
+
+        return $this;
+    }
+
+    /**
+     * Gets count
+     *
+     * @return int|null
+     */
+    public function getCount()
+    {
+        return $this->container['count'];
+    }
+
+    /**
+     * Sets count
+     *
+     * @param int|null $count 搜索模式返回的结果数量。
+     *
+     * @return self
+     */
+    public function setCount($count)
+    {
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
+        }
+        $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \OpenAPI\Client\Model\GetMiscHotboard200ResponseResultsInner[]|null
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \OpenAPI\Client\Model\GetMiscHotboard200ResponseResultsInner[]|null $results 搜索模式返回的结果数组。
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
+        }
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets sources
+     *
+     * @return string[]|null
+     */
+    public function getSources()
+    {
+        return $this->container['sources'];
+    }
+
+    /**
+     * Sets sources
+     *
+     * @param string[]|null $sources 数据源列表模式返回的可用历史数据源数组。
+     *
+     * @return self
+     */
+    public function setSources($sources)
+    {
+        if (is_null($sources)) {
+            throw new \InvalidArgumentException('non-nullable sources cannot be null');
+        }
+        $this->container['sources'] = $sources;
 
         return $this;
     }

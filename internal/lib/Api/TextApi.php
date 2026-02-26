@@ -80,7 +80,13 @@ class TextApi
         'postTextAesDecrypt' => [
             'application/json',
         ],
+        'postTextAesDecryptAdvanced' => [
+            'application/json',
+        ],
         'postTextAesEncrypt' => [
+            'application/json',
+        ],
+        'postTextAesEncryptAdvanced' => [
             'application/json',
         ],
         'postTextAnalyze' => [
@@ -90,6 +96,9 @@ class TextApi
             'application/json',
         ],
         'postTextBase64Encode' => [
+            'application/json',
+        ],
+        'postTextConvert' => [
             'application/json',
         ],
         'postTextMd5' => [
@@ -149,7 +158,7 @@ class TextApi
     /**
      * Operation getTextMd5
      *
-     * 计算文本的MD5哈希值(GET)
+     * MD5 哈希
      *
      * @param  string $text 需要计算哈希值的文本 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTextMd5'] to see the possible values for this operation
@@ -167,7 +176,7 @@ class TextApi
     /**
      * Operation getTextMd5WithHttpInfo
      *
-     * 计算文本的MD5哈希值(GET)
+     * MD5 哈希
      *
      * @param  string $text 需要计算哈希值的文本 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTextMd5'] to see the possible values for this operation
@@ -266,7 +275,7 @@ class TextApi
     /**
      * Operation getTextMd5Async
      *
-     * 计算文本的MD5哈希值(GET)
+     * MD5 哈希
      *
      * @param  string $text 需要计算哈希值的文本 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTextMd5'] to see the possible values for this operation
@@ -287,7 +296,7 @@ class TextApi
     /**
      * Operation getTextMd5AsyncWithHttpInfo
      *
-     * 计算文本的MD5哈希值(GET)
+     * MD5 哈希
      *
      * @param  string $text 需要计算哈希值的文本 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTextMd5'] to see the possible values for this operation
@@ -432,7 +441,7 @@ class TextApi
     /**
      * Operation postTextAesDecrypt
      *
-     * 使用AES算法解密文本
+     * AES 解密
      *
      * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request 包含待解密文本 &#39;text&#39;、密钥 &#39;key&#39; 和随机数 &#39;nonce&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecrypt'] to see the possible values for this operation
@@ -450,7 +459,7 @@ class TextApi
     /**
      * Operation postTextAesDecryptWithHttpInfo
      *
-     * 使用AES算法解密文本
+     * AES 解密
      *
      * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request 包含待解密文本 &#39;text&#39;、密钥 &#39;key&#39; 和随机数 &#39;nonce&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecrypt'] to see the possible values for this operation
@@ -563,7 +572,7 @@ class TextApi
     /**
      * Operation postTextAesDecryptAsync
      *
-     * 使用AES算法解密文本
+     * AES 解密
      *
      * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request 包含待解密文本 &#39;text&#39;、密钥 &#39;key&#39; 和随机数 &#39;nonce&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecrypt'] to see the possible values for this operation
@@ -584,7 +593,7 @@ class TextApi
     /**
      * Operation postTextAesDecryptAsyncWithHttpInfo
      *
-     * 使用AES算法解密文本
+     * AES 解密
      *
      * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request 包含待解密文本 &#39;text&#39;、密钥 &#39;key&#39; 和随机数 &#39;nonce&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecrypt'] to see the possible values for this operation
@@ -725,9 +734,290 @@ class TextApi
     }
 
     /**
+     * Operation postTextAesDecryptAdvanced
+     *
+     * AES高级解密
+     *
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request 包含解密配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecryptAdvanced'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\PostTextAesDecryptAdvanced200Response|\OpenAPI\Client\Model\PostTextAesDecryptAdvanced400Response
+     */
+    public function postTextAesDecryptAdvanced($post_text_aes_decrypt_advanced_request, string $contentType = self::contentTypes['postTextAesDecryptAdvanced'][0])
+    {
+        list($response) = $this->postTextAesDecryptAdvancedWithHttpInfo($post_text_aes_decrypt_advanced_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation postTextAesDecryptAdvancedWithHttpInfo
+     *
+     * AES高级解密
+     *
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request 包含解密配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecryptAdvanced'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\PostTextAesDecryptAdvanced200Response|\OpenAPI\Client\Model\PostTextAesDecryptAdvanced400Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postTextAesDecryptAdvancedWithHttpInfo($post_text_aes_decrypt_advanced_request, string $contentType = self::contentTypes['postTextAesDecryptAdvanced'][0])
+    {
+        $request = $this->postTextAesDecryptAdvancedRequest($post_text_aes_decrypt_advanced_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PostTextAesDecryptAdvanced200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PostTextAesDecryptAdvanced400Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\PostTextAesDecryptAdvanced200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PostTextAesDecryptAdvanced200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PostTextAesDecryptAdvanced400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postTextAesDecryptAdvancedAsync
+     *
+     * AES高级解密
+     *
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request 包含解密配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecryptAdvanced'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postTextAesDecryptAdvancedAsync($post_text_aes_decrypt_advanced_request, string $contentType = self::contentTypes['postTextAesDecryptAdvanced'][0])
+    {
+        return $this->postTextAesDecryptAdvancedAsyncWithHttpInfo($post_text_aes_decrypt_advanced_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postTextAesDecryptAdvancedAsyncWithHttpInfo
+     *
+     * AES高级解密
+     *
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request 包含解密配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecryptAdvanced'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postTextAesDecryptAdvancedAsyncWithHttpInfo($post_text_aes_decrypt_advanced_request, string $contentType = self::contentTypes['postTextAesDecryptAdvanced'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\PostTextAesDecryptAdvanced200Response';
+        $request = $this->postTextAesDecryptAdvancedRequest($post_text_aes_decrypt_advanced_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postTextAesDecryptAdvanced'
+     *
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request 包含解密配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecryptAdvanced'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postTextAesDecryptAdvancedRequest($post_text_aes_decrypt_advanced_request, string $contentType = self::contentTypes['postTextAesDecryptAdvanced'][0])
+    {
+
+        // verify the required parameter 'post_text_aes_decrypt_advanced_request' is set
+        if ($post_text_aes_decrypt_advanced_request === null || (is_array($post_text_aes_decrypt_advanced_request) && count($post_text_aes_decrypt_advanced_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $post_text_aes_decrypt_advanced_request when calling postTextAesDecryptAdvanced'
+            );
+        }
+
+
+        $resourcePath = '/text/aes/decrypt-advanced';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($post_text_aes_decrypt_advanced_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($post_text_aes_decrypt_advanced_request));
+            } else {
+                $httpBody = $post_text_aes_decrypt_advanced_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation postTextAesEncrypt
      *
-     * 使用AES算法加密文本
+     * AES 加密
      *
      * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request 包含待加密文本 &#39;text&#39; 和密钥 &#39;key&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncrypt'] to see the possible values for this operation
@@ -745,7 +1035,7 @@ class TextApi
     /**
      * Operation postTextAesEncryptWithHttpInfo
      *
-     * 使用AES算法加密文本
+     * AES 加密
      *
      * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request 包含待加密文本 &#39;text&#39; 和密钥 &#39;key&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncrypt'] to see the possible values for this operation
@@ -858,7 +1148,7 @@ class TextApi
     /**
      * Operation postTextAesEncryptAsync
      *
-     * 使用AES算法加密文本
+     * AES 加密
      *
      * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request 包含待加密文本 &#39;text&#39; 和密钥 &#39;key&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncrypt'] to see the possible values for this operation
@@ -879,7 +1169,7 @@ class TextApi
     /**
      * Operation postTextAesEncryptAsyncWithHttpInfo
      *
-     * 使用AES算法加密文本
+     * AES 加密
      *
      * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request 包含待加密文本 &#39;text&#39; 和密钥 &#39;key&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncrypt'] to see the possible values for this operation
@@ -1020,9 +1310,290 @@ class TextApi
     }
 
     /**
+     * Operation postTextAesEncryptAdvanced
+     *
+     * AES高级加密
+     *
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request 包含加密配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncryptAdvanced'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\PostTextAesEncryptAdvanced200Response|\OpenAPI\Client\Model\PostTextAesEncryptAdvanced400Response
+     */
+    public function postTextAesEncryptAdvanced($post_text_aes_encrypt_advanced_request, string $contentType = self::contentTypes['postTextAesEncryptAdvanced'][0])
+    {
+        list($response) = $this->postTextAesEncryptAdvancedWithHttpInfo($post_text_aes_encrypt_advanced_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation postTextAesEncryptAdvancedWithHttpInfo
+     *
+     * AES高级加密
+     *
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request 包含加密配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncryptAdvanced'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\PostTextAesEncryptAdvanced200Response|\OpenAPI\Client\Model\PostTextAesEncryptAdvanced400Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postTextAesEncryptAdvancedWithHttpInfo($post_text_aes_encrypt_advanced_request, string $contentType = self::contentTypes['postTextAesEncryptAdvanced'][0])
+    {
+        $request = $this->postTextAesEncryptAdvancedRequest($post_text_aes_encrypt_advanced_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PostTextAesEncryptAdvanced200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PostTextAesEncryptAdvanced400Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\PostTextAesEncryptAdvanced200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PostTextAesEncryptAdvanced200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PostTextAesEncryptAdvanced400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postTextAesEncryptAdvancedAsync
+     *
+     * AES高级加密
+     *
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request 包含加密配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncryptAdvanced'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postTextAesEncryptAdvancedAsync($post_text_aes_encrypt_advanced_request, string $contentType = self::contentTypes['postTextAesEncryptAdvanced'][0])
+    {
+        return $this->postTextAesEncryptAdvancedAsyncWithHttpInfo($post_text_aes_encrypt_advanced_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postTextAesEncryptAdvancedAsyncWithHttpInfo
+     *
+     * AES高级加密
+     *
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request 包含加密配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncryptAdvanced'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postTextAesEncryptAdvancedAsyncWithHttpInfo($post_text_aes_encrypt_advanced_request, string $contentType = self::contentTypes['postTextAesEncryptAdvanced'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\PostTextAesEncryptAdvanced200Response';
+        $request = $this->postTextAesEncryptAdvancedRequest($post_text_aes_encrypt_advanced_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postTextAesEncryptAdvanced'
+     *
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request 包含加密配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncryptAdvanced'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postTextAesEncryptAdvancedRequest($post_text_aes_encrypt_advanced_request, string $contentType = self::contentTypes['postTextAesEncryptAdvanced'][0])
+    {
+
+        // verify the required parameter 'post_text_aes_encrypt_advanced_request' is set
+        if ($post_text_aes_encrypt_advanced_request === null || (is_array($post_text_aes_encrypt_advanced_request) && count($post_text_aes_encrypt_advanced_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $post_text_aes_encrypt_advanced_request when calling postTextAesEncryptAdvanced'
+            );
+        }
+
+
+        $resourcePath = '/text/aes/encrypt-advanced';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($post_text_aes_encrypt_advanced_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($post_text_aes_encrypt_advanced_request));
+            } else {
+                $httpBody = $post_text_aes_encrypt_advanced_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation postTextAnalyze
      *
-     * 多维度分析文本内容
+     * 文本分析
      *
      * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request 包含待分析文本 &#39;text&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAnalyze'] to see the possible values for this operation
@@ -1040,7 +1611,7 @@ class TextApi
     /**
      * Operation postTextAnalyzeWithHttpInfo
      *
-     * 多维度分析文本内容
+     * 文本分析
      *
      * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request 包含待分析文本 &#39;text&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAnalyze'] to see the possible values for this operation
@@ -1139,7 +1710,7 @@ class TextApi
     /**
      * Operation postTextAnalyzeAsync
      *
-     * 多维度分析文本内容
+     * 文本分析
      *
      * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request 包含待分析文本 &#39;text&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAnalyze'] to see the possible values for this operation
@@ -1160,7 +1731,7 @@ class TextApi
     /**
      * Operation postTextAnalyzeAsyncWithHttpInfo
      *
-     * 多维度分析文本内容
+     * 文本分析
      *
      * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request 包含待分析文本 &#39;text&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAnalyze'] to see the possible values for this operation
@@ -1303,7 +1874,7 @@ class TextApi
     /**
      * Operation postTextBase64Decode
      *
-     * 解码Base64编码的文本
+     * Base64 解码
      *
      * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request 包含待解码文本 &#39;text&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Decode'] to see the possible values for this operation
@@ -1321,7 +1892,7 @@ class TextApi
     /**
      * Operation postTextBase64DecodeWithHttpInfo
      *
-     * 解码Base64编码的文本
+     * Base64 解码
      *
      * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request 包含待解码文本 &#39;text&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Decode'] to see the possible values for this operation
@@ -1420,7 +1991,7 @@ class TextApi
     /**
      * Operation postTextBase64DecodeAsync
      *
-     * 解码Base64编码的文本
+     * Base64 解码
      *
      * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request 包含待解码文本 &#39;text&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Decode'] to see the possible values for this operation
@@ -1441,7 +2012,7 @@ class TextApi
     /**
      * Operation postTextBase64DecodeAsyncWithHttpInfo
      *
-     * 解码Base64编码的文本
+     * Base64 解码
      *
      * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request 包含待解码文本 &#39;text&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Decode'] to see the possible values for this operation
@@ -1584,7 +2155,7 @@ class TextApi
     /**
      * Operation postTextBase64Encode
      *
-     * 将文本进行Base64编码
+     * Base64 编码
      *
      * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request 包含待编码文本 &#39;text&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Encode'] to see the possible values for this operation
@@ -1602,7 +2173,7 @@ class TextApi
     /**
      * Operation postTextBase64EncodeWithHttpInfo
      *
-     * 将文本进行Base64编码
+     * Base64 编码
      *
      * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request 包含待编码文本 &#39;text&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Encode'] to see the possible values for this operation
@@ -1701,7 +2272,7 @@ class TextApi
     /**
      * Operation postTextBase64EncodeAsync
      *
-     * 将文本进行Base64编码
+     * Base64 编码
      *
      * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request 包含待编码文本 &#39;text&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Encode'] to see the possible values for this operation
@@ -1722,7 +2293,7 @@ class TextApi
     /**
      * Operation postTextBase64EncodeAsyncWithHttpInfo
      *
-     * 将文本进行Base64编码
+     * Base64 编码
      *
      * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request 包含待编码文本 &#39;text&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Encode'] to see the possible values for this operation
@@ -1863,9 +2434,290 @@ class TextApi
     }
 
     /**
+     * Operation postTextConvert
+     *
+     * 格式转换
+     *
+     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request 包含转换配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextConvert'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\PostTextConvert200Response|\OpenAPI\Client\Model\PostTextConvert400Response
+     */
+    public function postTextConvert($post_text_convert_request, string $contentType = self::contentTypes['postTextConvert'][0])
+    {
+        list($response) = $this->postTextConvertWithHttpInfo($post_text_convert_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation postTextConvertWithHttpInfo
+     *
+     * 格式转换
+     *
+     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request 包含转换配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextConvert'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\PostTextConvert200Response|\OpenAPI\Client\Model\PostTextConvert400Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postTextConvertWithHttpInfo($post_text_convert_request, string $contentType = self::contentTypes['postTextConvert'][0])
+    {
+        $request = $this->postTextConvertRequest($post_text_convert_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PostTextConvert200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PostTextConvert400Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\PostTextConvert200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PostTextConvert200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PostTextConvert400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postTextConvertAsync
+     *
+     * 格式转换
+     *
+     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request 包含转换配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextConvert'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postTextConvertAsync($post_text_convert_request, string $contentType = self::contentTypes['postTextConvert'][0])
+    {
+        return $this->postTextConvertAsyncWithHttpInfo($post_text_convert_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postTextConvertAsyncWithHttpInfo
+     *
+     * 格式转换
+     *
+     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request 包含转换配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextConvert'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postTextConvertAsyncWithHttpInfo($post_text_convert_request, string $contentType = self::contentTypes['postTextConvert'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\PostTextConvert200Response';
+        $request = $this->postTextConvertRequest($post_text_convert_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postTextConvert'
+     *
+     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request 包含转换配置的JSON对象 (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextConvert'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postTextConvertRequest($post_text_convert_request, string $contentType = self::contentTypes['postTextConvert'][0])
+    {
+
+        // verify the required parameter 'post_text_convert_request' is set
+        if ($post_text_convert_request === null || (is_array($post_text_convert_request) && count($post_text_convert_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $post_text_convert_request when calling postTextConvert'
+            );
+        }
+
+
+        $resourcePath = '/text/convert';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($post_text_convert_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($post_text_convert_request));
+            } else {
+                $httpBody = $post_text_convert_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation postTextMd5
      *
-     * 计算文本的MD5哈希值 (POST)
+     * MD5 哈希 (POST)
      *
      * @param  \OpenAPI\Client\Model\PostTextMd5Request $post_text_md5_request post_text_md5_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5'] to see the possible values for this operation
@@ -1883,7 +2735,7 @@ class TextApi
     /**
      * Operation postTextMd5WithHttpInfo
      *
-     * 计算文本的MD5哈希值 (POST)
+     * MD5 哈希 (POST)
      *
      * @param  \OpenAPI\Client\Model\PostTextMd5Request $post_text_md5_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5'] to see the possible values for this operation
@@ -1982,7 +2834,7 @@ class TextApi
     /**
      * Operation postTextMd5Async
      *
-     * 计算文本的MD5哈希值 (POST)
+     * MD5 哈希 (POST)
      *
      * @param  \OpenAPI\Client\Model\PostTextMd5Request $post_text_md5_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5'] to see the possible values for this operation
@@ -2003,7 +2855,7 @@ class TextApi
     /**
      * Operation postTextMd5AsyncWithHttpInfo
      *
-     * 计算文本的MD5哈希值 (POST)
+     * MD5 哈希 (POST)
      *
      * @param  \OpenAPI\Client\Model\PostTextMd5Request $post_text_md5_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5'] to see the possible values for this operation
@@ -2146,7 +2998,7 @@ class TextApi
     /**
      * Operation postTextMd5Verify
      *
-     * 校验MD5哈希值
+     * MD5 校验
      *
      * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request 包含待校验文本 &#39;text&#39; 和哈希值 &#39;hash&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5Verify'] to see the possible values for this operation
@@ -2164,7 +3016,7 @@ class TextApi
     /**
      * Operation postTextMd5VerifyWithHttpInfo
      *
-     * 校验MD5哈希值
+     * MD5 校验
      *
      * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request 包含待校验文本 &#39;text&#39; 和哈希值 &#39;hash&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5Verify'] to see the possible values for this operation
@@ -2263,7 +3115,7 @@ class TextApi
     /**
      * Operation postTextMd5VerifyAsync
      *
-     * 校验MD5哈希值
+     * MD5 校验
      *
      * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request 包含待校验文本 &#39;text&#39; 和哈希值 &#39;hash&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5Verify'] to see the possible values for this operation
@@ -2284,7 +3136,7 @@ class TextApi
     /**
      * Operation postTextMd5VerifyAsyncWithHttpInfo
      *
-     * 校验MD5哈希值
+     * MD5 校验
      *
      * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request 包含待校验文本 &#39;text&#39; 和哈希值 &#39;hash&#39; 的JSON对象 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5Verify'] to see the possible values for this operation

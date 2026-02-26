@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **avg** | **float** | 平均延迟(ms) | [optional]
-**code** | **int** |  | [optional]
 **host** | **string** |  | [optional]
 **ip** | **string** |  | [optional]
 **location** | **string** |  | [optional]

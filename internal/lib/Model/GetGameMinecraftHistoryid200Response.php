@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * GetGameMinecraftHistoryid200Response Class Doc Comment
  *
  * @category Class
+ * @description 响应结构根据查询参数不同而变化
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -57,11 +58,13 @@ class GetGameMinecraftHistoryid200Response implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'history' => '\OpenAPI\Client\Model\GetGameMinecraftHistoryid200ResponseHistoryInner[]',
+        'query' => 'string',
+        'count' => 'int',
+        'results' => '\OpenAPI\Client\Model\GetGameMinecraftHistoryid200ResponseResultsInner[]',
         'id' => 'string',
+        'uuid' => 'string',
         'name_num' => 'int',
-        'uuid' => 'string'
+        'history' => '\OpenAPI\Client\Model\GetGameMinecraftHistoryid200ResponseHistoryInner[]'
     ];
 
     /**
@@ -72,11 +75,13 @@ class GetGameMinecraftHistoryid200Response implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'history' => null,
+        'query' => null,
+        'count' => null,
+        'results' => null,
         'id' => null,
+        'uuid' => null,
         'name_num' => null,
-        'uuid' => null
+        'history' => null
     ];
 
     /**
@@ -85,11 +90,13 @@ class GetGameMinecraftHistoryid200Response implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'history' => false,
+        'query' => false,
+        'count' => false,
+        'results' => false,
         'id' => false,
+        'uuid' => false,
         'name_num' => false,
-        'uuid' => false
+        'history' => false
     ];
 
     /**
@@ -178,11 +185,13 @@ class GetGameMinecraftHistoryid200Response implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'history' => 'history',
+        'query' => 'query',
+        'count' => 'count',
+        'results' => 'results',
         'id' => 'id',
+        'uuid' => 'uuid',
         'name_num' => 'name_num',
-        'uuid' => 'uuid'
+        'history' => 'history'
     ];
 
     /**
@@ -191,11 +200,13 @@ class GetGameMinecraftHistoryid200Response implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'history' => 'setHistory',
+        'query' => 'setQuery',
+        'count' => 'setCount',
+        'results' => 'setResults',
         'id' => 'setId',
+        'uuid' => 'setUuid',
         'name_num' => 'setNameNum',
-        'uuid' => 'setUuid'
+        'history' => 'setHistory'
     ];
 
     /**
@@ -204,11 +215,13 @@ class GetGameMinecraftHistoryid200Response implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'history' => 'getHistory',
+        'query' => 'getQuery',
+        'count' => 'getCount',
+        'results' => 'getResults',
         'id' => 'getId',
+        'uuid' => 'getUuid',
         'name_num' => 'getNameNum',
-        'uuid' => 'getUuid'
+        'history' => 'getHistory'
     ];
 
     /**
@@ -268,11 +281,13 @@ class GetGameMinecraftHistoryid200Response implements ModelInterface, ArrayAcces
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('history', $data ?? [], null);
+        $this->setIfExists('query', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name_num', $data ?? [], null);
         $this->setIfExists('uuid', $data ?? [], null);
+        $this->setIfExists('name_num', $data ?? [], null);
+        $this->setIfExists('history', $data ?? [], null);
     }
 
     /**
@@ -318,55 +333,82 @@ class GetGameMinecraftHistoryid200Response implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets code
+     * Gets query
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getCode()
+    public function getQuery()
     {
-        return $this->container['code'];
+        return $this->container['query'];
     }
 
     /**
-     * Sets code
+     * Sets query
      *
-     * @param int|null $code 状态码，200代表成功。
+     * @param string|null $query 【name 查询时返回】查询的用户名。
      *
      * @return self
      */
-    public function setCode($code)
+    public function setQuery($query)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($query)) {
+            throw new \InvalidArgumentException('non-nullable query cannot be null');
         }
-        $this->container['code'] = $code;
+        $this->container['query'] = $query;
 
         return $this;
     }
 
     /**
-     * Gets history
+     * Gets count
      *
-     * @return \OpenAPI\Client\Model\GetGameMinecraftHistoryid200ResponseHistoryInner[]|null
+     * @return int|null
      */
-    public function getHistory()
+    public function getCount()
     {
-        return $this->container['history'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets history
+     * Sets count
      *
-     * @param \OpenAPI\Client\Model\GetGameMinecraftHistoryid200ResponseHistoryInner[]|null $history 一个包含所有历史用户名的数组，按时间倒序排列。
+     * @param int|null $count 【name 查询时返回】匹配到的用户数量，为 0 时表示未找到。
      *
      * @return self
      */
-    public function setHistory($history)
+    public function setCount($count)
     {
-        if (is_null($history)) {
-            throw new \InvalidArgumentException('non-nullable history cannot be null');
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
         }
-        $this->container['history'] = $history;
+        $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \OpenAPI\Client\Model\GetGameMinecraftHistoryid200ResponseResultsInner[]|null
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \OpenAPI\Client\Model\GetGameMinecraftHistoryid200ResponseResultsInner[]|null $results 【name 查询时返回】匹配用户列表，包含当前用户名或曾用名匹配的所有玩家。
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
+        }
+        $this->container['results'] = $results;
 
         return $this;
     }
@@ -384,7 +426,7 @@ class GetGameMinecraftHistoryid200Response implements ModelInterface, ArrayAcces
     /**
      * Sets id
      *
-     * @param string|null $id 玩家当前的用户名。
+     * @param string|null $id 【uuid 查询时返回】玩家当前的用户名。
      *
      * @return self
      */
@@ -394,33 +436,6 @@ class GetGameMinecraftHistoryid200Response implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name_num
-     *
-     * @return int|null
-     */
-    public function getNameNum()
-    {
-        return $this->container['name_num'];
-    }
-
-    /**
-     * Sets name_num
-     *
-     * @param int|null $name_num 历史名称的总数（包含当前名称）。
-     *
-     * @return self
-     */
-    public function setNameNum($name_num)
-    {
-        if (is_null($name_num)) {
-            throw new \InvalidArgumentException('non-nullable name_num cannot be null');
-        }
-        $this->container['name_num'] = $name_num;
 
         return $this;
     }
@@ -438,7 +453,7 @@ class GetGameMinecraftHistoryid200Response implements ModelInterface, ArrayAcces
     /**
      * Sets uuid
      *
-     * @param string|null $uuid 被查询玩家的32位无破折号UUID。
+     * @param string|null $uuid 【uuid 查询时返回】被查询玩家的UUID（带连字符格式）。
      *
      * @return self
      */
@@ -448,6 +463,60 @@ class GetGameMinecraftHistoryid200Response implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable uuid cannot be null');
         }
         $this->container['uuid'] = $uuid;
+
+        return $this;
+    }
+
+    /**
+     * Gets name_num
+     *
+     * @return int|null
+     */
+    public function getNameNum()
+    {
+        return $this->container['name_num'];
+    }
+
+    /**
+     * Sets name_num
+     *
+     * @param int|null $name_num 【uuid 查询时返回】历史名称的总数（包含当前名称）。
+     *
+     * @return self
+     */
+    public function setNameNum($name_num)
+    {
+        if (is_null($name_num)) {
+            throw new \InvalidArgumentException('non-nullable name_num cannot be null');
+        }
+        $this->container['name_num'] = $name_num;
+
+        return $this;
+    }
+
+    /**
+     * Gets history
+     *
+     * @return \OpenAPI\Client\Model\GetGameMinecraftHistoryid200ResponseHistoryInner[]|null
+     */
+    public function getHistory()
+    {
+        return $this->container['history'];
+    }
+
+    /**
+     * Sets history
+     *
+     * @param \OpenAPI\Client\Model\GetGameMinecraftHistoryid200ResponseHistoryInner[]|null $history 【uuid 查询时返回】包含所有历史用户名的数组，按时间倒序排列。
+     *
+     * @return self
+     */
+    public function setHistory($history)
+    {
+        if (is_null($history)) {
+            throw new \InvalidArgumentException('non-nullable history cannot be null');
+        }
+        $this->container['history'] = $history;
 
         return $this;
     }

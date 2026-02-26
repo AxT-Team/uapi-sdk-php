@@ -57,24 +57,16 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'asn' => 'string',
-        'beginip' => 'string',
-        'code' => 'int',
-        'endip' => 'string',
         'ip' => 'string',
-        'isp' => 'string',
-        'latitude' => 'float',
-        'llc' => 'string',
-        'longitude' => 'float',
         'region' => 'string',
-        'district' => 'string',
-        'area_code' => 'string',
-        'city_code' => 'string',
-        'zip_code' => 'string',
-        'time_zone' => 'string',
-        'scenes' => 'string',
-        'elevation' => 'string',
-        'weather_station' => 'string'
+        'isp' => 'string',
+        'llc' => 'string',
+        'asn' => 'string',
+        'latitude' => 'float',
+        'longitude' => 'float',
+        'beginip' => 'string',
+        'endip' => 'string',
+        'district' => 'string'
     ];
 
     /**
@@ -85,24 +77,16 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'asn' => null,
-        'beginip' => null,
-        'code' => null,
-        'endip' => null,
         'ip' => null,
-        'isp' => null,
-        'latitude' => null,
-        'llc' => null,
-        'longitude' => null,
         'region' => null,
-        'district' => null,
-        'area_code' => null,
-        'city_code' => null,
-        'zip_code' => null,
-        'time_zone' => null,
-        'scenes' => null,
-        'elevation' => null,
-        'weather_station' => null
+        'isp' => null,
+        'llc' => null,
+        'asn' => null,
+        'latitude' => null,
+        'longitude' => null,
+        'beginip' => null,
+        'endip' => null,
+        'district' => null
     ];
 
     /**
@@ -111,24 +95,16 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'asn' => false,
-        'beginip' => false,
-        'code' => false,
-        'endip' => false,
         'ip' => false,
-        'isp' => false,
-        'latitude' => false,
-        'llc' => false,
-        'longitude' => false,
         'region' => false,
-        'district' => false,
-        'area_code' => false,
-        'city_code' => false,
-        'zip_code' => false,
-        'time_zone' => false,
-        'scenes' => false,
-        'elevation' => false,
-        'weather_station' => false
+        'isp' => false,
+        'llc' => false,
+        'asn' => false,
+        'latitude' => false,
+        'longitude' => false,
+        'beginip' => false,
+        'endip' => false,
+        'district' => false
     ];
 
     /**
@@ -217,24 +193,16 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'asn' => 'asn',
-        'beginip' => 'beginip',
-        'code' => 'code',
-        'endip' => 'endip',
         'ip' => 'ip',
-        'isp' => 'isp',
-        'latitude' => 'latitude',
-        'llc' => 'llc',
-        'longitude' => 'longitude',
         'region' => 'region',
-        'district' => 'district',
-        'area_code' => 'area_code',
-        'city_code' => 'city_code',
-        'zip_code' => 'zip_code',
-        'time_zone' => 'time_zone',
-        'scenes' => 'scenes',
-        'elevation' => 'elevation',
-        'weather_station' => 'weather_station'
+        'isp' => 'isp',
+        'llc' => 'llc',
+        'asn' => 'asn',
+        'latitude' => 'latitude',
+        'longitude' => 'longitude',
+        'beginip' => 'beginip',
+        'endip' => 'endip',
+        'district' => 'district'
     ];
 
     /**
@@ -243,24 +211,16 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'asn' => 'setAsn',
-        'beginip' => 'setBeginip',
-        'code' => 'setCode',
-        'endip' => 'setEndip',
         'ip' => 'setIp',
-        'isp' => 'setIsp',
-        'latitude' => 'setLatitude',
-        'llc' => 'setLlc',
-        'longitude' => 'setLongitude',
         'region' => 'setRegion',
-        'district' => 'setDistrict',
-        'area_code' => 'setAreaCode',
-        'city_code' => 'setCityCode',
-        'zip_code' => 'setZipCode',
-        'time_zone' => 'setTimeZone',
-        'scenes' => 'setScenes',
-        'elevation' => 'setElevation',
-        'weather_station' => 'setWeatherStation'
+        'isp' => 'setIsp',
+        'llc' => 'setLlc',
+        'asn' => 'setAsn',
+        'latitude' => 'setLatitude',
+        'longitude' => 'setLongitude',
+        'beginip' => 'setBeginip',
+        'endip' => 'setEndip',
+        'district' => 'setDistrict'
     ];
 
     /**
@@ -269,24 +229,16 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'asn' => 'getAsn',
-        'beginip' => 'getBeginip',
-        'code' => 'getCode',
-        'endip' => 'getEndip',
         'ip' => 'getIp',
-        'isp' => 'getIsp',
-        'latitude' => 'getLatitude',
-        'llc' => 'getLlc',
-        'longitude' => 'getLongitude',
         'region' => 'getRegion',
-        'district' => 'getDistrict',
-        'area_code' => 'getAreaCode',
-        'city_code' => 'getCityCode',
-        'zip_code' => 'getZipCode',
-        'time_zone' => 'getTimeZone',
-        'scenes' => 'getScenes',
-        'elevation' => 'getElevation',
-        'weather_station' => 'getWeatherStation'
+        'isp' => 'getIsp',
+        'llc' => 'getLlc',
+        'asn' => 'getAsn',
+        'latitude' => 'getLatitude',
+        'longitude' => 'getLongitude',
+        'beginip' => 'getBeginip',
+        'endip' => 'getEndip',
+        'district' => 'getDistrict'
     ];
 
     /**
@@ -346,24 +298,16 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('asn', $data ?? [], null);
-        $this->setIfExists('beginip', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('endip', $data ?? [], null);
         $this->setIfExists('ip', $data ?? [], null);
-        $this->setIfExists('isp', $data ?? [], null);
-        $this->setIfExists('latitude', $data ?? [], null);
-        $this->setIfExists('llc', $data ?? [], null);
-        $this->setIfExists('longitude', $data ?? [], null);
         $this->setIfExists('region', $data ?? [], null);
+        $this->setIfExists('isp', $data ?? [], null);
+        $this->setIfExists('llc', $data ?? [], null);
+        $this->setIfExists('asn', $data ?? [], null);
+        $this->setIfExists('latitude', $data ?? [], null);
+        $this->setIfExists('longitude', $data ?? [], null);
+        $this->setIfExists('beginip', $data ?? [], null);
+        $this->setIfExists('endip', $data ?? [], null);
         $this->setIfExists('district', $data ?? [], null);
-        $this->setIfExists('area_code', $data ?? [], null);
-        $this->setIfExists('city_code', $data ?? [], null);
-        $this->setIfExists('zip_code', $data ?? [], null);
-        $this->setIfExists('time_zone', $data ?? [], null);
-        $this->setIfExists('scenes', $data ?? [], null);
-        $this->setIfExists('elevation', $data ?? [], null);
-        $this->setIfExists('weather_station', $data ?? [], null);
     }
 
     /**
@@ -409,114 +353,6 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets asn
-     *
-     * @return string|null
-     */
-    public function getAsn()
-    {
-        return $this->container['asn'];
-    }
-
-    /**
-     * Sets asn
-     *
-     * @param string|null $asn 自治系统编号 (由GeoLite2或商业版提供)
-     *
-     * @return self
-     */
-    public function setAsn($asn)
-    {
-        if (is_null($asn)) {
-            throw new \InvalidArgumentException('non-nullable asn cannot be null');
-        }
-        $this->container['asn'] = $asn;
-
-        return $this;
-    }
-
-    /**
-     * Gets beginip
-     *
-     * @return string|null
-     */
-    public function getBeginip()
-    {
-        return $this->container['beginip'];
-    }
-
-    /**
-     * Sets beginip
-     *
-     * @param string|null $beginip IP范围起始 (仅在默认查询中提供)
-     *
-     * @return self
-     */
-    public function setBeginip($beginip)
-    {
-        if (is_null($beginip)) {
-            throw new \InvalidArgumentException('non-nullable beginip cannot be null');
-        }
-        $this->container['beginip'] = $beginip;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets endip
-     *
-     * @return string|null
-     */
-    public function getEndip()
-    {
-        return $this->container['endip'];
-    }
-
-    /**
-     * Sets endip
-     *
-     * @param string|null $endip IP范围结束 (仅在默认查询中提供)
-     *
-     * @return self
-     */
-    public function setEndip($endip)
-    {
-        if (is_null($endip)) {
-            throw new \InvalidArgumentException('non-nullable endip cannot be null');
-        }
-        $this->container['endip'] = $endip;
-
-        return $this;
-    }
-
-    /**
      * Gets ip
      *
      * @return string|null
@@ -529,7 +365,7 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets ip
      *
-     * @param string|null $ip ip
+     * @param string|null $ip 查询的IP地址
      *
      * @return self
      */
@@ -539,114 +375,6 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable ip cannot be null');
         }
         $this->container['ip'] = $ip;
-
-        return $this;
-    }
-
-    /**
-     * Gets isp
-     *
-     * @return string|null
-     */
-    public function getIsp()
-    {
-        return $this->container['isp'];
-    }
-
-    /**
-     * Sets isp
-     *
-     * @param string|null $isp 运营商
-     *
-     * @return self
-     */
-    public function setIsp($isp)
-    {
-        if (is_null($isp)) {
-            throw new \InvalidArgumentException('non-nullable isp cannot be null');
-        }
-        $this->container['isp'] = $isp;
-
-        return $this;
-    }
-
-    /**
-     * Gets latitude
-     *
-     * @return float|null
-     */
-    public function getLatitude()
-    {
-        return $this->container['latitude'];
-    }
-
-    /**
-     * Sets latitude
-     *
-     * @param float|null $latitude latitude
-     *
-     * @return self
-     */
-    public function setLatitude($latitude)
-    {
-        if (is_null($latitude)) {
-            throw new \InvalidArgumentException('non-nullable latitude cannot be null');
-        }
-        $this->container['latitude'] = $latitude;
-
-        return $this;
-    }
-
-    /**
-     * Gets llc
-     *
-     * @return string|null
-     */
-    public function getLlc()
-    {
-        return $this->container['llc'];
-    }
-
-    /**
-     * Sets llc
-     *
-     * @param string|null $llc 归属
-     *
-     * @return self
-     */
-    public function setLlc($llc)
-    {
-        if (is_null($llc)) {
-            throw new \InvalidArgumentException('non-nullable llc cannot be null');
-        }
-        $this->container['llc'] = $llc;
-
-        return $this;
-    }
-
-    /**
-     * Gets longitude
-     *
-     * @return float|null
-     */
-    public function getLongitude()
-    {
-        return $this->container['longitude'];
-    }
-
-    /**
-     * Sets longitude
-     *
-     * @param float|null $longitude longitude
-     *
-     * @return self
-     */
-    public function setLongitude($longitude)
-    {
-        if (is_null($longitude)) {
-            throw new \InvalidArgumentException('non-nullable longitude cannot be null');
-        }
-        $this->container['longitude'] = $longitude;
 
         return $this;
     }
@@ -664,7 +392,7 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets region
      *
-     * @param string|null $region 格式：国家 省份 城市
+     * @param string|null $region 地理位置，格式：国家 省份 城市
      *
      * @return self
      */
@@ -674,6 +402,195 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable region cannot be null');
         }
         $this->container['region'] = $region;
+
+        return $this;
+    }
+
+    /**
+     * Gets isp
+     *
+     * @return string|null
+     */
+    public function getIsp()
+    {
+        return $this->container['isp'];
+    }
+
+    /**
+     * Sets isp
+     *
+     * @param string|null $isp 运营商名称
+     *
+     * @return self
+     */
+    public function setIsp($isp)
+    {
+        if (is_null($isp)) {
+            throw new \InvalidArgumentException('non-nullable isp cannot be null');
+        }
+        $this->container['isp'] = $isp;
+
+        return $this;
+    }
+
+    /**
+     * Gets llc
+     *
+     * @return string|null
+     */
+    public function getLlc()
+    {
+        return $this->container['llc'];
+    }
+
+    /**
+     * Sets llc
+     *
+     * @param string|null $llc 归属机构
+     *
+     * @return self
+     */
+    public function setLlc($llc)
+    {
+        if (is_null($llc)) {
+            throw new \InvalidArgumentException('non-nullable llc cannot be null');
+        }
+        $this->container['llc'] = $llc;
+
+        return $this;
+    }
+
+    /**
+     * Gets asn
+     *
+     * @return string|null
+     */
+    public function getAsn()
+    {
+        return $this->container['asn'];
+    }
+
+    /**
+     * Sets asn
+     *
+     * @param string|null $asn 自治系统编号
+     *
+     * @return self
+     */
+    public function setAsn($asn)
+    {
+        if (is_null($asn)) {
+            throw new \InvalidArgumentException('non-nullable asn cannot be null');
+        }
+        $this->container['asn'] = $asn;
+
+        return $this;
+    }
+
+    /**
+     * Gets latitude
+     *
+     * @return float|null
+     */
+    public function getLatitude()
+    {
+        return $this->container['latitude'];
+    }
+
+    /**
+     * Sets latitude
+     *
+     * @param float|null $latitude 纬度
+     *
+     * @return self
+     */
+    public function setLatitude($latitude)
+    {
+        if (is_null($latitude)) {
+            throw new \InvalidArgumentException('non-nullable latitude cannot be null');
+        }
+        $this->container['latitude'] = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Gets longitude
+     *
+     * @return float|null
+     */
+    public function getLongitude()
+    {
+        return $this->container['longitude'];
+    }
+
+    /**
+     * Sets longitude
+     *
+     * @param float|null $longitude 经度
+     *
+     * @return self
+     */
+    public function setLongitude($longitude)
+    {
+        if (is_null($longitude)) {
+            throw new \InvalidArgumentException('non-nullable longitude cannot be null');
+        }
+        $this->container['longitude'] = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Gets beginip
+     *
+     * @return string|null
+     */
+    public function getBeginip()
+    {
+        return $this->container['beginip'];
+    }
+
+    /**
+     * Sets beginip
+     *
+     * @param string|null $beginip IP段起始地址（标准查询）
+     *
+     * @return self
+     */
+    public function setBeginip($beginip)
+    {
+        if (is_null($beginip)) {
+            throw new \InvalidArgumentException('non-nullable beginip cannot be null');
+        }
+        $this->container['beginip'] = $beginip;
+
+        return $this;
+    }
+
+    /**
+     * Gets endip
+     *
+     * @return string|null
+     */
+    public function getEndip()
+    {
+        return $this->container['endip'];
+    }
+
+    /**
+     * Sets endip
+     *
+     * @param string|null $endip IP段结束地址（标准查询）
+     *
+     * @return self
+     */
+    public function setEndip($endip)
+    {
+        if (is_null($endip)) {
+            throw new \InvalidArgumentException('non-nullable endip cannot be null');
+        }
+        $this->container['endip'] = $endip;
 
         return $this;
     }
@@ -691,7 +608,7 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets district
      *
-     * @param string|null $district 行政区 (仅在商业查询中提供)
+     * @param string|null $district 行政区（商业查询）
      *
      * @return self
      */
@@ -701,195 +618,6 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable district cannot be null');
         }
         $this->container['district'] = $district;
-
-        return $this;
-    }
-
-    /**
-     * Gets area_code
-     *
-     * @return string|null
-     */
-    public function getAreaCode()
-    {
-        return $this->container['area_code'];
-    }
-
-    /**
-     * Sets area_code
-     *
-     * @param string|null $area_code 行政区划代码 (仅在商业查询中提供)
-     *
-     * @return self
-     */
-    public function setAreaCode($area_code)
-    {
-        if (is_null($area_code)) {
-            throw new \InvalidArgumentException('non-nullable area_code cannot be null');
-        }
-        $this->container['area_code'] = $area_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets city_code
-     *
-     * @return string|null
-     */
-    public function getCityCode()
-    {
-        return $this->container['city_code'];
-    }
-
-    /**
-     * Sets city_code
-     *
-     * @param string|null $city_code 城市区号 (仅在商业查询中提供)
-     *
-     * @return self
-     */
-    public function setCityCode($city_code)
-    {
-        if (is_null($city_code)) {
-            throw new \InvalidArgumentException('non-nullable city_code cannot be null');
-        }
-        $this->container['city_code'] = $city_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets zip_code
-     *
-     * @return string|null
-     */
-    public function getZipCode()
-    {
-        return $this->container['zip_code'];
-    }
-
-    /**
-     * Sets zip_code
-     *
-     * @param string|null $zip_code 邮政编码 (仅在商业查询中提供)
-     *
-     * @return self
-     */
-    public function setZipCode($zip_code)
-    {
-        if (is_null($zip_code)) {
-            throw new \InvalidArgumentException('non-nullable zip_code cannot be null');
-        }
-        $this->container['zip_code'] = $zip_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets time_zone
-     *
-     * @return string|null
-     */
-    public function getTimeZone()
-    {
-        return $this->container['time_zone'];
-    }
-
-    /**
-     * Sets time_zone
-     *
-     * @param string|null $time_zone 时区 (仅在商业查询中提供)
-     *
-     * @return self
-     */
-    public function setTimeZone($time_zone)
-    {
-        if (is_null($time_zone)) {
-            throw new \InvalidArgumentException('non-nullable time_zone cannot be null');
-        }
-        $this->container['time_zone'] = $time_zone;
-
-        return $this;
-    }
-
-    /**
-     * Gets scenes
-     *
-     * @return string|null
-     */
-    public function getScenes()
-    {
-        return $this->container['scenes'];
-    }
-
-    /**
-     * Sets scenes
-     *
-     * @param string|null $scenes 应用场景 (仅在商业查询中提供)
-     *
-     * @return self
-     */
-    public function setScenes($scenes)
-    {
-        if (is_null($scenes)) {
-            throw new \InvalidArgumentException('non-nullable scenes cannot be null');
-        }
-        $this->container['scenes'] = $scenes;
-
-        return $this;
-    }
-
-    /**
-     * Gets elevation
-     *
-     * @return string|null
-     */
-    public function getElevation()
-    {
-        return $this->container['elevation'];
-    }
-
-    /**
-     * Sets elevation
-     *
-     * @param string|null $elevation 海拔（米）(仅在商业查询中提供)
-     *
-     * @return self
-     */
-    public function setElevation($elevation)
-    {
-        if (is_null($elevation)) {
-            throw new \InvalidArgumentException('non-nullable elevation cannot be null');
-        }
-        $this->container['elevation'] = $elevation;
-
-        return $this;
-    }
-
-    /**
-     * Gets weather_station
-     *
-     * @return string|null
-     */
-    public function getWeatherStation()
-    {
-        return $this->container['weather_station'];
-    }
-
-    /**
-     * Sets weather_station
-     *
-     * @param string|null $weather_station 气象站代码 (仅在商业查询中提供)
-     *
-     * @return self
-     */
-    public function setWeatherStation($weather_station)
-    {
-        if (is_null($weather_station)) {
-            throw new \InvalidArgumentException('non-nullable weather_station cannot be null');
-        }
-        $this->container['weather_station'] = $weather_station;
 
         return $this;
     }

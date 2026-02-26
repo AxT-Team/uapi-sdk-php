@@ -8,11 +8,11 @@ All URIs are relative to https://uapis.cn/api/v1, except if the operation define
 | ------------- | ------------- | ------------- |
 | [**getNetworkDns()**](NetworkApi.md#getNetworkDns) | **GET** /network/dns | 执行DNS解析查询 |
 | [**getNetworkIcp()**](NetworkApi.md#getNetworkIcp) | **GET** /network/icp | 查询域名ICP备案信息 |
-| [**getNetworkIpinfo()**](NetworkApi.md#getNetworkIpinfo) | **GET** /network/ipinfo | 查询指定IP或域名的归属信息 |
-| [**getNetworkMyip()**](NetworkApi.md#getNetworkMyip) | **GET** /network/myip | 获取你的公网IP及归属信息 |
-| [**getNetworkPing()**](NetworkApi.md#getNetworkPing) | **GET** /network/ping | 从服务器Ping指定主机 |
-| [**getNetworkPingmyip()**](NetworkApi.md#getNetworkPingmyip) | **GET** /network/pingmyip | 从服务器Ping你的客户端IP |
-| [**getNetworkPortscan()**](NetworkApi.md#getNetworkPortscan) | **GET** /network/portscan | 扫描远程主机的指定端口 |
+| [**getNetworkIpinfo()**](NetworkApi.md#getNetworkIpinfo) | **GET** /network/ipinfo | 查询 IP |
+| [**getNetworkMyip()**](NetworkApi.md#getNetworkMyip) | **GET** /network/myip | 查询我的 IP |
+| [**getNetworkPing()**](NetworkApi.md#getNetworkPing) | **GET** /network/ping | Ping 主机 |
+| [**getNetworkPingmyip()**](NetworkApi.md#getNetworkPingmyip) | **GET** /network/pingmyip | Ping 我的 IP |
+| [**getNetworkPortscan()**](NetworkApi.md#getNetworkPortscan) | **GET** /network/portscan | 端口扫描 |
 | [**getNetworkUrlstatus()**](NetworkApi.md#getNetworkUrlstatus) | **GET** /network/urlstatus | 检查URL的可访问性状态 |
 | [**getNetworkWhois()**](NetworkApi.md#getNetworkWhois) | **GET** /network/whois | 查询域名的WHOIS注册信息 |
 | [**getNetworkWxdomain()**](NetworkApi.md#getNetworkWxdomain) | **GET** /network/wxdomain | 检查域名在微信中的访问状态 |
@@ -138,9 +138,9 @@ No authorization required
 getNetworkIpinfo($ip, $source): \OpenAPI\Client\Model\GetNetworkIpinfo200Response
 ```
 
-查询指定IP或域名的归属信息
+查询 IP
 
-想知道一个IP地址或域名来自地球的哪个角落？这个接口可以帮你定位它。你可以选择使用默认的GeoIP数据库，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 提供一个公网IPv4、IPv6地址或域名，我们会利用GeoIP数据库查询并返回它的地理位置（国家、省份、城市）、经纬度、以及所属的运营商（ISP）和自治系统（ASN）信息。这在网络安全分析、访问来源统计等领域非常有用。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
+想知道一个IP地址或域名来自地球的哪个角落？这个接口可以帮你定位它。你可以使用默认数据源，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 提供一个公网IPv4、IPv6地址或域名，我们会查询并返回它的地理位置（国家、省份、城市）、经纬度、以及所属的运营商（ISP）和自治系统（ASN）信息。这在网络安全分析、访问来源统计等领域非常有用。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
 
 ### Example
 
@@ -193,12 +193,12 @@ No authorization required
 ## `getNetworkMyip()`
 
 ```php
-getNetworkMyip($source): \OpenAPI\Client\Model\GetNetworkIpinfo200Response
+getNetworkMyip($source): \OpenAPI\Client\Model\GetNetworkMyip200Response
 ```
 
-获取你的公网IP及归属信息
+查询我的 IP
 
-想知道你自己的出口公网IP是多少吗？这个接口就是你的“网络身份证”。你可以选择使用默认的GeoIP数据库，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 调用此接口，它会返回你（即发起请求的客户端）的公网IP地址，并附带与 `/network/ipinfo` 接口相同的地理位置和网络归属信息。非常适合用于在网页上向用户展示他们自己的IP和地理位置。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
+想知道你自己的出口公网IP是多少吗？这个接口就是你的“网络身份证”。你可以使用默认数据源，也可以指定 `source=commercial` 参数来查询更详细的商业级IP归属信息。  ## 功能概述 调用此接口，它会返回你（即发起请求的客户端）的公网IP地址，并附带与 `/network/ipinfo` 接口相同的地理位置和网络归属信息。非常适合用于在网页上向用户展示他们自己的IP和地理位置。  当使用 `source=commercial` 参数时，接口将调用高性能商业API，提供更精确的市、区、运营商、时区、海拔等信息。请注意，商业查询的响应时间可能会稍长。
 
 ### Example
 
@@ -231,7 +231,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetNetworkIpinfo200Response**](../Model/GetNetworkIpinfo200Response.md)
+[**\OpenAPI\Client\Model\GetNetworkMyip200Response**](../Model/GetNetworkMyip200Response.md)
 
 ### Authorization
 
@@ -252,7 +252,7 @@ No authorization required
 getNetworkPing($host): \OpenAPI\Client\Model\GetNetworkPing200Response
 ```
 
-从服务器Ping指定主机
+Ping 主机
 
 想知道从我们的服务器到你的服务器网络延迟高不高？这个工具可以帮你测试网络连通性。  ## 功能概述 这个接口会从我们的服务器节点对你指定的主机（域名或IP地址）执行 ICMP Ping 操作。它会返回最小、最大、平均延迟以及丢包率等关键指标，是诊断网络问题的得力助手。
 
@@ -308,7 +308,7 @@ No authorization required
 getNetworkPingmyip(): \OpenAPI\Client\Model\GetNetworkPingmyip200Response
 ```
 
-从服务器Ping你的客户端IP
+Ping 我的 IP
 
 这是一个非常方便的快捷接口，想知道你的网络到我们服务器的回程延迟吗？点一下就行！  ## 功能概述 这个接口是 `/network/myip` 和 `/network/ping` 的结合体。它会自动获取你客户端的公网IP，然后从我们的服务器Ping这个IP，并返回延迟数据。这对于快速判断你本地网络到服务器的连接质量非常有用。
 
@@ -361,7 +361,7 @@ No authorization required
 getNetworkPortscan($host, $port, $protocol): \OpenAPI\Client\Model\GetNetworkPortscan200Response
 ```
 
-扫描远程主机的指定端口
+端口扫描
 
 想检查一下你的服务器上某个端口（比如SSH的22端口或者Web的80端口）是否对外开放？这个工具可以帮你快速确认。  ## 功能概述 你可以指定一个主机和端口号，我们的服务器会尝试连接该端口，并告诉你它是开放的（open）、关闭的（closed）还是超时了（timeout）。这对于网络服务配置检查和基本的安全扫描很有用。
 
@@ -423,7 +423,7 @@ getNetworkUrlstatus($url): \OpenAPI\Client\Model\GetNetworkUrlstatus200Response
 
 检查URL的可访问性状态
 
-你的网站或API还好吗？用这个接口给它做个快速“体检”吧。  ## 功能概述 提供一个URL，我们会向它发起一个请求，并返回其HTTP响应状态码。这是一种简单而有效的服务可用性监控方法。  > [!TIP] > **性能优化**：为了提高效率并减少对目标服务器的负载，我们实际发送的是 `HEAD` 请求，而不是 `GET` 请求。`HEAD` 请求只会获取响应头，而不会下载整个页面内容，因此速度更快。
+你的网站或API还好吗？用这个接口给它做个快速“体检”吧。  ## 功能概述 提供一个URL，我们会向它发起一个请求，并返回其HTTP响应状态码。这是一种简单而有效的服务可用性监控方法。
 
 ### Example
 

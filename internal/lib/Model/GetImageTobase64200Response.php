@@ -58,7 +58,6 @@ class GetImageTobase64200Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'base64' => 'string',
-        'code' => 'int',
         'msg' => 'string'
     ];
 
@@ -71,7 +70,6 @@ class GetImageTobase64200Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPIFormats = [
         'base64' => null,
-        'code' => null,
         'msg' => null
     ];
 
@@ -82,7 +80,6 @@ class GetImageTobase64200Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'base64' => false,
-        'code' => false,
         'msg' => false
     ];
 
@@ -173,7 +170,6 @@ class GetImageTobase64200Response implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $attributeMap = [
         'base64' => 'base64',
-        'code' => 'code',
         'msg' => 'msg'
     ];
 
@@ -184,7 +180,6 @@ class GetImageTobase64200Response implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $setters = [
         'base64' => 'setBase64',
-        'code' => 'setCode',
         'msg' => 'setMsg'
     ];
 
@@ -195,7 +190,6 @@ class GetImageTobase64200Response implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $getters = [
         'base64' => 'getBase64',
-        'code' => 'getCode',
         'msg' => 'getMsg'
     ];
 
@@ -257,7 +251,6 @@ class GetImageTobase64200Response implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(?array $data = null)
     {
         $this->setIfExists('base64', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('msg', $data ?? [], null);
     }
 
@@ -326,33 +319,6 @@ class GetImageTobase64200Response implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable base64 cannot be null');
         }
         $this->container['base64'] = $base64;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code 状态码，200代表成功。
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
 
         return $this;
     }

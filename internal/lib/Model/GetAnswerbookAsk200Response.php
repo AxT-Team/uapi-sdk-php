@@ -57,7 +57,6 @@ class GetAnswerbookAsk200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'question' => 'string',
         'answer' => 'string'
     ];
@@ -70,7 +69,6 @@ class GetAnswerbookAsk200Response implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
         'question' => null,
         'answer' => null
     ];
@@ -81,7 +79,6 @@ class GetAnswerbookAsk200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
         'question' => false,
         'answer' => false
     ];
@@ -172,7 +169,6 @@ class GetAnswerbookAsk200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'question' => 'question',
         'answer' => 'answer'
     ];
@@ -183,7 +179,6 @@ class GetAnswerbookAsk200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'question' => 'setQuestion',
         'answer' => 'setAnswer'
     ];
@@ -194,7 +189,6 @@ class GetAnswerbookAsk200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'question' => 'getQuestion',
         'answer' => 'getAnswer'
     ];
@@ -256,7 +250,6 @@ class GetAnswerbookAsk200Response implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('question', $data ?? [], null);
         $this->setIfExists('answer', $data ?? [], null);
     }
@@ -302,33 +295,6 @@ class GetAnswerbookAsk200Response implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
 
     /**
      * Gets question

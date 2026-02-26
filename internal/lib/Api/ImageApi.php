@@ -98,6 +98,9 @@ class ImageApi
         'postImageMotou' => [
             'multipart/form-data',
         ],
+        'postImageNsfw' => [
+            'multipart/form-data',
+        ],
         'postImageSpeechless' => [
             'application/json',
         ],
@@ -506,7 +509,7 @@ class ImageApi
     /**
      * Operation getImageBingDaily
      *
-     * 获取必应每日壁纸
+     * 必应壁纸
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageBingDaily'] to see the possible values for this operation
      *
@@ -523,7 +526,7 @@ class ImageApi
     /**
      * Operation getImageBingDailyWithHttpInfo
      *
-     * 获取必应每日壁纸
+     * 必应壁纸
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageBingDaily'] to see the possible values for this operation
      *
@@ -621,7 +624,7 @@ class ImageApi
     /**
      * Operation getImageBingDailyAsync
      *
-     * 获取必应每日壁纸
+     * 必应壁纸
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageBingDaily'] to see the possible values for this operation
      *
@@ -641,7 +644,7 @@ class ImageApi
     /**
      * Operation getImageBingDailyAsyncWithHttpInfo
      *
-     * 获取必应每日壁纸
+     * 必应壁纸
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageBingDaily'] to see the possible values for this operation
      *
@@ -768,7 +771,7 @@ class ImageApi
     /**
      * Operation getImageMotou
      *
-     * 生成摸摸头GIF (QQ号方式)
+     * 生成摸摸头GIF (QQ号)
      *
      * @param  string $qq 你想要摸头的对象的QQ号码。 (required)
      * @param  string|null $bg_color GIF的背景颜色。留空则由后端服务决定默认值。 (optional)
@@ -787,7 +790,7 @@ class ImageApi
     /**
      * Operation getImageMotouWithHttpInfo
      *
-     * 生成摸摸头GIF (QQ号方式)
+     * 生成摸摸头GIF (QQ号)
      *
      * @param  string $qq 你想要摸头的对象的QQ号码。 (required)
      * @param  string|null $bg_color GIF的背景颜色。留空则由后端服务决定默认值。 (optional)
@@ -901,7 +904,7 @@ class ImageApi
     /**
      * Operation getImageMotouAsync
      *
-     * 生成摸摸头GIF (QQ号方式)
+     * 生成摸摸头GIF (QQ号)
      *
      * @param  string $qq 你想要摸头的对象的QQ号码。 (required)
      * @param  string|null $bg_color GIF的背景颜色。留空则由后端服务决定默认值。 (optional)
@@ -923,7 +926,7 @@ class ImageApi
     /**
      * Operation getImageMotouAsyncWithHttpInfo
      *
-     * 生成摸摸头GIF (QQ号方式)
+     * 生成摸摸头GIF (QQ号)
      *
      * @param  string $qq 你想要摸头的对象的QQ号码。 (required)
      * @param  string|null $bg_color GIF的背景颜色。留空则由后端服务决定默认值。 (optional)
@@ -1080,40 +1083,46 @@ class ImageApi
     /**
      * Operation getImageQrcode
      *
-     * 动态生成二维码
+     * 生成二维码
      *
      * @param  string $text 你希望编码到二维码中的任何文本内容，比如一个URL、一段话或者一个JSON字符串。 (required)
-     * @param  int|null $size 二维码图片的边长（正方形），单位是像素。有效范围是 256 到 1024 之间。 (optional, default to 256)
+     * @param  int|null $size 二维码图片的边长（正方形），单位是像素。有效范围是 256 到 2048 之间。 (optional, default to 256)
      * @param  string|null $format 指定响应内容的格式。可选值为 &#x60;image&#x60;, &#x60;json&#x60;, &#x60;json_url&#x60;。 (optional, default to 'image')
+     * @param  bool|null $transparent 是否使用透明背景。启用后生成的 PNG 图片将具有 alpha 通道，背景透明。 (optional, default to false)
+     * @param  string|null $fgcolor 二维码前景色（即二维码本身的颜色），使用十六进制格式。URL 中需要将 &#x60;#&#x60; 编码为 &#x60;%23&#x60;。 (optional, default to '#000000')
+     * @param  string|null $bgcolor 二维码背景色，使用十六进制格式。当 &#x60;transparent&#x3D;true&#x60; 时此参数会被忽略。URL 中需要将 &#x60;#&#x60; 编码为 &#x60;%23&#x60;。 (optional, default to '#FFFFFF')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageQrcode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \SplFileObject|\OpenAPI\Client\Model\GetImageQrcode400Response|\OpenAPI\Client\Model\GetImageQrcode500Response
      */
-    public function getImageQrcode($text, $size = 256, $format = 'image', string $contentType = self::contentTypes['getImageQrcode'][0])
+    public function getImageQrcode($text, $size = 256, $format = 'image', $transparent = false, $fgcolor = '#000000', $bgcolor = '#FFFFFF', string $contentType = self::contentTypes['getImageQrcode'][0])
     {
-        list($response) = $this->getImageQrcodeWithHttpInfo($text, $size, $format, $contentType);
+        list($response) = $this->getImageQrcodeWithHttpInfo($text, $size, $format, $transparent, $fgcolor, $bgcolor, $contentType);
         return $response;
     }
 
     /**
      * Operation getImageQrcodeWithHttpInfo
      *
-     * 动态生成二维码
+     * 生成二维码
      *
      * @param  string $text 你希望编码到二维码中的任何文本内容，比如一个URL、一段话或者一个JSON字符串。 (required)
-     * @param  int|null $size 二维码图片的边长（正方形），单位是像素。有效范围是 256 到 1024 之间。 (optional, default to 256)
+     * @param  int|null $size 二维码图片的边长（正方形），单位是像素。有效范围是 256 到 2048 之间。 (optional, default to 256)
      * @param  string|null $format 指定响应内容的格式。可选值为 &#x60;image&#x60;, &#x60;json&#x60;, &#x60;json_url&#x60;。 (optional, default to 'image')
+     * @param  bool|null $transparent 是否使用透明背景。启用后生成的 PNG 图片将具有 alpha 通道，背景透明。 (optional, default to false)
+     * @param  string|null $fgcolor 二维码前景色（即二维码本身的颜色），使用十六进制格式。URL 中需要将 &#x60;#&#x60; 编码为 &#x60;%23&#x60;。 (optional, default to '#000000')
+     * @param  string|null $bgcolor 二维码背景色，使用十六进制格式。当 &#x60;transparent&#x3D;true&#x60; 时此参数会被忽略。URL 中需要将 &#x60;#&#x60; 编码为 &#x60;%23&#x60;。 (optional, default to '#FFFFFF')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageQrcode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject|\OpenAPI\Client\Model\GetImageQrcode400Response|\OpenAPI\Client\Model\GetImageQrcode500Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getImageQrcodeWithHttpInfo($text, $size = 256, $format = 'image', string $contentType = self::contentTypes['getImageQrcode'][0])
+    public function getImageQrcodeWithHttpInfo($text, $size = 256, $format = 'image', $transparent = false, $fgcolor = '#000000', $bgcolor = '#FFFFFF', string $contentType = self::contentTypes['getImageQrcode'][0])
     {
-        $request = $this->getImageQrcodeRequest($text, $size, $format, $contentType);
+        $request = $this->getImageQrcodeRequest($text, $size, $format, $transparent, $fgcolor, $bgcolor, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1215,19 +1224,22 @@ class ImageApi
     /**
      * Operation getImageQrcodeAsync
      *
-     * 动态生成二维码
+     * 生成二维码
      *
      * @param  string $text 你希望编码到二维码中的任何文本内容，比如一个URL、一段话或者一个JSON字符串。 (required)
-     * @param  int|null $size 二维码图片的边长（正方形），单位是像素。有效范围是 256 到 1024 之间。 (optional, default to 256)
+     * @param  int|null $size 二维码图片的边长（正方形），单位是像素。有效范围是 256 到 2048 之间。 (optional, default to 256)
      * @param  string|null $format 指定响应内容的格式。可选值为 &#x60;image&#x60;, &#x60;json&#x60;, &#x60;json_url&#x60;。 (optional, default to 'image')
+     * @param  bool|null $transparent 是否使用透明背景。启用后生成的 PNG 图片将具有 alpha 通道，背景透明。 (optional, default to false)
+     * @param  string|null $fgcolor 二维码前景色（即二维码本身的颜色），使用十六进制格式。URL 中需要将 &#x60;#&#x60; 编码为 &#x60;%23&#x60;。 (optional, default to '#000000')
+     * @param  string|null $bgcolor 二维码背景色，使用十六进制格式。当 &#x60;transparent&#x3D;true&#x60; 时此参数会被忽略。URL 中需要将 &#x60;#&#x60; 编码为 &#x60;%23&#x60;。 (optional, default to '#FFFFFF')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageQrcode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getImageQrcodeAsync($text, $size = 256, $format = 'image', string $contentType = self::contentTypes['getImageQrcode'][0])
+    public function getImageQrcodeAsync($text, $size = 256, $format = 'image', $transparent = false, $fgcolor = '#000000', $bgcolor = '#FFFFFF', string $contentType = self::contentTypes['getImageQrcode'][0])
     {
-        return $this->getImageQrcodeAsyncWithHttpInfo($text, $size, $format, $contentType)
+        return $this->getImageQrcodeAsyncWithHttpInfo($text, $size, $format, $transparent, $fgcolor, $bgcolor, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1238,20 +1250,23 @@ class ImageApi
     /**
      * Operation getImageQrcodeAsyncWithHttpInfo
      *
-     * 动态生成二维码
+     * 生成二维码
      *
      * @param  string $text 你希望编码到二维码中的任何文本内容，比如一个URL、一段话或者一个JSON字符串。 (required)
-     * @param  int|null $size 二维码图片的边长（正方形），单位是像素。有效范围是 256 到 1024 之间。 (optional, default to 256)
+     * @param  int|null $size 二维码图片的边长（正方形），单位是像素。有效范围是 256 到 2048 之间。 (optional, default to 256)
      * @param  string|null $format 指定响应内容的格式。可选值为 &#x60;image&#x60;, &#x60;json&#x60;, &#x60;json_url&#x60;。 (optional, default to 'image')
+     * @param  bool|null $transparent 是否使用透明背景。启用后生成的 PNG 图片将具有 alpha 通道，背景透明。 (optional, default to false)
+     * @param  string|null $fgcolor 二维码前景色（即二维码本身的颜色），使用十六进制格式。URL 中需要将 &#x60;#&#x60; 编码为 &#x60;%23&#x60;。 (optional, default to '#000000')
+     * @param  string|null $bgcolor 二维码背景色，使用十六进制格式。当 &#x60;transparent&#x3D;true&#x60; 时此参数会被忽略。URL 中需要将 &#x60;#&#x60; 编码为 &#x60;%23&#x60;。 (optional, default to '#FFFFFF')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageQrcode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getImageQrcodeAsyncWithHttpInfo($text, $size = 256, $format = 'image', string $contentType = self::contentTypes['getImageQrcode'][0])
+    public function getImageQrcodeAsyncWithHttpInfo($text, $size = 256, $format = 'image', $transparent = false, $fgcolor = '#000000', $bgcolor = '#FFFFFF', string $contentType = self::contentTypes['getImageQrcode'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->getImageQrcodeRequest($text, $size, $format, $contentType);
+        $request = $this->getImageQrcodeRequest($text, $size, $format, $transparent, $fgcolor, $bgcolor, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1293,14 +1308,17 @@ class ImageApi
      * Create request for operation 'getImageQrcode'
      *
      * @param  string $text 你希望编码到二维码中的任何文本内容，比如一个URL、一段话或者一个JSON字符串。 (required)
-     * @param  int|null $size 二维码图片的边长（正方形），单位是像素。有效范围是 256 到 1024 之间。 (optional, default to 256)
+     * @param  int|null $size 二维码图片的边长（正方形），单位是像素。有效范围是 256 到 2048 之间。 (optional, default to 256)
      * @param  string|null $format 指定响应内容的格式。可选值为 &#x60;image&#x60;, &#x60;json&#x60;, &#x60;json_url&#x60;。 (optional, default to 'image')
+     * @param  bool|null $transparent 是否使用透明背景。启用后生成的 PNG 图片将具有 alpha 通道，背景透明。 (optional, default to false)
+     * @param  string|null $fgcolor 二维码前景色（即二维码本身的颜色），使用十六进制格式。URL 中需要将 &#x60;#&#x60; 编码为 &#x60;%23&#x60;。 (optional, default to '#000000')
+     * @param  string|null $bgcolor 二维码背景色，使用十六进制格式。当 &#x60;transparent&#x3D;true&#x60; 时此参数会被忽略。URL 中需要将 &#x60;#&#x60; 编码为 &#x60;%23&#x60;。 (optional, default to '#FFFFFF')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageQrcode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getImageQrcodeRequest($text, $size = 256, $format = 'image', string $contentType = self::contentTypes['getImageQrcode'][0])
+    public function getImageQrcodeRequest($text, $size = 256, $format = 'image', $transparent = false, $fgcolor = '#000000', $bgcolor = '#FFFFFF', string $contentType = self::contentTypes['getImageQrcode'][0])
     {
 
         // verify the required parameter 'text' is set
@@ -1309,6 +1327,12 @@ class ImageApi
                 'Missing the required parameter $text when calling getImageQrcode'
             );
         }
+
+        if ($size !== null && $size > 2048) {
+            throw new \InvalidArgumentException('invalid value for "$size" when calling ImageApi.getImageQrcode, must be smaller than or equal to 2048.');
+        }
+        
+
 
 
 
@@ -1342,6 +1366,33 @@ class ImageApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $format,
             'format', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $transparent,
+            'transparent', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $fgcolor,
+            'fgcolor', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $bgcolor,
+            'bgcolor', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1407,7 +1458,7 @@ class ImageApi
     /**
      * Operation getImageTobase64
      *
-     * 将在线图片转换为Base64
+     * 图片转 Base64
      *
      * @param  string $url 需要转换为Base64的、可公开访问的图片URL地址。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageTobase64'] to see the possible values for this operation
@@ -1425,7 +1476,7 @@ class ImageApi
     /**
      * Operation getImageTobase64WithHttpInfo
      *
-     * 将在线图片转换为Base64
+     * 图片转 Base64
      *
      * @param  string $url 需要转换为Base64的、可公开访问的图片URL地址。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageTobase64'] to see the possible values for this operation
@@ -1538,7 +1589,7 @@ class ImageApi
     /**
      * Operation getImageTobase64Async
      *
-     * 将在线图片转换为Base64
+     * 图片转 Base64
      *
      * @param  string $url 需要转换为Base64的、可公开访问的图片URL地址。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageTobase64'] to see the possible values for this operation
@@ -1559,7 +1610,7 @@ class ImageApi
     /**
      * Operation getImageTobase64AsyncWithHttpInfo
      *
-     * 将在线图片转换为Base64
+     * 图片转 Base64
      *
      * @param  string $url 需要转换为Base64的、可公开访问的图片URL地址。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImageTobase64'] to see the possible values for this operation
@@ -2327,7 +2378,7 @@ class ImageApi
     /**
      * Operation postImageMotou
      *
-     * 生成摸摸头GIF (图片上传或URL方式)
+     * 生成摸摸头GIF
      *
      * @param  string|null $image_url 图片的URL地址。如果提供此项，将优先使用该URL的图片。 (optional)
      * @param  \SplFileObject|null $file 上传的图片文件。支持JPG、PNG、GIF等常见格式。 (optional)
@@ -2347,7 +2398,7 @@ class ImageApi
     /**
      * Operation postImageMotouWithHttpInfo
      *
-     * 生成摸摸头GIF (图片上传或URL方式)
+     * 生成摸摸头GIF
      *
      * @param  string|null $image_url 图片的URL地址。如果提供此项，将优先使用该URL的图片。 (optional)
      * @param  \SplFileObject|null $file 上传的图片文件。支持JPG、PNG、GIF等常见格式。 (optional)
@@ -2462,7 +2513,7 @@ class ImageApi
     /**
      * Operation postImageMotouAsync
      *
-     * 生成摸摸头GIF (图片上传或URL方式)
+     * 生成摸摸头GIF
      *
      * @param  string|null $image_url 图片的URL地址。如果提供此项，将优先使用该URL的图片。 (optional)
      * @param  \SplFileObject|null $file 上传的图片文件。支持JPG、PNG、GIF等常见格式。 (optional)
@@ -2485,7 +2536,7 @@ class ImageApi
     /**
      * Operation postImageMotouAsyncWithHttpInfo
      *
-     * 生成摸摸头GIF (图片上传或URL方式)
+     * 生成摸摸头GIF
      *
      * @param  string|null $image_url 图片的URL地址。如果提供此项，将优先使用该URL的图片。 (optional)
      * @param  \SplFileObject|null $file 上传的图片文件。支持JPG、PNG、GIF等常见格式。 (optional)
@@ -2579,6 +2630,319 @@ class ImageApi
         $multipart = true;
         $headers = $this->headerSelector->selectHeaders(
             ['image/gif', 'application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation postImageNsfw
+     *
+     * 图片敏感检测
+     *
+     * @param  \SplFileObject|null $file 要检测的图片文件。支持 JPG、JPEG、PNG、GIF、WebP 格式，最大 20MB。 (optional)
+     * @param  string|null $url 图片的 URL 地址。如果同时提供 file 和 url，将优先使用 file。 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postImageNsfw'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\PostImageNsfw200Response|\OpenAPI\Client\Model\PostImageNsfw400Response|\OpenAPI\Client\Model\PostImageNsfw413Response|\OpenAPI\Client\Model\PostImageNsfw500Response
+     */
+    public function postImageNsfw($file = null, $url = null, string $contentType = self::contentTypes['postImageNsfw'][0])
+    {
+        list($response) = $this->postImageNsfwWithHttpInfo($file, $url, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation postImageNsfwWithHttpInfo
+     *
+     * 图片敏感检测
+     *
+     * @param  \SplFileObject|null $file 要检测的图片文件。支持 JPG、JPEG、PNG、GIF、WebP 格式，最大 20MB。 (optional)
+     * @param  string|null $url 图片的 URL 地址。如果同时提供 file 和 url，将优先使用 file。 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postImageNsfw'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\PostImageNsfw200Response|\OpenAPI\Client\Model\PostImageNsfw400Response|\OpenAPI\Client\Model\PostImageNsfw413Response|\OpenAPI\Client\Model\PostImageNsfw500Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postImageNsfwWithHttpInfo($file = null, $url = null, string $contentType = self::contentTypes['postImageNsfw'][0])
+    {
+        $request = $this->postImageNsfwRequest($file, $url, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PostImageNsfw200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PostImageNsfw400Response',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PostImageNsfw413Response',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PostImageNsfw500Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\PostImageNsfw200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PostImageNsfw200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PostImageNsfw400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PostImageNsfw413Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PostImageNsfw500Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postImageNsfwAsync
+     *
+     * 图片敏感检测
+     *
+     * @param  \SplFileObject|null $file 要检测的图片文件。支持 JPG、JPEG、PNG、GIF、WebP 格式，最大 20MB。 (optional)
+     * @param  string|null $url 图片的 URL 地址。如果同时提供 file 和 url，将优先使用 file。 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postImageNsfw'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postImageNsfwAsync($file = null, $url = null, string $contentType = self::contentTypes['postImageNsfw'][0])
+    {
+        return $this->postImageNsfwAsyncWithHttpInfo($file, $url, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postImageNsfwAsyncWithHttpInfo
+     *
+     * 图片敏感检测
+     *
+     * @param  \SplFileObject|null $file 要检测的图片文件。支持 JPG、JPEG、PNG、GIF、WebP 格式，最大 20MB。 (optional)
+     * @param  string|null $url 图片的 URL 地址。如果同时提供 file 和 url，将优先使用 file。 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postImageNsfw'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postImageNsfwAsyncWithHttpInfo($file = null, $url = null, string $contentType = self::contentTypes['postImageNsfw'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\PostImageNsfw200Response';
+        $request = $this->postImageNsfwRequest($file, $url, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postImageNsfw'
+     *
+     * @param  \SplFileObject|null $file 要检测的图片文件。支持 JPG、JPEG、PNG、GIF、WebP 格式，最大 20MB。 (optional)
+     * @param  string|null $url 图片的 URL 地址。如果同时提供 file 和 url，将优先使用 file。 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postImageNsfw'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postImageNsfwRequest($file = null, $url = null, string $contentType = self::contentTypes['postImageNsfw'][0])
+    {
+
+
+
+
+        $resourcePath = '/image/nsfw';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+        // form params
+        $formDataProcessor = new FormDataProcessor();
+
+        $formData = $formDataProcessor->prepare([
+            'file' => $file,
+            'url' => $url,
+        ]);
+
+        $formParams = $formDataProcessor->flatten($formData);
+        $multipart = $formDataProcessor->has_file;
+
+        $multipart = true;
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
             $contentType,
             $multipart
         );

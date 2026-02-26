@@ -57,7 +57,6 @@ class GetGameMinecraftUserinfo200Response implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'skin_url' => 'string',
         'username' => 'string',
         'uuid' => 'string'
@@ -71,7 +70,6 @@ class GetGameMinecraftUserinfo200Response implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
         'skin_url' => null,
         'username' => null,
         'uuid' => null
@@ -83,7 +81,6 @@ class GetGameMinecraftUserinfo200Response implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
         'skin_url' => false,
         'username' => false,
         'uuid' => false
@@ -175,7 +172,6 @@ class GetGameMinecraftUserinfo200Response implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'skin_url' => 'skin_url',
         'username' => 'username',
         'uuid' => 'uuid'
@@ -187,7 +183,6 @@ class GetGameMinecraftUserinfo200Response implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'skin_url' => 'setSkinUrl',
         'username' => 'setUsername',
         'uuid' => 'setUuid'
@@ -199,7 +194,6 @@ class GetGameMinecraftUserinfo200Response implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'skin_url' => 'getSkinUrl',
         'username' => 'getUsername',
         'uuid' => 'getUuid'
@@ -262,7 +256,6 @@ class GetGameMinecraftUserinfo200Response implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('skin_url', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('uuid', $data ?? [], null);
@@ -309,33 +302,6 @@ class GetGameMinecraftUserinfo200Response implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code 状态码，200代表成功。
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
 
     /**
      * Gets skin_url
