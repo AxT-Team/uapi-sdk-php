@@ -57,9 +57,19 @@ class GetSocialBilibiliUserinfo200Response implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'data' => '\OpenAPI\Client\Model\GetSocialBilibiliUserinfo200ResponseData',
-        'message' => 'string'
+        'mid' => 'int',
+        'name' => 'string',
+        'sex' => 'string',
+        'face' => 'string',
+        'sign' => 'string',
+        'level' => 'int',
+        'birthday' => 'string',
+        'vip_type' => 'int',
+        'vip_status' => 'int',
+        'following' => 'int',
+        'follower' => 'int',
+        'archive_count' => 'int',
+        'article_count' => 'int'
     ];
 
     /**
@@ -70,9 +80,19 @@ class GetSocialBilibiliUserinfo200Response implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'data' => null,
-        'message' => null
+        'mid' => null,
+        'name' => null,
+        'sex' => null,
+        'face' => null,
+        'sign' => null,
+        'level' => null,
+        'birthday' => null,
+        'vip_type' => null,
+        'vip_status' => null,
+        'following' => null,
+        'follower' => null,
+        'archive_count' => null,
+        'article_count' => null
     ];
 
     /**
@@ -81,9 +101,19 @@ class GetSocialBilibiliUserinfo200Response implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'data' => false,
-        'message' => false
+        'mid' => false,
+        'name' => false,
+        'sex' => false,
+        'face' => false,
+        'sign' => false,
+        'level' => false,
+        'birthday' => false,
+        'vip_type' => false,
+        'vip_status' => false,
+        'following' => false,
+        'follower' => false,
+        'archive_count' => false,
+        'article_count' => false
     ];
 
     /**
@@ -172,9 +202,19 @@ class GetSocialBilibiliUserinfo200Response implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'data' => 'data',
-        'message' => 'message'
+        'mid' => 'mid',
+        'name' => 'name',
+        'sex' => 'sex',
+        'face' => 'face',
+        'sign' => 'sign',
+        'level' => 'level',
+        'birthday' => 'birthday',
+        'vip_type' => 'vip_type',
+        'vip_status' => 'vip_status',
+        'following' => 'following',
+        'follower' => 'follower',
+        'archive_count' => 'archive_count',
+        'article_count' => 'article_count'
     ];
 
     /**
@@ -183,9 +223,19 @@ class GetSocialBilibiliUserinfo200Response implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'data' => 'setData',
-        'message' => 'setMessage'
+        'mid' => 'setMid',
+        'name' => 'setName',
+        'sex' => 'setSex',
+        'face' => 'setFace',
+        'sign' => 'setSign',
+        'level' => 'setLevel',
+        'birthday' => 'setBirthday',
+        'vip_type' => 'setVipType',
+        'vip_status' => 'setVipStatus',
+        'following' => 'setFollowing',
+        'follower' => 'setFollower',
+        'archive_count' => 'setArchiveCount',
+        'article_count' => 'setArticleCount'
     ];
 
     /**
@@ -194,9 +244,19 @@ class GetSocialBilibiliUserinfo200Response implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'data' => 'getData',
-        'message' => 'getMessage'
+        'mid' => 'getMid',
+        'name' => 'getName',
+        'sex' => 'getSex',
+        'face' => 'getFace',
+        'sign' => 'getSign',
+        'level' => 'getLevel',
+        'birthday' => 'getBirthday',
+        'vip_type' => 'getVipType',
+        'vip_status' => 'getVipStatus',
+        'following' => 'getFollowing',
+        'follower' => 'getFollower',
+        'archive_count' => 'getArchiveCount',
+        'article_count' => 'getArticleCount'
     ];
 
     /**
@@ -256,9 +316,19 @@ class GetSocialBilibiliUserinfo200Response implements ModelInterface, ArrayAcces
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('mid', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('sex', $data ?? [], null);
+        $this->setIfExists('face', $data ?? [], null);
+        $this->setIfExists('sign', $data ?? [], null);
+        $this->setIfExists('level', $data ?? [], null);
+        $this->setIfExists('birthday', $data ?? [], null);
+        $this->setIfExists('vip_type', $data ?? [], null);
+        $this->setIfExists('vip_status', $data ?? [], null);
+        $this->setIfExists('following', $data ?? [], null);
+        $this->setIfExists('follower', $data ?? [], null);
+        $this->setIfExists('archive_count', $data ?? [], null);
+        $this->setIfExists('article_count', $data ?? [], null);
     }
 
     /**
@@ -304,82 +374,352 @@ class GetSocialBilibiliUserinfo200Response implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets code
+     * Gets mid
      *
      * @return int|null
      */
-    public function getCode()
+    public function getMid()
     {
-        return $this->container['code'];
+        return $this->container['mid'];
     }
 
     /**
-     * Sets code
+     * Sets mid
      *
-     * @param int|null $code code
+     * @param int|null $mid mid
      *
      * @return self
      */
-    public function setCode($code)
+    public function setMid($mid)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($mid)) {
+            throw new \InvalidArgumentException('non-nullable mid cannot be null');
         }
-        $this->container['code'] = $code;
+        $this->container['mid'] = $mid;
 
         return $this;
     }
 
     /**
-     * Gets data
-     *
-     * @return \OpenAPI\Client\Model\GetSocialBilibiliUserinfo200ResponseData|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \OpenAPI\Client\Model\GetSocialBilibiliUserinfo200ResponseData|null $data data
-     *
-     * @return self
-     */
-    public function setData($data)
-    {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
-        }
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
+     * Gets name
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getName()
     {
-        return $this->container['message'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets message
+     * Sets name
      *
-     * @param string|null $message message
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setName($name)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets sex
+     *
+     * @return string|null
+     */
+    public function getSex()
+    {
+        return $this->container['sex'];
+    }
+
+    /**
+     * Sets sex
+     *
+     * @param string|null $sex sex
+     *
+     * @return self
+     */
+    public function setSex($sex)
+    {
+        if (is_null($sex)) {
+            throw new \InvalidArgumentException('non-nullable sex cannot be null');
+        }
+        $this->container['sex'] = $sex;
+
+        return $this;
+    }
+
+    /**
+     * Gets face
+     *
+     * @return string|null
+     */
+    public function getFace()
+    {
+        return $this->container['face'];
+    }
+
+    /**
+     * Sets face
+     *
+     * @param string|null $face face
+     *
+     * @return self
+     */
+    public function setFace($face)
+    {
+        if (is_null($face)) {
+            throw new \InvalidArgumentException('non-nullable face cannot be null');
+        }
+        $this->container['face'] = $face;
+
+        return $this;
+    }
+
+    /**
+     * Gets sign
+     *
+     * @return string|null
+     */
+    public function getSign()
+    {
+        return $this->container['sign'];
+    }
+
+    /**
+     * Sets sign
+     *
+     * @param string|null $sign sign
+     *
+     * @return self
+     */
+    public function setSign($sign)
+    {
+        if (is_null($sign)) {
+            throw new \InvalidArgumentException('non-nullable sign cannot be null');
+        }
+        $this->container['sign'] = $sign;
+
+        return $this;
+    }
+
+    /**
+     * Gets level
+     *
+     * @return int|null
+     */
+    public function getLevel()
+    {
+        return $this->container['level'];
+    }
+
+    /**
+     * Sets level
+     *
+     * @param int|null $level level
+     *
+     * @return self
+     */
+    public function setLevel($level)
+    {
+        if (is_null($level)) {
+            throw new \InvalidArgumentException('non-nullable level cannot be null');
+        }
+        $this->container['level'] = $level;
+
+        return $this;
+    }
+
+    /**
+     * Gets birthday
+     *
+     * @return string|null
+     */
+    public function getBirthday()
+    {
+        return $this->container['birthday'];
+    }
+
+    /**
+     * Sets birthday
+     *
+     * @param string|null $birthday birthday
+     *
+     * @return self
+     */
+    public function setBirthday($birthday)
+    {
+        if (is_null($birthday)) {
+            throw new \InvalidArgumentException('non-nullable birthday cannot be null');
+        }
+        $this->container['birthday'] = $birthday;
+
+        return $this;
+    }
+
+    /**
+     * Gets vip_type
+     *
+     * @return int|null
+     */
+    public function getVipType()
+    {
+        return $this->container['vip_type'];
+    }
+
+    /**
+     * Sets vip_type
+     *
+     * @param int|null $vip_type vip_type
+     *
+     * @return self
+     */
+    public function setVipType($vip_type)
+    {
+        if (is_null($vip_type)) {
+            throw new \InvalidArgumentException('non-nullable vip_type cannot be null');
+        }
+        $this->container['vip_type'] = $vip_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets vip_status
+     *
+     * @return int|null
+     */
+    public function getVipStatus()
+    {
+        return $this->container['vip_status'];
+    }
+
+    /**
+     * Sets vip_status
+     *
+     * @param int|null $vip_status vip_status
+     *
+     * @return self
+     */
+    public function setVipStatus($vip_status)
+    {
+        if (is_null($vip_status)) {
+            throw new \InvalidArgumentException('non-nullable vip_status cannot be null');
+        }
+        $this->container['vip_status'] = $vip_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets following
+     *
+     * @return int|null
+     */
+    public function getFollowing()
+    {
+        return $this->container['following'];
+    }
+
+    /**
+     * Sets following
+     *
+     * @param int|null $following following
+     *
+     * @return self
+     */
+    public function setFollowing($following)
+    {
+        if (is_null($following)) {
+            throw new \InvalidArgumentException('non-nullable following cannot be null');
+        }
+        $this->container['following'] = $following;
+
+        return $this;
+    }
+
+    /**
+     * Gets follower
+     *
+     * @return int|null
+     */
+    public function getFollower()
+    {
+        return $this->container['follower'];
+    }
+
+    /**
+     * Sets follower
+     *
+     * @param int|null $follower follower
+     *
+     * @return self
+     */
+    public function setFollower($follower)
+    {
+        if (is_null($follower)) {
+            throw new \InvalidArgumentException('non-nullable follower cannot be null');
+        }
+        $this->container['follower'] = $follower;
+
+        return $this;
+    }
+
+    /**
+     * Gets archive_count
+     *
+     * @return int|null
+     */
+    public function getArchiveCount()
+    {
+        return $this->container['archive_count'];
+    }
+
+    /**
+     * Sets archive_count
+     *
+     * @param int|null $archive_count archive_count
+     *
+     * @return self
+     */
+    public function setArchiveCount($archive_count)
+    {
+        if (is_null($archive_count)) {
+            throw new \InvalidArgumentException('non-nullable archive_count cannot be null');
+        }
+        $this->container['archive_count'] = $archive_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets article_count
+     *
+     * @return int|null
+     */
+    public function getArticleCount()
+    {
+        return $this->container['article_count'];
+    }
+
+    /**
+     * Sets article_count
+     *
+     * @param int|null $article_count article_count
+     *
+     * @return self
+     */
+    public function setArticleCount($article_count)
+    {
+        if (is_null($article_count)) {
+            throw new \InvalidArgumentException('non-nullable article_count cannot be null');
+        }
+        $this->container['article_count'] = $article_count;
 
         return $this;
     }

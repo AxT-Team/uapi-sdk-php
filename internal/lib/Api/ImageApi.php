@@ -2085,7 +2085,7 @@ class ImageApi
      *
      * 通过Base64编码上传图片
      *
-     * @param  \OpenAPI\Client\Model\PostImageFrombase64Request $post_image_frombase64_request 一个JSON对象，包含 &#x60;imageData&#x60; 字段，其值为你想要上传图片的完整Base64 Data URI。 (required)
+     * @param  \OpenAPI\Client\Model\PostImageFrombase64Request $post_image_frombase64_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postImageFrombase64'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2103,7 +2103,7 @@ class ImageApi
      *
      * 通过Base64编码上传图片
      *
-     * @param  \OpenAPI\Client\Model\PostImageFrombase64Request $post_image_frombase64_request 一个JSON对象，包含 &#x60;imageData&#x60; 字段，其值为你想要上传图片的完整Base64 Data URI。 (required)
+     * @param  \OpenAPI\Client\Model\PostImageFrombase64Request $post_image_frombase64_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postImageFrombase64'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2216,7 +2216,7 @@ class ImageApi
      *
      * 通过Base64编码上传图片
      *
-     * @param  \OpenAPI\Client\Model\PostImageFrombase64Request $post_image_frombase64_request 一个JSON对象，包含 &#x60;imageData&#x60; 字段，其值为你想要上传图片的完整Base64 Data URI。 (required)
+     * @param  \OpenAPI\Client\Model\PostImageFrombase64Request $post_image_frombase64_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postImageFrombase64'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2237,7 +2237,7 @@ class ImageApi
      *
      * 通过Base64编码上传图片
      *
-     * @param  \OpenAPI\Client\Model\PostImageFrombase64Request $post_image_frombase64_request 一个JSON对象，包含 &#x60;imageData&#x60; 字段，其值为你想要上传图片的完整Base64 Data URI。 (required)
+     * @param  \OpenAPI\Client\Model\PostImageFrombase64Request $post_image_frombase64_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postImageFrombase64'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2287,7 +2287,7 @@ class ImageApi
     /**
      * Create request for operation 'postImageFrombase64'
      *
-     * @param  \OpenAPI\Client\Model\PostImageFrombase64Request $post_image_frombase64_request 一个JSON对象，包含 &#x60;imageData&#x60; 字段，其值为你想要上传图片的完整Base64 Data URI。 (required)
+     * @param  \OpenAPI\Client\Model\PostImageFrombase64Request $post_image_frombase64_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postImageFrombase64'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

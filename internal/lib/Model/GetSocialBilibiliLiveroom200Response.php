@@ -62,18 +62,21 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
         'short_id' => 'float',
         'attention' => 'float',
         'online' => 'float',
+        'is_portrait' => 'bool',
         'live_status' => 'float',
         'area_id' => 'float',
         'parent_area_name' => 'string',
+        'parent_area_id' => 'float',
         'area_name' => 'string',
         'background' => 'string',
         'title' => 'string',
         'user_cover' => 'string',
         'description' => 'string',
         'live_time' => 'string',
+        'keyframe' => 'string',
         'tags' => 'string',
         'hot_words' => 'string[]',
-        'new_pendants' => 'object'
+        'new_pendants' => '\OpenAPI\Client\Model\GetSocialBilibiliLiveroom200ResponseNewPendants'
     ];
 
     /**
@@ -89,15 +92,18 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
         'short_id' => null,
         'attention' => null,
         'online' => null,
+        'is_portrait' => null,
         'live_status' => null,
         'area_id' => null,
         'parent_area_name' => null,
+        'parent_area_id' => null,
         'area_name' => null,
         'background' => null,
         'title' => null,
         'user_cover' => null,
         'description' => null,
         'live_time' => null,
+        'keyframe' => null,
         'tags' => null,
         'hot_words' => null,
         'new_pendants' => null
@@ -114,18 +120,21 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
         'short_id' => false,
         'attention' => false,
         'online' => false,
+        'is_portrait' => false,
         'live_status' => false,
         'area_id' => false,
         'parent_area_name' => false,
+        'parent_area_id' => false,
         'area_name' => false,
         'background' => false,
         'title' => false,
         'user_cover' => false,
         'description' => false,
         'live_time' => false,
+        'keyframe' => false,
         'tags' => false,
         'hot_words' => false,
-        'new_pendants' => false
+        'new_pendants' => true
     ];
 
     /**
@@ -219,15 +228,18 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
         'short_id' => 'short_id',
         'attention' => 'attention',
         'online' => 'online',
+        'is_portrait' => 'is_portrait',
         'live_status' => 'live_status',
         'area_id' => 'area_id',
         'parent_area_name' => 'parent_area_name',
+        'parent_area_id' => 'parent_area_id',
         'area_name' => 'area_name',
         'background' => 'background',
         'title' => 'title',
         'user_cover' => 'user_cover',
         'description' => 'description',
         'live_time' => 'live_time',
+        'keyframe' => 'keyframe',
         'tags' => 'tags',
         'hot_words' => 'hot_words',
         'new_pendants' => 'new_pendants'
@@ -244,15 +256,18 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
         'short_id' => 'setShortId',
         'attention' => 'setAttention',
         'online' => 'setOnline',
+        'is_portrait' => 'setIsPortrait',
         'live_status' => 'setLiveStatus',
         'area_id' => 'setAreaId',
         'parent_area_name' => 'setParentAreaName',
+        'parent_area_id' => 'setParentAreaId',
         'area_name' => 'setAreaName',
         'background' => 'setBackground',
         'title' => 'setTitle',
         'user_cover' => 'setUserCover',
         'description' => 'setDescription',
         'live_time' => 'setLiveTime',
+        'keyframe' => 'setKeyframe',
         'tags' => 'setTags',
         'hot_words' => 'setHotWords',
         'new_pendants' => 'setNewPendants'
@@ -269,15 +284,18 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
         'short_id' => 'getShortId',
         'attention' => 'getAttention',
         'online' => 'getOnline',
+        'is_portrait' => 'getIsPortrait',
         'live_status' => 'getLiveStatus',
         'area_id' => 'getAreaId',
         'parent_area_name' => 'getParentAreaName',
+        'parent_area_id' => 'getParentAreaId',
         'area_name' => 'getAreaName',
         'background' => 'getBackground',
         'title' => 'getTitle',
         'user_cover' => 'getUserCover',
         'description' => 'getDescription',
         'live_time' => 'getLiveTime',
+        'keyframe' => 'getKeyframe',
         'tags' => 'getTags',
         'hot_words' => 'getHotWords',
         'new_pendants' => 'getNewPendants'
@@ -345,15 +363,18 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
         $this->setIfExists('short_id', $data ?? [], null);
         $this->setIfExists('attention', $data ?? [], null);
         $this->setIfExists('online', $data ?? [], null);
+        $this->setIfExists('is_portrait', $data ?? [], null);
         $this->setIfExists('live_status', $data ?? [], null);
         $this->setIfExists('area_id', $data ?? [], null);
         $this->setIfExists('parent_area_name', $data ?? [], null);
+        $this->setIfExists('parent_area_id', $data ?? [], null);
         $this->setIfExists('area_name', $data ?? [], null);
         $this->setIfExists('background', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('user_cover', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('live_time', $data ?? [], null);
+        $this->setIfExists('keyframe', $data ?? [], null);
         $this->setIfExists('tags', $data ?? [], null);
         $this->setIfExists('hot_words', $data ?? [], null);
         $this->setIfExists('new_pendants', $data ?? [], null);
@@ -522,7 +543,7 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
     /**
      * Sets online
      *
-     * @param float|null $online 直播间当前的人气值。注意这不是真实在线人数。
+     * @param float|null $online 直播间当前的人气值（对应你文档里的 PopularValue，不代表真实在线人数）。
      *
      * @return self
      */
@@ -532,6 +553,33 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable online cannot be null');
         }
         $this->container['online'] = $online;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_portrait
+     *
+     * @return bool|null
+     */
+    public function getIsPortrait()
+    {
+        return $this->container['is_portrait'];
+    }
+
+    /**
+     * Sets is_portrait
+     *
+     * @param bool|null $is_portrait 是否为竖屏直播。
+     *
+     * @return self
+     */
+    public function setIsPortrait($is_portrait)
+    {
+        if (is_null($is_portrait)) {
+            throw new \InvalidArgumentException('non-nullable is_portrait cannot be null');
+        }
+        $this->container['is_portrait'] = $is_portrait;
 
         return $this;
     }
@@ -613,6 +661,33 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable parent_area_name cannot be null');
         }
         $this->container['parent_area_name'] = $parent_area_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_area_id
+     *
+     * @return float|null
+     */
+    public function getParentAreaId()
+    {
+        return $this->container['parent_area_id'];
+    }
+
+    /**
+     * Sets parent_area_id
+     *
+     * @param float|null $parent_area_id 父分区 ID。
+     *
+     * @return self
+     */
+    public function setParentAreaId($parent_area_id)
+    {
+        if (is_null($parent_area_id)) {
+            throw new \InvalidArgumentException('non-nullable parent_area_id cannot be null');
+        }
+        $this->container['parent_area_id'] = $parent_area_id;
 
         return $this;
     }
@@ -780,6 +855,33 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
     }
 
     /**
+     * Gets keyframe
+     *
+     * @return string|null
+     */
+    public function getKeyframe()
+    {
+        return $this->container['keyframe'];
+    }
+
+    /**
+     * Sets keyframe
+     *
+     * @param string|null $keyframe 关键帧封面图链接。
+     *
+     * @return self
+     */
+    public function setKeyframe($keyframe)
+    {
+        if (is_null($keyframe)) {
+            throw new \InvalidArgumentException('non-nullable keyframe cannot be null');
+        }
+        $this->container['keyframe'] = $keyframe;
+
+        return $this;
+    }
+
+    /**
      * Gets tags
      *
      * @return string|null
@@ -836,7 +938,7 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
     /**
      * Gets new_pendants
      *
-     * @return object|null
+     * @return \OpenAPI\Client\Model\GetSocialBilibiliLiveroom200ResponseNewPendants|null
      */
     public function getNewPendants()
     {
@@ -846,14 +948,21 @@ class GetSocialBilibiliLiveroom200Response implements ModelInterface, ArrayAcces
     /**
      * Sets new_pendants
      *
-     * @param object|null $new_pendants 主播佩戴的头像框、大航海等级等信息，结构可能比较复杂。
+     * @param \OpenAPI\Client\Model\GetSocialBilibiliLiveroom200ResponseNewPendants|null $new_pendants new_pendants
      *
      * @return self
      */
     public function setNewPendants($new_pendants)
     {
         if (is_null($new_pendants)) {
-            throw new \InvalidArgumentException('non-nullable new_pendants cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'new_pendants');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('new_pendants', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['new_pendants'] = $new_pendants;
 

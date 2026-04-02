@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **longitude** | **float** | 经度 | [optional]
 **beginip** | **string** | IP段起始地址（标准查询） | [optional]
 **endip** | **string** | IP段结束地址（标准查询） | [optional]
-**district** | **string** | 行政区（商业查询） | [optional]
+**district** | **string** | 行政区。仅 &#x60;source&#x3D;commercial&#x60; 时可能返回。 | [optional]
+**time_zone** | **string** | 时区名称。仅 &#x60;source&#x3D;commercial&#x60; 时可能返回。 | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

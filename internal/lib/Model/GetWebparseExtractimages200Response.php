@@ -57,9 +57,8 @@ class GetWebparseExtractimages200Response implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'count' => 'int',
-        'images' => 'string[]',
-        'url' => 'string'
+        'page_url' => 'string',
+        'image_urls' => 'string[]'
     ];
 
     /**
@@ -70,9 +69,8 @@ class GetWebparseExtractimages200Response implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'count' => null,
-        'images' => null,
-        'url' => null
+        'page_url' => null,
+        'image_urls' => null
     ];
 
     /**
@@ -81,9 +79,8 @@ class GetWebparseExtractimages200Response implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'count' => false,
-        'images' => false,
-        'url' => false
+        'page_url' => false,
+        'image_urls' => false
     ];
 
     /**
@@ -172,9 +169,8 @@ class GetWebparseExtractimages200Response implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'count' => 'count',
-        'images' => 'images',
-        'url' => 'url'
+        'page_url' => 'page_url',
+        'image_urls' => 'image_urls'
     ];
 
     /**
@@ -183,9 +179,8 @@ class GetWebparseExtractimages200Response implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'count' => 'setCount',
-        'images' => 'setImages',
-        'url' => 'setUrl'
+        'page_url' => 'setPageUrl',
+        'image_urls' => 'setImageUrls'
     ];
 
     /**
@@ -194,9 +189,8 @@ class GetWebparseExtractimages200Response implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'count' => 'getCount',
-        'images' => 'getImages',
-        'url' => 'getUrl'
+        'page_url' => 'getPageUrl',
+        'image_urls' => 'getImageUrls'
     ];
 
     /**
@@ -256,9 +250,8 @@ class GetWebparseExtractimages200Response implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('count', $data ?? [], null);
-        $this->setIfExists('images', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('page_url', $data ?? [], null);
+        $this->setIfExists('image_urls', $data ?? [], null);
     }
 
     /**
@@ -304,82 +297,55 @@ class GetWebparseExtractimages200Response implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets count
-     *
-     * @return int|null
-     */
-    public function getCount()
-    {
-        return $this->container['count'];
-    }
-
-    /**
-     * Sets count
-     *
-     * @param int|null $count count
-     *
-     * @return self
-     */
-    public function setCount($count)
-    {
-        if (is_null($count)) {
-            throw new \InvalidArgumentException('non-nullable count cannot be null');
-        }
-        $this->container['count'] = $count;
-
-        return $this;
-    }
-
-    /**
-     * Gets images
-     *
-     * @return string[]|null
-     */
-    public function getImages()
-    {
-        return $this->container['images'];
-    }
-
-    /**
-     * Sets images
-     *
-     * @param string[]|null $images images
-     *
-     * @return self
-     */
-    public function setImages($images)
-    {
-        if (is_null($images)) {
-            throw new \InvalidArgumentException('non-nullable images cannot be null');
-        }
-        $this->container['images'] = $images;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
+     * Gets page_url
      *
      * @return string|null
      */
-    public function getUrl()
+    public function getPageUrl()
     {
-        return $this->container['url'];
+        return $this->container['page_url'];
     }
 
     /**
-     * Sets url
+     * Sets page_url
      *
-     * @param string|null $url url
+     * @param string|null $page_url 实际解析的网页地址。
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setPageUrl($page_url)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($page_url)) {
+            throw new \InvalidArgumentException('non-nullable page_url cannot be null');
         }
-        $this->container['url'] = $url;
+        $this->container['page_url'] = $page_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_urls
+     *
+     * @return string[]|null
+     */
+    public function getImageUrls()
+    {
+        return $this->container['image_urls'];
+    }
+
+    /**
+     * Sets image_urls
+     *
+     * @param string[]|null $image_urls 页面中提取到的图片链接列表。
+     *
+     * @return self
+     */
+    public function setImageUrls($image_urls)
+    {
+        if (is_null($image_urls)) {
+            throw new \InvalidArgumentException('non-nullable image_urls cannot be null');
+        }
+        $this->container['image_urls'] = $image_urls;
 
         return $this;
     }

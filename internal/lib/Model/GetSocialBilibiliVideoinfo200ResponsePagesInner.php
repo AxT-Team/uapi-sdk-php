@@ -60,7 +60,11 @@ class GetSocialBilibiliVideoinfo200ResponsePagesInner implements ModelInterface,
         'cid' => 'float',
         'page' => 'float',
         'part' => 'string',
-        'duration' => 'float'
+        'from' => 'string',
+        'duration' => 'float',
+        'vid' => 'string',
+        'weblink' => 'string',
+        'dimension' => '\OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension'
     ];
 
     /**
@@ -74,7 +78,11 @@ class GetSocialBilibiliVideoinfo200ResponsePagesInner implements ModelInterface,
         'cid' => null,
         'page' => null,
         'part' => null,
-        'duration' => null
+        'from' => null,
+        'duration' => null,
+        'vid' => null,
+        'weblink' => null,
+        'dimension' => null
     ];
 
     /**
@@ -86,7 +94,11 @@ class GetSocialBilibiliVideoinfo200ResponsePagesInner implements ModelInterface,
         'cid' => false,
         'page' => false,
         'part' => false,
-        'duration' => false
+        'from' => false,
+        'duration' => false,
+        'vid' => false,
+        'weblink' => false,
+        'dimension' => false
     ];
 
     /**
@@ -178,7 +190,11 @@ class GetSocialBilibiliVideoinfo200ResponsePagesInner implements ModelInterface,
         'cid' => 'cid',
         'page' => 'page',
         'part' => 'part',
-        'duration' => 'duration'
+        'from' => 'from',
+        'duration' => 'duration',
+        'vid' => 'vid',
+        'weblink' => 'weblink',
+        'dimension' => 'dimension'
     ];
 
     /**
@@ -190,7 +206,11 @@ class GetSocialBilibiliVideoinfo200ResponsePagesInner implements ModelInterface,
         'cid' => 'setCid',
         'page' => 'setPage',
         'part' => 'setPart',
-        'duration' => 'setDuration'
+        'from' => 'setFrom',
+        'duration' => 'setDuration',
+        'vid' => 'setVid',
+        'weblink' => 'setWeblink',
+        'dimension' => 'setDimension'
     ];
 
     /**
@@ -202,7 +222,11 @@ class GetSocialBilibiliVideoinfo200ResponsePagesInner implements ModelInterface,
         'cid' => 'getCid',
         'page' => 'getPage',
         'part' => 'getPart',
-        'duration' => 'getDuration'
+        'from' => 'getFrom',
+        'duration' => 'getDuration',
+        'vid' => 'getVid',
+        'weblink' => 'getWeblink',
+        'dimension' => 'getDimension'
     ];
 
     /**
@@ -265,7 +289,11 @@ class GetSocialBilibiliVideoinfo200ResponsePagesInner implements ModelInterface,
         $this->setIfExists('cid', $data ?? [], null);
         $this->setIfExists('page', $data ?? [], null);
         $this->setIfExists('part', $data ?? [], null);
+        $this->setIfExists('from', $data ?? [], null);
         $this->setIfExists('duration', $data ?? [], null);
+        $this->setIfExists('vid', $data ?? [], null);
+        $this->setIfExists('weblink', $data ?? [], null);
+        $this->setIfExists('dimension', $data ?? [], null);
     }
 
     /**
@@ -392,6 +420,33 @@ class GetSocialBilibiliVideoinfo200ResponsePagesInner implements ModelInterface,
     }
 
     /**
+     * Gets from
+     *
+     * @return string|null
+     */
+    public function getFrom()
+    {
+        return $this->container['from'];
+    }
+
+    /**
+     * Sets from
+     *
+     * @param string|null $from 视频来源。
+     *
+     * @return self
+     */
+    public function setFrom($from)
+    {
+        if (is_null($from)) {
+            throw new \InvalidArgumentException('non-nullable from cannot be null');
+        }
+        $this->container['from'] = $from;
+
+        return $this;
+    }
+
+    /**
      * Gets duration
      *
      * @return float|null
@@ -414,6 +469,87 @@ class GetSocialBilibiliVideoinfo200ResponsePagesInner implements ModelInterface,
             throw new \InvalidArgumentException('non-nullable duration cannot be null');
         }
         $this->container['duration'] = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Gets vid
+     *
+     * @return string|null
+     */
+    public function getVid()
+    {
+        return $this->container['vid'];
+    }
+
+    /**
+     * Sets vid
+     *
+     * @param string|null $vid 外部视频源 ID，通常为空。
+     *
+     * @return self
+     */
+    public function setVid($vid)
+    {
+        if (is_null($vid)) {
+            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        }
+        $this->container['vid'] = $vid;
+
+        return $this;
+    }
+
+    /**
+     * Gets weblink
+     *
+     * @return string|null
+     */
+    public function getWeblink()
+    {
+        return $this->container['weblink'];
+    }
+
+    /**
+     * Sets weblink
+     *
+     * @param string|null $weblink 外链地址，通常为空。
+     *
+     * @return self
+     */
+    public function setWeblink($weblink)
+    {
+        if (is_null($weblink)) {
+            throw new \InvalidArgumentException('non-nullable weblink cannot be null');
+        }
+        $this->container['weblink'] = $weblink;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension
+     *
+     * @return \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension|null
+     */
+    public function getDimension()
+    {
+        return $this->container['dimension'];
+    }
+
+    /**
+     * Sets dimension
+     *
+     * @param \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension|null $dimension dimension
+     *
+     * @return self
+     */
+    public function setDimension($dimension)
+    {
+        if (is_null($dimension)) {
+            throw new \InvalidArgumentException('non-nullable dimension cannot be null');
+        }
+        $this->container['dimension'] = $dimension;
 
         return $this;
     }

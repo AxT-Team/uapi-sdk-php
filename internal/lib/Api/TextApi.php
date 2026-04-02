@@ -443,7 +443,7 @@ class TextApi
      *
      * AES 解密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request 包含待解密文本 &#39;text&#39;、密钥 &#39;key&#39; 和随机数 &#39;nonce&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecrypt'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -461,7 +461,7 @@ class TextApi
      *
      * AES 解密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request 包含待解密文本 &#39;text&#39;、密钥 &#39;key&#39; 和随机数 &#39;nonce&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecrypt'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -574,7 +574,7 @@ class TextApi
      *
      * AES 解密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request 包含待解密文本 &#39;text&#39;、密钥 &#39;key&#39; 和随机数 &#39;nonce&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecrypt'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -595,7 +595,7 @@ class TextApi
      *
      * AES 解密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request 包含待解密文本 &#39;text&#39;、密钥 &#39;key&#39; 和随机数 &#39;nonce&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecrypt'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -645,7 +645,7 @@ class TextApi
     /**
      * Create request for operation 'postTextAesDecrypt'
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request 包含待解密文本 &#39;text&#39;、密钥 &#39;key&#39; 和随机数 &#39;nonce&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptRequest $post_text_aes_decrypt_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecrypt'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -738,7 +738,7 @@ class TextApi
      *
      * AES高级解密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request 包含解密配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecryptAdvanced'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -756,7 +756,7 @@ class TextApi
      *
      * AES高级解密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request 包含解密配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecryptAdvanced'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -855,7 +855,7 @@ class TextApi
      *
      * AES高级解密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request 包含解密配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecryptAdvanced'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -876,7 +876,7 @@ class TextApi
      *
      * AES高级解密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request 包含解密配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecryptAdvanced'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -926,7 +926,7 @@ class TextApi
     /**
      * Create request for operation 'postTextAesDecryptAdvanced'
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request 包含解密配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest $post_text_aes_decrypt_advanced_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesDecryptAdvanced'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1019,7 +1019,7 @@ class TextApi
      *
      * AES 加密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request 包含待加密文本 &#39;text&#39; 和密钥 &#39;key&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncrypt'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1037,7 +1037,7 @@ class TextApi
      *
      * AES 加密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request 包含待加密文本 &#39;text&#39; 和密钥 &#39;key&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncrypt'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1150,7 +1150,7 @@ class TextApi
      *
      * AES 加密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request 包含待加密文本 &#39;text&#39; 和密钥 &#39;key&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncrypt'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1171,7 +1171,7 @@ class TextApi
      *
      * AES 加密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request 包含待加密文本 &#39;text&#39; 和密钥 &#39;key&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncrypt'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1221,7 +1221,7 @@ class TextApi
     /**
      * Create request for operation 'postTextAesEncrypt'
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request 包含待加密文本 &#39;text&#39; 和密钥 &#39;key&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptRequest $post_text_aes_encrypt_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncrypt'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1314,7 +1314,7 @@ class TextApi
      *
      * AES高级加密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request 包含加密配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncryptAdvanced'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1332,7 +1332,7 @@ class TextApi
      *
      * AES高级加密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request 包含加密配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncryptAdvanced'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1431,7 +1431,7 @@ class TextApi
      *
      * AES高级加密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request 包含加密配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncryptAdvanced'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1452,7 +1452,7 @@ class TextApi
      *
      * AES高级加密
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request 包含加密配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncryptAdvanced'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1502,7 +1502,7 @@ class TextApi
     /**
      * Create request for operation 'postTextAesEncryptAdvanced'
      *
-     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request 包含加密配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest $post_text_aes_encrypt_advanced_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAesEncryptAdvanced'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1595,7 +1595,7 @@ class TextApi
      *
      * 文本分析
      *
-     * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request 包含待分析文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAnalyze'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1613,7 +1613,7 @@ class TextApi
      *
      * 文本分析
      *
-     * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request 包含待分析文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAnalyze'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1712,7 +1712,7 @@ class TextApi
      *
      * 文本分析
      *
-     * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request 包含待分析文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAnalyze'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1733,7 +1733,7 @@ class TextApi
      *
      * 文本分析
      *
-     * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request 包含待分析文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAnalyze'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1783,7 +1783,7 @@ class TextApi
     /**
      * Create request for operation 'postTextAnalyze'
      *
-     * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request 包含待分析文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextAnalyzeRequest $post_text_analyze_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextAnalyze'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1876,7 +1876,7 @@ class TextApi
      *
      * Base64 解码
      *
-     * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request 包含待解码文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Decode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1894,7 +1894,7 @@ class TextApi
      *
      * Base64 解码
      *
-     * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request 包含待解码文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Decode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1993,7 +1993,7 @@ class TextApi
      *
      * Base64 解码
      *
-     * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request 包含待解码文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Decode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2014,7 +2014,7 @@ class TextApi
      *
      * Base64 解码
      *
-     * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request 包含待解码文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Decode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2064,7 +2064,7 @@ class TextApi
     /**
      * Create request for operation 'postTextBase64Decode'
      *
-     * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request 包含待解码文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextBase64DecodeRequest $post_text_base64_decode_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Decode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2157,7 +2157,7 @@ class TextApi
      *
      * Base64 编码
      *
-     * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request 包含待编码文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Encode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2175,7 +2175,7 @@ class TextApi
      *
      * Base64 编码
      *
-     * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request 包含待编码文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Encode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2274,7 +2274,7 @@ class TextApi
      *
      * Base64 编码
      *
-     * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request 包含待编码文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Encode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2295,7 +2295,7 @@ class TextApi
      *
      * Base64 编码
      *
-     * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request 包含待编码文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Encode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2345,7 +2345,7 @@ class TextApi
     /**
      * Create request for operation 'postTextBase64Encode'
      *
-     * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request 包含待编码文本 &#39;text&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextBase64EncodeRequest $post_text_base64_encode_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextBase64Encode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2438,7 +2438,7 @@ class TextApi
      *
      * 格式转换
      *
-     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request 包含转换配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextConvert'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2456,7 +2456,7 @@ class TextApi
      *
      * 格式转换
      *
-     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request 包含转换配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextConvert'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2555,7 +2555,7 @@ class TextApi
      *
      * 格式转换
      *
-     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request 包含转换配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextConvert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2576,7 +2576,7 @@ class TextApi
      *
      * 格式转换
      *
-     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request 包含转换配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextConvert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2626,7 +2626,7 @@ class TextApi
     /**
      * Create request for operation 'postTextConvert'
      *
-     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request 包含转换配置的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextConvertRequest $post_text_convert_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextConvert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3000,7 +3000,7 @@ class TextApi
      *
      * MD5 校验
      *
-     * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request 包含待校验文本 &#39;text&#39; 和哈希值 &#39;hash&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5Verify'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3018,7 +3018,7 @@ class TextApi
      *
      * MD5 校验
      *
-     * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request 包含待校验文本 &#39;text&#39; 和哈希值 &#39;hash&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5Verify'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3117,7 +3117,7 @@ class TextApi
      *
      * MD5 校验
      *
-     * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request 包含待校验文本 &#39;text&#39; 和哈希值 &#39;hash&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5Verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3138,7 +3138,7 @@ class TextApi
      *
      * MD5 校验
      *
-     * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request 包含待校验文本 &#39;text&#39; 和哈希值 &#39;hash&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5Verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3188,7 +3188,7 @@ class TextApi
     /**
      * Create request for operation 'postTextMd5Verify'
      *
-     * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request 包含待校验文本 &#39;text&#39; 和哈希值 &#39;hash&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTextMd5VerifyRequest $post_text_md5_verify_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTextMd5Verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

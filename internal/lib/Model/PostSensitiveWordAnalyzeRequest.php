@@ -277,6 +277,10 @@ class PostSensitiveWordAnalyzeRequest implements ModelInterface, ArrayAccess, \J
         if ($this->container['keywords'] === null) {
             $invalidProperties[] = "'keywords' can't be null";
         }
+        if ((count($this->container['keywords']) > 100)) {
+            $invalidProperties[] = "invalid value for 'keywords', number of items must be less than or equal to 100.";
+        }
+
         return $invalidProperties;
     }
 
@@ -305,7 +309,7 @@ class PostSensitiveWordAnalyzeRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Sets keywords
      *
-     * @param string[] $keywords 要分析的关键词列表，单次最多100个，每个关键词最长50字符。
+     * @param string[] $keywords 要分析的关键词列表，单次最多100个。单条关键词最多1,000字符，总字符数最多20,000。
      *
      * @return self
      */
@@ -313,6 +317,10 @@ class PostSensitiveWordAnalyzeRequest implements ModelInterface, ArrayAccess, \J
     {
         if (is_null($keywords)) {
             throw new \InvalidArgumentException('non-nullable keywords cannot be null');
+        }
+
+        if ((count($keywords) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $keywords when calling PostSensitiveWordAnalyzeRequest., number of items must be less than or equal to 100.');
         }
         $this->container['keywords'] = $keywords;
 

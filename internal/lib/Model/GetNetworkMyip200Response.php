@@ -66,7 +66,8 @@ class GetNetworkMyip200Response implements ModelInterface, ArrayAccess, \JsonSer
         'longitude' => 'float',
         'beginip' => 'string',
         'endip' => 'string',
-        'district' => 'string'
+        'district' => 'string',
+        'time_zone' => 'string'
     ];
 
     /**
@@ -86,7 +87,8 @@ class GetNetworkMyip200Response implements ModelInterface, ArrayAccess, \JsonSer
         'longitude' => null,
         'beginip' => null,
         'endip' => null,
-        'district' => null
+        'district' => null,
+        'time_zone' => null
     ];
 
     /**
@@ -104,7 +106,8 @@ class GetNetworkMyip200Response implements ModelInterface, ArrayAccess, \JsonSer
         'longitude' => false,
         'beginip' => false,
         'endip' => false,
-        'district' => false
+        'district' => false,
+        'time_zone' => false
     ];
 
     /**
@@ -202,7 +205,8 @@ class GetNetworkMyip200Response implements ModelInterface, ArrayAccess, \JsonSer
         'longitude' => 'longitude',
         'beginip' => 'beginip',
         'endip' => 'endip',
-        'district' => 'district'
+        'district' => 'district',
+        'time_zone' => 'time_zone'
     ];
 
     /**
@@ -220,7 +224,8 @@ class GetNetworkMyip200Response implements ModelInterface, ArrayAccess, \JsonSer
         'longitude' => 'setLongitude',
         'beginip' => 'setBeginip',
         'endip' => 'setEndip',
-        'district' => 'setDistrict'
+        'district' => 'setDistrict',
+        'time_zone' => 'setTimeZone'
     ];
 
     /**
@@ -238,7 +243,8 @@ class GetNetworkMyip200Response implements ModelInterface, ArrayAccess, \JsonSer
         'longitude' => 'getLongitude',
         'beginip' => 'getBeginip',
         'endip' => 'getEndip',
-        'district' => 'getDistrict'
+        'district' => 'getDistrict',
+        'time_zone' => 'getTimeZone'
     ];
 
     /**
@@ -308,6 +314,7 @@ class GetNetworkMyip200Response implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('beginip', $data ?? [], null);
         $this->setIfExists('endip', $data ?? [], null);
         $this->setIfExists('district', $data ?? [], null);
+        $this->setIfExists('time_zone', $data ?? [], null);
     }
 
     /**
@@ -608,7 +615,7 @@ class GetNetworkMyip200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets district
      *
-     * @param string|null $district 行政区（商业查询）
+     * @param string|null $district 行政区。仅 `source=commercial` 时可能返回。
      *
      * @return self
      */
@@ -618,6 +625,33 @@ class GetNetworkMyip200Response implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable district cannot be null');
         }
         $this->container['district'] = $district;
+
+        return $this;
+    }
+
+    /**
+     * Gets time_zone
+     *
+     * @return string|null
+     */
+    public function getTimeZone()
+    {
+        return $this->container['time_zone'];
+    }
+
+    /**
+     * Sets time_zone
+     *
+     * @param string|null $time_zone 时区名称。仅 `source=commercial` 时可能返回。
+     *
+     * @return self
+     */
+    public function setTimeZone($time_zone)
+    {
+        if (is_null($time_zone)) {
+            throw new \InvalidArgumentException('non-nullable time_zone cannot be null');
+        }
+        $this->container['time_zone'] = $time_zone;
 
         return $this;
     }

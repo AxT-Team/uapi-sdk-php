@@ -57,9 +57,12 @@ class GetMiscHolidayCalendar200Response implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string',
-        'data' => '\OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseData'
+        'mode' => 'string',
+        'query' => '\OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseQuery',
+        'summary' => '\OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseSummary',
+        'days' => '\OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseDaysInner[]',
+        'holidays' => '\OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseHolidaysInner[]',
+        'nearby' => '\OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseNearby'
     ];
 
     /**
@@ -70,9 +73,12 @@ class GetMiscHolidayCalendar200Response implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'message' => null,
-        'data' => null
+        'mode' => null,
+        'query' => null,
+        'summary' => null,
+        'days' => null,
+        'holidays' => null,
+        'nearby' => null
     ];
 
     /**
@@ -81,9 +87,12 @@ class GetMiscHolidayCalendar200Response implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'message' => false,
-        'data' => false
+        'mode' => false,
+        'query' => false,
+        'summary' => false,
+        'days' => false,
+        'holidays' => false,
+        'nearby' => false
     ];
 
     /**
@@ -172,9 +181,12 @@ class GetMiscHolidayCalendar200Response implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'data' => 'data'
+        'mode' => 'mode',
+        'query' => 'query',
+        'summary' => 'summary',
+        'days' => 'days',
+        'holidays' => 'holidays',
+        'nearby' => 'nearby'
     ];
 
     /**
@@ -183,9 +195,12 @@ class GetMiscHolidayCalendar200Response implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'data' => 'setData'
+        'mode' => 'setMode',
+        'query' => 'setQuery',
+        'summary' => 'setSummary',
+        'days' => 'setDays',
+        'holidays' => 'setHolidays',
+        'nearby' => 'setNearby'
     ];
 
     /**
@@ -194,9 +209,12 @@ class GetMiscHolidayCalendar200Response implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'data' => 'getData'
+        'mode' => 'getMode',
+        'query' => 'getQuery',
+        'summary' => 'getSummary',
+        'days' => 'getDays',
+        'holidays' => 'getHolidays',
+        'nearby' => 'getNearby'
     ];
 
     /**
@@ -256,9 +274,12 @@ class GetMiscHolidayCalendar200Response implements ModelInterface, ArrayAccess, 
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('mode', $data ?? [], null);
+        $this->setIfExists('query', $data ?? [], null);
+        $this->setIfExists('summary', $data ?? [], null);
+        $this->setIfExists('days', $data ?? [], null);
+        $this->setIfExists('holidays', $data ?? [], null);
+        $this->setIfExists('nearby', $data ?? [], null);
     }
 
     /**
@@ -304,82 +325,163 @@ class GetMiscHolidayCalendar200Response implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
+     * Gets mode
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getMode()
     {
-        return $this->container['message'];
+        return $this->container['mode'];
     }
 
     /**
-     * Sets message
+     * Sets mode
      *
-     * @param string|null $message message
+     * @param string|null $mode 查询模式：day、month、year。
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setMode($mode)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($mode)) {
+            throw new \InvalidArgumentException('non-nullable mode cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['mode'] = $mode;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets query
      *
-     * @return \OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseData|null
+     * @return \OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseQuery|null
      */
-    public function getData()
+    public function getQuery()
     {
-        return $this->container['data'];
+        return $this->container['query'];
     }
 
     /**
-     * Sets data
+     * Sets query
      *
-     * @param \OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseData|null $data data
+     * @param \OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseQuery|null $query query
      *
      * @return self
      */
-    public function setData($data)
+    public function setQuery($query)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($query)) {
+            throw new \InvalidArgumentException('non-nullable query cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['query'] = $query;
+
+        return $this;
+    }
+
+    /**
+     * Gets summary
+     *
+     * @return \OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseSummary|null
+     */
+    public function getSummary()
+    {
+        return $this->container['summary'];
+    }
+
+    /**
+     * Sets summary
+     *
+     * @param \OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseSummary|null $summary summary
+     *
+     * @return self
+     */
+    public function setSummary($summary)
+    {
+        if (is_null($summary)) {
+            throw new \InvalidArgumentException('non-nullable summary cannot be null');
+        }
+        $this->container['summary'] = $summary;
+
+        return $this;
+    }
+
+    /**
+     * Gets days
+     *
+     * @return \OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseDaysInner[]|null
+     */
+    public function getDays()
+    {
+        return $this->container['days'];
+    }
+
+    /**
+     * Sets days
+     *
+     * @param \OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseDaysInner[]|null $days 日期明细列表。
+     *
+     * @return self
+     */
+    public function setDays($days)
+    {
+        if (is_null($days)) {
+            throw new \InvalidArgumentException('non-nullable days cannot be null');
+        }
+        $this->container['days'] = $days;
+
+        return $this;
+    }
+
+    /**
+     * Gets holidays
+     *
+     * @return \OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseHolidaysInner[]|null
+     */
+    public function getHolidays()
+    {
+        return $this->container['holidays'];
+    }
+
+    /**
+     * Sets holidays
+     *
+     * @param \OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseHolidaysInner[]|null $holidays 节日事件列表。
+     *
+     * @return self
+     */
+    public function setHolidays($holidays)
+    {
+        if (is_null($holidays)) {
+            throw new \InvalidArgumentException('non-nullable holidays cannot be null');
+        }
+        $this->container['holidays'] = $holidays;
+
+        return $this;
+    }
+
+    /**
+     * Gets nearby
+     *
+     * @return \OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseNearby|null
+     */
+    public function getNearby()
+    {
+        return $this->container['nearby'];
+    }
+
+    /**
+     * Sets nearby
+     *
+     * @param \OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseNearby|null $nearby nearby
+     *
+     * @return self
+     */
+    public function setNearby($nearby)
+    {
+        if (is_null($nearby)) {
+            throw new \InvalidArgumentException('non-nullable nearby cannot be null');
+        }
+        $this->container['nearby'] = $nearby;
 
         return $this;
     }

@@ -57,8 +57,7 @@ class PostAiTranslate200ResponsePerformance implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
-        'processing_time_ms' => 'int',
-        'cache_hit' => 'bool'
+        'processing_time_ms' => 'int'
     ];
 
     /**
@@ -69,8 +68,7 @@ class PostAiTranslate200ResponsePerformance implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'processing_time_ms' => null,
-        'cache_hit' => null
+        'processing_time_ms' => null
     ];
 
     /**
@@ -79,8 +77,7 @@ class PostAiTranslate200ResponsePerformance implements ModelInterface, ArrayAcce
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'processing_time_ms' => false,
-        'cache_hit' => false
+        'processing_time_ms' => false
     ];
 
     /**
@@ -169,8 +166,7 @@ class PostAiTranslate200ResponsePerformance implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'processing_time_ms' => 'processing_time_ms',
-        'cache_hit' => 'cache_hit'
+        'processing_time_ms' => 'processing_time_ms'
     ];
 
     /**
@@ -179,8 +175,7 @@ class PostAiTranslate200ResponsePerformance implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'processing_time_ms' => 'setProcessingTimeMs',
-        'cache_hit' => 'setCacheHit'
+        'processing_time_ms' => 'setProcessingTimeMs'
     ];
 
     /**
@@ -189,8 +184,7 @@ class PostAiTranslate200ResponsePerformance implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'processing_time_ms' => 'getProcessingTimeMs',
-        'cache_hit' => 'getCacheHit'
+        'processing_time_ms' => 'getProcessingTimeMs'
     ];
 
     /**
@@ -251,7 +245,6 @@ class PostAiTranslate200ResponsePerformance implements ModelInterface, ArrayAcce
     public function __construct(?array $data = null)
     {
         $this->setIfExists('processing_time_ms', $data ?? [], null);
-        $this->setIfExists('cache_hit', $data ?? [], null);
     }
 
     /**
@@ -319,33 +312,6 @@ class PostAiTranslate200ResponsePerformance implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable processing_time_ms cannot be null');
         }
         $this->container['processing_time_ms'] = $processing_time_ms;
-
-        return $this;
-    }
-
-    /**
-     * Gets cache_hit
-     *
-     * @return bool|null
-     */
-    public function getCacheHit()
-    {
-        return $this->container['cache_hit'];
-    }
-
-    /**
-     * Sets cache_hit
-     *
-     * @param bool|null $cache_hit cache_hit
-     *
-     * @return self
-     */
-    public function setCacheHit($cache_hit)
-    {
-        if (is_null($cache_hit)) {
-            throw new \InvalidArgumentException('non-nullable cache_hit cannot be null');
-        }
-        $this->container['cache_hit'] = $cache_hit;
 
         return $this;
     }

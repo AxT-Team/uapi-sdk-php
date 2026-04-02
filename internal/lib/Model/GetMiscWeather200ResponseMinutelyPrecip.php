@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * GetMiscWeather200ResponseMinutelyPrecip Class Doc Comment
  *
  * @category Class
- * @description 分钟级降水预报（minutely&#x3D;true 时返回，仅国内城市可用）
+ * @description 分钟级降水预报（minutely&#x3D;true 时返回，仅国内城市可用，精确到2分钟）
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -371,7 +371,7 @@ class GetMiscWeather200ResponseMinutelyPrecip implements ModelInterface, ArrayAc
     /**
      * Sets data
      *
-     * @param \OpenAPI\Client\Model\GetMiscWeather200ResponseMinutelyPrecipDataInner[]|null $data 每5分钟一个数据点，共24个
+     * @param \OpenAPI\Client\Model\GetMiscWeather200ResponseMinutelyPrecipDataInner[]|null $data 精确到2分钟的数据点
      *
      * @return self
      */

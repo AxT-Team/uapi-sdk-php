@@ -207,7 +207,7 @@ $apiInstance = new OpenAPI\Client\Api\RandomApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$post_answerbook_ask_request = new \OpenAPI\Client\Model\PostAnswerbookAskRequest(); // \OpenAPI\Client\Model\PostAnswerbookAskRequest | 包含问题的JSON对象
+$post_answerbook_ask_request = new \OpenAPI\Client\Model\PostAnswerbookAskRequest(); // \OpenAPI\Client\Model\PostAnswerbookAskRequest | 
 
 try {
     $result = $apiInstance->postAnswerbookAsk($post_answerbook_ask_request);
@@ -221,7 +221,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_answerbook_ask_request** | [**\OpenAPI\Client\Model\PostAnswerbookAskRequest**](../Model/PostAnswerbookAskRequest.md)| 包含问题的JSON对象 | |
+| **post_answerbook_ask_request** | [**\OpenAPI\Client\Model\PostAnswerbookAskRequest**](../Model/PostAnswerbookAskRequest.md)|  | |
 
 ### Return type
 

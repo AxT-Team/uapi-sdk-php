@@ -315,7 +315,7 @@ class PostTextMd5VerifyRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets hash
      *
-     * @param string $hash hash
+     * @param string $hash 用于比对的 MD5 哈希值（32 位小写十六进制字符串）。
      *
      * @return self
      */
@@ -342,7 +342,7 @@ class PostTextMd5VerifyRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets text
      *
-     * @param string $text text
+     * @param string $text 待校验的原始文本，会先计算其 MD5 再与 hash 进行比对。
      *
      * @return self
      */

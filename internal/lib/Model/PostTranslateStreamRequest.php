@@ -246,38 +246,6 @@ class PostTranslateStreamRequest implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const TO_LANG_ = '中文';
-    public const TO_LANG_2 = '英文';
-    public const FROM_LANG_ = '中文';
-    public const FROM_LANG_2 = '英文';
-    public const FROM_LANG_AUTO = 'auto';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getToLangAllowableValues()
-    {
-        return [
-            self::TO_LANG_,
-            self::TO_LANG_2,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFromLangAllowableValues()
-    {
-        return [
-            self::FROM_LANG_,
-            self::FROM_LANG_2,
-            self::FROM_LANG_AUTO,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -333,24 +301,6 @@ class PostTranslateStreamRequest implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['to_lang'] === null) {
             $invalidProperties[] = "'to_lang' can't be null";
         }
-        $allowedValues = $this->getToLangAllowableValues();
-        if (!is_null($this->container['to_lang']) && !in_array($this->container['to_lang'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'to_lang', must be one of '%s'",
-                $this->container['to_lang'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getFromLangAllowableValues();
-        if (!is_null($this->container['from_lang']) && !in_array($this->container['from_lang'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'from_lang', must be one of '%s'",
-                $this->container['from_lang'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -415,16 +365,6 @@ class PostTranslateStreamRequest implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($to_lang)) {
             throw new \InvalidArgumentException('non-nullable to_lang cannot be null');
         }
-        $allowedValues = $this->getToLangAllowableValues();
-        if (!in_array($to_lang, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'to_lang', must be one of '%s'",
-                    $to_lang,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['to_lang'] = $to_lang;
 
         return $this;
@@ -451,16 +391,6 @@ class PostTranslateStreamRequest implements ModelInterface, ArrayAccess, \JsonSe
     {
         if (is_null($from_lang)) {
             throw new \InvalidArgumentException('non-nullable from_lang cannot be null');
-        }
-        $allowedValues = $this->getFromLangAllowableValues();
-        if (!in_array($from_lang, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'from_lang', must be one of '%s'",
-                    $from_lang,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['from_lang'] = $from_lang;
 

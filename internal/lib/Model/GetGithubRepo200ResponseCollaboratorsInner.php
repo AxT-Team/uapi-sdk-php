@@ -323,7 +323,7 @@ class GetGithubRepo200ResponseCollaboratorsInner implements ModelInterface, Arra
     /**
      * Sets login
      *
-     * @param string|null $login login
+     * @param string|null $login GitHub 登录名。
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class GetGithubRepo200ResponseCollaboratorsInner implements ModelInterface, Arra
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string|null $name 显示名称。
      *
      * @return self
      */
@@ -377,7 +377,7 @@ class GetGithubRepo200ResponseCollaboratorsInner implements ModelInterface, Arra
     /**
      * Sets email
      *
-     * @param string|null $email email
+     * @param string|null $email 公开邮箱。
      *
      * @return self
      */
@@ -404,7 +404,7 @@ class GetGithubRepo200ResponseCollaboratorsInner implements ModelInterface, Arra
     /**
      * Sets url
      *
-     * @param string|null $url url
+     * @param string|null $url GitHub 主页链接。
      *
      * @return self
      */

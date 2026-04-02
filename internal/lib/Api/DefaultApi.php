@@ -390,7 +390,7 @@ class DefaultApi
      *
      * 敏感词分析 (GET)
      *
-     * @param  string $keyword 要分析的关键词，最长50字符。 (required)
+     * @param  string $keyword 要分析的关键词，最长1,000字符。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSensitiveWordAnalyzeQuery'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -408,7 +408,7 @@ class DefaultApi
      *
      * 敏感词分析 (GET)
      *
-     * @param  string $keyword 要分析的关键词，最长50字符。 (required)
+     * @param  string $keyword 要分析的关键词，最长1,000字符。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSensitiveWordAnalyzeQuery'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -521,7 +521,7 @@ class DefaultApi
      *
      * 敏感词分析 (GET)
      *
-     * @param  string $keyword 要分析的关键词，最长50字符。 (required)
+     * @param  string $keyword 要分析的关键词，最长1,000字符。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSensitiveWordAnalyzeQuery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -542,7 +542,7 @@ class DefaultApi
      *
      * 敏感词分析 (GET)
      *
-     * @param  string $keyword 要分析的关键词，最长50字符。 (required)
+     * @param  string $keyword 要分析的关键词，最长1,000字符。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSensitiveWordAnalyzeQuery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -592,7 +592,7 @@ class DefaultApi
     /**
      * Create request for operation 'getSensitiveWordAnalyzeQuery'
      *
-     * @param  string $keyword 要分析的关键词，最长50字符。 (required)
+     * @param  string $keyword 要分析的关键词，最长1,000字符。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSensitiveWordAnalyzeQuery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -607,7 +607,10 @@ class DefaultApi
                 'Missing the required parameter $keyword when calling getSensitiveWordAnalyzeQuery'
             );
         }
-
+        if (strlen($keyword) > 1000) {
+            throw new \InvalidArgumentException('invalid length for "$keyword" when calling DefaultApi.getSensitiveWordAnalyzeQuery, must be smaller than or equal to 1000.');
+        }
+        
 
         $resourcePath = '/sensitive-word/analyze-query';
         $formParams = [];
@@ -687,7 +690,7 @@ class DefaultApi
      *
      * 智能搜索
      *
-     * @param  \OpenAPI\Client\Model\PostSearchAggregateRequest $post_search_aggregate_request 包含搜索参数的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostSearchAggregateRequest $post_search_aggregate_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSearchAggregate'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -705,7 +708,7 @@ class DefaultApi
      *
      * 智能搜索
      *
-     * @param  \OpenAPI\Client\Model\PostSearchAggregateRequest $post_search_aggregate_request 包含搜索参数的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostSearchAggregateRequest $post_search_aggregate_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSearchAggregate'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -846,7 +849,7 @@ class DefaultApi
      *
      * 智能搜索
      *
-     * @param  \OpenAPI\Client\Model\PostSearchAggregateRequest $post_search_aggregate_request 包含搜索参数的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostSearchAggregateRequest $post_search_aggregate_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSearchAggregate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -867,7 +870,7 @@ class DefaultApi
      *
      * 智能搜索
      *
-     * @param  \OpenAPI\Client\Model\PostSearchAggregateRequest $post_search_aggregate_request 包含搜索参数的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostSearchAggregateRequest $post_search_aggregate_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSearchAggregate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -917,7 +920,7 @@ class DefaultApi
     /**
      * Create request for operation 'postSearchAggregate'
      *
-     * @param  \OpenAPI\Client\Model\PostSearchAggregateRequest $post_search_aggregate_request 包含搜索参数的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostSearchAggregateRequest $post_search_aggregate_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSearchAggregate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1010,7 +1013,7 @@ class DefaultApi
      *
      * 分析敏感词
      *
-     * @param  \OpenAPI\Client\Model\PostSensitiveWordAnalyzeRequest $post_sensitive_word_analyze_request 包含待检测文本 &#39;keywords&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostSensitiveWordAnalyzeRequest $post_sensitive_word_analyze_request 包含待检测关键词列表 &#x60;keywords&#x60; 的 JSON 对象。单条关键词最多 1,000 字符，总字符数最多 20,000。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSensitiveWordAnalyze'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1028,7 +1031,7 @@ class DefaultApi
      *
      * 分析敏感词
      *
-     * @param  \OpenAPI\Client\Model\PostSensitiveWordAnalyzeRequest $post_sensitive_word_analyze_request 包含待检测文本 &#39;keywords&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostSensitiveWordAnalyzeRequest $post_sensitive_word_analyze_request 包含待检测关键词列表 &#x60;keywords&#x60; 的 JSON 对象。单条关键词最多 1,000 字符，总字符数最多 20,000。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSensitiveWordAnalyze'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1155,7 +1158,7 @@ class DefaultApi
      *
      * 分析敏感词
      *
-     * @param  \OpenAPI\Client\Model\PostSensitiveWordAnalyzeRequest $post_sensitive_word_analyze_request 包含待检测文本 &#39;keywords&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostSensitiveWordAnalyzeRequest $post_sensitive_word_analyze_request 包含待检测关键词列表 &#x60;keywords&#x60; 的 JSON 对象。单条关键词最多 1,000 字符，总字符数最多 20,000。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSensitiveWordAnalyze'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1176,7 +1179,7 @@ class DefaultApi
      *
      * 分析敏感词
      *
-     * @param  \OpenAPI\Client\Model\PostSensitiveWordAnalyzeRequest $post_sensitive_word_analyze_request 包含待检测文本 &#39;keywords&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostSensitiveWordAnalyzeRequest $post_sensitive_word_analyze_request 包含待检测关键词列表 &#x60;keywords&#x60; 的 JSON 对象。单条关键词最多 1,000 字符，总字符数最多 20,000。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSensitiveWordAnalyze'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1226,7 +1229,7 @@ class DefaultApi
     /**
      * Create request for operation 'postSensitiveWordAnalyze'
      *
-     * @param  \OpenAPI\Client\Model\PostSensitiveWordAnalyzeRequest $post_sensitive_word_analyze_request 包含待检测文本 &#39;keywords&#39; 的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostSensitiveWordAnalyzeRequest $post_sensitive_word_analyze_request 包含待检测关键词列表 &#x60;keywords&#x60; 的 JSON 对象。单条关键词最多 1,000 字符，总字符数最多 20,000。 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSensitiveWordAnalyze'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

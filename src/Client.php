@@ -3,13 +3,41 @@ namespace Uapi;
 
 use GuzzleHttp\Client as Guzzle;
 
+class ResponseMeta {
+    public ?string $requestId = null;
+    public ?int $retryAfterSeconds = null;
+    public ?string $debitStatus = null;
+    public ?int $creditsRequested = null;
+    public ?int $creditsCharged = null;
+    public ?string $creditsPricing = null;
+    public ?int $activeQuotaBuckets = null;
+    public ?bool $stopOnEmpty = null;
+    public ?string $rateLimitPolicyRaw = null;
+    public ?string $rateLimitRaw = null;
+    public array $rateLimitPolicies = [];
+    public array $rateLimits = [];
+    public ?int $balanceLimitCents = null;
+    public ?int $balanceRemainingCents = null;
+    public ?int $quotaLimitCredits = null;
+    public ?int $quotaRemainingCredits = null;
+    public ?int $visitorQuotaLimitCredits = null;
+    public ?int $visitorQuotaRemainingCredits = null;
+    public array $rawHeaders = [];
+}
+
 class UapiError extends \Exception {
-    public int $status; public $details;
-    function __construct(string $code, int $status, string $message, $details = null) {
+    public string $apiCode;
+    public int $status;
+    public $details;
+    public $payload;
+    public ?ResponseMeta $meta;
+    function __construct(string $code, int $status, string $message, $details = null, $payload = null, ?ResponseMeta $meta = null) {
         parent::__construct("[$status] $code: $message");
-        $this->code = $code;
+        $this->apiCode = $code;
         $this->status = $status;
         $this->details = $details;
+        $this->payload = $payload;
+        $this->meta = $meta;
     }
 }
 class ApiErrorError extends UapiError {}
@@ -17,6 +45,7 @@ class AvatarNotFoundError extends UapiError {}
 class ConversionFailedError extends UapiError {}
 class FileOpenErrorError extends UapiError {}
 class FileRequiredError extends UapiError {}
+class InsufficientCreditsError extends UapiError {}
 class InternalServerErrorError extends UapiError {}
 class InvalidParameterError extends UapiError {}
 class InvalidParamsError extends UapiError {}
@@ -31,10 +60,12 @@ class TimezoneNotFoundError extends UapiError {}
 class UnauthorizedError extends UapiError {}
 class UnsupportedCarrierError extends UapiError {}
 class UnsupportedFormatError extends UapiError {}
+class VisitorMonthlyQuotaExhaustedError extends UapiError {}
 
 
 class Client {
     private Guzzle $http;
+    public ?ResponseMeta $lastResponseMeta = null;
     function __construct(string $baseUrl, ?string $token = null, bool $verifyTls = true) {
         $envSkip = getenv('UAPI_SKIP_TLS_VERIFY');
         if ($envSkip !== false) {
@@ -52,13 +83,15 @@ class Client {
     public function request(string $method, string $path, array $query = [], $body = null) {
         $path = ltrim($path, '/');
         $res = $this->http->request($method, $path, ['query'=>$query, 'json'=>$body]);
+        $this->lastResponseMeta = $this->extractMeta($res->getHeaders());
         $status = $res->getStatusCode();
         if ($status >= 400) {
             $json = json_decode((string)$res->getBody(), true) ?? [];
-            $code = strtoupper($json['code'] ?? ($status==401?'UNAUTHORIZED':($status==404?'NOT_FOUND':($status==429?'SERVICE_BUSY':($status>=500?'INTERNAL_SERVER_ERROR':'API_ERROR')))));
+            $code = strtoupper($json['code'] ?? $json['error'] ?? ($status==400?'INVALID_PARAMETER':($status==401?'UNAUTHORIZED':($status==402?'INSUFFICIENT_CREDITS':($status==404?'NOT_FOUND':($status==429?'SERVICE_BUSY':($status>=500?'INTERNAL_SERVER_ERROR':'API_ERROR')))))));
             $msg = $json['message'] ?? $res->getReasonPhrase();
             $cls = $this->classByCode($code);
-            throw new $cls($code, $status, $msg, $json['details'] ?? null);
+            $details = $json['details'] ?? $json['quota'] ?? $json['docs'] ?? null;
+            throw new $cls($code, $status, $msg, $details, $json, $this->lastResponseMeta);
         }
         $ct = $res->getHeaderLine('content-type');
         return str_contains($ct, 'application/json') ? json_decode((string)$res->getBody(), true) : (string)$res->getBody();
@@ -70,6 +103,7 @@ class Client {
             'CONVERSION_FAILED' => ConversionFailedError::class,
             'FILE_OPEN_ERROR' => FileOpenErrorError::class,
             'FILE_REQUIRED' => FileRequiredError::class,
+            'INSUFFICIENT_CREDITS' => InsufficientCreditsError::class,
             'INTERNAL_SERVER_ERROR' => InternalServerErrorError::class,
             'INVALID_PARAMETER' => InvalidParameterError::class,
             'INVALID_PARAMS' => InvalidParamsError::class,
@@ -84,7 +118,93 @@ class Client {
             'UNAUTHORIZED' => UnauthorizedError::class,
             'UNSUPPORTED_CARRIER' => UnsupportedCarrierError::class,
             'UNSUPPORTED_FORMAT' => UnsupportedFormatError::class,
+            'VISITOR_MONTHLY_QUOTA_EXHAUSTED' => VisitorMonthlyQuotaExhaustedError::class,
             default => UapiError::class
+        };
+    }
+
+    private function extractMeta(array $headers): ResponseMeta {
+        $meta = new ResponseMeta();
+        $raw = [];
+        foreach ($headers as $key => $values) {
+            $raw[strtolower($key)] = is_array($values) ? implode(', ', array_map('strval', $values)) : strval($values);
+        }
+        $meta->rawHeaders = $raw;
+        $meta->requestId = $raw['x-request-id'] ?? null;
+        $meta->retryAfterSeconds = $this->parseInt($raw['retry-after'] ?? null);
+        $meta->debitStatus = $raw['uapi-debit-status'] ?? null;
+        $meta->creditsRequested = $this->parseInt($raw['uapi-credits-requested'] ?? null);
+        $meta->creditsCharged = $this->parseInt($raw['uapi-credits-charged'] ?? null);
+        $meta->creditsPricing = $raw['uapi-credits-pricing'] ?? null;
+        $meta->activeQuotaBuckets = $this->parseInt($raw['uapi-quota-active-buckets'] ?? null);
+        $meta->stopOnEmpty = $this->parseBool($raw['uapi-stop-on-empty'] ?? null);
+        $meta->rateLimitPolicyRaw = $raw['ratelimit-policy'] ?? null;
+        $meta->rateLimitRaw = $raw['ratelimit'] ?? null;
+
+        foreach ($this->parseStructuredItems($meta->rateLimitPolicyRaw) as $item) {
+            $meta->rateLimitPolicies[$item['name']] = [
+                'name' => $item['name'],
+                'quota' => $this->parseInt($item['params']['q'] ?? null),
+                'unit' => $item['params']['uapi-unit'] ?? null,
+                'windowSeconds' => $this->parseInt($item['params']['w'] ?? null),
+            ];
+        }
+        foreach ($this->parseStructuredItems($meta->rateLimitRaw) as $item) {
+            $meta->rateLimits[$item['name']] = [
+                'name' => $item['name'],
+                'remaining' => $this->parseInt($item['params']['r'] ?? null),
+                'unit' => $item['params']['uapi-unit'] ?? null,
+                'resetAfterSeconds' => $this->parseInt($item['params']['t'] ?? null),
+            ];
+        }
+
+        $meta->balanceLimitCents = $meta->rateLimitPolicies['billing-balance']['quota'] ?? null;
+        $meta->balanceRemainingCents = $meta->rateLimits['billing-balance']['remaining'] ?? null;
+        $meta->quotaLimitCredits = $meta->rateLimitPolicies['billing-quota']['quota'] ?? null;
+        $meta->quotaRemainingCredits = $meta->rateLimits['billing-quota']['remaining'] ?? null;
+        $meta->visitorQuotaLimitCredits = $meta->rateLimitPolicies['visitor-quota']['quota'] ?? null;
+        $meta->visitorQuotaRemainingCredits = $meta->rateLimits['visitor-quota']['remaining'] ?? null;
+        return $meta;
+    }
+
+    private function parseStructuredItems(?string $raw): array {
+        if ($raw === null || trim($raw) === '') {
+            return [];
+        }
+        $items = [];
+        foreach (array_filter(array_map('trim', explode(',', $raw))) as $chunk) {
+            $parts = array_filter(array_map('trim', explode(';', $chunk)));
+            if (!$parts) {
+                continue;
+            }
+            $item = ['name' => $this->unquote(array_shift($parts)), 'params' => []];
+            foreach ($parts as $part) {
+                if (!str_contains($part, '=')) {
+                    continue;
+                }
+                [$key, $value] = explode('=', $part, 2);
+                $item['params'][trim($key)] = $this->unquote($value);
+            }
+            $items[] = $item;
+        }
+        return $items;
+    }
+
+    private function unquote(string $value): string {
+        $text = trim($value);
+        return strlen($text) >= 2 && $text[0] === '"' && $text[strlen($text) - 1] === '"' ? substr($text, 1, -1) : $text;
+    }
+
+    private function parseInt(?string $value): ?int {
+        return $value !== null && is_numeric(trim($value)) ? intval($value) : null;
+    }
+
+    private function parseBool(?string $value): ?bool {
+        $normalized = $value !== null ? strtolower(trim($value)) : null;
+        return match ($normalized) {
+            'true' => true,
+            'false' => false,
+            default => null,
         };
     }
     function clipzyZaiXianJianTieBan() { return new ClipzyZaiXianJianTieBanApi($this); }
@@ -751,13 +871,10 @@ class TranslateApi {
         $body = [];
         if (array_key_exists('target_lang', $args)) $query['target_lang'] = $args['target_lang'];
         if (array_key_exists('context', $args)) $body['context'] = $args['context'];
-        if (array_key_exists('fast_mode', $args)) $body['fast_mode'] = $args['fast_mode'];
-        if (array_key_exists('max_concurrency', $args)) $body['max_concurrency'] = $args['max_concurrency'];
         if (array_key_exists('preserve_format', $args)) $body['preserve_format'] = $args['preserve_format'];
         if (array_key_exists('source_lang', $args)) $body['source_lang'] = $args['source_lang'];
         if (array_key_exists('style', $args)) $body['style'] = $args['style'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        if (array_key_exists('texts', $args)) $body['texts'] = $args['texts'];
         return $this->c->request('POST', $path, $query, empty($body) ? null : $body);
     }
     function postTranslateStream(array $args = []) {

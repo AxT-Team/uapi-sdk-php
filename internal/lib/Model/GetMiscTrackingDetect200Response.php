@@ -57,9 +57,10 @@ class GetMiscTrackingDetect200Response implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'message' => 'string',
-        'data' => '\OpenAPI\Client\Model\GetMiscTrackingDetect200ResponseData'
+        'tracking_number' => 'string',
+        'carrier_code' => 'string',
+        'carrier_name' => 'string',
+        'alternatives' => '\OpenAPI\Client\Model\GetMiscTrackingDetect200ResponseAlternativesInner[]'
     ];
 
     /**
@@ -70,9 +71,10 @@ class GetMiscTrackingDetect200Response implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'message' => null,
-        'data' => null
+        'tracking_number' => null,
+        'carrier_code' => null,
+        'carrier_name' => null,
+        'alternatives' => null
     ];
 
     /**
@@ -81,9 +83,10 @@ class GetMiscTrackingDetect200Response implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'message' => false,
-        'data' => false
+        'tracking_number' => false,
+        'carrier_code' => false,
+        'carrier_name' => false,
+        'alternatives' => false
     ];
 
     /**
@@ -172,9 +175,10 @@ class GetMiscTrackingDetect200Response implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'data' => 'data'
+        'tracking_number' => 'tracking_number',
+        'carrier_code' => 'carrier_code',
+        'carrier_name' => 'carrier_name',
+        'alternatives' => 'alternatives'
     ];
 
     /**
@@ -183,9 +187,10 @@ class GetMiscTrackingDetect200Response implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'data' => 'setData'
+        'tracking_number' => 'setTrackingNumber',
+        'carrier_code' => 'setCarrierCode',
+        'carrier_name' => 'setCarrierName',
+        'alternatives' => 'setAlternatives'
     ];
 
     /**
@@ -194,9 +199,10 @@ class GetMiscTrackingDetect200Response implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'data' => 'getData'
+        'tracking_number' => 'getTrackingNumber',
+        'carrier_code' => 'getCarrierCode',
+        'carrier_name' => 'getCarrierName',
+        'alternatives' => 'getAlternatives'
     ];
 
     /**
@@ -256,9 +262,10 @@ class GetMiscTrackingDetect200Response implements ModelInterface, ArrayAccess, \
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('tracking_number', $data ?? [], null);
+        $this->setIfExists('carrier_code', $data ?? [], null);
+        $this->setIfExists('carrier_name', $data ?? [], null);
+        $this->setIfExists('alternatives', $data ?? [], null);
     }
 
     /**
@@ -304,82 +311,109 @@ class GetMiscTrackingDetect200Response implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets code
+     * Gets tracking_number
      *
      * @return string|null
      */
-    public function getCode()
+    public function getTrackingNumber()
     {
-        return $this->container['code'];
+        return $this->container['tracking_number'];
     }
 
     /**
-     * Sets code
+     * Sets tracking_number
      *
-     * @param string|null $code code
+     * @param string|null $tracking_number 查询的快递单号
      *
      * @return self
      */
-    public function setCode($code)
+    public function setTrackingNumber($tracking_number)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($tracking_number)) {
+            throw new \InvalidArgumentException('non-nullable tracking_number cannot be null');
         }
-        $this->container['code'] = $code;
+        $this->container['tracking_number'] = $tracking_number;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets carrier_code
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getCarrierCode()
     {
-        return $this->container['message'];
+        return $this->container['carrier_code'];
     }
 
     /**
-     * Sets message
+     * Sets carrier_code
      *
-     * @param string|null $message message
+     * @param string|null $carrier_code 识别出的快递公司编码
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setCarrierCode($carrier_code)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($carrier_code)) {
+            throw new \InvalidArgumentException('non-nullable carrier_code cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['carrier_code'] = $carrier_code;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets carrier_name
      *
-     * @return \OpenAPI\Client\Model\GetMiscTrackingDetect200ResponseData|null
+     * @return string|null
      */
-    public function getData()
+    public function getCarrierName()
     {
-        return $this->container['data'];
+        return $this->container['carrier_name'];
     }
 
     /**
-     * Sets data
+     * Sets carrier_name
      *
-     * @param \OpenAPI\Client\Model\GetMiscTrackingDetect200ResponseData|null $data data
+     * @param string|null $carrier_name 识别出的快递公司名称
      *
      * @return self
      */
-    public function setData($data)
+    public function setCarrierName($carrier_name)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($carrier_name)) {
+            throw new \InvalidArgumentException('non-nullable carrier_name cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['carrier_name'] = $carrier_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets alternatives
+     *
+     * @return \OpenAPI\Client\Model\GetMiscTrackingDetect200ResponseAlternativesInner[]|null
+     */
+    public function getAlternatives()
+    {
+        return $this->container['alternatives'];
+    }
+
+    /**
+     * Sets alternatives
+     *
+     * @param \OpenAPI\Client\Model\GetMiscTrackingDetect200ResponseAlternativesInner[]|null $alternatives 其他可能的快递公司列表。如果没有备选项，会返回空数组。
+     *
+     * @return self
+     */
+    public function setAlternatives($alternatives)
+    {
+        if (is_null($alternatives)) {
+            throw new \InvalidArgumentException('non-nullable alternatives cannot be null');
+        }
+        $this->container['alternatives'] = $alternatives;
 
         return $this;
     }

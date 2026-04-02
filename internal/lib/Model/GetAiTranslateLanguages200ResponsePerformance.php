@@ -57,11 +57,9 @@ class GetAiTranslateLanguages200ResponsePerformance implements ModelInterface, A
       * @var string[]
       */
     protected static $openAPITypes = [
-        'fast_mode_available' => 'bool',
         'batch_translation_available' => 'bool',
-        'max_text_length' => 'int',
         'max_batch_size' => 'int',
-        'typical_response_time_ms' => '\OpenAPI\Client\Model\GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs'
+        'max_text_length' => 'int'
     ];
 
     /**
@@ -72,11 +70,9 @@ class GetAiTranslateLanguages200ResponsePerformance implements ModelInterface, A
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'fast_mode_available' => null,
         'batch_translation_available' => null,
-        'max_text_length' => null,
         'max_batch_size' => null,
-        'typical_response_time_ms' => null
+        'max_text_length' => null
     ];
 
     /**
@@ -85,11 +81,9 @@ class GetAiTranslateLanguages200ResponsePerformance implements ModelInterface, A
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fast_mode_available' => false,
         'batch_translation_available' => false,
-        'max_text_length' => false,
         'max_batch_size' => false,
-        'typical_response_time_ms' => false
+        'max_text_length' => false
     ];
 
     /**
@@ -178,11 +172,9 @@ class GetAiTranslateLanguages200ResponsePerformance implements ModelInterface, A
      * @var string[]
      */
     protected static $attributeMap = [
-        'fast_mode_available' => 'fast_mode_available',
         'batch_translation_available' => 'batch_translation_available',
-        'max_text_length' => 'max_text_length',
         'max_batch_size' => 'max_batch_size',
-        'typical_response_time_ms' => 'typical_response_time_ms'
+        'max_text_length' => 'max_text_length'
     ];
 
     /**
@@ -191,11 +183,9 @@ class GetAiTranslateLanguages200ResponsePerformance implements ModelInterface, A
      * @var string[]
      */
     protected static $setters = [
-        'fast_mode_available' => 'setFastModeAvailable',
         'batch_translation_available' => 'setBatchTranslationAvailable',
-        'max_text_length' => 'setMaxTextLength',
         'max_batch_size' => 'setMaxBatchSize',
-        'typical_response_time_ms' => 'setTypicalResponseTimeMs'
+        'max_text_length' => 'setMaxTextLength'
     ];
 
     /**
@@ -204,11 +194,9 @@ class GetAiTranslateLanguages200ResponsePerformance implements ModelInterface, A
      * @var string[]
      */
     protected static $getters = [
-        'fast_mode_available' => 'getFastModeAvailable',
         'batch_translation_available' => 'getBatchTranslationAvailable',
-        'max_text_length' => 'getMaxTextLength',
         'max_batch_size' => 'getMaxBatchSize',
-        'typical_response_time_ms' => 'getTypicalResponseTimeMs'
+        'max_text_length' => 'getMaxTextLength'
     ];
 
     /**
@@ -268,11 +256,9 @@ class GetAiTranslateLanguages200ResponsePerformance implements ModelInterface, A
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('fast_mode_available', $data ?? [], null);
         $this->setIfExists('batch_translation_available', $data ?? [], null);
-        $this->setIfExists('max_text_length', $data ?? [], null);
         $this->setIfExists('max_batch_size', $data ?? [], null);
-        $this->setIfExists('typical_response_time_ms', $data ?? [], null);
+        $this->setIfExists('max_text_length', $data ?? [], null);
     }
 
     /**
@@ -318,33 +304,6 @@ class GetAiTranslateLanguages200ResponsePerformance implements ModelInterface, A
 
 
     /**
-     * Gets fast_mode_available
-     *
-     * @return bool|null
-     */
-    public function getFastModeAvailable()
-    {
-        return $this->container['fast_mode_available'];
-    }
-
-    /**
-     * Sets fast_mode_available
-     *
-     * @param bool|null $fast_mode_available fast_mode_available
-     *
-     * @return self
-     */
-    public function setFastModeAvailable($fast_mode_available)
-    {
-        if (is_null($fast_mode_available)) {
-            throw new \InvalidArgumentException('non-nullable fast_mode_available cannot be null');
-        }
-        $this->container['fast_mode_available'] = $fast_mode_available;
-
-        return $this;
-    }
-
-    /**
      * Gets batch_translation_available
      *
      * @return bool|null
@@ -367,33 +326,6 @@ class GetAiTranslateLanguages200ResponsePerformance implements ModelInterface, A
             throw new \InvalidArgumentException('non-nullable batch_translation_available cannot be null');
         }
         $this->container['batch_translation_available'] = $batch_translation_available;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_text_length
-     *
-     * @return int|null
-     */
-    public function getMaxTextLength()
-    {
-        return $this->container['max_text_length'];
-    }
-
-    /**
-     * Sets max_text_length
-     *
-     * @param int|null $max_text_length max_text_length
-     *
-     * @return self
-     */
-    public function setMaxTextLength($max_text_length)
-    {
-        if (is_null($max_text_length)) {
-            throw new \InvalidArgumentException('non-nullable max_text_length cannot be null');
-        }
-        $this->container['max_text_length'] = $max_text_length;
 
         return $this;
     }
@@ -426,28 +358,28 @@ class GetAiTranslateLanguages200ResponsePerformance implements ModelInterface, A
     }
 
     /**
-     * Gets typical_response_time_ms
+     * Gets max_text_length
      *
-     * @return \OpenAPI\Client\Model\GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs|null
+     * @return int|null
      */
-    public function getTypicalResponseTimeMs()
+    public function getMaxTextLength()
     {
-        return $this->container['typical_response_time_ms'];
+        return $this->container['max_text_length'];
     }
 
     /**
-     * Sets typical_response_time_ms
+     * Sets max_text_length
      *
-     * @param \OpenAPI\Client\Model\GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs|null $typical_response_time_ms typical_response_time_ms
+     * @param int|null $max_text_length max_text_length
      *
      * @return self
      */
-    public function setTypicalResponseTimeMs($typical_response_time_ms)
+    public function setMaxTextLength($max_text_length)
     {
-        if (is_null($typical_response_time_ms)) {
-            throw new \InvalidArgumentException('non-nullable typical_response_time_ms cannot be null');
+        if (is_null($max_text_length)) {
+            throw new \InvalidArgumentException('non-nullable max_text_length cannot be null');
         }
-        $this->container['typical_response_time_ms'] = $typical_response_time_ms;
+        $this->container['max_text_length'] = $max_text_length;
 
         return $this;
     }

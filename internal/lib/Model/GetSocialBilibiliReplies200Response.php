@@ -58,8 +58,16 @@ class GetSocialBilibiliReplies200Response implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'page' => '\OpenAPI\Client\Model\GetSocialBilibiliReplies200ResponsePage',
+        'config' => 'object',
         'hots' => 'object[]',
-        'replies' => '\OpenAPI\Client\Model\GetSocialBilibiliReplies200ResponseRepliesInner[]'
+        'replies' => '\OpenAPI\Client\Model\GetSocialBilibiliReplies200ResponseRepliesInner[]',
+        'upper' => 'object',
+        'top' => 'object',
+        'notice' => 'object',
+        'vote' => 'float',
+        'folder' => 'object',
+        'control' => 'object',
+        'cursor' => 'object'
     ];
 
     /**
@@ -71,8 +79,16 @@ class GetSocialBilibiliReplies200Response implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'page' => null,
+        'config' => null,
         'hots' => null,
-        'replies' => null
+        'replies' => null,
+        'upper' => null,
+        'top' => null,
+        'notice' => null,
+        'vote' => null,
+        'folder' => null,
+        'control' => null,
+        'cursor' => null
     ];
 
     /**
@@ -82,8 +98,16 @@ class GetSocialBilibiliReplies200Response implements ModelInterface, ArrayAccess
       */
     protected static array $openAPINullables = [
         'page' => false,
+        'config' => true,
         'hots' => true,
-        'replies' => false
+        'replies' => false,
+        'upper' => true,
+        'top' => true,
+        'notice' => true,
+        'vote' => false,
+        'folder' => true,
+        'control' => true,
+        'cursor' => true
     ];
 
     /**
@@ -173,8 +197,16 @@ class GetSocialBilibiliReplies200Response implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'page' => 'page',
+        'config' => 'config',
         'hots' => 'hots',
-        'replies' => 'replies'
+        'replies' => 'replies',
+        'upper' => 'upper',
+        'top' => 'top',
+        'notice' => 'notice',
+        'vote' => 'vote',
+        'folder' => 'folder',
+        'control' => 'control',
+        'cursor' => 'cursor'
     ];
 
     /**
@@ -184,8 +216,16 @@ class GetSocialBilibiliReplies200Response implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'page' => 'setPage',
+        'config' => 'setConfig',
         'hots' => 'setHots',
-        'replies' => 'setReplies'
+        'replies' => 'setReplies',
+        'upper' => 'setUpper',
+        'top' => 'setTop',
+        'notice' => 'setNotice',
+        'vote' => 'setVote',
+        'folder' => 'setFolder',
+        'control' => 'setControl',
+        'cursor' => 'setCursor'
     ];
 
     /**
@@ -195,8 +235,16 @@ class GetSocialBilibiliReplies200Response implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'page' => 'getPage',
+        'config' => 'getConfig',
         'hots' => 'getHots',
-        'replies' => 'getReplies'
+        'replies' => 'getReplies',
+        'upper' => 'getUpper',
+        'top' => 'getTop',
+        'notice' => 'getNotice',
+        'vote' => 'getVote',
+        'folder' => 'getFolder',
+        'control' => 'getControl',
+        'cursor' => 'getCursor'
     ];
 
     /**
@@ -257,8 +305,16 @@ class GetSocialBilibiliReplies200Response implements ModelInterface, ArrayAccess
     public function __construct(?array $data = null)
     {
         $this->setIfExists('page', $data ?? [], null);
+        $this->setIfExists('config', $data ?? [], null);
         $this->setIfExists('hots', $data ?? [], null);
         $this->setIfExists('replies', $data ?? [], null);
+        $this->setIfExists('upper', $data ?? [], null);
+        $this->setIfExists('top', $data ?? [], null);
+        $this->setIfExists('notice', $data ?? [], null);
+        $this->setIfExists('vote', $data ?? [], null);
+        $this->setIfExists('folder', $data ?? [], null);
+        $this->setIfExists('control', $data ?? [], null);
+        $this->setIfExists('cursor', $data ?? [], null);
     }
 
     /**
@@ -331,6 +387,40 @@ class GetSocialBilibiliReplies200Response implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets config
+     *
+     * @return object|null
+     */
+    public function getConfig()
+    {
+        return $this->container['config'];
+    }
+
+    /**
+     * Sets config
+     *
+     * @param object|null $config 评论区配置。不同视频或不同权限下可能为 null。
+     *
+     * @return self
+     */
+    public function setConfig($config)
+    {
+        if (is_null($config)) {
+            array_push($this->openAPINullablesSetToNull, 'config');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('config', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['config'] = $config;
+
+        return $this;
+    }
+
+    /**
      * Gets hots
      *
      * @return object[]|null
@@ -387,6 +477,237 @@ class GetSocialBilibiliReplies200Response implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable replies cannot be null');
         }
         $this->container['replies'] = $replies;
+
+        return $this;
+    }
+
+    /**
+     * Gets upper
+     *
+     * @return object|null
+     */
+    public function getUpper()
+    {
+        return $this->container['upper'];
+    }
+
+    /**
+     * Sets upper
+     *
+     * @param object|null $upper UP 主相关信息。无数据时为 null。
+     *
+     * @return self
+     */
+    public function setUpper($upper)
+    {
+        if (is_null($upper)) {
+            array_push($this->openAPINullablesSetToNull, 'upper');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('upper', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['upper'] = $upper;
+
+        return $this;
+    }
+
+    /**
+     * Gets top
+     *
+     * @return object|null
+     */
+    public function getTop()
+    {
+        return $this->container['top'];
+    }
+
+    /**
+     * Sets top
+     *
+     * @param object|null $top 置顶评论信息。没有置顶评论时为 null。
+     *
+     * @return self
+     */
+    public function setTop($top)
+    {
+        if (is_null($top)) {
+            array_push($this->openAPINullablesSetToNull, 'top');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('top', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['top'] = $top;
+
+        return $this;
+    }
+
+    /**
+     * Gets notice
+     *
+     * @return object|null
+     */
+    public function getNotice()
+    {
+        return $this->container['notice'];
+    }
+
+    /**
+     * Sets notice
+     *
+     * @param object|null $notice 评论区公告信息。没有公告时为 null。
+     *
+     * @return self
+     */
+    public function setNotice($notice)
+    {
+        if (is_null($notice)) {
+            array_push($this->openAPINullablesSetToNull, 'notice');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('notice', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['notice'] = $notice;
+
+        return $this;
+    }
+
+    /**
+     * Gets vote
+     *
+     * @return float|null
+     */
+    public function getVote()
+    {
+        return $this->container['vote'];
+    }
+
+    /**
+     * Sets vote
+     *
+     * @param float|null $vote 评论区投票相关状态值。没有投票时通常为 0。
+     *
+     * @return self
+     */
+    public function setVote($vote)
+    {
+        if (is_null($vote)) {
+            throw new \InvalidArgumentException('non-nullable vote cannot be null');
+        }
+        $this->container['vote'] = $vote;
+
+        return $this;
+    }
+
+    /**
+     * Gets folder
+     *
+     * @return object|null
+     */
+    public function getFolder()
+    {
+        return $this->container['folder'];
+    }
+
+    /**
+     * Sets folder
+     *
+     * @param object|null $folder 评论折叠相关信息。没有数据时为 null。
+     *
+     * @return self
+     */
+    public function setFolder($folder)
+    {
+        if (is_null($folder)) {
+            array_push($this->openAPINullablesSetToNull, 'folder');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('folder', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['folder'] = $folder;
+
+        return $this;
+    }
+
+    /**
+     * Gets control
+     *
+     * @return object|null
+     */
+    public function getControl()
+    {
+        return $this->container['control'];
+    }
+
+    /**
+     * Sets control
+     *
+     * @param object|null $control 评论区控制信息。没有数据时为 null。
+     *
+     * @return self
+     */
+    public function setControl($control)
+    {
+        if (is_null($control)) {
+            array_push($this->openAPINullablesSetToNull, 'control');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('control', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['control'] = $control;
+
+        return $this;
+    }
+
+    /**
+     * Gets cursor
+     *
+     * @return object|null
+     */
+    public function getCursor()
+    {
+        return $this->container['cursor'];
+    }
+
+    /**
+     * Sets cursor
+     *
+     * @param object|null $cursor 游标翻页信息。部分场景下为 null。
+     *
+     * @return self
+     */
+    public function setCursor($cursor)
+    {
+        if (is_null($cursor)) {
+            array_push($this->openAPINullablesSetToNull, 'cursor');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cursor', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cursor'] = $cursor;
 
         return $this;
     }

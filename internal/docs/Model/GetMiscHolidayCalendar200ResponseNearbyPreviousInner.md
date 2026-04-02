@@ -1,0 +1,10 @@
+# # GetMiscHolidayCalendar200ResponseNearbyPreviousInner
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**date** | **string** | 聚合日期。 | [optional]
+**events** | [**\OpenAPI\Client\Model\GetMiscHolidayCalendar200ResponseNearbyPreviousInnerEventsInner[]**](GetMiscHolidayCalendar200ResponseNearbyPreviousInnerEventsInner.md) | 该日期上的节日事件列表。 | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -343,7 +343,7 @@ class GetMiscWeather200ResponseMinutelyPrecipDataInner implements ModelInterface
     /**
      * Sets precip
      *
-     * @param float|null $precip 5分钟累计降水量 mm
+     * @param float|null $precip 该时间点的降水量 mm
      *
      * @return self
      */

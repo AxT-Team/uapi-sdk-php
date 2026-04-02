@@ -277,6 +277,10 @@ class PostTranslateTextRequest implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['text'] === null) {
             $invalidProperties[] = "'text' can't be null";
         }
+        if ((mb_strlen($this->container['text']) > 3000)) {
+            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 3000.";
+        }
+
         return $invalidProperties;
     }
 
@@ -305,7 +309,7 @@ class PostTranslateTextRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets text
      *
-     * @param string $text 待翻译的文本内容。
+     * @param string $text 待翻译的文本内容，最大长度3000字符。
      *
      * @return self
      */
@@ -314,6 +318,10 @@ class PostTranslateTextRequest implements ModelInterface, ArrayAccess, \JsonSeri
         if (is_null($text)) {
             throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
+        if ((mb_strlen($text) > 3000)) {
+            throw new \InvalidArgumentException('invalid length for $text when calling PostTranslateTextRequest., must be smaller than or equal to 3000.');
+        }
+
         $this->container['text'] = $text;
 
         return $this;

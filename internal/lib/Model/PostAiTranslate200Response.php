@@ -58,12 +58,9 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'message' => 'string',
-        'is_batch' => 'bool',
         'data' => '\OpenAPI\Client\Model\PostAiTranslate200ResponseData',
-        'batch_data' => '\OpenAPI\Client\Model\PostAiTranslate200ResponseBatchDataInner[]',
-        'batch_summary' => '\OpenAPI\Client\Model\PostAiTranslate200ResponseBatchSummary',
         'performance' => '\OpenAPI\Client\Model\PostAiTranslate200ResponsePerformance',
-        'quality_metrics' => '\OpenAPI\Client\Model\PostAiTranslate200ResponseQualityMetrics'
+        'is_batch' => 'bool'
     ];
 
     /**
@@ -75,12 +72,9 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'message' => null,
-        'is_batch' => null,
         'data' => null,
-        'batch_data' => null,
-        'batch_summary' => null,
         'performance' => null,
-        'quality_metrics' => null
+        'is_batch' => null
     ];
 
     /**
@@ -90,12 +84,9 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPINullables = [
         'message' => false,
-        'is_batch' => false,
         'data' => false,
-        'batch_data' => false,
-        'batch_summary' => false,
         'performance' => false,
-        'quality_metrics' => false
+        'is_batch' => false
     ];
 
     /**
@@ -185,12 +176,9 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'message' => 'message',
-        'is_batch' => 'is_batch',
         'data' => 'data',
-        'batch_data' => 'batch_data',
-        'batch_summary' => 'batch_summary',
         'performance' => 'performance',
-        'quality_metrics' => 'quality_metrics'
+        'is_batch' => 'is_batch'
     ];
 
     /**
@@ -200,12 +188,9 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'message' => 'setMessage',
-        'is_batch' => 'setIsBatch',
         'data' => 'setData',
-        'batch_data' => 'setBatchData',
-        'batch_summary' => 'setBatchSummary',
         'performance' => 'setPerformance',
-        'quality_metrics' => 'setQualityMetrics'
+        'is_batch' => 'setIsBatch'
     ];
 
     /**
@@ -215,12 +200,9 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'message' => 'getMessage',
-        'is_batch' => 'getIsBatch',
         'data' => 'getData',
-        'batch_data' => 'getBatchData',
-        'batch_summary' => 'getBatchSummary',
         'performance' => 'getPerformance',
-        'quality_metrics' => 'getQualityMetrics'
+        'is_batch' => 'getIsBatch'
     ];
 
     /**
@@ -281,12 +263,9 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(?array $data = null)
     {
         $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('is_batch', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('batch_data', $data ?? [], null);
-        $this->setIfExists('batch_summary', $data ?? [], null);
         $this->setIfExists('performance', $data ?? [], null);
-        $this->setIfExists('quality_metrics', $data ?? [], null);
+        $this->setIfExists('is_batch', $data ?? [], null);
     }
 
     /**
@@ -359,33 +338,6 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets is_batch
-     *
-     * @return bool|null
-     */
-    public function getIsBatch()
-    {
-        return $this->container['is_batch'];
-    }
-
-    /**
-     * Sets is_batch
-     *
-     * @param bool|null $is_batch 标识是否为批量翻译请求。
-     *
-     * @return self
-     */
-    public function setIsBatch($is_batch)
-    {
-        if (is_null($is_batch)) {
-            throw new \InvalidArgumentException('non-nullable is_batch cannot be null');
-        }
-        $this->container['is_batch'] = $is_batch;
-
-        return $this;
-    }
-
-    /**
      * Gets data
      *
      * @return \OpenAPI\Client\Model\PostAiTranslate200ResponseData|null
@@ -408,60 +360,6 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
         $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets batch_data
-     *
-     * @return \OpenAPI\Client\Model\PostAiTranslate200ResponseBatchDataInner[]|null
-     */
-    public function getBatchData()
-    {
-        return $this->container['batch_data'];
-    }
-
-    /**
-     * Sets batch_data
-     *
-     * @param \OpenAPI\Client\Model\PostAiTranslate200ResponseBatchDataInner[]|null $batch_data 批量翻译结果列表，仅在批量翻译时返回。
-     *
-     * @return self
-     */
-    public function setBatchData($batch_data)
-    {
-        if (is_null($batch_data)) {
-            throw new \InvalidArgumentException('non-nullable batch_data cannot be null');
-        }
-        $this->container['batch_data'] = $batch_data;
-
-        return $this;
-    }
-
-    /**
-     * Gets batch_summary
-     *
-     * @return \OpenAPI\Client\Model\PostAiTranslate200ResponseBatchSummary|null
-     */
-    public function getBatchSummary()
-    {
-        return $this->container['batch_summary'];
-    }
-
-    /**
-     * Sets batch_summary
-     *
-     * @param \OpenAPI\Client\Model\PostAiTranslate200ResponseBatchSummary|null $batch_summary batch_summary
-     *
-     * @return self
-     */
-    public function setBatchSummary($batch_summary)
-    {
-        if (is_null($batch_summary)) {
-            throw new \InvalidArgumentException('non-nullable batch_summary cannot be null');
-        }
-        $this->container['batch_summary'] = $batch_summary;
 
         return $this;
     }
@@ -494,28 +392,28 @@ class PostAiTranslate200Response implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets quality_metrics
+     * Gets is_batch
      *
-     * @return \OpenAPI\Client\Model\PostAiTranslate200ResponseQualityMetrics|null
+     * @return bool|null
      */
-    public function getQualityMetrics()
+    public function getIsBatch()
     {
-        return $this->container['quality_metrics'];
+        return $this->container['is_batch'];
     }
 
     /**
-     * Sets quality_metrics
+     * Sets is_batch
      *
-     * @param \OpenAPI\Client\Model\PostAiTranslate200ResponseQualityMetrics|null $quality_metrics quality_metrics
+     * @param bool|null $is_batch 是否为批量翻译请求。
      *
      * @return self
      */
-    public function setQualityMetrics($quality_metrics)
+    public function setIsBatch($is_batch)
     {
-        if (is_null($quality_metrics)) {
-            throw new \InvalidArgumentException('non-nullable quality_metrics cannot be null');
+        if (is_null($is_batch)) {
+            throw new \InvalidArgumentException('non-nullable is_batch cannot be null');
         }
-        $this->container['quality_metrics'] = $quality_metrics;
+        $this->container['is_batch'] = $is_batch;
 
         return $this;
     }

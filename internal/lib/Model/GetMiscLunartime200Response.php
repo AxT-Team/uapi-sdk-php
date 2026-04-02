@@ -57,9 +57,28 @@ class GetMiscLunartime200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string',
-        'data' => '\OpenAPI\Client\Model\GetMiscLunartime200ResponseData'
+        'query_timestamp' => 'string',
+        'query_timezone' => 'string',
+        'timezone' => 'string',
+        'datetime' => 'string',
+        'datetime_rfc3339' => 'string',
+        'timestamp_unix' => 'int',
+        'weekday' => 'string',
+        'weekday_cn' => 'string',
+        'lunar_year' => 'int',
+        'lunar_month' => 'int',
+        'lunar_day' => 'int',
+        'is_leap_month' => 'bool',
+        'lunar_year_cn' => 'string',
+        'lunar_month_cn' => 'string',
+        'lunar_day_cn' => 'string',
+        'ganzhi_year' => 'string',
+        'ganzhi_month' => 'string',
+        'ganzhi_day' => 'string',
+        'zodiac' => 'string',
+        'solar_term' => 'string',
+        'lunar_festivals' => 'string[]',
+        'solar_festivals' => 'string[]'
     ];
 
     /**
@@ -70,9 +89,28 @@ class GetMiscLunartime200Response implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'message' => null,
-        'data' => null
+        'query_timestamp' => null,
+        'query_timezone' => null,
+        'timezone' => null,
+        'datetime' => null,
+        'datetime_rfc3339' => null,
+        'timestamp_unix' => null,
+        'weekday' => null,
+        'weekday_cn' => null,
+        'lunar_year' => null,
+        'lunar_month' => null,
+        'lunar_day' => null,
+        'is_leap_month' => null,
+        'lunar_year_cn' => null,
+        'lunar_month_cn' => null,
+        'lunar_day_cn' => null,
+        'ganzhi_year' => null,
+        'ganzhi_month' => null,
+        'ganzhi_day' => null,
+        'zodiac' => null,
+        'solar_term' => null,
+        'lunar_festivals' => null,
+        'solar_festivals' => null
     ];
 
     /**
@@ -81,9 +119,28 @@ class GetMiscLunartime200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'message' => false,
-        'data' => false
+        'query_timestamp' => false,
+        'query_timezone' => false,
+        'timezone' => false,
+        'datetime' => false,
+        'datetime_rfc3339' => false,
+        'timestamp_unix' => false,
+        'weekday' => false,
+        'weekday_cn' => false,
+        'lunar_year' => false,
+        'lunar_month' => false,
+        'lunar_day' => false,
+        'is_leap_month' => false,
+        'lunar_year_cn' => false,
+        'lunar_month_cn' => false,
+        'lunar_day_cn' => false,
+        'ganzhi_year' => false,
+        'ganzhi_month' => false,
+        'ganzhi_day' => false,
+        'zodiac' => false,
+        'solar_term' => false,
+        'lunar_festivals' => false,
+        'solar_festivals' => false
     ];
 
     /**
@@ -172,9 +229,28 @@ class GetMiscLunartime200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'data' => 'data'
+        'query_timestamp' => 'query_timestamp',
+        'query_timezone' => 'query_timezone',
+        'timezone' => 'timezone',
+        'datetime' => 'datetime',
+        'datetime_rfc3339' => 'datetime_rfc3339',
+        'timestamp_unix' => 'timestamp_unix',
+        'weekday' => 'weekday',
+        'weekday_cn' => 'weekday_cn',
+        'lunar_year' => 'lunar_year',
+        'lunar_month' => 'lunar_month',
+        'lunar_day' => 'lunar_day',
+        'is_leap_month' => 'is_leap_month',
+        'lunar_year_cn' => 'lunar_year_cn',
+        'lunar_month_cn' => 'lunar_month_cn',
+        'lunar_day_cn' => 'lunar_day_cn',
+        'ganzhi_year' => 'ganzhi_year',
+        'ganzhi_month' => 'ganzhi_month',
+        'ganzhi_day' => 'ganzhi_day',
+        'zodiac' => 'zodiac',
+        'solar_term' => 'solar_term',
+        'lunar_festivals' => 'lunar_festivals',
+        'solar_festivals' => 'solar_festivals'
     ];
 
     /**
@@ -183,9 +259,28 @@ class GetMiscLunartime200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'data' => 'setData'
+        'query_timestamp' => 'setQueryTimestamp',
+        'query_timezone' => 'setQueryTimezone',
+        'timezone' => 'setTimezone',
+        'datetime' => 'setDatetime',
+        'datetime_rfc3339' => 'setDatetimeRfc3339',
+        'timestamp_unix' => 'setTimestampUnix',
+        'weekday' => 'setWeekday',
+        'weekday_cn' => 'setWeekdayCn',
+        'lunar_year' => 'setLunarYear',
+        'lunar_month' => 'setLunarMonth',
+        'lunar_day' => 'setLunarDay',
+        'is_leap_month' => 'setIsLeapMonth',
+        'lunar_year_cn' => 'setLunarYearCn',
+        'lunar_month_cn' => 'setLunarMonthCn',
+        'lunar_day_cn' => 'setLunarDayCn',
+        'ganzhi_year' => 'setGanzhiYear',
+        'ganzhi_month' => 'setGanzhiMonth',
+        'ganzhi_day' => 'setGanzhiDay',
+        'zodiac' => 'setZodiac',
+        'solar_term' => 'setSolarTerm',
+        'lunar_festivals' => 'setLunarFestivals',
+        'solar_festivals' => 'setSolarFestivals'
     ];
 
     /**
@@ -194,9 +289,28 @@ class GetMiscLunartime200Response implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'data' => 'getData'
+        'query_timestamp' => 'getQueryTimestamp',
+        'query_timezone' => 'getQueryTimezone',
+        'timezone' => 'getTimezone',
+        'datetime' => 'getDatetime',
+        'datetime_rfc3339' => 'getDatetimeRfc3339',
+        'timestamp_unix' => 'getTimestampUnix',
+        'weekday' => 'getWeekday',
+        'weekday_cn' => 'getWeekdayCn',
+        'lunar_year' => 'getLunarYear',
+        'lunar_month' => 'getLunarMonth',
+        'lunar_day' => 'getLunarDay',
+        'is_leap_month' => 'getIsLeapMonth',
+        'lunar_year_cn' => 'getLunarYearCn',
+        'lunar_month_cn' => 'getLunarMonthCn',
+        'lunar_day_cn' => 'getLunarDayCn',
+        'ganzhi_year' => 'getGanzhiYear',
+        'ganzhi_month' => 'getGanzhiMonth',
+        'ganzhi_day' => 'getGanzhiDay',
+        'zodiac' => 'getZodiac',
+        'solar_term' => 'getSolarTerm',
+        'lunar_festivals' => 'getLunarFestivals',
+        'solar_festivals' => 'getSolarFestivals'
     ];
 
     /**
@@ -256,9 +370,28 @@ class GetMiscLunartime200Response implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('query_timestamp', $data ?? [], null);
+        $this->setIfExists('query_timezone', $data ?? [], null);
+        $this->setIfExists('timezone', $data ?? [], null);
+        $this->setIfExists('datetime', $data ?? [], null);
+        $this->setIfExists('datetime_rfc3339', $data ?? [], null);
+        $this->setIfExists('timestamp_unix', $data ?? [], null);
+        $this->setIfExists('weekday', $data ?? [], null);
+        $this->setIfExists('weekday_cn', $data ?? [], null);
+        $this->setIfExists('lunar_year', $data ?? [], null);
+        $this->setIfExists('lunar_month', $data ?? [], null);
+        $this->setIfExists('lunar_day', $data ?? [], null);
+        $this->setIfExists('is_leap_month', $data ?? [], null);
+        $this->setIfExists('lunar_year_cn', $data ?? [], null);
+        $this->setIfExists('lunar_month_cn', $data ?? [], null);
+        $this->setIfExists('lunar_day_cn', $data ?? [], null);
+        $this->setIfExists('ganzhi_year', $data ?? [], null);
+        $this->setIfExists('ganzhi_month', $data ?? [], null);
+        $this->setIfExists('ganzhi_day', $data ?? [], null);
+        $this->setIfExists('zodiac', $data ?? [], null);
+        $this->setIfExists('solar_term', $data ?? [], null);
+        $this->setIfExists('lunar_festivals', $data ?? [], null);
+        $this->setIfExists('solar_festivals', $data ?? [], null);
     }
 
     /**
@@ -304,82 +437,595 @@ class GetMiscLunartime200Response implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code 业务状态码，200 表示成功。
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
+     * Gets query_timestamp
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getQueryTimestamp()
     {
-        return $this->container['message'];
+        return $this->container['query_timestamp'];
     }
 
     /**
-     * Sets message
+     * Sets query_timestamp
      *
-     * @param string|null $message 状态描述。
+     * @param string|null $query_timestamp 原始 ts 入参。
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setQueryTimestamp($query_timestamp)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($query_timestamp)) {
+            throw new \InvalidArgumentException('non-nullable query_timestamp cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['query_timestamp'] = $query_timestamp;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets query_timezone
      *
-     * @return \OpenAPI\Client\Model\GetMiscLunartime200ResponseData|null
+     * @return string|null
      */
-    public function getData()
+    public function getQueryTimezone()
     {
-        return $this->container['data'];
+        return $this->container['query_timezone'];
     }
 
     /**
-     * Sets data
+     * Sets query_timezone
      *
-     * @param \OpenAPI\Client\Model\GetMiscLunartime200ResponseData|null $data data
+     * @param string|null $query_timezone 原始 timezone 入参。
      *
      * @return self
      */
-    public function setData($data)
+    public function setQueryTimezone($query_timezone)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($query_timezone)) {
+            throw new \InvalidArgumentException('non-nullable query_timezone cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['query_timezone'] = $query_timezone;
+
+        return $this;
+    }
+
+    /**
+     * Gets timezone
+     *
+     * @return string|null
+     */
+    public function getTimezone()
+    {
+        return $this->container['timezone'];
+    }
+
+    /**
+     * Sets timezone
+     *
+     * @param string|null $timezone 解析后的时区。
+     *
+     * @return self
+     */
+    public function setTimezone($timezone)
+    {
+        if (is_null($timezone)) {
+            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
+        }
+        $this->container['timezone'] = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * Gets datetime
+     *
+     * @return string|null
+     */
+    public function getDatetime()
+    {
+        return $this->container['datetime'];
+    }
+
+    /**
+     * Sets datetime
+     *
+     * @param string|null $datetime 本地化时间，格式 YYYY-MM-DD HH:mm:ss。
+     *
+     * @return self
+     */
+    public function setDatetime($datetime)
+    {
+        if (is_null($datetime)) {
+            throw new \InvalidArgumentException('non-nullable datetime cannot be null');
+        }
+        $this->container['datetime'] = $datetime;
+
+        return $this;
+    }
+
+    /**
+     * Gets datetime_rfc3339
+     *
+     * @return string|null
+     */
+    public function getDatetimeRfc3339()
+    {
+        return $this->container['datetime_rfc3339'];
+    }
+
+    /**
+     * Sets datetime_rfc3339
+     *
+     * @param string|null $datetime_rfc3339 RFC3339 时间格式。
+     *
+     * @return self
+     */
+    public function setDatetimeRfc3339($datetime_rfc3339)
+    {
+        if (is_null($datetime_rfc3339)) {
+            throw new \InvalidArgumentException('non-nullable datetime_rfc3339 cannot be null');
+        }
+        $this->container['datetime_rfc3339'] = $datetime_rfc3339;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp_unix
+     *
+     * @return int|null
+     */
+    public function getTimestampUnix()
+    {
+        return $this->container['timestamp_unix'];
+    }
+
+    /**
+     * Sets timestamp_unix
+     *
+     * @param int|null $timestamp_unix 秒级 Unix 时间戳。
+     *
+     * @return self
+     */
+    public function setTimestampUnix($timestamp_unix)
+    {
+        if (is_null($timestamp_unix)) {
+            throw new \InvalidArgumentException('non-nullable timestamp_unix cannot be null');
+        }
+        $this->container['timestamp_unix'] = $timestamp_unix;
+
+        return $this;
+    }
+
+    /**
+     * Gets weekday
+     *
+     * @return string|null
+     */
+    public function getWeekday()
+    {
+        return $this->container['weekday'];
+    }
+
+    /**
+     * Sets weekday
+     *
+     * @param string|null $weekday 星期英文。
+     *
+     * @return self
+     */
+    public function setWeekday($weekday)
+    {
+        if (is_null($weekday)) {
+            throw new \InvalidArgumentException('non-nullable weekday cannot be null');
+        }
+        $this->container['weekday'] = $weekday;
+
+        return $this;
+    }
+
+    /**
+     * Gets weekday_cn
+     *
+     * @return string|null
+     */
+    public function getWeekdayCn()
+    {
+        return $this->container['weekday_cn'];
+    }
+
+    /**
+     * Sets weekday_cn
+     *
+     * @param string|null $weekday_cn 星期中文。
+     *
+     * @return self
+     */
+    public function setWeekdayCn($weekday_cn)
+    {
+        if (is_null($weekday_cn)) {
+            throw new \InvalidArgumentException('non-nullable weekday_cn cannot be null');
+        }
+        $this->container['weekday_cn'] = $weekday_cn;
+
+        return $this;
+    }
+
+    /**
+     * Gets lunar_year
+     *
+     * @return int|null
+     */
+    public function getLunarYear()
+    {
+        return $this->container['lunar_year'];
+    }
+
+    /**
+     * Sets lunar_year
+     *
+     * @param int|null $lunar_year 农历年份（数字）。
+     *
+     * @return self
+     */
+    public function setLunarYear($lunar_year)
+    {
+        if (is_null($lunar_year)) {
+            throw new \InvalidArgumentException('non-nullable lunar_year cannot be null');
+        }
+        $this->container['lunar_year'] = $lunar_year;
+
+        return $this;
+    }
+
+    /**
+     * Gets lunar_month
+     *
+     * @return int|null
+     */
+    public function getLunarMonth()
+    {
+        return $this->container['lunar_month'];
+    }
+
+    /**
+     * Sets lunar_month
+     *
+     * @param int|null $lunar_month 农历月份（数字）。
+     *
+     * @return self
+     */
+    public function setLunarMonth($lunar_month)
+    {
+        if (is_null($lunar_month)) {
+            throw new \InvalidArgumentException('non-nullable lunar_month cannot be null');
+        }
+        $this->container['lunar_month'] = $lunar_month;
+
+        return $this;
+    }
+
+    /**
+     * Gets lunar_day
+     *
+     * @return int|null
+     */
+    public function getLunarDay()
+    {
+        return $this->container['lunar_day'];
+    }
+
+    /**
+     * Sets lunar_day
+     *
+     * @param int|null $lunar_day 农历日期（数字）。
+     *
+     * @return self
+     */
+    public function setLunarDay($lunar_day)
+    {
+        if (is_null($lunar_day)) {
+            throw new \InvalidArgumentException('non-nullable lunar_day cannot be null');
+        }
+        $this->container['lunar_day'] = $lunar_day;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_leap_month
+     *
+     * @return bool|null
+     */
+    public function getIsLeapMonth()
+    {
+        return $this->container['is_leap_month'];
+    }
+
+    /**
+     * Sets is_leap_month
+     *
+     * @param bool|null $is_leap_month 是否闰月。
+     *
+     * @return self
+     */
+    public function setIsLeapMonth($is_leap_month)
+    {
+        if (is_null($is_leap_month)) {
+            throw new \InvalidArgumentException('non-nullable is_leap_month cannot be null');
+        }
+        $this->container['is_leap_month'] = $is_leap_month;
+
+        return $this;
+    }
+
+    /**
+     * Gets lunar_year_cn
+     *
+     * @return string|null
+     */
+    public function getLunarYearCn()
+    {
+        return $this->container['lunar_year_cn'];
+    }
+
+    /**
+     * Sets lunar_year_cn
+     *
+     * @param string|null $lunar_year_cn 农历年份中文表示。
+     *
+     * @return self
+     */
+    public function setLunarYearCn($lunar_year_cn)
+    {
+        if (is_null($lunar_year_cn)) {
+            throw new \InvalidArgumentException('non-nullable lunar_year_cn cannot be null');
+        }
+        $this->container['lunar_year_cn'] = $lunar_year_cn;
+
+        return $this;
+    }
+
+    /**
+     * Gets lunar_month_cn
+     *
+     * @return string|null
+     */
+    public function getLunarMonthCn()
+    {
+        return $this->container['lunar_month_cn'];
+    }
+
+    /**
+     * Sets lunar_month_cn
+     *
+     * @param string|null $lunar_month_cn 农历月份中文表示。
+     *
+     * @return self
+     */
+    public function setLunarMonthCn($lunar_month_cn)
+    {
+        if (is_null($lunar_month_cn)) {
+            throw new \InvalidArgumentException('non-nullable lunar_month_cn cannot be null');
+        }
+        $this->container['lunar_month_cn'] = $lunar_month_cn;
+
+        return $this;
+    }
+
+    /**
+     * Gets lunar_day_cn
+     *
+     * @return string|null
+     */
+    public function getLunarDayCn()
+    {
+        return $this->container['lunar_day_cn'];
+    }
+
+    /**
+     * Sets lunar_day_cn
+     *
+     * @param string|null $lunar_day_cn 农历日期中文表示。
+     *
+     * @return self
+     */
+    public function setLunarDayCn($lunar_day_cn)
+    {
+        if (is_null($lunar_day_cn)) {
+            throw new \InvalidArgumentException('non-nullable lunar_day_cn cannot be null');
+        }
+        $this->container['lunar_day_cn'] = $lunar_day_cn;
+
+        return $this;
+    }
+
+    /**
+     * Gets ganzhi_year
+     *
+     * @return string|null
+     */
+    public function getGanzhiYear()
+    {
+        return $this->container['ganzhi_year'];
+    }
+
+    /**
+     * Sets ganzhi_year
+     *
+     * @param string|null $ganzhi_year 干支年。
+     *
+     * @return self
+     */
+    public function setGanzhiYear($ganzhi_year)
+    {
+        if (is_null($ganzhi_year)) {
+            throw new \InvalidArgumentException('non-nullable ganzhi_year cannot be null');
+        }
+        $this->container['ganzhi_year'] = $ganzhi_year;
+
+        return $this;
+    }
+
+    /**
+     * Gets ganzhi_month
+     *
+     * @return string|null
+     */
+    public function getGanzhiMonth()
+    {
+        return $this->container['ganzhi_month'];
+    }
+
+    /**
+     * Sets ganzhi_month
+     *
+     * @param string|null $ganzhi_month 干支月。
+     *
+     * @return self
+     */
+    public function setGanzhiMonth($ganzhi_month)
+    {
+        if (is_null($ganzhi_month)) {
+            throw new \InvalidArgumentException('non-nullable ganzhi_month cannot be null');
+        }
+        $this->container['ganzhi_month'] = $ganzhi_month;
+
+        return $this;
+    }
+
+    /**
+     * Gets ganzhi_day
+     *
+     * @return string|null
+     */
+    public function getGanzhiDay()
+    {
+        return $this->container['ganzhi_day'];
+    }
+
+    /**
+     * Sets ganzhi_day
+     *
+     * @param string|null $ganzhi_day 干支日。
+     *
+     * @return self
+     */
+    public function setGanzhiDay($ganzhi_day)
+    {
+        if (is_null($ganzhi_day)) {
+            throw new \InvalidArgumentException('non-nullable ganzhi_day cannot be null');
+        }
+        $this->container['ganzhi_day'] = $ganzhi_day;
+
+        return $this;
+    }
+
+    /**
+     * Gets zodiac
+     *
+     * @return string|null
+     */
+    public function getZodiac()
+    {
+        return $this->container['zodiac'];
+    }
+
+    /**
+     * Sets zodiac
+     *
+     * @param string|null $zodiac 生肖。
+     *
+     * @return self
+     */
+    public function setZodiac($zodiac)
+    {
+        if (is_null($zodiac)) {
+            throw new \InvalidArgumentException('non-nullable zodiac cannot be null');
+        }
+        $this->container['zodiac'] = $zodiac;
+
+        return $this;
+    }
+
+    /**
+     * Gets solar_term
+     *
+     * @return string|null
+     */
+    public function getSolarTerm()
+    {
+        return $this->container['solar_term'];
+    }
+
+    /**
+     * Sets solar_term
+     *
+     * @param string|null $solar_term 节气名称。有值时返回，无值时可能为空字符串或不返回。
+     *
+     * @return self
+     */
+    public function setSolarTerm($solar_term)
+    {
+        if (is_null($solar_term)) {
+            throw new \InvalidArgumentException('non-nullable solar_term cannot be null');
+        }
+        $this->container['solar_term'] = $solar_term;
+
+        return $this;
+    }
+
+    /**
+     * Gets lunar_festivals
+     *
+     * @return string[]|null
+     */
+    public function getLunarFestivals()
+    {
+        return $this->container['lunar_festivals'];
+    }
+
+    /**
+     * Sets lunar_festivals
+     *
+     * @param string[]|null $lunar_festivals 农历节日数组。
+     *
+     * @return self
+     */
+    public function setLunarFestivals($lunar_festivals)
+    {
+        if (is_null($lunar_festivals)) {
+            throw new \InvalidArgumentException('non-nullable lunar_festivals cannot be null');
+        }
+        $this->container['lunar_festivals'] = $lunar_festivals;
+
+        return $this;
+    }
+
+    /**
+     * Gets solar_festivals
+     *
+     * @return string[]|null
+     */
+    public function getSolarFestivals()
+    {
+        return $this->container['solar_festivals'];
+    }
+
+    /**
+     * Sets solar_festivals
+     *
+     * @param string[]|null $solar_festivals 公历节日数组。
+     *
+     * @return self
+     */
+    public function setSolarFestivals($solar_festivals)
+    {
+        if (is_null($solar_festivals)) {
+            throw new \InvalidArgumentException('non-nullable solar_festivals cannot be null');
+        }
+        $this->container['solar_festivals'] = $solar_festivals;
 
         return $this;
     }

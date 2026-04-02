@@ -59,8 +59,10 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'province' => 'string',
         'city' => 'string',
+        'district' => 'string',
         'adcode' => 'string',
         'weather' => 'string',
+        'weather_icon' => 'string',
         'temperature' => 'float',
         'wind_direction' => 'string',
         'wind_power' => 'string',
@@ -95,8 +97,10 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPIFormats = [
         'province' => null,
         'city' => null,
+        'district' => null,
         'adcode' => null,
         'weather' => null,
+        'weather_icon' => null,
         'temperature' => null,
         'wind_direction' => null,
         'wind_power' => null,
@@ -129,8 +133,10 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'province' => false,
         'city' => false,
+        'district' => false,
         'adcode' => false,
         'weather' => false,
+        'weather_icon' => false,
         'temperature' => false,
         'wind_direction' => false,
         'wind_power' => false,
@@ -243,8 +249,10 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     protected static $attributeMap = [
         'province' => 'province',
         'city' => 'city',
+        'district' => 'district',
         'adcode' => 'adcode',
         'weather' => 'weather',
+        'weather_icon' => 'weather_icon',
         'temperature' => 'temperature',
         'wind_direction' => 'wind_direction',
         'wind_power' => 'wind_power',
@@ -277,8 +285,10 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     protected static $setters = [
         'province' => 'setProvince',
         'city' => 'setCity',
+        'district' => 'setDistrict',
         'adcode' => 'setAdcode',
         'weather' => 'setWeather',
+        'weather_icon' => 'setWeatherIcon',
         'temperature' => 'setTemperature',
         'wind_direction' => 'setWindDirection',
         'wind_power' => 'setWindPower',
@@ -311,8 +321,10 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     protected static $getters = [
         'province' => 'getProvince',
         'city' => 'getCity',
+        'district' => 'getDistrict',
         'adcode' => 'getAdcode',
         'weather' => 'getWeather',
+        'weather_icon' => 'getWeatherIcon',
         'temperature' => 'getTemperature',
         'wind_direction' => 'getWindDirection',
         'wind_power' => 'getWindPower',
@@ -378,6 +390,903 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const WEATHER_ICON__100 = '100';
+    public const WEATHER_ICON__101 = '101';
+    public const WEATHER_ICON__102 = '102';
+    public const WEATHER_ICON__103 = '103';
+    public const WEATHER_ICON__104 = '104';
+    public const WEATHER_ICON__150 = '150';
+    public const WEATHER_ICON__151 = '151';
+    public const WEATHER_ICON__152 = '152';
+    public const WEATHER_ICON__153 = '153';
+    public const WEATHER_ICON__300 = '300';
+    public const WEATHER_ICON__301 = '301';
+    public const WEATHER_ICON__302 = '302';
+    public const WEATHER_ICON__303 = '303';
+    public const WEATHER_ICON__304 = '304';
+    public const WEATHER_ICON__305 = '305';
+    public const WEATHER_ICON__306 = '306';
+    public const WEATHER_ICON__307 = '307';
+    public const WEATHER_ICON__308 = '308';
+    public const WEATHER_ICON__309 = '309';
+    public const WEATHER_ICON__310 = '310';
+    public const WEATHER_ICON__311 = '311';
+    public const WEATHER_ICON__312 = '312';
+    public const WEATHER_ICON__313 = '313';
+    public const WEATHER_ICON__314 = '314';
+    public const WEATHER_ICON__315 = '315';
+    public const WEATHER_ICON__316 = '316';
+    public const WEATHER_ICON__317 = '317';
+    public const WEATHER_ICON__318 = '318';
+    public const WEATHER_ICON__350 = '350';
+    public const WEATHER_ICON__351 = '351';
+    public const WEATHER_ICON__399 = '399';
+    public const WEATHER_ICON__400 = '400';
+    public const WEATHER_ICON__401 = '401';
+    public const WEATHER_ICON__402 = '402';
+    public const WEATHER_ICON__403 = '403';
+    public const WEATHER_ICON__404 = '404';
+    public const WEATHER_ICON__405 = '405';
+    public const WEATHER_ICON__406 = '406';
+    public const WEATHER_ICON__407 = '407';
+    public const WEATHER_ICON__408 = '408';
+    public const WEATHER_ICON__409 = '409';
+    public const WEATHER_ICON__410 = '410';
+    public const WEATHER_ICON__456 = '456';
+    public const WEATHER_ICON__457 = '457';
+    public const WEATHER_ICON__499 = '499';
+    public const WEATHER_ICON__500 = '500';
+    public const WEATHER_ICON__501 = '501';
+    public const WEATHER_ICON__502 = '502';
+    public const WEATHER_ICON__503 = '503';
+    public const WEATHER_ICON__504 = '504';
+    public const WEATHER_ICON__507 = '507';
+    public const WEATHER_ICON__508 = '508';
+    public const WEATHER_ICON__509 = '509';
+    public const WEATHER_ICON__510 = '510';
+    public const WEATHER_ICON__511 = '511';
+    public const WEATHER_ICON__512 = '512';
+    public const WEATHER_ICON__513 = '513';
+    public const WEATHER_ICON__514 = '514';
+    public const WEATHER_ICON__515 = '515';
+    public const WEATHER_ICON__800 = '800';
+    public const WEATHER_ICON__801 = '801';
+    public const WEATHER_ICON__802 = '802';
+    public const WEATHER_ICON__803 = '803';
+    public const WEATHER_ICON__804 = '804';
+    public const WEATHER_ICON__805 = '805';
+    public const WEATHER_ICON__806 = '806';
+    public const WEATHER_ICON__807 = '807';
+    public const WEATHER_ICON__900 = '900';
+    public const WEATHER_ICON__901 = '901';
+    public const WEATHER_ICON__999 = '999';
+    public const WEATHER_ICON__1001 = '1001';
+    public const WEATHER_ICON__1002 = '1002';
+    public const WEATHER_ICON__1003 = '1003';
+    public const WEATHER_ICON__1004 = '1004';
+    public const WEATHER_ICON__1005 = '1005';
+    public const WEATHER_ICON__1006 = '1006';
+    public const WEATHER_ICON__1007 = '1007';
+    public const WEATHER_ICON__1008 = '1008';
+    public const WEATHER_ICON__1009 = '1009';
+    public const WEATHER_ICON__1010 = '1010';
+    public const WEATHER_ICON__1011 = '1011';
+    public const WEATHER_ICON__1012 = '1012';
+    public const WEATHER_ICON__1013 = '1013';
+    public const WEATHER_ICON__1014 = '1014';
+    public const WEATHER_ICON__1015 = '1015';
+    public const WEATHER_ICON__1016 = '1016';
+    public const WEATHER_ICON__1017 = '1017';
+    public const WEATHER_ICON__1018 = '1018';
+    public const WEATHER_ICON__1019 = '1019';
+    public const WEATHER_ICON__1020 = '1020';
+    public const WEATHER_ICON__1021 = '1021';
+    public const WEATHER_ICON__1022 = '1022';
+    public const WEATHER_ICON__1023 = '1023';
+    public const WEATHER_ICON__1024 = '1024';
+    public const WEATHER_ICON__1025 = '1025';
+    public const WEATHER_ICON__1026 = '1026';
+    public const WEATHER_ICON__1027 = '1027';
+    public const WEATHER_ICON__1028 = '1028';
+    public const WEATHER_ICON__1029 = '1029';
+    public const WEATHER_ICON__1030 = '1030';
+    public const WEATHER_ICON__1031 = '1031';
+    public const WEATHER_ICON__1032 = '1032';
+    public const WEATHER_ICON__1033 = '1033';
+    public const WEATHER_ICON__1034 = '1034';
+    public const WEATHER_ICON__1035 = '1035';
+    public const WEATHER_ICON__1036 = '1036';
+    public const WEATHER_ICON__1037 = '1037';
+    public const WEATHER_ICON__1038 = '1038';
+    public const WEATHER_ICON__1039 = '1039';
+    public const WEATHER_ICON__1040 = '1040';
+    public const WEATHER_ICON__1041 = '1041';
+    public const WEATHER_ICON__1042 = '1042';
+    public const WEATHER_ICON__1043 = '1043';
+    public const WEATHER_ICON__1044 = '1044';
+    public const WEATHER_ICON__1045 = '1045';
+    public const WEATHER_ICON__1046 = '1046';
+    public const WEATHER_ICON__1047 = '1047';
+    public const WEATHER_ICON__1048 = '1048';
+    public const WEATHER_ICON__1049 = '1049';
+    public const WEATHER_ICON__1050 = '1050';
+    public const WEATHER_ICON__1051 = '1051';
+    public const WEATHER_ICON__1052 = '1052';
+    public const WEATHER_ICON__1053 = '1053';
+    public const WEATHER_ICON__1054 = '1054';
+    public const WEATHER_ICON__1055 = '1055';
+    public const WEATHER_ICON__1056 = '1056';
+    public const WEATHER_ICON__1057 = '1057';
+    public const WEATHER_ICON__1058 = '1058';
+    public const WEATHER_ICON__1059 = '1059';
+    public const WEATHER_ICON__1060 = '1060';
+    public const WEATHER_ICON__1061 = '1061';
+    public const WEATHER_ICON__1062 = '1062';
+    public const WEATHER_ICON__1063 = '1063';
+    public const WEATHER_ICON__1064 = '1064';
+    public const WEATHER_ICON__1065 = '1065';
+    public const WEATHER_ICON__1066 = '1066';
+    public const WEATHER_ICON__1067 = '1067';
+    public const WEATHER_ICON__1068 = '1068';
+    public const WEATHER_ICON__1069 = '1069';
+    public const WEATHER_ICON__1071 = '1071';
+    public const WEATHER_ICON__1072 = '1072';
+    public const WEATHER_ICON__1073 = '1073';
+    public const WEATHER_ICON__1074 = '1074';
+    public const WEATHER_ICON__1075 = '1075';
+    public const WEATHER_ICON__1076 = '1076';
+    public const WEATHER_ICON__1077 = '1077';
+    public const WEATHER_ICON__1078 = '1078';
+    public const WEATHER_ICON__1079 = '1079';
+    public const WEATHER_ICON__1080 = '1080';
+    public const WEATHER_ICON__1081 = '1081';
+    public const WEATHER_ICON__1082 = '1082';
+    public const WEATHER_ICON__1084 = '1084';
+    public const WEATHER_ICON__1085 = '1085';
+    public const WEATHER_ICON__1086 = '1086';
+    public const WEATHER_ICON__1087 = '1087';
+    public const WEATHER_ICON__1088 = '1088';
+    public const WEATHER_ICON__1089 = '1089';
+    public const WEATHER_ICON__1201 = '1201';
+    public const WEATHER_ICON__1202 = '1202';
+    public const WEATHER_ICON__1203 = '1203';
+    public const WEATHER_ICON__1204 = '1204';
+    public const WEATHER_ICON__1205 = '1205';
+    public const WEATHER_ICON__1206 = '1206';
+    public const WEATHER_ICON__1207 = '1207';
+    public const WEATHER_ICON__1208 = '1208';
+    public const WEATHER_ICON__1209 = '1209';
+    public const WEATHER_ICON__1210 = '1210';
+    public const WEATHER_ICON__1211 = '1211';
+    public const WEATHER_ICON__1212 = '1212';
+    public const WEATHER_ICON__1213 = '1213';
+    public const WEATHER_ICON__1214 = '1214';
+    public const WEATHER_ICON__1215 = '1215';
+    public const WEATHER_ICON__1216 = '1216';
+    public const WEATHER_ICON__1217 = '1217';
+    public const WEATHER_ICON__1218 = '1218';
+    public const WEATHER_ICON__1219 = '1219';
+    public const WEATHER_ICON__1221 = '1221';
+    public const WEATHER_ICON__1241 = '1241';
+    public const WEATHER_ICON__1242 = '1242';
+    public const WEATHER_ICON__1243 = '1243';
+    public const WEATHER_ICON__1244 = '1244';
+    public const WEATHER_ICON__1245 = '1245';
+    public const WEATHER_ICON__1246 = '1246';
+    public const WEATHER_ICON__1247 = '1247';
+    public const WEATHER_ICON__1248 = '1248';
+    public const WEATHER_ICON__1249 = '1249';
+    public const WEATHER_ICON__1250 = '1250';
+    public const WEATHER_ICON__1251 = '1251';
+    public const WEATHER_ICON__1271 = '1271';
+    public const WEATHER_ICON__1272 = '1272';
+    public const WEATHER_ICON__1273 = '1273';
+    public const WEATHER_ICON__1274 = '1274';
+    public const WEATHER_ICON__1601 = '1601';
+    public const WEATHER_ICON__1602 = '1602';
+    public const WEATHER_ICON__1603 = '1603';
+    public const WEATHER_ICON__1604 = '1604';
+    public const WEATHER_ICON__1605 = '1605';
+    public const WEATHER_ICON__1606 = '1606';
+    public const WEATHER_ICON__1607 = '1607';
+    public const WEATHER_ICON__1608 = '1608';
+    public const WEATHER_ICON__1609 = '1609';
+    public const WEATHER_ICON__1610 = '1610';
+    public const WEATHER_ICON__1701 = '1701';
+    public const WEATHER_ICON__1702 = '1702';
+    public const WEATHER_ICON__1703 = '1703';
+    public const WEATHER_ICON__1704 = '1704';
+    public const WEATHER_ICON__1705 = '1705';
+    public const WEATHER_ICON__1706 = '1706';
+    public const WEATHER_ICON__1707 = '1707';
+    public const WEATHER_ICON__1708 = '1708';
+    public const WEATHER_ICON__1709 = '1709';
+    public const WEATHER_ICON__1710 = '1710';
+    public const WEATHER_ICON__1801 = '1801';
+    public const WEATHER_ICON__1802 = '1802';
+    public const WEATHER_ICON__1803 = '1803';
+    public const WEATHER_ICON__1804 = '1804';
+    public const WEATHER_ICON__1805 = '1805';
+    public const WEATHER_ICON__2001 = '2001';
+    public const WEATHER_ICON__2002 = '2002';
+    public const WEATHER_ICON__2003 = '2003';
+    public const WEATHER_ICON__2004 = '2004';
+    public const WEATHER_ICON__2005 = '2005';
+    public const WEATHER_ICON__2006 = '2006';
+    public const WEATHER_ICON__2007 = '2007';
+    public const WEATHER_ICON__2029 = '2029';
+    public const WEATHER_ICON__2030 = '2030';
+    public const WEATHER_ICON__2031 = '2031';
+    public const WEATHER_ICON__2032 = '2032';
+    public const WEATHER_ICON__2033 = '2033';
+    public const WEATHER_ICON__2050 = '2050';
+    public const WEATHER_ICON__2051 = '2051';
+    public const WEATHER_ICON__2052 = '2052';
+    public const WEATHER_ICON__2053 = '2053';
+    public const WEATHER_ICON__2054 = '2054';
+    public const WEATHER_ICON__2070 = '2070';
+    public const WEATHER_ICON__2071 = '2071';
+    public const WEATHER_ICON__2072 = '2072';
+    public const WEATHER_ICON__2073 = '2073';
+    public const WEATHER_ICON__2074 = '2074';
+    public const WEATHER_ICON__2075 = '2075';
+    public const WEATHER_ICON__2076 = '2076';
+    public const WEATHER_ICON__2077 = '2077';
+    public const WEATHER_ICON__2078 = '2078';
+    public const WEATHER_ICON__2079 = '2079';
+    public const WEATHER_ICON__2080 = '2080';
+    public const WEATHER_ICON__2081 = '2081';
+    public const WEATHER_ICON__2082 = '2082';
+    public const WEATHER_ICON__2083 = '2083';
+    public const WEATHER_ICON__2084 = '2084';
+    public const WEATHER_ICON__2085 = '2085';
+    public const WEATHER_ICON__2100 = '2100';
+    public const WEATHER_ICON__2101 = '2101';
+    public const WEATHER_ICON__2102 = '2102';
+    public const WEATHER_ICON__2103 = '2103';
+    public const WEATHER_ICON__2104 = '2104';
+    public const WEATHER_ICON__2105 = '2105';
+    public const WEATHER_ICON__2106 = '2106';
+    public const WEATHER_ICON__2107 = '2107';
+    public const WEATHER_ICON__2108 = '2108';
+    public const WEATHER_ICON__2109 = '2109';
+    public const WEATHER_ICON__2111 = '2111';
+    public const WEATHER_ICON__2120 = '2120';
+    public const WEATHER_ICON__2121 = '2121';
+    public const WEATHER_ICON__2122 = '2122';
+    public const WEATHER_ICON__2123 = '2123';
+    public const WEATHER_ICON__2124 = '2124';
+    public const WEATHER_ICON__2125 = '2125';
+    public const WEATHER_ICON__2126 = '2126';
+    public const WEATHER_ICON__2127 = '2127';
+    public const WEATHER_ICON__2128 = '2128';
+    public const WEATHER_ICON__2129 = '2129';
+    public const WEATHER_ICON__2130 = '2130';
+    public const WEATHER_ICON__2131 = '2131';
+    public const WEATHER_ICON__2132 = '2132';
+    public const WEATHER_ICON__2133 = '2133';
+    public const WEATHER_ICON__2134 = '2134';
+    public const WEATHER_ICON__2135 = '2135';
+    public const WEATHER_ICON__2150 = '2150';
+    public const WEATHER_ICON__2151 = '2151';
+    public const WEATHER_ICON__2152 = '2152';
+    public const WEATHER_ICON__2153 = '2153';
+    public const WEATHER_ICON__2154 = '2154';
+    public const WEATHER_ICON__2155 = '2155';
+    public const WEATHER_ICON__2156 = '2156';
+    public const WEATHER_ICON__2157 = '2157';
+    public const WEATHER_ICON__2158 = '2158';
+    public const WEATHER_ICON__2159 = '2159';
+    public const WEATHER_ICON__2160 = '2160';
+    public const WEATHER_ICON__2161 = '2161';
+    public const WEATHER_ICON__2162 = '2162';
+    public const WEATHER_ICON__2163 = '2163';
+    public const WEATHER_ICON__2164 = '2164';
+    public const WEATHER_ICON__2165 = '2165';
+    public const WEATHER_ICON__2166 = '2166';
+    public const WEATHER_ICON__2167 = '2167';
+    public const WEATHER_ICON__2190 = '2190';
+    public const WEATHER_ICON__2191 = '2191';
+    public const WEATHER_ICON__2192 = '2192';
+    public const WEATHER_ICON__2193 = '2193';
+    public const WEATHER_ICON__2200 = '2200';
+    public const WEATHER_ICON__2201 = '2201';
+    public const WEATHER_ICON__2202 = '2202';
+    public const WEATHER_ICON__2203 = '2203';
+    public const WEATHER_ICON__2204 = '2204';
+    public const WEATHER_ICON__2205 = '2205';
+    public const WEATHER_ICON__2207 = '2207';
+    public const WEATHER_ICON__2208 = '2208';
+    public const WEATHER_ICON__2209 = '2209';
+    public const WEATHER_ICON__2210 = '2210';
+    public const WEATHER_ICON__2211 = '2211';
+    public const WEATHER_ICON__2212 = '2212';
+    public const WEATHER_ICON__2213 = '2213';
+    public const WEATHER_ICON__2214 = '2214';
+    public const WEATHER_ICON__2215 = '2215';
+    public const WEATHER_ICON__2216 = '2216';
+    public const WEATHER_ICON__2217 = '2217';
+    public const WEATHER_ICON__2218 = '2218';
+    public const WEATHER_ICON__2300 = '2300';
+    public const WEATHER_ICON__2301 = '2301';
+    public const WEATHER_ICON__2302 = '2302';
+    public const WEATHER_ICON__2303 = '2303';
+    public const WEATHER_ICON__2304 = '2304';
+    public const WEATHER_ICON__2305 = '2305';
+    public const WEATHER_ICON__2306 = '2306';
+    public const WEATHER_ICON__2307 = '2307';
+    public const WEATHER_ICON__2308 = '2308';
+    public const WEATHER_ICON__2309 = '2309';
+    public const WEATHER_ICON__2311 = '2311';
+    public const WEATHER_ICON__2312 = '2312';
+    public const WEATHER_ICON__2313 = '2313';
+    public const WEATHER_ICON__2314 = '2314';
+    public const WEATHER_ICON__2315 = '2315';
+    public const WEATHER_ICON__2316 = '2316';
+    public const WEATHER_ICON__2317 = '2317';
+    public const WEATHER_ICON__2318 = '2318';
+    public const WEATHER_ICON__2319 = '2319';
+    public const WEATHER_ICON__2320 = '2320';
+    public const WEATHER_ICON__2321 = '2321';
+    public const WEATHER_ICON__2322 = '2322';
+    public const WEATHER_ICON__2323 = '2323';
+    public const WEATHER_ICON__2324 = '2324';
+    public const WEATHER_ICON__2325 = '2325';
+    public const WEATHER_ICON__2326 = '2326';
+    public const WEATHER_ICON__2327 = '2327';
+    public const WEATHER_ICON__2328 = '2328';
+    public const WEATHER_ICON__2330 = '2330';
+    public const WEATHER_ICON__2331 = '2331';
+    public const WEATHER_ICON__2332 = '2332';
+    public const WEATHER_ICON__2333 = '2333';
+    public const WEATHER_ICON__2341 = '2341';
+    public const WEATHER_ICON__2343 = '2343';
+    public const WEATHER_ICON__2345 = '2345';
+    public const WEATHER_ICON__2346 = '2346';
+    public const WEATHER_ICON__2348 = '2348';
+    public const WEATHER_ICON__2349 = '2349';
+    public const WEATHER_ICON__2350 = '2350';
+    public const WEATHER_ICON__2351 = '2351';
+    public const WEATHER_ICON__2352 = '2352';
+    public const WEATHER_ICON__2353 = '2353';
+    public const WEATHER_ICON__2354 = '2354';
+    public const WEATHER_ICON__2355 = '2355';
+    public const WEATHER_ICON__2356 = '2356';
+    public const WEATHER_ICON__2357 = '2357';
+    public const WEATHER_ICON__2358 = '2358';
+    public const WEATHER_ICON__2359 = '2359';
+    public const WEATHER_ICON__2360 = '2360';
+    public const WEATHER_ICON__2361 = '2361';
+    public const WEATHER_ICON__2362 = '2362';
+    public const WEATHER_ICON__2363 = '2363';
+    public const WEATHER_ICON__2364 = '2364';
+    public const WEATHER_ICON__2365 = '2365';
+    public const WEATHER_ICON__2366 = '2366';
+    public const WEATHER_ICON__2367 = '2367';
+    public const WEATHER_ICON__2368 = '2368';
+    public const WEATHER_ICON__2369 = '2369';
+    public const WEATHER_ICON__2370 = '2370';
+    public const WEATHER_ICON__2371 = '2371';
+    public const WEATHER_ICON__2372 = '2372';
+    public const WEATHER_ICON__2373 = '2373';
+    public const WEATHER_ICON__2374 = '2374';
+    public const WEATHER_ICON__2375 = '2375';
+    public const WEATHER_ICON__2376 = '2376';
+    public const WEATHER_ICON__2377 = '2377';
+    public const WEATHER_ICON__2378 = '2378';
+    public const WEATHER_ICON__2379 = '2379';
+    public const WEATHER_ICON__2380 = '2380';
+    public const WEATHER_ICON__2381 = '2381';
+    public const WEATHER_ICON__2382 = '2382';
+    public const WEATHER_ICON__2383 = '2383';
+    public const WEATHER_ICON__2384 = '2384';
+    public const WEATHER_ICON__2385 = '2385';
+    public const WEATHER_ICON__2386 = '2386';
+    public const WEATHER_ICON__2387 = '2387';
+    public const WEATHER_ICON__2388 = '2388';
+    public const WEATHER_ICON__2389 = '2389';
+    public const WEATHER_ICON__2390 = '2390';
+    public const WEATHER_ICON__2391 = '2391';
+    public const WEATHER_ICON__2392 = '2392';
+    public const WEATHER_ICON__2393 = '2393';
+    public const WEATHER_ICON__2394 = '2394';
+    public const WEATHER_ICON__2395 = '2395';
+    public const WEATHER_ICON__2396 = '2396';
+    public const WEATHER_ICON__2397 = '2397';
+    public const WEATHER_ICON__2398 = '2398';
+    public const WEATHER_ICON__2399 = '2399';
+    public const WEATHER_ICON__2400 = '2400';
+    public const WEATHER_ICON__2409 = '2409';
+    public const WEATHER_ICON__2411 = '2411';
+    public const WEATHER_ICON__2412 = '2412';
+    public const WEATHER_ICON__2413 = '2413';
+    public const WEATHER_ICON__2414 = '2414';
+    public const WEATHER_ICON__2415 = '2415';
+    public const WEATHER_ICON__2416 = '2416';
+    public const WEATHER_ICON__2417 = '2417';
+    public const WEATHER_ICON__2418 = '2418';
+    public const WEATHER_ICON__2419 = '2419';
+    public const WEATHER_ICON__2420 = '2420';
+    public const WEATHER_ICON__2421 = '2421';
+    public const WEATHER_ICON__2422 = '2422';
+    public const WEATHER_ICON__2423 = '2423';
+    public const WEATHER_ICON__2424 = '2424';
+    public const WEATHER_ICON__2425 = '2425';
+    public const WEATHER_ICON__2426 = '2426';
+    public const WEATHER_ICON__2501 = '2501';
+    public const WEATHER_ICON__2502 = '2502';
+    public const WEATHER_ICON__2521 = '2521';
+    public const WEATHER_ICON__2522 = '2522';
+    public const WEATHER_ICON__2523 = '2523';
+    public const WEATHER_ICON__2524 = '2524';
+    public const WEATHER_ICON__2525 = '2525';
+    public const WEATHER_ICON__2526 = '2526';
+    public const WEATHER_ICON__2527 = '2527';
+    public const WEATHER_ICON__2528 = '2528';
+    public const WEATHER_ICON__2529 = '2529';
+    public const WEATHER_ICON__2530 = '2530';
+    public const WEATHER_ICON__2531 = '2531';
+    public const WEATHER_ICON__2532 = '2532';
+    public const WEATHER_ICON__2550 = '2550';
+    public const WEATHER_ICON__2551 = '2551';
+    public const WEATHER_ICON__2552 = '2552';
+    public const WEATHER_ICON__2553 = '2553';
+    public const WEATHER_ICON__2554 = '2554';
+    public const WEATHER_ICON__9999 = '9999';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getWeatherIconAllowableValues()
+    {
+        return [
+            self::WEATHER_ICON__100,
+            self::WEATHER_ICON__101,
+            self::WEATHER_ICON__102,
+            self::WEATHER_ICON__103,
+            self::WEATHER_ICON__104,
+            self::WEATHER_ICON__150,
+            self::WEATHER_ICON__151,
+            self::WEATHER_ICON__152,
+            self::WEATHER_ICON__153,
+            self::WEATHER_ICON__300,
+            self::WEATHER_ICON__301,
+            self::WEATHER_ICON__302,
+            self::WEATHER_ICON__303,
+            self::WEATHER_ICON__304,
+            self::WEATHER_ICON__305,
+            self::WEATHER_ICON__306,
+            self::WEATHER_ICON__307,
+            self::WEATHER_ICON__308,
+            self::WEATHER_ICON__309,
+            self::WEATHER_ICON__310,
+            self::WEATHER_ICON__311,
+            self::WEATHER_ICON__312,
+            self::WEATHER_ICON__313,
+            self::WEATHER_ICON__314,
+            self::WEATHER_ICON__315,
+            self::WEATHER_ICON__316,
+            self::WEATHER_ICON__317,
+            self::WEATHER_ICON__318,
+            self::WEATHER_ICON__350,
+            self::WEATHER_ICON__351,
+            self::WEATHER_ICON__399,
+            self::WEATHER_ICON__400,
+            self::WEATHER_ICON__401,
+            self::WEATHER_ICON__402,
+            self::WEATHER_ICON__403,
+            self::WEATHER_ICON__404,
+            self::WEATHER_ICON__405,
+            self::WEATHER_ICON__406,
+            self::WEATHER_ICON__407,
+            self::WEATHER_ICON__408,
+            self::WEATHER_ICON__409,
+            self::WEATHER_ICON__410,
+            self::WEATHER_ICON__456,
+            self::WEATHER_ICON__457,
+            self::WEATHER_ICON__499,
+            self::WEATHER_ICON__500,
+            self::WEATHER_ICON__501,
+            self::WEATHER_ICON__502,
+            self::WEATHER_ICON__503,
+            self::WEATHER_ICON__504,
+            self::WEATHER_ICON__507,
+            self::WEATHER_ICON__508,
+            self::WEATHER_ICON__509,
+            self::WEATHER_ICON__510,
+            self::WEATHER_ICON__511,
+            self::WEATHER_ICON__512,
+            self::WEATHER_ICON__513,
+            self::WEATHER_ICON__514,
+            self::WEATHER_ICON__515,
+            self::WEATHER_ICON__800,
+            self::WEATHER_ICON__801,
+            self::WEATHER_ICON__802,
+            self::WEATHER_ICON__803,
+            self::WEATHER_ICON__804,
+            self::WEATHER_ICON__805,
+            self::WEATHER_ICON__806,
+            self::WEATHER_ICON__807,
+            self::WEATHER_ICON__900,
+            self::WEATHER_ICON__901,
+            self::WEATHER_ICON__999,
+            self::WEATHER_ICON__1001,
+            self::WEATHER_ICON__1002,
+            self::WEATHER_ICON__1003,
+            self::WEATHER_ICON__1004,
+            self::WEATHER_ICON__1005,
+            self::WEATHER_ICON__1006,
+            self::WEATHER_ICON__1007,
+            self::WEATHER_ICON__1008,
+            self::WEATHER_ICON__1009,
+            self::WEATHER_ICON__1010,
+            self::WEATHER_ICON__1011,
+            self::WEATHER_ICON__1012,
+            self::WEATHER_ICON__1013,
+            self::WEATHER_ICON__1014,
+            self::WEATHER_ICON__1015,
+            self::WEATHER_ICON__1016,
+            self::WEATHER_ICON__1017,
+            self::WEATHER_ICON__1018,
+            self::WEATHER_ICON__1019,
+            self::WEATHER_ICON__1020,
+            self::WEATHER_ICON__1021,
+            self::WEATHER_ICON__1022,
+            self::WEATHER_ICON__1023,
+            self::WEATHER_ICON__1024,
+            self::WEATHER_ICON__1025,
+            self::WEATHER_ICON__1026,
+            self::WEATHER_ICON__1027,
+            self::WEATHER_ICON__1028,
+            self::WEATHER_ICON__1029,
+            self::WEATHER_ICON__1030,
+            self::WEATHER_ICON__1031,
+            self::WEATHER_ICON__1032,
+            self::WEATHER_ICON__1033,
+            self::WEATHER_ICON__1034,
+            self::WEATHER_ICON__1035,
+            self::WEATHER_ICON__1036,
+            self::WEATHER_ICON__1037,
+            self::WEATHER_ICON__1038,
+            self::WEATHER_ICON__1039,
+            self::WEATHER_ICON__1040,
+            self::WEATHER_ICON__1041,
+            self::WEATHER_ICON__1042,
+            self::WEATHER_ICON__1043,
+            self::WEATHER_ICON__1044,
+            self::WEATHER_ICON__1045,
+            self::WEATHER_ICON__1046,
+            self::WEATHER_ICON__1047,
+            self::WEATHER_ICON__1048,
+            self::WEATHER_ICON__1049,
+            self::WEATHER_ICON__1050,
+            self::WEATHER_ICON__1051,
+            self::WEATHER_ICON__1052,
+            self::WEATHER_ICON__1053,
+            self::WEATHER_ICON__1054,
+            self::WEATHER_ICON__1055,
+            self::WEATHER_ICON__1056,
+            self::WEATHER_ICON__1057,
+            self::WEATHER_ICON__1058,
+            self::WEATHER_ICON__1059,
+            self::WEATHER_ICON__1060,
+            self::WEATHER_ICON__1061,
+            self::WEATHER_ICON__1062,
+            self::WEATHER_ICON__1063,
+            self::WEATHER_ICON__1064,
+            self::WEATHER_ICON__1065,
+            self::WEATHER_ICON__1066,
+            self::WEATHER_ICON__1067,
+            self::WEATHER_ICON__1068,
+            self::WEATHER_ICON__1069,
+            self::WEATHER_ICON__1071,
+            self::WEATHER_ICON__1072,
+            self::WEATHER_ICON__1073,
+            self::WEATHER_ICON__1074,
+            self::WEATHER_ICON__1075,
+            self::WEATHER_ICON__1076,
+            self::WEATHER_ICON__1077,
+            self::WEATHER_ICON__1078,
+            self::WEATHER_ICON__1079,
+            self::WEATHER_ICON__1080,
+            self::WEATHER_ICON__1081,
+            self::WEATHER_ICON__1082,
+            self::WEATHER_ICON__1084,
+            self::WEATHER_ICON__1085,
+            self::WEATHER_ICON__1086,
+            self::WEATHER_ICON__1087,
+            self::WEATHER_ICON__1088,
+            self::WEATHER_ICON__1089,
+            self::WEATHER_ICON__1201,
+            self::WEATHER_ICON__1202,
+            self::WEATHER_ICON__1203,
+            self::WEATHER_ICON__1204,
+            self::WEATHER_ICON__1205,
+            self::WEATHER_ICON__1206,
+            self::WEATHER_ICON__1207,
+            self::WEATHER_ICON__1208,
+            self::WEATHER_ICON__1209,
+            self::WEATHER_ICON__1210,
+            self::WEATHER_ICON__1211,
+            self::WEATHER_ICON__1212,
+            self::WEATHER_ICON__1213,
+            self::WEATHER_ICON__1214,
+            self::WEATHER_ICON__1215,
+            self::WEATHER_ICON__1216,
+            self::WEATHER_ICON__1217,
+            self::WEATHER_ICON__1218,
+            self::WEATHER_ICON__1219,
+            self::WEATHER_ICON__1221,
+            self::WEATHER_ICON__1241,
+            self::WEATHER_ICON__1242,
+            self::WEATHER_ICON__1243,
+            self::WEATHER_ICON__1244,
+            self::WEATHER_ICON__1245,
+            self::WEATHER_ICON__1246,
+            self::WEATHER_ICON__1247,
+            self::WEATHER_ICON__1248,
+            self::WEATHER_ICON__1249,
+            self::WEATHER_ICON__1250,
+            self::WEATHER_ICON__1251,
+            self::WEATHER_ICON__1271,
+            self::WEATHER_ICON__1272,
+            self::WEATHER_ICON__1273,
+            self::WEATHER_ICON__1274,
+            self::WEATHER_ICON__1601,
+            self::WEATHER_ICON__1602,
+            self::WEATHER_ICON__1603,
+            self::WEATHER_ICON__1604,
+            self::WEATHER_ICON__1605,
+            self::WEATHER_ICON__1606,
+            self::WEATHER_ICON__1607,
+            self::WEATHER_ICON__1608,
+            self::WEATHER_ICON__1609,
+            self::WEATHER_ICON__1610,
+            self::WEATHER_ICON__1701,
+            self::WEATHER_ICON__1702,
+            self::WEATHER_ICON__1703,
+            self::WEATHER_ICON__1704,
+            self::WEATHER_ICON__1705,
+            self::WEATHER_ICON__1706,
+            self::WEATHER_ICON__1707,
+            self::WEATHER_ICON__1708,
+            self::WEATHER_ICON__1709,
+            self::WEATHER_ICON__1710,
+            self::WEATHER_ICON__1801,
+            self::WEATHER_ICON__1802,
+            self::WEATHER_ICON__1803,
+            self::WEATHER_ICON__1804,
+            self::WEATHER_ICON__1805,
+            self::WEATHER_ICON__2001,
+            self::WEATHER_ICON__2002,
+            self::WEATHER_ICON__2003,
+            self::WEATHER_ICON__2004,
+            self::WEATHER_ICON__2005,
+            self::WEATHER_ICON__2006,
+            self::WEATHER_ICON__2007,
+            self::WEATHER_ICON__2029,
+            self::WEATHER_ICON__2030,
+            self::WEATHER_ICON__2031,
+            self::WEATHER_ICON__2032,
+            self::WEATHER_ICON__2033,
+            self::WEATHER_ICON__2050,
+            self::WEATHER_ICON__2051,
+            self::WEATHER_ICON__2052,
+            self::WEATHER_ICON__2053,
+            self::WEATHER_ICON__2054,
+            self::WEATHER_ICON__2070,
+            self::WEATHER_ICON__2071,
+            self::WEATHER_ICON__2072,
+            self::WEATHER_ICON__2073,
+            self::WEATHER_ICON__2074,
+            self::WEATHER_ICON__2075,
+            self::WEATHER_ICON__2076,
+            self::WEATHER_ICON__2077,
+            self::WEATHER_ICON__2078,
+            self::WEATHER_ICON__2079,
+            self::WEATHER_ICON__2080,
+            self::WEATHER_ICON__2081,
+            self::WEATHER_ICON__2082,
+            self::WEATHER_ICON__2083,
+            self::WEATHER_ICON__2084,
+            self::WEATHER_ICON__2085,
+            self::WEATHER_ICON__2100,
+            self::WEATHER_ICON__2101,
+            self::WEATHER_ICON__2102,
+            self::WEATHER_ICON__2103,
+            self::WEATHER_ICON__2104,
+            self::WEATHER_ICON__2105,
+            self::WEATHER_ICON__2106,
+            self::WEATHER_ICON__2107,
+            self::WEATHER_ICON__2108,
+            self::WEATHER_ICON__2109,
+            self::WEATHER_ICON__2111,
+            self::WEATHER_ICON__2120,
+            self::WEATHER_ICON__2121,
+            self::WEATHER_ICON__2122,
+            self::WEATHER_ICON__2123,
+            self::WEATHER_ICON__2124,
+            self::WEATHER_ICON__2125,
+            self::WEATHER_ICON__2126,
+            self::WEATHER_ICON__2127,
+            self::WEATHER_ICON__2128,
+            self::WEATHER_ICON__2129,
+            self::WEATHER_ICON__2130,
+            self::WEATHER_ICON__2131,
+            self::WEATHER_ICON__2132,
+            self::WEATHER_ICON__2133,
+            self::WEATHER_ICON__2134,
+            self::WEATHER_ICON__2135,
+            self::WEATHER_ICON__2150,
+            self::WEATHER_ICON__2151,
+            self::WEATHER_ICON__2152,
+            self::WEATHER_ICON__2153,
+            self::WEATHER_ICON__2154,
+            self::WEATHER_ICON__2155,
+            self::WEATHER_ICON__2156,
+            self::WEATHER_ICON__2157,
+            self::WEATHER_ICON__2158,
+            self::WEATHER_ICON__2159,
+            self::WEATHER_ICON__2160,
+            self::WEATHER_ICON__2161,
+            self::WEATHER_ICON__2162,
+            self::WEATHER_ICON__2163,
+            self::WEATHER_ICON__2164,
+            self::WEATHER_ICON__2165,
+            self::WEATHER_ICON__2166,
+            self::WEATHER_ICON__2167,
+            self::WEATHER_ICON__2190,
+            self::WEATHER_ICON__2191,
+            self::WEATHER_ICON__2192,
+            self::WEATHER_ICON__2193,
+            self::WEATHER_ICON__2200,
+            self::WEATHER_ICON__2201,
+            self::WEATHER_ICON__2202,
+            self::WEATHER_ICON__2203,
+            self::WEATHER_ICON__2204,
+            self::WEATHER_ICON__2205,
+            self::WEATHER_ICON__2207,
+            self::WEATHER_ICON__2208,
+            self::WEATHER_ICON__2209,
+            self::WEATHER_ICON__2210,
+            self::WEATHER_ICON__2211,
+            self::WEATHER_ICON__2212,
+            self::WEATHER_ICON__2213,
+            self::WEATHER_ICON__2214,
+            self::WEATHER_ICON__2215,
+            self::WEATHER_ICON__2216,
+            self::WEATHER_ICON__2217,
+            self::WEATHER_ICON__2218,
+            self::WEATHER_ICON__2300,
+            self::WEATHER_ICON__2301,
+            self::WEATHER_ICON__2302,
+            self::WEATHER_ICON__2303,
+            self::WEATHER_ICON__2304,
+            self::WEATHER_ICON__2305,
+            self::WEATHER_ICON__2306,
+            self::WEATHER_ICON__2307,
+            self::WEATHER_ICON__2308,
+            self::WEATHER_ICON__2309,
+            self::WEATHER_ICON__2311,
+            self::WEATHER_ICON__2312,
+            self::WEATHER_ICON__2313,
+            self::WEATHER_ICON__2314,
+            self::WEATHER_ICON__2315,
+            self::WEATHER_ICON__2316,
+            self::WEATHER_ICON__2317,
+            self::WEATHER_ICON__2318,
+            self::WEATHER_ICON__2319,
+            self::WEATHER_ICON__2320,
+            self::WEATHER_ICON__2321,
+            self::WEATHER_ICON__2322,
+            self::WEATHER_ICON__2323,
+            self::WEATHER_ICON__2324,
+            self::WEATHER_ICON__2325,
+            self::WEATHER_ICON__2326,
+            self::WEATHER_ICON__2327,
+            self::WEATHER_ICON__2328,
+            self::WEATHER_ICON__2330,
+            self::WEATHER_ICON__2331,
+            self::WEATHER_ICON__2332,
+            self::WEATHER_ICON__2333,
+            self::WEATHER_ICON__2341,
+            self::WEATHER_ICON__2343,
+            self::WEATHER_ICON__2345,
+            self::WEATHER_ICON__2346,
+            self::WEATHER_ICON__2348,
+            self::WEATHER_ICON__2349,
+            self::WEATHER_ICON__2350,
+            self::WEATHER_ICON__2351,
+            self::WEATHER_ICON__2352,
+            self::WEATHER_ICON__2353,
+            self::WEATHER_ICON__2354,
+            self::WEATHER_ICON__2355,
+            self::WEATHER_ICON__2356,
+            self::WEATHER_ICON__2357,
+            self::WEATHER_ICON__2358,
+            self::WEATHER_ICON__2359,
+            self::WEATHER_ICON__2360,
+            self::WEATHER_ICON__2361,
+            self::WEATHER_ICON__2362,
+            self::WEATHER_ICON__2363,
+            self::WEATHER_ICON__2364,
+            self::WEATHER_ICON__2365,
+            self::WEATHER_ICON__2366,
+            self::WEATHER_ICON__2367,
+            self::WEATHER_ICON__2368,
+            self::WEATHER_ICON__2369,
+            self::WEATHER_ICON__2370,
+            self::WEATHER_ICON__2371,
+            self::WEATHER_ICON__2372,
+            self::WEATHER_ICON__2373,
+            self::WEATHER_ICON__2374,
+            self::WEATHER_ICON__2375,
+            self::WEATHER_ICON__2376,
+            self::WEATHER_ICON__2377,
+            self::WEATHER_ICON__2378,
+            self::WEATHER_ICON__2379,
+            self::WEATHER_ICON__2380,
+            self::WEATHER_ICON__2381,
+            self::WEATHER_ICON__2382,
+            self::WEATHER_ICON__2383,
+            self::WEATHER_ICON__2384,
+            self::WEATHER_ICON__2385,
+            self::WEATHER_ICON__2386,
+            self::WEATHER_ICON__2387,
+            self::WEATHER_ICON__2388,
+            self::WEATHER_ICON__2389,
+            self::WEATHER_ICON__2390,
+            self::WEATHER_ICON__2391,
+            self::WEATHER_ICON__2392,
+            self::WEATHER_ICON__2393,
+            self::WEATHER_ICON__2394,
+            self::WEATHER_ICON__2395,
+            self::WEATHER_ICON__2396,
+            self::WEATHER_ICON__2397,
+            self::WEATHER_ICON__2398,
+            self::WEATHER_ICON__2399,
+            self::WEATHER_ICON__2400,
+            self::WEATHER_ICON__2409,
+            self::WEATHER_ICON__2411,
+            self::WEATHER_ICON__2412,
+            self::WEATHER_ICON__2413,
+            self::WEATHER_ICON__2414,
+            self::WEATHER_ICON__2415,
+            self::WEATHER_ICON__2416,
+            self::WEATHER_ICON__2417,
+            self::WEATHER_ICON__2418,
+            self::WEATHER_ICON__2419,
+            self::WEATHER_ICON__2420,
+            self::WEATHER_ICON__2421,
+            self::WEATHER_ICON__2422,
+            self::WEATHER_ICON__2423,
+            self::WEATHER_ICON__2424,
+            self::WEATHER_ICON__2425,
+            self::WEATHER_ICON__2426,
+            self::WEATHER_ICON__2501,
+            self::WEATHER_ICON__2502,
+            self::WEATHER_ICON__2521,
+            self::WEATHER_ICON__2522,
+            self::WEATHER_ICON__2523,
+            self::WEATHER_ICON__2524,
+            self::WEATHER_ICON__2525,
+            self::WEATHER_ICON__2526,
+            self::WEATHER_ICON__2527,
+            self::WEATHER_ICON__2528,
+            self::WEATHER_ICON__2529,
+            self::WEATHER_ICON__2530,
+            self::WEATHER_ICON__2531,
+            self::WEATHER_ICON__2532,
+            self::WEATHER_ICON__2550,
+            self::WEATHER_ICON__2551,
+            self::WEATHER_ICON__2552,
+            self::WEATHER_ICON__2553,
+            self::WEATHER_ICON__2554,
+            self::WEATHER_ICON__9999,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -396,8 +1305,10 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->setIfExists('province', $data ?? [], null);
         $this->setIfExists('city', $data ?? [], null);
+        $this->setIfExists('district', $data ?? [], null);
         $this->setIfExists('adcode', $data ?? [], null);
         $this->setIfExists('weather', $data ?? [], null);
+        $this->setIfExists('weather_icon', $data ?? [], null);
         $this->setIfExists('temperature', $data ?? [], null);
         $this->setIfExists('wind_direction', $data ?? [], null);
         $this->setIfExists('wind_power', $data ?? [], null);
@@ -448,6 +1359,15 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getWeatherIconAllowableValues();
+        if (!is_null($this->container['weather_icon']) && !in_array($this->container['weather_icon'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'weather_icon', must be one of '%s'",
+                $this->container['weather_icon'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -519,6 +1439,33 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets district
+     *
+     * @return string|null
+     */
+    public function getDistrict()
+    {
+        return $this->container['district'];
+    }
+
+    /**
+     * Sets district
+     *
+     * @param string|null $district 区县或更细一级的行政区名称。自动按 IP 定位时更常见。
+     *
+     * @return self
+     */
+    public function setDistrict($district)
+    {
+        if (is_null($district)) {
+            throw new \InvalidArgumentException('non-nullable district cannot be null');
+        }
+        $this->container['district'] = $district;
+
+        return $this;
+    }
+
+    /**
      * Gets adcode
      *
      * @return string|null
@@ -568,6 +1515,43 @@ class GetMiscWeather200Response implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable weather cannot be null');
         }
         $this->container['weather'] = $weather;
+
+        return $this;
+    }
+
+    /**
+     * Gets weather_icon
+     *
+     * @return string|null
+     */
+    public function getWeatherIcon()
+    {
+        return $this->container['weather_icon'];
+    }
+
+    /**
+     * Sets weather_icon
+     *
+     * @param string|null $weather_icon 天气图标代码。请从[天气图标代码表](#enum-list)中查看所有可能的值。
+     *
+     * @return self
+     */
+    public function setWeatherIcon($weather_icon)
+    {
+        if (is_null($weather_icon)) {
+            throw new \InvalidArgumentException('non-nullable weather_icon cannot be null');
+        }
+        $allowedValues = $this->getWeatherIconAllowableValues();
+        if (!in_array($weather_icon, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'weather_icon', must be one of '%s'",
+                    $weather_icon,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['weather_icon'] = $weather_icon;
 
         return $this;
     }

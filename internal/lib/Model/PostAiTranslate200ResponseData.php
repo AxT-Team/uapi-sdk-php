@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PostAiTranslate200ResponseData Class Doc Comment
  *
  * @category Class
- * @description 单个翻译的详细结果，仅在单个翻译时返回。
+ * @description 翻译结果的详细信息。
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,12 +58,7 @@ class PostAiTranslate200ResponseData implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'original_text' => 'string',
-        'translated_text' => 'string',
-        'detected_lang' => 'string',
-        'confidence_score' => 'float',
-        'alternatives' => 'string[]',
-        'explanation' => '\OpenAPI\Client\Model\PostAiTranslate200ResponseDataExplanation'
+        'translated_text' => 'string'
     ];
 
     /**
@@ -74,12 +69,7 @@ class PostAiTranslate200ResponseData implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'original_text' => null,
-        'translated_text' => null,
-        'detected_lang' => null,
-        'confidence_score' => null,
-        'alternatives' => null,
-        'explanation' => null
+        'translated_text' => null
     ];
 
     /**
@@ -88,12 +78,7 @@ class PostAiTranslate200ResponseData implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'original_text' => false,
-        'translated_text' => false,
-        'detected_lang' => false,
-        'confidence_score' => false,
-        'alternatives' => false,
-        'explanation' => false
+        'translated_text' => false
     ];
 
     /**
@@ -182,12 +167,7 @@ class PostAiTranslate200ResponseData implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'original_text' => 'original_text',
-        'translated_text' => 'translated_text',
-        'detected_lang' => 'detected_lang',
-        'confidence_score' => 'confidence_score',
-        'alternatives' => 'alternatives',
-        'explanation' => 'explanation'
+        'translated_text' => 'translated_text'
     ];
 
     /**
@@ -196,12 +176,7 @@ class PostAiTranslate200ResponseData implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'original_text' => 'setOriginalText',
-        'translated_text' => 'setTranslatedText',
-        'detected_lang' => 'setDetectedLang',
-        'confidence_score' => 'setConfidenceScore',
-        'alternatives' => 'setAlternatives',
-        'explanation' => 'setExplanation'
+        'translated_text' => 'setTranslatedText'
     ];
 
     /**
@@ -210,12 +185,7 @@ class PostAiTranslate200ResponseData implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'original_text' => 'getOriginalText',
-        'translated_text' => 'getTranslatedText',
-        'detected_lang' => 'getDetectedLang',
-        'confidence_score' => 'getConfidenceScore',
-        'alternatives' => 'getAlternatives',
-        'explanation' => 'getExplanation'
+        'translated_text' => 'getTranslatedText'
     ];
 
     /**
@@ -275,12 +245,7 @@ class PostAiTranslate200ResponseData implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('original_text', $data ?? [], null);
         $this->setIfExists('translated_text', $data ?? [], null);
-        $this->setIfExists('detected_lang', $data ?? [], null);
-        $this->setIfExists('confidence_score', $data ?? [], null);
-        $this->setIfExists('alternatives', $data ?? [], null);
-        $this->setIfExists('explanation', $data ?? [], null);
     }
 
     /**
@@ -326,33 +291,6 @@ class PostAiTranslate200ResponseData implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets original_text
-     *
-     * @return string|null
-     */
-    public function getOriginalText()
-    {
-        return $this->container['original_text'];
-    }
-
-    /**
-     * Sets original_text
-     *
-     * @param string|null $original_text original_text
-     *
-     * @return self
-     */
-    public function setOriginalText($original_text)
-    {
-        if (is_null($original_text)) {
-            throw new \InvalidArgumentException('non-nullable original_text cannot be null');
-        }
-        $this->container['original_text'] = $original_text;
-
-        return $this;
-    }
-
-    /**
      * Gets translated_text
      *
      * @return string|null
@@ -375,114 +313,6 @@ class PostAiTranslate200ResponseData implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable translated_text cannot be null');
         }
         $this->container['translated_text'] = $translated_text;
-
-        return $this;
-    }
-
-    /**
-     * Gets detected_lang
-     *
-     * @return string|null
-     */
-    public function getDetectedLang()
-    {
-        return $this->container['detected_lang'];
-    }
-
-    /**
-     * Sets detected_lang
-     *
-     * @param string|null $detected_lang detected_lang
-     *
-     * @return self
-     */
-    public function setDetectedLang($detected_lang)
-    {
-        if (is_null($detected_lang)) {
-            throw new \InvalidArgumentException('non-nullable detected_lang cannot be null');
-        }
-        $this->container['detected_lang'] = $detected_lang;
-
-        return $this;
-    }
-
-    /**
-     * Gets confidence_score
-     *
-     * @return float|null
-     */
-    public function getConfidenceScore()
-    {
-        return $this->container['confidence_score'];
-    }
-
-    /**
-     * Sets confidence_score
-     *
-     * @param float|null $confidence_score confidence_score
-     *
-     * @return self
-     */
-    public function setConfidenceScore($confidence_score)
-    {
-        if (is_null($confidence_score)) {
-            throw new \InvalidArgumentException('non-nullable confidence_score cannot be null');
-        }
-        $this->container['confidence_score'] = $confidence_score;
-
-        return $this;
-    }
-
-    /**
-     * Gets alternatives
-     *
-     * @return string[]|null
-     */
-    public function getAlternatives()
-    {
-        return $this->container['alternatives'];
-    }
-
-    /**
-     * Sets alternatives
-     *
-     * @param string[]|null $alternatives alternatives
-     *
-     * @return self
-     */
-    public function setAlternatives($alternatives)
-    {
-        if (is_null($alternatives)) {
-            throw new \InvalidArgumentException('non-nullable alternatives cannot be null');
-        }
-        $this->container['alternatives'] = $alternatives;
-
-        return $this;
-    }
-
-    /**
-     * Gets explanation
-     *
-     * @return \OpenAPI\Client\Model\PostAiTranslate200ResponseDataExplanation|null
-     */
-    public function getExplanation()
-    {
-        return $this->container['explanation'];
-    }
-
-    /**
-     * Sets explanation
-     *
-     * @param \OpenAPI\Client\Model\PostAiTranslate200ResponseDataExplanation|null $explanation explanation
-     *
-     * @return self
-     */
-    public function setExplanation($explanation)
-    {
-        if (is_null($explanation)) {
-            throw new \InvalidArgumentException('non-nullable explanation cannot be null');
-        }
-        $this->container['explanation'] = $explanation;
 
         return $this;
     }

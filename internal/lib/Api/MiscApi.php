@@ -1513,12 +1513,12 @@ class MiscApi
      *
      * 查询热榜
      *
-     * @param  string $type 你想要查询的热榜平台。支持多种主流平台类型，详见下方[可选值](#可选值)表格。 (required)
+     * @param  string $type 你想要查询的热榜平台。请从[支持的平台列表](#enum-list)中选择。 (required)
      * @param  int|null $time 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 (optional)
      * @param  string|null $keyword 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 (optional)
      * @param  int|null $time_start 搜索模式必填：搜索起始时间戳（毫秒）。 (optional)
      * @param  int|null $time_end 搜索模式必填：搜索结束时间戳（毫秒）。 (optional)
-     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional, default to 50)
+     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional)
      * @param  bool|null $sources 设为 true 时列出所有可用的历史数据源，忽略其他参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHotboard'] to see the possible values for this operation
      *
@@ -1526,7 +1526,7 @@ class MiscApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\GetMiscHotboard200Response|\OpenAPI\Client\Model\GetMiscHotboard400Response|\OpenAPI\Client\Model\GetMiscHotboard500Response|\OpenAPI\Client\Model\GetMiscHotboard502Response
      */
-    public function getMiscHotboard($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = 50, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
+    public function getMiscHotboard($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = null, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
     {
         list($response) = $this->getMiscHotboardWithHttpInfo($type, $time, $keyword, $time_start, $time_end, $limit, $sources, $contentType);
         return $response;
@@ -1537,12 +1537,12 @@ class MiscApi
      *
      * 查询热榜
      *
-     * @param  string $type 你想要查询的热榜平台。支持多种主流平台类型，详见下方[可选值](#可选值)表格。 (required)
+     * @param  string $type 你想要查询的热榜平台。请从[支持的平台列表](#enum-list)中选择。 (required)
      * @param  int|null $time 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 (optional)
      * @param  string|null $keyword 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 (optional)
      * @param  int|null $time_start 搜索模式必填：搜索起始时间戳（毫秒）。 (optional)
      * @param  int|null $time_end 搜索模式必填：搜索结束时间戳（毫秒）。 (optional)
-     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional, default to 50)
+     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional)
      * @param  bool|null $sources 设为 true 时列出所有可用的历史数据源，忽略其他参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHotboard'] to see the possible values for this operation
      *
@@ -1550,7 +1550,7 @@ class MiscApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\GetMiscHotboard200Response|\OpenAPI\Client\Model\GetMiscHotboard400Response|\OpenAPI\Client\Model\GetMiscHotboard500Response|\OpenAPI\Client\Model\GetMiscHotboard502Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMiscHotboardWithHttpInfo($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = 50, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
+    public function getMiscHotboardWithHttpInfo($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = null, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
     {
         $request = $this->getMiscHotboardRequest($type, $time, $keyword, $time_start, $time_end, $limit, $sources, $contentType);
 
@@ -1670,19 +1670,19 @@ class MiscApi
      *
      * 查询热榜
      *
-     * @param  string $type 你想要查询的热榜平台。支持多种主流平台类型，详见下方[可选值](#可选值)表格。 (required)
+     * @param  string $type 你想要查询的热榜平台。请从[支持的平台列表](#enum-list)中选择。 (required)
      * @param  int|null $time 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 (optional)
      * @param  string|null $keyword 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 (optional)
      * @param  int|null $time_start 搜索模式必填：搜索起始时间戳（毫秒）。 (optional)
      * @param  int|null $time_end 搜索模式必填：搜索结束时间戳（毫秒）。 (optional)
-     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional, default to 50)
+     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional)
      * @param  bool|null $sources 设为 true 时列出所有可用的历史数据源，忽略其他参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHotboard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMiscHotboardAsync($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = 50, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
+    public function getMiscHotboardAsync($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = null, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
     {
         return $this->getMiscHotboardAsyncWithHttpInfo($type, $time, $keyword, $time_start, $time_end, $limit, $sources, $contentType)
             ->then(
@@ -1697,19 +1697,19 @@ class MiscApi
      *
      * 查询热榜
      *
-     * @param  string $type 你想要查询的热榜平台。支持多种主流平台类型，详见下方[可选值](#可选值)表格。 (required)
+     * @param  string $type 你想要查询的热榜平台。请从[支持的平台列表](#enum-list)中选择。 (required)
      * @param  int|null $time 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 (optional)
      * @param  string|null $keyword 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 (optional)
      * @param  int|null $time_start 搜索模式必填：搜索起始时间戳（毫秒）。 (optional)
      * @param  int|null $time_end 搜索模式必填：搜索结束时间戳（毫秒）。 (optional)
-     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional, default to 50)
+     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional)
      * @param  bool|null $sources 设为 true 时列出所有可用的历史数据源，忽略其他参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHotboard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMiscHotboardAsyncWithHttpInfo($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = 50, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
+    public function getMiscHotboardAsyncWithHttpInfo($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = null, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
     {
         $returnType = '\OpenAPI\Client\Model\GetMiscHotboard200Response';
         $request = $this->getMiscHotboardRequest($type, $time, $keyword, $time_start, $time_end, $limit, $sources, $contentType);
@@ -1753,19 +1753,19 @@ class MiscApi
     /**
      * Create request for operation 'getMiscHotboard'
      *
-     * @param  string $type 你想要查询的热榜平台。支持多种主流平台类型，详见下方[可选值](#可选值)表格。 (required)
+     * @param  string $type 你想要查询的热榜平台。请从[支持的平台列表](#enum-list)中选择。 (required)
      * @param  int|null $time 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 (optional)
      * @param  string|null $keyword 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 (optional)
      * @param  int|null $time_start 搜索模式必填：搜索起始时间戳（毫秒）。 (optional)
      * @param  int|null $time_end 搜索模式必填：搜索结束时间戳（毫秒）。 (optional)
-     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional, default to 50)
+     * @param  int|null $limit 搜索模式下最大返回条数，默认 50，最大 200。 (optional)
      * @param  bool|null $sources 设为 true 时列出所有可用的历史数据源，忽略其他参数。 (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscHotboard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getMiscHotboardRequest($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = 50, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
+    public function getMiscHotboardRequest($type, $time = null, $keyword = null, $time_start = null, $time_end = null, $limit = null, $sources = null, string $contentType = self::contentTypes['getMiscHotboard'][0])
     {
 
         // verify the required parameter 'type' is set
@@ -4005,9 +4005,9 @@ class MiscApi
      * @param  string|null $city 城市名称，支持中文（&#x60;北京&#x60;）和英文（&#x60;Tokyo&#x60;）。可选参数，不传时会尝试 IP 自动定位。 (optional)
      * @param  string|null $adcode 城市行政区划代码（如 &#x60;110000&#x60;），优先级高于 city。可选参数，不传时会尝试 IP 自动定位。 (optional)
      * @param  bool|null $extended 返回扩展气象字段（体感温度、能见度、气压、紫外线、降水量、云量、空气质量指数及污染物分项数据）。 (optional)
-     * @param  bool|null $forecast 返回多天预报数据（最多7天），含白天夜间天气、风向风力、日出日落等。 (optional)
+     * @param  bool|null $forecast 返回多天预报数据（最多7天），含每天的最高温度、最低温度、白天夜间天气、风向风力、日出日落等。 (optional)
      * @param  bool|null $hourly 返回逐小时预报（24小时），含温度、天气、风向风速、湿度、降水概率等。 (optional)
-     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），每5分钟一个数据点，共24个。 (optional)
+     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），精确到2分钟。 (optional)
      * @param  bool|null $indices 返回18项生活指数（穿衣、紫外线、洗车、晾晒、空调、感冒、运动、舒适度、出行、钓鱼、过敏、防晒、心情、啤酒、雨伞、交通、空气净化器、花粉）。 (optional)
      * @param  string|null $lang 返回语言。&#x60;zh&#x60; 返回中文（默认），&#x60;en&#x60; 返回英文。城市名翻译覆盖 7000+ 城市。生活指数（&#x60;indices&#x60;）目前仅支持中文。 (optional, default to 'zh')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWeather'] to see the possible values for this operation
@@ -4030,9 +4030,9 @@ class MiscApi
      * @param  string|null $city 城市名称，支持中文（&#x60;北京&#x60;）和英文（&#x60;Tokyo&#x60;）。可选参数，不传时会尝试 IP 自动定位。 (optional)
      * @param  string|null $adcode 城市行政区划代码（如 &#x60;110000&#x60;），优先级高于 city。可选参数，不传时会尝试 IP 自动定位。 (optional)
      * @param  bool|null $extended 返回扩展气象字段（体感温度、能见度、气压、紫外线、降水量、云量、空气质量指数及污染物分项数据）。 (optional)
-     * @param  bool|null $forecast 返回多天预报数据（最多7天），含白天夜间天气、风向风力、日出日落等。 (optional)
+     * @param  bool|null $forecast 返回多天预报数据（最多7天），含每天的最高温度、最低温度、白天夜间天气、风向风力、日出日落等。 (optional)
      * @param  bool|null $hourly 返回逐小时预报（24小时），含温度、天气、风向风速、湿度、降水概率等。 (optional)
-     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），每5分钟一个数据点，共24个。 (optional)
+     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），精确到2分钟。 (optional)
      * @param  bool|null $indices 返回18项生活指数（穿衣、紫外线、洗车、晾晒、空调、感冒、运动、舒适度、出行、钓鱼、过敏、防晒、心情、啤酒、雨伞、交通、空气净化器、花粉）。 (optional)
      * @param  string|null $lang 返回语言。&#x60;zh&#x60; 返回中文（默认），&#x60;en&#x60; 返回英文。城市名翻译覆盖 7000+ 城市。生活指数（&#x60;indices&#x60;）目前仅支持中文。 (optional, default to 'zh')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWeather'] to see the possible values for this operation
@@ -4178,9 +4178,9 @@ class MiscApi
      * @param  string|null $city 城市名称，支持中文（&#x60;北京&#x60;）和英文（&#x60;Tokyo&#x60;）。可选参数，不传时会尝试 IP 自动定位。 (optional)
      * @param  string|null $adcode 城市行政区划代码（如 &#x60;110000&#x60;），优先级高于 city。可选参数，不传时会尝试 IP 自动定位。 (optional)
      * @param  bool|null $extended 返回扩展气象字段（体感温度、能见度、气压、紫外线、降水量、云量、空气质量指数及污染物分项数据）。 (optional)
-     * @param  bool|null $forecast 返回多天预报数据（最多7天），含白天夜间天气、风向风力、日出日落等。 (optional)
+     * @param  bool|null $forecast 返回多天预报数据（最多7天），含每天的最高温度、最低温度、白天夜间天气、风向风力、日出日落等。 (optional)
      * @param  bool|null $hourly 返回逐小时预报（24小时），含温度、天气、风向风速、湿度、降水概率等。 (optional)
-     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），每5分钟一个数据点，共24个。 (optional)
+     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），精确到2分钟。 (optional)
      * @param  bool|null $indices 返回18项生活指数（穿衣、紫外线、洗车、晾晒、空调、感冒、运动、舒适度、出行、钓鱼、过敏、防晒、心情、啤酒、雨伞、交通、空气净化器、花粉）。 (optional)
      * @param  string|null $lang 返回语言。&#x60;zh&#x60; 返回中文（默认），&#x60;en&#x60; 返回英文。城市名翻译覆盖 7000+ 城市。生活指数（&#x60;indices&#x60;）目前仅支持中文。 (optional, default to 'zh')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWeather'] to see the possible values for this operation
@@ -4206,9 +4206,9 @@ class MiscApi
      * @param  string|null $city 城市名称，支持中文（&#x60;北京&#x60;）和英文（&#x60;Tokyo&#x60;）。可选参数，不传时会尝试 IP 自动定位。 (optional)
      * @param  string|null $adcode 城市行政区划代码（如 &#x60;110000&#x60;），优先级高于 city。可选参数，不传时会尝试 IP 自动定位。 (optional)
      * @param  bool|null $extended 返回扩展气象字段（体感温度、能见度、气压、紫外线、降水量、云量、空气质量指数及污染物分项数据）。 (optional)
-     * @param  bool|null $forecast 返回多天预报数据（最多7天），含白天夜间天气、风向风力、日出日落等。 (optional)
+     * @param  bool|null $forecast 返回多天预报数据（最多7天），含每天的最高温度、最低温度、白天夜间天气、风向风力、日出日落等。 (optional)
      * @param  bool|null $hourly 返回逐小时预报（24小时），含温度、天气、风向风速、湿度、降水概率等。 (optional)
-     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），每5分钟一个数据点，共24个。 (optional)
+     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），精确到2分钟。 (optional)
      * @param  bool|null $indices 返回18项生活指数（穿衣、紫外线、洗车、晾晒、空调、感冒、运动、舒适度、出行、钓鱼、过敏、防晒、心情、啤酒、雨伞、交通、空气净化器、花粉）。 (optional)
      * @param  string|null $lang 返回语言。&#x60;zh&#x60; 返回中文（默认），&#x60;en&#x60; 返回英文。城市名翻译覆盖 7000+ 城市。生活指数（&#x60;indices&#x60;）目前仅支持中文。 (optional, default to 'zh')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWeather'] to see the possible values for this operation
@@ -4263,9 +4263,9 @@ class MiscApi
      * @param  string|null $city 城市名称，支持中文（&#x60;北京&#x60;）和英文（&#x60;Tokyo&#x60;）。可选参数，不传时会尝试 IP 自动定位。 (optional)
      * @param  string|null $adcode 城市行政区划代码（如 &#x60;110000&#x60;），优先级高于 city。可选参数，不传时会尝试 IP 自动定位。 (optional)
      * @param  bool|null $extended 返回扩展气象字段（体感温度、能见度、气压、紫外线、降水量、云量、空气质量指数及污染物分项数据）。 (optional)
-     * @param  bool|null $forecast 返回多天预报数据（最多7天），含白天夜间天气、风向风力、日出日落等。 (optional)
+     * @param  bool|null $forecast 返回多天预报数据（最多7天），含每天的最高温度、最低温度、白天夜间天气、风向风力、日出日落等。 (optional)
      * @param  bool|null $hourly 返回逐小时预报（24小时），含温度、天气、风向风速、湿度、降水概率等。 (optional)
-     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），每5分钟一个数据点，共24个。 (optional)
+     * @param  bool|null $minutely 返回分钟级降水预报（仅国内城市），精确到2分钟。 (optional)
      * @param  bool|null $indices 返回18项生活指数（穿衣、紫外线、洗车、晾晒、空调、感冒、运动、舒适度、出行、钓鱼、过敏、防晒、心情、啤酒、雨伞、交通、空气净化器、花粉）。 (optional)
      * @param  string|null $lang 返回语言。&#x60;zh&#x60; 返回中文（默认），&#x60;en&#x60; 返回英文。城市名翻译覆盖 7000+ 城市。生活指数（&#x60;indices&#x60;）目前仅支持中文。 (optional, default to 'zh')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMiscWeather'] to see the possible values for this operation
@@ -4723,7 +4723,7 @@ class MiscApi
      *
      * 计算两个日期之间的时间差值
      *
-     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request 包含日期信息的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postMiscDateDiff'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4741,7 +4741,7 @@ class MiscApi
      *
      * 计算两个日期之间的时间差值
      *
-     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request 包含日期信息的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postMiscDateDiff'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4840,7 +4840,7 @@ class MiscApi
      *
      * 计算两个日期之间的时间差值
      *
-     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request 包含日期信息的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postMiscDateDiff'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4861,7 +4861,7 @@ class MiscApi
      *
      * 计算两个日期之间的时间差值
      *
-     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request 包含日期信息的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postMiscDateDiff'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4911,7 +4911,7 @@ class MiscApi
     /**
      * Create request for operation 'postMiscDateDiff'
      *
-     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request 包含日期信息的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostMiscDateDiffRequest $post_misc_date_diff_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postMiscDateDiff'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -778,7 +778,7 @@ class GetMiscWeather200ResponseHourlyForecastInner implements ModelInterface, Ar
     /**
      * Sets uv_index
      *
-     * @param float|null $uv_index 紫外线指数（可选）
+     * @param float|null $uv_index 紫外线指数（可选，国内城市通常不返回）
      *
      * @return self
      */

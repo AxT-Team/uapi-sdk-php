@@ -65,8 +65,7 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
         'latitude' => 'float',
         'longitude' => 'float',
         'beginip' => 'string',
-        'endip' => 'string',
-        'district' => 'string'
+        'endip' => 'string'
     ];
 
     /**
@@ -85,8 +84,7 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
         'latitude' => null,
         'longitude' => null,
         'beginip' => null,
-        'endip' => null,
-        'district' => null
+        'endip' => null
     ];
 
     /**
@@ -103,8 +101,7 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
         'latitude' => false,
         'longitude' => false,
         'beginip' => false,
-        'endip' => false,
-        'district' => false
+        'endip' => false
     ];
 
     /**
@@ -201,8 +198,7 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
         'latitude' => 'latitude',
         'longitude' => 'longitude',
         'beginip' => 'beginip',
-        'endip' => 'endip',
-        'district' => 'district'
+        'endip' => 'endip'
     ];
 
     /**
@@ -219,8 +215,7 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
         'latitude' => 'setLatitude',
         'longitude' => 'setLongitude',
         'beginip' => 'setBeginip',
-        'endip' => 'setEndip',
-        'district' => 'setDistrict'
+        'endip' => 'setEndip'
     ];
 
     /**
@@ -237,8 +232,7 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
         'latitude' => 'getLatitude',
         'longitude' => 'getLongitude',
         'beginip' => 'getBeginip',
-        'endip' => 'getEndip',
-        'district' => 'getDistrict'
+        'endip' => 'getEndip'
     ];
 
     /**
@@ -307,7 +301,6 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('longitude', $data ?? [], null);
         $this->setIfExists('beginip', $data ?? [], null);
         $this->setIfExists('endip', $data ?? [], null);
-        $this->setIfExists('district', $data ?? [], null);
     }
 
     /**
@@ -591,33 +584,6 @@ class GetNetworkIpinfo200Response implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable endip cannot be null');
         }
         $this->container['endip'] = $endip;
-
-        return $this;
-    }
-
-    /**
-     * Gets district
-     *
-     * @return string|null
-     */
-    public function getDistrict()
-    {
-        return $this->container['district'];
-    }
-
-    /**
-     * Sets district
-     *
-     * @param string|null $district 行政区（商业查询）
-     *
-     * @return self
-     */
-    public function setDistrict($district)
-    {
-        if (is_null($district)) {
-            throw new \InvalidArgumentException('non-nullable district cannot be null');
-        }
-        $this->container['district'] = $district;
 
         return $this;
     }

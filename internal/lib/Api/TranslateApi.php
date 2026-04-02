@@ -387,8 +387,8 @@ class TranslateApi
      *
      * AI智能翻译
      *
-     * @param  string $target_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
-     * @param  \OpenAPI\Client\Model\PostAiTranslateRequest $post_ai_translate_request 包含翻译参数的JSON对象，支持单个文本或批量文本翻译 (required)
+     * @param  string $target_lang 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。 (required)
+     * @param  \OpenAPI\Client\Model\PostAiTranslateRequest $post_ai_translate_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAiTranslate'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -406,8 +406,8 @@ class TranslateApi
      *
      * AI智能翻译
      *
-     * @param  string $target_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
-     * @param  \OpenAPI\Client\Model\PostAiTranslateRequest $post_ai_translate_request 包含翻译参数的JSON对象，支持单个文本或批量文本翻译 (required)
+     * @param  string $target_lang 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。 (required)
+     * @param  \OpenAPI\Client\Model\PostAiTranslateRequest $post_ai_translate_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAiTranslate'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -548,8 +548,8 @@ class TranslateApi
      *
      * AI智能翻译
      *
-     * @param  string $target_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
-     * @param  \OpenAPI\Client\Model\PostAiTranslateRequest $post_ai_translate_request 包含翻译参数的JSON对象，支持单个文本或批量文本翻译 (required)
+     * @param  string $target_lang 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。 (required)
+     * @param  \OpenAPI\Client\Model\PostAiTranslateRequest $post_ai_translate_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAiTranslate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -570,8 +570,8 @@ class TranslateApi
      *
      * AI智能翻译
      *
-     * @param  string $target_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
-     * @param  \OpenAPI\Client\Model\PostAiTranslateRequest $post_ai_translate_request 包含翻译参数的JSON对象，支持单个文本或批量文本翻译 (required)
+     * @param  string $target_lang 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。 (required)
+     * @param  \OpenAPI\Client\Model\PostAiTranslateRequest $post_ai_translate_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAiTranslate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -621,8 +621,8 @@ class TranslateApi
     /**
      * Create request for operation 'postAiTranslate'
      *
-     * @param  string $target_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
-     * @param  \OpenAPI\Client\Model\PostAiTranslateRequest $post_ai_translate_request 包含翻译参数的JSON对象，支持单个文本或批量文本翻译 (required)
+     * @param  string $target_lang 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。 (required)
+     * @param  \OpenAPI\Client\Model\PostAiTranslateRequest $post_ai_translate_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAiTranslate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -731,7 +731,7 @@ class TranslateApi
      *
      * 流式翻译（中英互译）
      *
-     * @param  \OpenAPI\Client\Model\PostTranslateStreamRequest $post_translate_stream_request 包含翻译参数的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTranslateStreamRequest $post_translate_stream_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslateStream'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -749,7 +749,7 @@ class TranslateApi
      *
      * 流式翻译（中英互译）
      *
-     * @param  \OpenAPI\Client\Model\PostTranslateStreamRequest $post_translate_stream_request 包含翻译参数的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTranslateStreamRequest $post_translate_stream_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslateStream'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -862,7 +862,7 @@ class TranslateApi
      *
      * 流式翻译（中英互译）
      *
-     * @param  \OpenAPI\Client\Model\PostTranslateStreamRequest $post_translate_stream_request 包含翻译参数的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTranslateStreamRequest $post_translate_stream_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslateStream'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -883,7 +883,7 @@ class TranslateApi
      *
      * 流式翻译（中英互译）
      *
-     * @param  \OpenAPI\Client\Model\PostTranslateStreamRequest $post_translate_stream_request 包含翻译参数的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTranslateStreamRequest $post_translate_stream_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslateStream'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -933,7 +933,7 @@ class TranslateApi
     /**
      * Create request for operation 'postTranslateStream'
      *
-     * @param  \OpenAPI\Client\Model\PostTranslateStreamRequest $post_translate_stream_request 包含翻译参数的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostTranslateStreamRequest $post_translate_stream_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslateStream'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1026,8 +1026,8 @@ class TranslateApi
      *
      * 翻译
      *
-     * @param  string $to_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
-     * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request 包含待翻译文本的JSON对象 (required)
+     * @param  string $to_lang 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。 (required)
+     * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslateText'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1045,8 +1045,8 @@ class TranslateApi
      *
      * 翻译
      *
-     * @param  string $to_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
-     * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request 包含待翻译文本的JSON对象 (required)
+     * @param  string $to_lang 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。 (required)
+     * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslateText'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1159,8 +1159,8 @@ class TranslateApi
      *
      * 翻译
      *
-     * @param  string $to_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
-     * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request 包含待翻译文本的JSON对象 (required)
+     * @param  string $to_lang 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。 (required)
+     * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslateText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1181,8 +1181,8 @@ class TranslateApi
      *
      * 翻译
      *
-     * @param  string $to_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
-     * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request 包含待翻译文本的JSON对象 (required)
+     * @param  string $to_lang 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。 (required)
+     * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslateText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1232,8 +1232,8 @@ class TranslateApi
     /**
      * Create request for operation 'postTranslateText'
      *
-     * @param  string $to_lang 目标语言代码。请从支持的语言列表中选择一个语言代码。 (required)
-     * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request 包含待翻译文本的JSON对象 (required)
+     * @param  string $to_lang 目标语言代码。请从[支持的语言列表](#enum-list)中选择一个语言代码。 (required)
+     * @param  \OpenAPI\Client\Model\PostTranslateTextRequest $post_translate_text_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postTranslateText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

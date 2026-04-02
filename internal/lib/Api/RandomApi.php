@@ -1048,7 +1048,7 @@ class RandomApi
      *
      * 答案之书 (POST)
      *
-     * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request 包含问题的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAnswerbookAsk'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1066,7 +1066,7 @@ class RandomApi
      *
      * 答案之书 (POST)
      *
-     * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request 包含问题的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAnswerbookAsk'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1179,7 +1179,7 @@ class RandomApi
      *
      * 答案之书 (POST)
      *
-     * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request 包含问题的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAnswerbookAsk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1200,7 +1200,7 @@ class RandomApi
      *
      * 答案之书 (POST)
      *
-     * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request 包含问题的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAnswerbookAsk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1250,7 +1250,7 @@ class RandomApi
     /**
      * Create request for operation 'postAnswerbookAsk'
      *
-     * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request 包含问题的JSON对象 (required)
+     * @param  \OpenAPI\Client\Model\PostAnswerbookAskRequest $post_answerbook_ask_request  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAnswerbookAsk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

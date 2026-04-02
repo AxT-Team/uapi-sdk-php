@@ -60,6 +60,7 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         'bvid' => 'string',
         'aid' => 'float',
         'videos' => 'float',
+        'tid' => 'float',
         'tname' => 'string',
         'copyright' => 'float',
         'pic' => 'string',
@@ -67,10 +68,23 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         'pubdate' => 'float',
         'ctime' => 'float',
         'desc' => 'string',
+        'desc_v2' => '\OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseDescV2Inner[]',
+        'state' => 'float',
         'duration' => 'float',
+        'rights' => '\OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseRights',
         'owner' => '\OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseOwner',
         'stat' => '\OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseStat',
-        'pages' => '\OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponsePagesInner[]'
+        'dynamic' => 'string',
+        'cid' => 'float',
+        'dimension' => '\OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseDimension',
+        'no_cache' => 'bool',
+        'pages' => '\OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponsePagesInner[]',
+        'subtitle' => '\OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseSubtitle',
+        'staff' => '\OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseStaffInner[]',
+        'ugc_season' => '\OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseUgcSeason',
+        'is_chargeable_season' => 'bool',
+        'is_story' => 'bool',
+        'honor_reply' => '\OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseHonorReply'
     ];
 
     /**
@@ -84,6 +98,7 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         'bvid' => null,
         'aid' => null,
         'videos' => null,
+        'tid' => null,
         'tname' => null,
         'copyright' => null,
         'pic' => null,
@@ -91,10 +106,23 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         'pubdate' => null,
         'ctime' => null,
         'desc' => null,
+        'desc_v2' => null,
+        'state' => null,
         'duration' => null,
+        'rights' => null,
         'owner' => null,
         'stat' => null,
-        'pages' => null
+        'dynamic' => null,
+        'cid' => null,
+        'dimension' => null,
+        'no_cache' => null,
+        'pages' => null,
+        'subtitle' => null,
+        'staff' => null,
+        'ugc_season' => null,
+        'is_chargeable_season' => null,
+        'is_story' => null,
+        'honor_reply' => null
     ];
 
     /**
@@ -106,6 +134,7 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         'bvid' => false,
         'aid' => false,
         'videos' => false,
+        'tid' => false,
         'tname' => false,
         'copyright' => false,
         'pic' => false,
@@ -113,10 +142,23 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         'pubdate' => false,
         'ctime' => false,
         'desc' => false,
+        'desc_v2' => false,
+        'state' => false,
         'duration' => false,
+        'rights' => false,
         'owner' => false,
         'stat' => false,
-        'pages' => false
+        'dynamic' => false,
+        'cid' => false,
+        'dimension' => false,
+        'no_cache' => false,
+        'pages' => false,
+        'subtitle' => false,
+        'staff' => false,
+        'ugc_season' => true,
+        'is_chargeable_season' => false,
+        'is_story' => false,
+        'honor_reply' => false
     ];
 
     /**
@@ -208,6 +250,7 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         'bvid' => 'bvid',
         'aid' => 'aid',
         'videos' => 'videos',
+        'tid' => 'tid',
         'tname' => 'tname',
         'copyright' => 'copyright',
         'pic' => 'pic',
@@ -215,10 +258,23 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         'pubdate' => 'pubdate',
         'ctime' => 'ctime',
         'desc' => 'desc',
+        'desc_v2' => 'desc_v2',
+        'state' => 'state',
         'duration' => 'duration',
+        'rights' => 'rights',
         'owner' => 'owner',
         'stat' => 'stat',
-        'pages' => 'pages'
+        'dynamic' => 'dynamic',
+        'cid' => 'cid',
+        'dimension' => 'dimension',
+        'no_cache' => 'no_cache',
+        'pages' => 'pages',
+        'subtitle' => 'subtitle',
+        'staff' => 'staff',
+        'ugc_season' => 'ugc_season',
+        'is_chargeable_season' => 'is_chargeable_season',
+        'is_story' => 'is_story',
+        'honor_reply' => 'honor_reply'
     ];
 
     /**
@@ -230,6 +286,7 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         'bvid' => 'setBvid',
         'aid' => 'setAid',
         'videos' => 'setVideos',
+        'tid' => 'setTid',
         'tname' => 'setTname',
         'copyright' => 'setCopyright',
         'pic' => 'setPic',
@@ -237,10 +294,23 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         'pubdate' => 'setPubdate',
         'ctime' => 'setCtime',
         'desc' => 'setDesc',
+        'desc_v2' => 'setDescV2',
+        'state' => 'setState',
         'duration' => 'setDuration',
+        'rights' => 'setRights',
         'owner' => 'setOwner',
         'stat' => 'setStat',
-        'pages' => 'setPages'
+        'dynamic' => 'setDynamic',
+        'cid' => 'setCid',
+        'dimension' => 'setDimension',
+        'no_cache' => 'setNoCache',
+        'pages' => 'setPages',
+        'subtitle' => 'setSubtitle',
+        'staff' => 'setStaff',
+        'ugc_season' => 'setUgcSeason',
+        'is_chargeable_season' => 'setIsChargeableSeason',
+        'is_story' => 'setIsStory',
+        'honor_reply' => 'setHonorReply'
     ];
 
     /**
@@ -252,6 +322,7 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         'bvid' => 'getBvid',
         'aid' => 'getAid',
         'videos' => 'getVideos',
+        'tid' => 'getTid',
         'tname' => 'getTname',
         'copyright' => 'getCopyright',
         'pic' => 'getPic',
@@ -259,10 +330,23 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         'pubdate' => 'getPubdate',
         'ctime' => 'getCtime',
         'desc' => 'getDesc',
+        'desc_v2' => 'getDescV2',
+        'state' => 'getState',
         'duration' => 'getDuration',
+        'rights' => 'getRights',
         'owner' => 'getOwner',
         'stat' => 'getStat',
-        'pages' => 'getPages'
+        'dynamic' => 'getDynamic',
+        'cid' => 'getCid',
+        'dimension' => 'getDimension',
+        'no_cache' => 'getNoCache',
+        'pages' => 'getPages',
+        'subtitle' => 'getSubtitle',
+        'staff' => 'getStaff',
+        'ugc_season' => 'getUgcSeason',
+        'is_chargeable_season' => 'getIsChargeableSeason',
+        'is_story' => 'getIsStory',
+        'honor_reply' => 'getHonorReply'
     ];
 
     /**
@@ -325,6 +409,7 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         $this->setIfExists('bvid', $data ?? [], null);
         $this->setIfExists('aid', $data ?? [], null);
         $this->setIfExists('videos', $data ?? [], null);
+        $this->setIfExists('tid', $data ?? [], null);
         $this->setIfExists('tname', $data ?? [], null);
         $this->setIfExists('copyright', $data ?? [], null);
         $this->setIfExists('pic', $data ?? [], null);
@@ -332,10 +417,23 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
         $this->setIfExists('pubdate', $data ?? [], null);
         $this->setIfExists('ctime', $data ?? [], null);
         $this->setIfExists('desc', $data ?? [], null);
+        $this->setIfExists('desc_v2', $data ?? [], null);
+        $this->setIfExists('state', $data ?? [], null);
         $this->setIfExists('duration', $data ?? [], null);
+        $this->setIfExists('rights', $data ?? [], null);
         $this->setIfExists('owner', $data ?? [], null);
         $this->setIfExists('stat', $data ?? [], null);
+        $this->setIfExists('dynamic', $data ?? [], null);
+        $this->setIfExists('cid', $data ?? [], null);
+        $this->setIfExists('dimension', $data ?? [], null);
+        $this->setIfExists('no_cache', $data ?? [], null);
         $this->setIfExists('pages', $data ?? [], null);
+        $this->setIfExists('subtitle', $data ?? [], null);
+        $this->setIfExists('staff', $data ?? [], null);
+        $this->setIfExists('ugc_season', $data ?? [], null);
+        $this->setIfExists('is_chargeable_season', $data ?? [], null);
+        $this->setIfExists('is_story', $data ?? [], null);
+        $this->setIfExists('honor_reply', $data ?? [], null);
     }
 
     /**
@@ -457,6 +555,33 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable videos cannot be null');
         }
         $this->container['videos'] = $videos;
+
+        return $this;
+    }
+
+    /**
+     * Gets tid
+     *
+     * @return float|null
+     */
+    public function getTid()
+    {
+        return $this->container['tid'];
+    }
+
+    /**
+     * Sets tid
+     *
+     * @param float|null $tid 视频所属的子分区 ID。
+     *
+     * @return self
+     */
+    public function setTid($tid)
+    {
+        if (is_null($tid)) {
+            throw new \InvalidArgumentException('non-nullable tid cannot be null');
+        }
+        $this->container['tid'] = $tid;
 
         return $this;
     }
@@ -651,6 +776,60 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
     }
 
     /**
+     * Gets desc_v2
+     *
+     * @return \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseDescV2Inner[]|null
+     */
+    public function getDescV2()
+    {
+        return $this->container['desc_v2'];
+    }
+
+    /**
+     * Sets desc_v2
+     *
+     * @param \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseDescV2Inner[]|null $desc_v2 结构化简介片段。
+     *
+     * @return self
+     */
+    public function setDescV2($desc_v2)
+    {
+        if (is_null($desc_v2)) {
+            throw new \InvalidArgumentException('non-nullable desc_v2 cannot be null');
+        }
+        $this->container['desc_v2'] = $desc_v2;
+
+        return $this;
+    }
+
+    /**
+     * Gets state
+     *
+     * @return float|null
+     */
+    public function getState()
+    {
+        return $this->container['state'];
+    }
+
+    /**
+     * Sets state
+     *
+     * @param float|null $state 视频状态码。
+     *
+     * @return self
+     */
+    public function setState($state)
+    {
+        if (is_null($state)) {
+            throw new \InvalidArgumentException('non-nullable state cannot be null');
+        }
+        $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
      * Gets duration
      *
      * @return float|null
@@ -673,6 +852,33 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable duration cannot be null');
         }
         $this->container['duration'] = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Gets rights
+     *
+     * @return \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseRights|null
+     */
+    public function getRights()
+    {
+        return $this->container['rights'];
+    }
+
+    /**
+     * Sets rights
+     *
+     * @param \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseRights|null $rights rights
+     *
+     * @return self
+     */
+    public function setRights($rights)
+    {
+        if (is_null($rights)) {
+            throw new \InvalidArgumentException('non-nullable rights cannot be null');
+        }
+        $this->container['rights'] = $rights;
 
         return $this;
     }
@@ -732,6 +938,114 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
     }
 
     /**
+     * Gets dynamic
+     *
+     * @return string|null
+     */
+    public function getDynamic()
+    {
+        return $this->container['dynamic'];
+    }
+
+    /**
+     * Sets dynamic
+     *
+     * @param string|null $dynamic 投稿时附带的动态文字。
+     *
+     * @return self
+     */
+    public function setDynamic($dynamic)
+    {
+        if (is_null($dynamic)) {
+            throw new \InvalidArgumentException('non-nullable dynamic cannot be null');
+        }
+        $this->container['dynamic'] = $dynamic;
+
+        return $this;
+    }
+
+    /**
+     * Gets cid
+     *
+     * @return float|null
+     */
+    public function getCid()
+    {
+        return $this->container['cid'];
+    }
+
+    /**
+     * Sets cid
+     *
+     * @param float|null $cid 主分P的 CID（弹幕 ID）。
+     *
+     * @return self
+     */
+    public function setCid($cid)
+    {
+        if (is_null($cid)) {
+            throw new \InvalidArgumentException('non-nullable cid cannot be null');
+        }
+        $this->container['cid'] = $cid;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension
+     *
+     * @return \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseDimension|null
+     */
+    public function getDimension()
+    {
+        return $this->container['dimension'];
+    }
+
+    /**
+     * Sets dimension
+     *
+     * @param \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseDimension|null $dimension dimension
+     *
+     * @return self
+     */
+    public function setDimension($dimension)
+    {
+        if (is_null($dimension)) {
+            throw new \InvalidArgumentException('non-nullable dimension cannot be null');
+        }
+        $this->container['dimension'] = $dimension;
+
+        return $this;
+    }
+
+    /**
+     * Gets no_cache
+     *
+     * @return bool|null
+     */
+    public function getNoCache()
+    {
+        return $this->container['no_cache'];
+    }
+
+    /**
+     * Sets no_cache
+     *
+     * @param bool|null $no_cache 不缓存标记。
+     *
+     * @return self
+     */
+    public function setNoCache($no_cache)
+    {
+        if (is_null($no_cache)) {
+            throw new \InvalidArgumentException('non-nullable no_cache cannot be null');
+        }
+        $this->container['no_cache'] = $no_cache;
+
+        return $this;
+    }
+
+    /**
      * Gets pages
      *
      * @return \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponsePagesInner[]|null
@@ -754,6 +1068,175 @@ class GetSocialBilibiliVideoinfo200Response implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable pages cannot be null');
         }
         $this->container['pages'] = $pages;
+
+        return $this;
+    }
+
+    /**
+     * Gets subtitle
+     *
+     * @return \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseSubtitle|null
+     */
+    public function getSubtitle()
+    {
+        return $this->container['subtitle'];
+    }
+
+    /**
+     * Sets subtitle
+     *
+     * @param \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseSubtitle|null $subtitle subtitle
+     *
+     * @return self
+     */
+    public function setSubtitle($subtitle)
+    {
+        if (is_null($subtitle)) {
+            throw new \InvalidArgumentException('non-nullable subtitle cannot be null');
+        }
+        $this->container['subtitle'] = $subtitle;
+
+        return $this;
+    }
+
+    /**
+     * Gets staff
+     *
+     * @return \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseStaffInner[]|null
+     */
+    public function getStaff()
+    {
+        return $this->container['staff'];
+    }
+
+    /**
+     * Sets staff
+     *
+     * @param \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseStaffInner[]|null $staff 联合投稿成员列表。
+     *
+     * @return self
+     */
+    public function setStaff($staff)
+    {
+        if (is_null($staff)) {
+            throw new \InvalidArgumentException('non-nullable staff cannot be null');
+        }
+        $this->container['staff'] = $staff;
+
+        return $this;
+    }
+
+    /**
+     * Gets ugc_season
+     *
+     * @return \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseUgcSeason|null
+     */
+    public function getUgcSeason()
+    {
+        return $this->container['ugc_season'];
+    }
+
+    /**
+     * Sets ugc_season
+     *
+     * @param \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseUgcSeason|null $ugc_season ugc_season
+     *
+     * @return self
+     */
+    public function setUgcSeason($ugc_season)
+    {
+        if (is_null($ugc_season)) {
+            array_push($this->openAPINullablesSetToNull, 'ugc_season');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ugc_season', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ugc_season'] = $ugc_season;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_chargeable_season
+     *
+     * @return bool|null
+     */
+    public function getIsChargeableSeason()
+    {
+        return $this->container['is_chargeable_season'];
+    }
+
+    /**
+     * Sets is_chargeable_season
+     *
+     * @param bool|null $is_chargeable_season 是否为付费合集。
+     *
+     * @return self
+     */
+    public function setIsChargeableSeason($is_chargeable_season)
+    {
+        if (is_null($is_chargeable_season)) {
+            throw new \InvalidArgumentException('non-nullable is_chargeable_season cannot be null');
+        }
+        $this->container['is_chargeable_season'] = $is_chargeable_season;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_story
+     *
+     * @return bool|null
+     */
+    public function getIsStory()
+    {
+        return $this->container['is_story'];
+    }
+
+    /**
+     * Sets is_story
+     *
+     * @param bool|null $is_story 是否为剧情类视频。
+     *
+     * @return self
+     */
+    public function setIsStory($is_story)
+    {
+        if (is_null($is_story)) {
+            throw new \InvalidArgumentException('non-nullable is_story cannot be null');
+        }
+        $this->container['is_story'] = $is_story;
+
+        return $this;
+    }
+
+    /**
+     * Gets honor_reply
+     *
+     * @return \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseHonorReply|null
+     */
+    public function getHonorReply()
+    {
+        return $this->container['honor_reply'];
+    }
+
+    /**
+     * Sets honor_reply
+     *
+     * @param \OpenAPI\Client\Model\GetSocialBilibiliVideoinfo200ResponseHonorReply|null $honor_reply honor_reply
+     *
+     * @return self
+     */
+    public function setHonorReply($honor_reply)
+    {
+        if (is_null($honor_reply)) {
+            throw new \InvalidArgumentException('non-nullable honor_reply cannot be null');
+        }
+        $this->container['honor_reply'] = $honor_reply;
 
         return $this;
     }

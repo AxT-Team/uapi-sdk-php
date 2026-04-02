@@ -57,12 +57,9 @@ class GetNetworkPingmyip200Response implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'avg' => 'float',
-        'host' => 'string',
-        'ip' => 'string',
-        'location' => 'string',
-        'max' => 'float',
-        'min' => 'float'
+        'client_ip' => 'string',
+        'ping_successful' => 'bool',
+        'message' => 'string'
     ];
 
     /**
@@ -73,12 +70,9 @@ class GetNetworkPingmyip200Response implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'avg' => null,
-        'host' => null,
-        'ip' => null,
-        'location' => null,
-        'max' => null,
-        'min' => null
+        'client_ip' => null,
+        'ping_successful' => null,
+        'message' => null
     ];
 
     /**
@@ -87,12 +81,9 @@ class GetNetworkPingmyip200Response implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'avg' => false,
-        'host' => false,
-        'ip' => false,
-        'location' => false,
-        'max' => false,
-        'min' => false
+        'client_ip' => false,
+        'ping_successful' => false,
+        'message' => false
     ];
 
     /**
@@ -181,12 +172,9 @@ class GetNetworkPingmyip200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'avg' => 'avg',
-        'host' => 'host',
-        'ip' => 'ip',
-        'location' => 'location',
-        'max' => 'max',
-        'min' => 'min'
+        'client_ip' => 'client_ip',
+        'ping_successful' => 'ping_successful',
+        'message' => 'message'
     ];
 
     /**
@@ -195,12 +183,9 @@ class GetNetworkPingmyip200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'avg' => 'setAvg',
-        'host' => 'setHost',
-        'ip' => 'setIp',
-        'location' => 'setLocation',
-        'max' => 'setMax',
-        'min' => 'setMin'
+        'client_ip' => 'setClientIp',
+        'ping_successful' => 'setPingSuccessful',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -209,12 +194,9 @@ class GetNetworkPingmyip200Response implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'avg' => 'getAvg',
-        'host' => 'getHost',
-        'ip' => 'getIp',
-        'location' => 'getLocation',
-        'max' => 'getMax',
-        'min' => 'getMin'
+        'client_ip' => 'getClientIp',
+        'ping_successful' => 'getPingSuccessful',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -274,12 +256,9 @@ class GetNetworkPingmyip200Response implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('avg', $data ?? [], null);
-        $this->setIfExists('host', $data ?? [], null);
-        $this->setIfExists('ip', $data ?? [], null);
-        $this->setIfExists('location', $data ?? [], null);
-        $this->setIfExists('max', $data ?? [], null);
-        $this->setIfExists('min', $data ?? [], null);
+        $this->setIfExists('client_ip', $data ?? [], null);
+        $this->setIfExists('ping_successful', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
     }
 
     /**
@@ -325,163 +304,82 @@ class GetNetworkPingmyip200Response implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets avg
-     *
-     * @return float|null
-     */
-    public function getAvg()
-    {
-        return $this->container['avg'];
-    }
-
-    /**
-     * Sets avg
-     *
-     * @param float|null $avg 平均延迟(ms)
-     *
-     * @return self
-     */
-    public function setAvg($avg)
-    {
-        if (is_null($avg)) {
-            throw new \InvalidArgumentException('non-nullable avg cannot be null');
-        }
-        $this->container['avg'] = $avg;
-
-        return $this;
-    }
-
-    /**
-     * Gets host
+     * Gets client_ip
      *
      * @return string|null
      */
-    public function getHost()
+    public function getClientIp()
     {
-        return $this->container['host'];
+        return $this->container['client_ip'];
     }
 
     /**
-     * Sets host
+     * Sets client_ip
      *
-     * @param string|null $host host
+     * @param string|null $client_ip 当前客户端的公网 IP 地址。
      *
      * @return self
      */
-    public function setHost($host)
+    public function setClientIp($client_ip)
     {
-        if (is_null($host)) {
-            throw new \InvalidArgumentException('non-nullable host cannot be null');
+        if (is_null($client_ip)) {
+            throw new \InvalidArgumentException('non-nullable client_ip cannot be null');
         }
-        $this->container['host'] = $host;
+        $this->container['client_ip'] = $client_ip;
 
         return $this;
     }
 
     /**
-     * Gets ip
+     * Gets ping_successful
+     *
+     * @return bool|null
+     */
+    public function getPingSuccessful()
+    {
+        return $this->container['ping_successful'];
+    }
+
+    /**
+     * Sets ping_successful
+     *
+     * @param bool|null $ping_successful 是否成功完成对当前客户端 IP 的 Ping。
+     *
+     * @return self
+     */
+    public function setPingSuccessful($ping_successful)
+    {
+        if (is_null($ping_successful)) {
+            throw new \InvalidArgumentException('non-nullable ping_successful cannot be null');
+        }
+        $this->container['ping_successful'] = $ping_successful;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
      *
      * @return string|null
      */
-    public function getIp()
+    public function getMessage()
     {
-        return $this->container['ip'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets ip
+     * Sets message
      *
-     * @param string|null $ip ip
+     * @param string|null $message 操作结果说明。成功时通常会附带平均延迟信息。
      *
      * @return self
      */
-    public function setIp($ip)
+    public function setMessage($message)
     {
-        if (is_null($ip)) {
-            throw new \InvalidArgumentException('non-nullable ip cannot be null');
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
-        $this->container['ip'] = $ip;
-
-        return $this;
-    }
-
-    /**
-     * Gets location
-     *
-     * @return string|null
-     */
-    public function getLocation()
-    {
-        return $this->container['location'];
-    }
-
-    /**
-     * Sets location
-     *
-     * @param string|null $location location
-     *
-     * @return self
-     */
-    public function setLocation($location)
-    {
-        if (is_null($location)) {
-            throw new \InvalidArgumentException('non-nullable location cannot be null');
-        }
-        $this->container['location'] = $location;
-
-        return $this;
-    }
-
-    /**
-     * Gets max
-     *
-     * @return float|null
-     */
-    public function getMax()
-    {
-        return $this->container['max'];
-    }
-
-    /**
-     * Sets max
-     *
-     * @param float|null $max 最大延迟(ms)
-     *
-     * @return self
-     */
-    public function setMax($max)
-    {
-        if (is_null($max)) {
-            throw new \InvalidArgumentException('non-nullable max cannot be null');
-        }
-        $this->container['max'] = $max;
-
-        return $this;
-    }
-
-    /**
-     * Gets min
-     *
-     * @return float|null
-     */
-    public function getMin()
-    {
-        return $this->container['min'];
-    }
-
-    /**
-     * Sets min
-     *
-     * @param float|null $min 最小延迟(ms)
-     *
-     * @return self
-     */
-    public function setMin($min)
-    {
-        if (is_null($min)) {
-            throw new \InvalidArgumentException('non-nullable min cannot be null');
-        }
-        $this->container['min'] = $min;
+        $this->container['message'] = $message;
 
         return $this;
     }

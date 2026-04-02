@@ -98,7 +98,7 @@ $apiInstance = new OpenAPI\Client\Api\TextApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$post_text_aes_decrypt_request = new \OpenAPI\Client\Model\PostTextAesDecryptRequest(); // \OpenAPI\Client\Model\PostTextAesDecryptRequest | 包含待解密文本 'text'、密钥 'key' 和随机数 'nonce' 的JSON对象
+$post_text_aes_decrypt_request = new \OpenAPI\Client\Model\PostTextAesDecryptRequest(); // \OpenAPI\Client\Model\PostTextAesDecryptRequest | 
 
 try {
     $result = $apiInstance->postTextAesDecrypt($post_text_aes_decrypt_request);
@@ -112,7 +112,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_text_aes_decrypt_request** | [**\OpenAPI\Client\Model\PostTextAesDecryptRequest**](../Model/PostTextAesDecryptRequest.md)| 包含待解密文本 &#39;text&#39;、密钥 &#39;key&#39; 和随机数 &#39;nonce&#39; 的JSON对象 | |
+| **post_text_aes_decrypt_request** | [**\OpenAPI\Client\Model\PostTextAesDecryptRequest**](../Model/PostTextAesDecryptRequest.md)|  | |
 
 ### Return type
 
@@ -154,7 +154,7 @@ $apiInstance = new OpenAPI\Client\Api\TextApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$post_text_aes_decrypt_advanced_request = new \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest(); // \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest | 包含解密配置的JSON对象
+$post_text_aes_decrypt_advanced_request = new \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest(); // \OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest | 
 
 try {
     $result = $apiInstance->postTextAesDecryptAdvanced($post_text_aes_decrypt_advanced_request);
@@ -168,7 +168,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_text_aes_decrypt_advanced_request** | [**\OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest**](../Model/PostTextAesDecryptAdvancedRequest.md)| 包含解密配置的JSON对象 | |
+| **post_text_aes_decrypt_advanced_request** | [**\OpenAPI\Client\Model\PostTextAesDecryptAdvancedRequest**](../Model/PostTextAesDecryptAdvancedRequest.md)|  | |
 
 ### Return type
 
@@ -210,7 +210,7 @@ $apiInstance = new OpenAPI\Client\Api\TextApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$post_text_aes_encrypt_request = new \OpenAPI\Client\Model\PostTextAesEncryptRequest(); // \OpenAPI\Client\Model\PostTextAesEncryptRequest | 包含待加密文本 'text' 和密钥 'key' 的JSON对象
+$post_text_aes_encrypt_request = new \OpenAPI\Client\Model\PostTextAesEncryptRequest(); // \OpenAPI\Client\Model\PostTextAesEncryptRequest | 
 
 try {
     $result = $apiInstance->postTextAesEncrypt($post_text_aes_encrypt_request);
@@ -224,7 +224,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_text_aes_encrypt_request** | [**\OpenAPI\Client\Model\PostTextAesEncryptRequest**](../Model/PostTextAesEncryptRequest.md)| 包含待加密文本 &#39;text&#39; 和密钥 &#39;key&#39; 的JSON对象 | |
+| **post_text_aes_encrypt_request** | [**\OpenAPI\Client\Model\PostTextAesEncryptRequest**](../Model/PostTextAesEncryptRequest.md)|  | |
 
 ### Return type
 
@@ -266,7 +266,7 @@ $apiInstance = new OpenAPI\Client\Api\TextApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$post_text_aes_encrypt_advanced_request = new \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest(); // \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest | 包含加密配置的JSON对象
+$post_text_aes_encrypt_advanced_request = new \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest(); // \OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest | 
 
 try {
     $result = $apiInstance->postTextAesEncryptAdvanced($post_text_aes_encrypt_advanced_request);
@@ -280,7 +280,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_text_aes_encrypt_advanced_request** | [**\OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest**](../Model/PostTextAesEncryptAdvancedRequest.md)| 包含加密配置的JSON对象 | |
+| **post_text_aes_encrypt_advanced_request** | [**\OpenAPI\Client\Model\PostTextAesEncryptAdvancedRequest**](../Model/PostTextAesEncryptAdvancedRequest.md)|  | |
 
 ### Return type
 
@@ -322,7 +322,7 @@ $apiInstance = new OpenAPI\Client\Api\TextApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$post_text_analyze_request = new \OpenAPI\Client\Model\PostTextAnalyzeRequest(); // \OpenAPI\Client\Model\PostTextAnalyzeRequest | 包含待分析文本 'text' 的JSON对象
+$post_text_analyze_request = new \OpenAPI\Client\Model\PostTextAnalyzeRequest(); // \OpenAPI\Client\Model\PostTextAnalyzeRequest | 
 
 try {
     $result = $apiInstance->postTextAnalyze($post_text_analyze_request);
@@ -336,7 +336,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_text_analyze_request** | [**\OpenAPI\Client\Model\PostTextAnalyzeRequest**](../Model/PostTextAnalyzeRequest.md)| 包含待分析文本 &#39;text&#39; 的JSON对象 | |
+| **post_text_analyze_request** | [**\OpenAPI\Client\Model\PostTextAnalyzeRequest**](../Model/PostTextAnalyzeRequest.md)|  | |
 
 ### Return type
 
@@ -378,7 +378,7 @@ $apiInstance = new OpenAPI\Client\Api\TextApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$post_text_base64_decode_request = new \OpenAPI\Client\Model\PostTextBase64DecodeRequest(); // \OpenAPI\Client\Model\PostTextBase64DecodeRequest | 包含待解码文本 'text' 的JSON对象
+$post_text_base64_decode_request = new \OpenAPI\Client\Model\PostTextBase64DecodeRequest(); // \OpenAPI\Client\Model\PostTextBase64DecodeRequest | 
 
 try {
     $result = $apiInstance->postTextBase64Decode($post_text_base64_decode_request);
@@ -392,7 +392,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_text_base64_decode_request** | [**\OpenAPI\Client\Model\PostTextBase64DecodeRequest**](../Model/PostTextBase64DecodeRequest.md)| 包含待解码文本 &#39;text&#39; 的JSON对象 | |
+| **post_text_base64_decode_request** | [**\OpenAPI\Client\Model\PostTextBase64DecodeRequest**](../Model/PostTextBase64DecodeRequest.md)|  | |
 
 ### Return type
 
@@ -434,7 +434,7 @@ $apiInstance = new OpenAPI\Client\Api\TextApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$post_text_base64_encode_request = new \OpenAPI\Client\Model\PostTextBase64EncodeRequest(); // \OpenAPI\Client\Model\PostTextBase64EncodeRequest | 包含待编码文本 'text' 的JSON对象
+$post_text_base64_encode_request = new \OpenAPI\Client\Model\PostTextBase64EncodeRequest(); // \OpenAPI\Client\Model\PostTextBase64EncodeRequest | 
 
 try {
     $result = $apiInstance->postTextBase64Encode($post_text_base64_encode_request);
@@ -448,7 +448,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_text_base64_encode_request** | [**\OpenAPI\Client\Model\PostTextBase64EncodeRequest**](../Model/PostTextBase64EncodeRequest.md)| 包含待编码文本 &#39;text&#39; 的JSON对象 | |
+| **post_text_base64_encode_request** | [**\OpenAPI\Client\Model\PostTextBase64EncodeRequest**](../Model/PostTextBase64EncodeRequest.md)|  | |
 
 ### Return type
 
@@ -490,7 +490,7 @@ $apiInstance = new OpenAPI\Client\Api\TextApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$post_text_convert_request = new \OpenAPI\Client\Model\PostTextConvertRequest(); // \OpenAPI\Client\Model\PostTextConvertRequest | 包含转换配置的JSON对象
+$post_text_convert_request = new \OpenAPI\Client\Model\PostTextConvertRequest(); // \OpenAPI\Client\Model\PostTextConvertRequest | 
 
 try {
     $result = $apiInstance->postTextConvert($post_text_convert_request);
@@ -504,7 +504,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_text_convert_request** | [**\OpenAPI\Client\Model\PostTextConvertRequest**](../Model/PostTextConvertRequest.md)| 包含转换配置的JSON对象 | |
+| **post_text_convert_request** | [**\OpenAPI\Client\Model\PostTextConvertRequest**](../Model/PostTextConvertRequest.md)|  | |
 
 ### Return type
 
@@ -602,7 +602,7 @@ $apiInstance = new OpenAPI\Client\Api\TextApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$post_text_md5_verify_request = new \OpenAPI\Client\Model\PostTextMd5VerifyRequest(); // \OpenAPI\Client\Model\PostTextMd5VerifyRequest | 包含待校验文本 'text' 和哈希值 'hash' 的JSON对象
+$post_text_md5_verify_request = new \OpenAPI\Client\Model\PostTextMd5VerifyRequest(); // \OpenAPI\Client\Model\PostTextMd5VerifyRequest | 
 
 try {
     $result = $apiInstance->postTextMd5Verify($post_text_md5_verify_request);
@@ -616,7 +616,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_text_md5_verify_request** | [**\OpenAPI\Client\Model\PostTextMd5VerifyRequest**](../Model/PostTextMd5VerifyRequest.md)| 包含待校验文本 &#39;text&#39; 和哈希值 &#39;hash&#39; 的JSON对象 | |
+| **post_text_md5_verify_request** | [**\OpenAPI\Client\Model\PostTextMd5VerifyRequest**](../Model/PostTextMd5VerifyRequest.md)|  | |
 
 ### Return type
 

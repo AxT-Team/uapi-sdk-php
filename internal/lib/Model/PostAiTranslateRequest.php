@@ -58,13 +58,10 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'text' => 'string',
-        'texts' => 'string[]',
         'source_lang' => 'string',
         'style' => 'string',
         'context' => 'string',
-        'preserve_format' => 'bool',
-        'fast_mode' => 'bool',
-        'max_concurrency' => 'int'
+        'preserve_format' => 'bool'
     ];
 
     /**
@@ -76,13 +73,10 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'text' => null,
-        'texts' => null,
         'source_lang' => null,
         'style' => null,
         'context' => null,
-        'preserve_format' => null,
-        'fast_mode' => null,
-        'max_concurrency' => null
+        'preserve_format' => null
     ];
 
     /**
@@ -92,13 +86,10 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'text' => false,
-        'texts' => false,
         'source_lang' => false,
         'style' => false,
         'context' => false,
-        'preserve_format' => false,
-        'fast_mode' => false,
-        'max_concurrency' => false
+        'preserve_format' => false
     ];
 
     /**
@@ -188,13 +179,10 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'text' => 'text',
-        'texts' => 'texts',
         'source_lang' => 'source_lang',
         'style' => 'style',
         'context' => 'context',
-        'preserve_format' => 'preserve_format',
-        'fast_mode' => 'fast_mode',
-        'max_concurrency' => 'max_concurrency'
+        'preserve_format' => 'preserve_format'
     ];
 
     /**
@@ -204,13 +192,10 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'text' => 'setText',
-        'texts' => 'setTexts',
         'source_lang' => 'setSourceLang',
         'style' => 'setStyle',
         'context' => 'setContext',
-        'preserve_format' => 'setPreserveFormat',
-        'fast_mode' => 'setFastMode',
-        'max_concurrency' => 'setMaxConcurrency'
+        'preserve_format' => 'setPreserveFormat'
     ];
 
     /**
@@ -220,13 +205,10 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'text' => 'getText',
-        'texts' => 'getTexts',
         'source_lang' => 'getSourceLang',
         'style' => 'getStyle',
         'context' => 'getContext',
-        'preserve_format' => 'getPreserveFormat',
-        'fast_mode' => 'getFastMode',
-        'max_concurrency' => 'getMaxConcurrency'
+        'preserve_format' => 'getPreserveFormat'
     ];
 
     /**
@@ -335,13 +317,10 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(?array $data = null)
     {
         $this->setIfExists('text', $data ?? [], null);
-        $this->setIfExists('texts', $data ?? [], null);
         $this->setIfExists('source_lang', $data ?? [], null);
         $this->setIfExists('style', $data ?? [], 'professional');
         $this->setIfExists('context', $data ?? [], 'general');
         $this->setIfExists('preserve_format', $data ?? [], true);
-        $this->setIfExists('fast_mode', $data ?? [], false);
-        $this->setIfExists('max_concurrency', $data ?? [], 3);
     }
 
     /**
@@ -371,6 +350,9 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
+        }
         $allowedValues = $this->getStyleAllowableValues();
         if (!is_null($this->container['style']) && !in_array($this->container['style'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -387,14 +369,6 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
                 $this->container['context'],
                 implode("', '", $allowedValues)
             );
-        }
-
-        if (!is_null($this->container['max_concurrency']) && ($this->container['max_concurrency'] > 10)) {
-            $invalidProperties[] = "invalid value for 'max_concurrency', must be smaller than or equal to 10.";
-        }
-
-        if (!is_null($this->container['max_concurrency']) && ($this->container['max_concurrency'] < 1)) {
-            $invalidProperties[] = "invalid value for 'max_concurrency', must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -415,7 +389,7 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets text
      *
-     * @return string|null
+     * @return string
      */
     public function getText()
     {
@@ -425,7 +399,7 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets text
      *
-     * @param string|null $text 单个翻译时使用的待翻译文本，与texts参数二选一。最大长度10,000字符。
+     * @param string $text 待翻译的文本内容。最大长度10,000字符。
      *
      * @return self
      */
@@ -435,33 +409,6 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
         $this->container['text'] = $text;
-
-        return $this;
-    }
-
-    /**
-     * Gets texts
-     *
-     * @return string[]|null
-     */
-    public function getTexts()
-    {
-        return $this->container['texts'];
-    }
-
-    /**
-     * Sets texts
-     *
-     * @param string[]|null $texts 批量翻译时使用的待翻译文本列表，与text参数二选一。最多50条，总计最大100,000字符。
-     *
-     * @return self
-     */
-    public function setTexts($texts)
-    {
-        if (is_null($texts)) {
-            throw new \InvalidArgumentException('non-nullable texts cannot be null');
-        }
-        $this->container['texts'] = $texts;
 
         return $this;
     }
@@ -590,68 +537,6 @@ class PostAiTranslateRequest implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable preserve_format cannot be null');
         }
         $this->container['preserve_format'] = $preserve_format;
-
-        return $this;
-    }
-
-    /**
-     * Gets fast_mode
-     *
-     * @return bool|null
-     */
-    public function getFastMode()
-    {
-        return $this->container['fast_mode'];
-    }
-
-    /**
-     * Sets fast_mode
-     *
-     * @param bool|null $fast_mode 是否启用快速模式。快速模式响应时间约800ms，准确率95%+；普通模式响应时间约2000ms，准确率98%+。
-     *
-     * @return self
-     */
-    public function setFastMode($fast_mode)
-    {
-        if (is_null($fast_mode)) {
-            throw new \InvalidArgumentException('non-nullable fast_mode cannot be null');
-        }
-        $this->container['fast_mode'] = $fast_mode;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_concurrency
-     *
-     * @return int|null
-     */
-    public function getMaxConcurrency()
-    {
-        return $this->container['max_concurrency'];
-    }
-
-    /**
-     * Sets max_concurrency
-     *
-     * @param int|null $max_concurrency 批量翻译时的最大并发数，范围1-10。仅在批量翻译时有效。
-     *
-     * @return self
-     */
-    public function setMaxConcurrency($max_concurrency)
-    {
-        if (is_null($max_concurrency)) {
-            throw new \InvalidArgumentException('non-nullable max_concurrency cannot be null');
-        }
-
-        if (($max_concurrency > 10)) {
-            throw new \InvalidArgumentException('invalid value for $max_concurrency when calling PostAiTranslateRequest., must be smaller than or equal to 10.');
-        }
-        if (($max_concurrency < 1)) {
-            throw new \InvalidArgumentException('invalid value for $max_concurrency when calling PostAiTranslateRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['max_concurrency'] = $max_concurrency;
 
         return $this;
     }

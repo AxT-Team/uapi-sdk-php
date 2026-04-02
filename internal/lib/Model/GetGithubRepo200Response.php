@@ -463,7 +463,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets full_name
      *
-     * @param string|null $full_name full_name
+     * @param string|null $full_name 仓库完整名称。
      *
      * @return self
      */
@@ -490,7 +490,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets description
      *
-     * @param string|null $description description
+     * @param string|null $description 仓库简介。
      *
      * @return self
      */
@@ -517,7 +517,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets homepage
      *
-     * @param string|null $homepage homepage
+     * @param string|null $homepage 仓库主页链接。
      *
      * @return self
      */
@@ -544,7 +544,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets default_branch
      *
-     * @param string|null $default_branch default_branch
+     * @param string|null $default_branch 默认分支名称。
      *
      * @return self
      */
@@ -571,7 +571,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets primary_branch
      *
-     * @param string|null $primary_branch primary_branch
+     * @param string|null $primary_branch 主要分支名称（通常与默认分支一致）。
      *
      * @return self
      */
@@ -598,7 +598,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets default_branch_sha
      *
-     * @param string|null $default_branch_sha default_branch_sha
+     * @param string|null $default_branch_sha 默认分支最新提交的 SHA 哈希。
      *
      * @return self
      */
@@ -625,7 +625,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets visibility
      *
-     * @param string|null $visibility visibility
+     * @param string|null $visibility 仓库可见性，常见值为 `public` 或 `private`。
      *
      * @return self
      */
@@ -652,7 +652,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets archived
      *
-     * @param bool|null $archived archived
+     * @param bool|null $archived 仓库是否已归档。
      *
      * @return self
      */
@@ -679,7 +679,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets disabled
      *
-     * @param bool|null $disabled disabled
+     * @param bool|null $disabled 仓库是否被禁用。
      *
      * @return self
      */
@@ -706,7 +706,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets fork
      *
-     * @param bool|null $fork fork
+     * @param bool|null $fork 是否为 Fork 仓库。
      *
      * @return self
      */
@@ -733,7 +733,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets language
      *
-     * @param string|null $language language
+     * @param string|null $language 主要语言。
      *
      * @return self
      */
@@ -760,7 +760,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets topics
      *
-     * @param string[]|null $topics topics
+     * @param string[]|null $topics 话题标签列表。
      *
      * @return self
      */
@@ -787,7 +787,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets license
      *
-     * @param string|null $license license
+     * @param string|null $license 开源许可证名称。
      *
      * @return self
      */
@@ -814,7 +814,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets stargazers
      *
-     * @param int|null $stargazers stargazers
+     * @param int|null $stargazers Star 数。
      *
      * @return self
      */
@@ -841,7 +841,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets forks
      *
-     * @param int|null $forks forks
+     * @param int|null $forks Fork 数。
      *
      * @return self
      */
@@ -868,7 +868,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets open_issues
      *
-     * @param int|null $open_issues open_issues
+     * @param int|null $open_issues 开放 Issue 数。
      *
      * @return self
      */
@@ -895,7 +895,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets watchers
      *
-     * @param int|null $watchers watchers
+     * @param int|null $watchers 关注者数量（watchers/subscribers）。
      *
      * @return self
      */
@@ -922,7 +922,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets pushed_at
      *
-     * @param \DateTime|null $pushed_at pushed_at
+     * @param \DateTime|null $pushed_at 最后推送时间（ISO 8601）。
      *
      * @return self
      */
@@ -949,7 +949,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime|null $created_at 创建时间（ISO 8601）。
      *
      * @return self
      */
@@ -976,7 +976,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime|null $updated_at 更新时间（ISO 8601）。
      *
      * @return self
      */
@@ -1003,7 +1003,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets languages
      *
-     * @param array<string,int>|null $languages languages
+     * @param array<string,int>|null $languages 语言统计（键为语言名，值为代码字节数）。
      *
      * @return self
      */
@@ -1030,7 +1030,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets collaborators
      *
-     * @param \OpenAPI\Client\Model\GetGithubRepo200ResponseCollaboratorsInner[]|null $collaborators collaborators
+     * @param \OpenAPI\Client\Model\GetGithubRepo200ResponseCollaboratorsInner[]|null $collaborators 协作者列表。受权限限制时可能为 null 或空数组。
      *
      * @return self
      */
@@ -1064,7 +1064,7 @@ class GetGithubRepo200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets maintainers
      *
-     * @param \OpenAPI\Client\Model\GetGithubRepo200ResponseCollaboratorsInner[]|null $maintainers maintainers
+     * @param \OpenAPI\Client\Model\GetGithubRepo200ResponseCollaboratorsInner[]|null $maintainers 维护者列表（根据默认分支近期提交推断）。
      *
      * @return self
      */

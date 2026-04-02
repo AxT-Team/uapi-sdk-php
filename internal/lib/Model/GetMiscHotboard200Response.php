@@ -57,13 +57,13 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'list' => '\OpenAPI\Client\Model\GetMiscHotboard200ResponseListInner[]',
         'type' => 'string',
         'update_time' => 'string',
         'snapshot_time' => 'int',
+        'list' => '\OpenAPI\Client\Model\GetMiscHotboard200ResponseOneOfListInner[]',
         'keyword' => 'string',
         'count' => 'int',
-        'results' => '\OpenAPI\Client\Model\GetMiscHotboard200ResponseResultsInner[]',
+        'results' => '\OpenAPI\Client\Model\GetMiscHotboard200ResponseOneOf1ResultsInner[]',
         'sources' => 'string[]'
     ];
 
@@ -75,10 +75,10 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'list' => null,
         'type' => null,
         'update_time' => null,
         'snapshot_time' => null,
+        'list' => null,
         'keyword' => null,
         'count' => null,
         'results' => null,
@@ -91,10 +91,10 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'list' => false,
         'type' => false,
         'update_time' => false,
         'snapshot_time' => false,
+        'list' => false,
         'keyword' => false,
         'count' => false,
         'results' => false,
@@ -187,10 +187,10 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'list' => 'list',
         'type' => 'type',
         'update_time' => 'update_time',
         'snapshot_time' => 'snapshot_time',
+        'list' => 'list',
         'keyword' => 'keyword',
         'count' => 'count',
         'results' => 'results',
@@ -203,10 +203,10 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'list' => 'setList',
         'type' => 'setType',
         'update_time' => 'setUpdateTime',
         'snapshot_time' => 'setSnapshotTime',
+        'list' => 'setList',
         'keyword' => 'setKeyword',
         'count' => 'setCount',
         'results' => 'setResults',
@@ -219,10 +219,10 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'list' => 'getList',
         'type' => 'getType',
         'update_time' => 'getUpdateTime',
         'snapshot_time' => 'getSnapshotTime',
+        'list' => 'getList',
         'keyword' => 'getKeyword',
         'count' => 'getCount',
         'results' => 'getResults',
@@ -286,10 +286,10 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('list', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('update_time', $data ?? [], null);
         $this->setIfExists('snapshot_time', $data ?? [], null);
+        $this->setIfExists('list', $data ?? [], null);
         $this->setIfExists('keyword', $data ?? [], null);
         $this->setIfExists('count', $data ?? [], null);
         $this->setIfExists('results', $data ?? [], null);
@@ -339,33 +339,6 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets list
-     *
-     * @return \OpenAPI\Client\Model\GetMiscHotboard200ResponseListInner[]|null
-     */
-    public function getList()
-    {
-        return $this->container['list'];
-    }
-
-    /**
-     * Sets list
-     *
-     * @param \OpenAPI\Client\Model\GetMiscHotboard200ResponseListInner[]|null $list 热榜条目列表。
-     *
-     * @return self
-     */
-    public function setList($list)
-    {
-        if (is_null($list)) {
-            throw new \InvalidArgumentException('non-nullable list cannot be null');
-        }
-        $this->container['list'] = $list;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return string|null
@@ -405,7 +378,7 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets update_time
      *
-     * @param string|null $update_time update_time
+     * @param string|null $update_time 热榜更新时间。时光机无匹配快照时可能为空字符串。
      *
      * @return self
      */
@@ -432,7 +405,7 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets snapshot_time
      *
-     * @param int|null $snapshot_time 时光机模式返回的快照实际时间戳（毫秒）。
+     * @param int|null $snapshot_time 时光机模式返回的快照实际时间戳（毫秒）。当前热榜模式下通常不返回。
      *
      * @return self
      */
@@ -442,6 +415,33 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable snapshot_time cannot be null');
         }
         $this->container['snapshot_time'] = $snapshot_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets list
+     *
+     * @return \OpenAPI\Client\Model\GetMiscHotboard200ResponseOneOfListInner[]|null
+     */
+    public function getList()
+    {
+        return $this->container['list'];
+    }
+
+    /**
+     * Sets list
+     *
+     * @param \OpenAPI\Client\Model\GetMiscHotboard200ResponseOneOfListInner[]|null $list 热榜条目列表。
+     *
+     * @return self
+     */
+    public function setList($list)
+    {
+        if (is_null($list)) {
+            throw new \InvalidArgumentException('non-nullable list cannot be null');
+        }
+        $this->container['list'] = $list;
 
         return $this;
     }
@@ -459,7 +459,7 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets keyword
      *
-     * @param string|null $keyword 搜索模式返回的搜索关键词。
+     * @param string|null $keyword 搜索关键词。
      *
      * @return self
      */
@@ -486,7 +486,7 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets count
      *
-     * @param int|null $count 搜索模式返回的结果数量。
+     * @param int|null $count 匹配到的结果数量。
      *
      * @return self
      */
@@ -503,7 +503,7 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets results
      *
-     * @return \OpenAPI\Client\Model\GetMiscHotboard200ResponseResultsInner[]|null
+     * @return \OpenAPI\Client\Model\GetMiscHotboard200ResponseOneOf1ResultsInner[]|null
      */
     public function getResults()
     {
@@ -513,7 +513,7 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets results
      *
-     * @param \OpenAPI\Client\Model\GetMiscHotboard200ResponseResultsInner[]|null $results 搜索模式返回的结果数组。
+     * @param \OpenAPI\Client\Model\GetMiscHotboard200ResponseOneOf1ResultsInner[]|null $results 搜索结果数组。
      *
      * @return self
      */
@@ -540,7 +540,7 @@ class GetMiscHotboard200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets sources
      *
-     * @param string[]|null $sources 数据源列表模式返回的可用历史数据源数组。
+     * @param string[]|null $sources 支持历史数据的平台列表。
      *
      * @return self
      */

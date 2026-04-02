@@ -18,6 +18,6 @@ Name | Type | Description | Notes
 **dew_point** | **float** | 露点温度 °C（可选） | [optional]
 **visibility** | **float** | 能见度 km（可选） | [optional]
 **pop** | **float** | 降水概率 %（可选） | [optional]
-**uv_index** | **float** | 紫外线指数（可选） | [optional]
+**uv_index** | **float** | 紫外线指数（可选，国内城市通常不返回） | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

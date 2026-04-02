@@ -57,9 +57,8 @@ class GetMiscTrackingCarriers200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'message' => 'string',
-        'data' => '\OpenAPI\Client\Model\GetMiscTrackingCarriers200ResponseData'
+        'carriers' => '\OpenAPI\Client\Model\GetMiscTrackingCarriers200ResponseCarriersInner[]',
+        'total' => 'int'
     ];
 
     /**
@@ -70,9 +69,8 @@ class GetMiscTrackingCarriers200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'message' => null,
-        'data' => null
+        'carriers' => null,
+        'total' => null
     ];
 
     /**
@@ -81,9 +79,8 @@ class GetMiscTrackingCarriers200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'message' => false,
-        'data' => false
+        'carriers' => false,
+        'total' => false
     ];
 
     /**
@@ -172,9 +169,8 @@ class GetMiscTrackingCarriers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'data' => 'data'
+        'carriers' => 'carriers',
+        'total' => 'total'
     ];
 
     /**
@@ -183,9 +179,8 @@ class GetMiscTrackingCarriers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'data' => 'setData'
+        'carriers' => 'setCarriers',
+        'total' => 'setTotal'
     ];
 
     /**
@@ -194,9 +189,8 @@ class GetMiscTrackingCarriers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'data' => 'getData'
+        'carriers' => 'getCarriers',
+        'total' => 'getTotal'
     ];
 
     /**
@@ -256,9 +250,8 @@ class GetMiscTrackingCarriers200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('carriers', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
     }
 
     /**
@@ -304,82 +297,55 @@ class GetMiscTrackingCarriers200Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets code
+     * Gets carriers
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\GetMiscTrackingCarriers200ResponseCarriersInner[]|null
      */
-    public function getCode()
+    public function getCarriers()
     {
-        return $this->container['code'];
+        return $this->container['carriers'];
     }
 
     /**
-     * Sets code
+     * Sets carriers
      *
-     * @param string|null $code code
+     * @param \OpenAPI\Client\Model\GetMiscTrackingCarriers200ResponseCarriersInner[]|null $carriers 快递公司列表
      *
      * @return self
      */
-    public function setCode($code)
+    public function setCarriers($carriers)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($carriers)) {
+            throw new \InvalidArgumentException('non-nullable carriers cannot be null');
         }
-        $this->container['code'] = $code;
+        $this->container['carriers'] = $carriers;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets total
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getMessage()
+    public function getTotal()
     {
-        return $this->container['message'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets message
+     * Sets total
      *
-     * @param string|null $message message
+     * @param int|null $total 支持的快递公司总数
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setTotal($total)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($total)) {
+            throw new \InvalidArgumentException('non-nullable total cannot be null');
         }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     *
-     * @return \OpenAPI\Client\Model\GetMiscTrackingCarriers200ResponseData|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \OpenAPI\Client\Model\GetMiscTrackingCarriers200ResponseData|null $data data
-     *
-     * @return self
-     */
-    public function setData($data)
-    {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
-        }
-        $this->container['data'] = $data;
+        $this->container['total'] = $total;
 
         return $this;
     }

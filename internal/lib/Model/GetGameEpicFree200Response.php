@@ -57,6 +57,7 @@ class GetGameEpicFree200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
+        'message' => 'string',
         'data' => '\OpenAPI\Client\Model\GetGameEpicFree200ResponseDataInner[]'
     ];
 
@@ -68,6 +69,7 @@ class GetGameEpicFree200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'message' => null,
         'data' => null
     ];
 
@@ -77,6 +79,7 @@ class GetGameEpicFree200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'message' => false,
         'data' => false
     ];
 
@@ -166,6 +169,7 @@ class GetGameEpicFree200Response implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
+        'message' => 'message',
         'data' => 'data'
     ];
 
@@ -175,6 +179,7 @@ class GetGameEpicFree200Response implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
+        'message' => 'setMessage',
         'data' => 'setData'
     ];
 
@@ -184,6 +189,7 @@ class GetGameEpicFree200Response implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
+        'message' => 'getMessage',
         'data' => 'getData'
     ];
 
@@ -244,6 +250,7 @@ class GetGameEpicFree200Response implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
     }
 
@@ -288,6 +295,33 @@ class GetGameEpicFree200Response implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message 操作结果描述。
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        }
+        $this->container['message'] = $message;
+
+        return $this;
+    }
 
     /**
      * Gets data

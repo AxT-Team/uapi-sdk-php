@@ -58,13 +58,19 @@ class GetSocialBilibiliVideoinfo200ResponseStat implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
+        'aid' => 'float',
         'view' => 'float',
         'danmaku' => 'float',
         'reply' => 'float',
         'favorite' => 'float',
         'coin' => 'float',
         'share' => 'float',
-        'like' => 'float'
+        'like' => 'float',
+        'now_rank' => 'float',
+        'his_rank' => 'float',
+        'dislike' => 'float',
+        'evaluation' => 'string',
+        'vt' => 'float'
     ];
 
     /**
@@ -75,13 +81,19 @@ class GetSocialBilibiliVideoinfo200ResponseStat implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'aid' => null,
         'view' => null,
         'danmaku' => null,
         'reply' => null,
         'favorite' => null,
         'coin' => null,
         'share' => null,
-        'like' => null
+        'like' => null,
+        'now_rank' => null,
+        'his_rank' => null,
+        'dislike' => null,
+        'evaluation' => null,
+        'vt' => null
     ];
 
     /**
@@ -90,13 +102,19 @@ class GetSocialBilibiliVideoinfo200ResponseStat implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'aid' => false,
         'view' => false,
         'danmaku' => false,
         'reply' => false,
         'favorite' => false,
         'coin' => false,
         'share' => false,
-        'like' => false
+        'like' => false,
+        'now_rank' => false,
+        'his_rank' => false,
+        'dislike' => false,
+        'evaluation' => false,
+        'vt' => false
     ];
 
     /**
@@ -185,13 +203,19 @@ class GetSocialBilibiliVideoinfo200ResponseStat implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
+        'aid' => 'aid',
         'view' => 'view',
         'danmaku' => 'danmaku',
         'reply' => 'reply',
         'favorite' => 'favorite',
         'coin' => 'coin',
         'share' => 'share',
-        'like' => 'like'
+        'like' => 'like',
+        'now_rank' => 'now_rank',
+        'his_rank' => 'his_rank',
+        'dislike' => 'dislike',
+        'evaluation' => 'evaluation',
+        'vt' => 'vt'
     ];
 
     /**
@@ -200,13 +224,19 @@ class GetSocialBilibiliVideoinfo200ResponseStat implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
+        'aid' => 'setAid',
         'view' => 'setView',
         'danmaku' => 'setDanmaku',
         'reply' => 'setReply',
         'favorite' => 'setFavorite',
         'coin' => 'setCoin',
         'share' => 'setShare',
-        'like' => 'setLike'
+        'like' => 'setLike',
+        'now_rank' => 'setNowRank',
+        'his_rank' => 'setHisRank',
+        'dislike' => 'setDislike',
+        'evaluation' => 'setEvaluation',
+        'vt' => 'setVt'
     ];
 
     /**
@@ -215,13 +245,19 @@ class GetSocialBilibiliVideoinfo200ResponseStat implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
+        'aid' => 'getAid',
         'view' => 'getView',
         'danmaku' => 'getDanmaku',
         'reply' => 'getReply',
         'favorite' => 'getFavorite',
         'coin' => 'getCoin',
         'share' => 'getShare',
-        'like' => 'getLike'
+        'like' => 'getLike',
+        'now_rank' => 'getNowRank',
+        'his_rank' => 'getHisRank',
+        'dislike' => 'getDislike',
+        'evaluation' => 'getEvaluation',
+        'vt' => 'getVt'
     ];
 
     /**
@@ -281,6 +317,7 @@ class GetSocialBilibiliVideoinfo200ResponseStat implements ModelInterface, Array
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('aid', $data ?? [], null);
         $this->setIfExists('view', $data ?? [], null);
         $this->setIfExists('danmaku', $data ?? [], null);
         $this->setIfExists('reply', $data ?? [], null);
@@ -288,6 +325,11 @@ class GetSocialBilibiliVideoinfo200ResponseStat implements ModelInterface, Array
         $this->setIfExists('coin', $data ?? [], null);
         $this->setIfExists('share', $data ?? [], null);
         $this->setIfExists('like', $data ?? [], null);
+        $this->setIfExists('now_rank', $data ?? [], null);
+        $this->setIfExists('his_rank', $data ?? [], null);
+        $this->setIfExists('dislike', $data ?? [], null);
+        $this->setIfExists('evaluation', $data ?? [], null);
+        $this->setIfExists('vt', $data ?? [], null);
     }
 
     /**
@@ -331,6 +373,33 @@ class GetSocialBilibiliVideoinfo200ResponseStat implements ModelInterface, Array
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets aid
+     *
+     * @return float|null
+     */
+    public function getAid()
+    {
+        return $this->container['aid'];
+    }
+
+    /**
+     * Sets aid
+     *
+     * @param float|null $aid AV 号。
+     *
+     * @return self
+     */
+    public function setAid($aid)
+    {
+        if (is_null($aid)) {
+            throw new \InvalidArgumentException('non-nullable aid cannot be null');
+        }
+        $this->container['aid'] = $aid;
+
+        return $this;
+    }
 
     /**
      * Gets view
@@ -517,6 +586,141 @@ class GetSocialBilibiliVideoinfo200ResponseStat implements ModelInterface, Array
             throw new \InvalidArgumentException('non-nullable like cannot be null');
         }
         $this->container['like'] = $like;
+
+        return $this;
+    }
+
+    /**
+     * Gets now_rank
+     *
+     * @return float|null
+     */
+    public function getNowRank()
+    {
+        return $this->container['now_rank'];
+    }
+
+    /**
+     * Sets now_rank
+     *
+     * @param float|null $now_rank 当前全站/分区排名。
+     *
+     * @return self
+     */
+    public function setNowRank($now_rank)
+    {
+        if (is_null($now_rank)) {
+            throw new \InvalidArgumentException('non-nullable now_rank cannot be null');
+        }
+        $this->container['now_rank'] = $now_rank;
+
+        return $this;
+    }
+
+    /**
+     * Gets his_rank
+     *
+     * @return float|null
+     */
+    public function getHisRank()
+    {
+        return $this->container['his_rank'];
+    }
+
+    /**
+     * Sets his_rank
+     *
+     * @param float|null $his_rank 历史排名。
+     *
+     * @return self
+     */
+    public function setHisRank($his_rank)
+    {
+        if (is_null($his_rank)) {
+            throw new \InvalidArgumentException('non-nullable his_rank cannot be null');
+        }
+        $this->container['his_rank'] = $his_rank;
+
+        return $this;
+    }
+
+    /**
+     * Gets dislike
+     *
+     * @return float|null
+     */
+    public function getDislike()
+    {
+        return $this->container['dislike'];
+    }
+
+    /**
+     * Sets dislike
+     *
+     * @param float|null $dislike 点踩量（通常为 0）。
+     *
+     * @return self
+     */
+    public function setDislike($dislike)
+    {
+        if (is_null($dislike)) {
+            throw new \InvalidArgumentException('non-nullable dislike cannot be null');
+        }
+        $this->container['dislike'] = $dislike;
+
+        return $this;
+    }
+
+    /**
+     * Gets evaluation
+     *
+     * @return string|null
+     */
+    public function getEvaluation()
+    {
+        return $this->container['evaluation'];
+    }
+
+    /**
+     * Sets evaluation
+     *
+     * @param string|null $evaluation 评分/评估文案，通常为空。
+     *
+     * @return self
+     */
+    public function setEvaluation($evaluation)
+    {
+        if (is_null($evaluation)) {
+            throw new \InvalidArgumentException('non-nullable evaluation cannot be null');
+        }
+        $this->container['evaluation'] = $evaluation;
+
+        return $this;
+    }
+
+    /**
+     * Gets vt
+     *
+     * @return float|null
+     */
+    public function getVt()
+    {
+        return $this->container['vt'];
+    }
+
+    /**
+     * Sets vt
+     *
+     * @param float|null $vt 视频类型相关历史字段。
+     *
+     * @return self
+     */
+    public function setVt($vt)
+    {
+        if (is_null($vt)) {
+            throw new \InvalidArgumentException('non-nullable vt cannot be null');
+        }
+        $this->container['vt'] = $vt;
 
         return $this;
     }
