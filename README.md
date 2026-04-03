@@ -18,7 +18,7 @@ composer require AxT-Team/uapi-sdk-php
 <?php
 require 'vendor/autoload.php';
 
-$client = new Uapi\Client('https://uapis.cn/api/v1');
+$client = new Uapi\Client('https://uapis.cn', 'YOUR_API_KEY');
 $result = $client->social()->getSocialQqUserinfo(['qq' => '10001']);
 var_dump($result);
 ```
@@ -50,7 +50,7 @@ require 'vendor/autoload.php';
 use Uapi\Client;
 use Uapi\UapiError;
 
-$client = new Client('https://uapis.cn/api/v1');
+$client = new Client('https://uapis.cn', 'YOUR_API_KEY');
 
 // 成功路径
 $result = $client->social()->getSocialQqUserinfo(['qq' => '10001']);

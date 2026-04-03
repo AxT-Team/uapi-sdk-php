@@ -72,12 +72,19 @@ class Client {
             $verifyTls = false;
         }
         $headers = $token ? ['Authorization' => 'Bearer ' . $token] : [];
-        $baseUrl = rtrim($baseUrl, '/') . '/';
+        $baseUrl = self::normalizeBaseUrl($baseUrl) . '/';
         $options = ['base_uri' => $baseUrl, 'headers' => $headers, 'http_errors' => false];
         if (!$verifyTls) {
             $options['verify'] = false;
         }
         $this->http = new Guzzle($options);
+    }
+    private static function normalizeBaseUrl(string $baseUrl): string {
+        $normalized = rtrim($baseUrl, '/');
+        if (str_ends_with($normalized, '/api/v1')) {
+            $normalized = substr($normalized, 0, -strlen('/api/v1'));
+        }
+        return $normalized;
     }
     /** @internal */
     public function request(string $method, string $path, array $query = [], $body = null) {
