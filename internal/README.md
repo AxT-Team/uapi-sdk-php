@@ -1,68 +1,28 @@
-# uapi-sdk-php
+## uapi-sdk-php internal
 
-UAPI 官方接口文档
+这个目录保留的是 OpenAPI Generator 生成的原始参考文档，主要用来对照 operation、model 和生成器层面的类名。
+如果你是想直接安装并使用 SDK，请优先查看仓库根目录的 `README.md`。
 
+## 安装
 
-## Installation & Usage
-
-### Requirements
-
-PHP 8.1 and later.
-
-### Composer
-
-To install the bindings via [Composer](https://getcomposer.org/), add the following to `composer.json`:
-
-```json
-{
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
-    }
-  ],
-  "require": {
-    "GIT_USER_ID/GIT_REPO_ID": "*@dev"
-  }
-}
+```bash
+composer require axt-team/uapi-sdk-php
 ```
 
-Then run `composer install`
-
-### Manual Installation
-
-Download the files and include `autoload.php`:
+## 最小示例
 
 ```php
 <?php
-require_once('/path/to/uapi-sdk-php/vendor/autoload.php');
+require 'vendor/autoload.php';
+
+$client = new Uapi\Client('https://uapis.cn', 'YOUR_API_KEY');
+$result = $client->misc()->getMiscHotboard(['type' => 'weibo']);
+var_dump($result);
 ```
 
-## Getting Started
+## 说明
 
-Please follow the [installation procedure](#installation--usage) and then run the following:
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-
-
-$apiInstance = new OpenAPI\Client\Api\DefaultApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-
-try {
-    $result = $apiInstance->getSearchEngines();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->getSearchEngines: ', $e->getMessage(), PHP_EOL;
-}
-
-```
+下面继续保留自动生成的 API / Model 索引，方便你按生成器原始命名检索。
 
 ## API Endpoints
 

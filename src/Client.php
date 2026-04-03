@@ -55,6 +55,16 @@ class UapiError extends \Exception {
         $this->payload = $payload;
         $this->meta = $meta;
     }
+    public function __get(string $name) {
+        if ($name === 'code') {
+            return $this->apiCode;
+        }
+        trigger_error('Undefined property: ' . static::class . '::$' . $name, E_USER_NOTICE);
+        return null;
+    }
+    public function __isset(string $name): bool {
+        return $name === 'code';
+    }
 }
 class ApiErrorError extends UapiError {}
 class AvatarNotFoundError extends UapiError {}
