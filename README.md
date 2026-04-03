@@ -19,9 +19,11 @@ composer require AxT-Team/uapi-sdk-php
 require 'vendor/autoload.php';
 
 $client = new Uapi\Client('https://uapis.cn', 'YOUR_API_KEY');
-$result = $client->social()->getSocialQqUserinfo(['qq' => '10001']);
+$result = $client->misc()->getMiscHotboard(['type' => 'weibo']);
 var_dump($result);
 ```
+
+这个接口默认只要传 `type` 就可以拿当前热榜。`time`、`keyword`、`time_start`、`time_end`、`limit`、`sources` 都是按场景再传的可选参数。
 
 ## 特性
 
