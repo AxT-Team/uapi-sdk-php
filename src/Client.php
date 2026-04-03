@@ -5,6 +5,7 @@ use GuzzleHttp\Client as Guzzle;
 
 class ResponseMeta {
     public ?string $requestId = null;
+    public ?string $retryAfterRaw = null;
     public ?int $retryAfterSeconds = null;
     public ?string $debitStatus = null;
     public ?int $creditsRequested = null;
@@ -22,6 +23,21 @@ class ResponseMeta {
     public ?int $quotaRemainingCredits = null;
     public ?int $visitorQuotaLimitCredits = null;
     public ?int $visitorQuotaRemainingCredits = null;
+    public ?int $billingKeyRateLimit = null;
+    public ?int $billingKeyRateRemaining = null;
+    public ?string $billingKeyRateUnit = null;
+    public ?int $billingKeyRateWindowSeconds = null;
+    public ?int $billingKeyRateResetAfterSeconds = null;
+    public ?int $billingIpRateLimit = null;
+    public ?int $billingIpRateRemaining = null;
+    public ?string $billingIpRateUnit = null;
+    public ?int $billingIpRateWindowSeconds = null;
+    public ?int $billingIpRateResetAfterSeconds = null;
+    public ?int $visitorRateLimit = null;
+    public ?int $visitorRateRemaining = null;
+    public ?string $visitorRateUnit = null;
+    public ?int $visitorRateWindowSeconds = null;
+    public ?int $visitorRateResetAfterSeconds = null;
     public array $rawHeaders = [];
 }
 
@@ -138,6 +154,7 @@ class Client {
         }
         $meta->rawHeaders = $raw;
         $meta->requestId = $raw['x-request-id'] ?? null;
+        $meta->retryAfterRaw = $raw['retry-after'] ?? null;
         $meta->retryAfterSeconds = $this->parseInt($raw['retry-after'] ?? null);
         $meta->debitStatus = $raw['uapi-debit-status'] ?? null;
         $meta->creditsRequested = $this->parseInt($raw['uapi-credits-requested'] ?? null);
@@ -171,6 +188,21 @@ class Client {
         $meta->quotaRemainingCredits = $meta->rateLimits['billing-quota']['remaining'] ?? null;
         $meta->visitorQuotaLimitCredits = $meta->rateLimitPolicies['visitor-quota']['quota'] ?? null;
         $meta->visitorQuotaRemainingCredits = $meta->rateLimits['visitor-quota']['remaining'] ?? null;
+        $meta->billingKeyRateLimit = $meta->rateLimitPolicies['billing-key-rate']['quota'] ?? null;
+        $meta->billingKeyRateRemaining = $meta->rateLimits['billing-key-rate']['remaining'] ?? null;
+        $meta->billingKeyRateUnit = $meta->rateLimitPolicies['billing-key-rate']['unit'] ?? ($meta->rateLimits['billing-key-rate']['unit'] ?? null);
+        $meta->billingKeyRateWindowSeconds = $meta->rateLimitPolicies['billing-key-rate']['windowSeconds'] ?? null;
+        $meta->billingKeyRateResetAfterSeconds = $meta->rateLimits['billing-key-rate']['resetAfterSeconds'] ?? null;
+        $meta->billingIpRateLimit = $meta->rateLimitPolicies['billing-ip-rate']['quota'] ?? null;
+        $meta->billingIpRateRemaining = $meta->rateLimits['billing-ip-rate']['remaining'] ?? null;
+        $meta->billingIpRateUnit = $meta->rateLimitPolicies['billing-ip-rate']['unit'] ?? ($meta->rateLimits['billing-ip-rate']['unit'] ?? null);
+        $meta->billingIpRateWindowSeconds = $meta->rateLimitPolicies['billing-ip-rate']['windowSeconds'] ?? null;
+        $meta->billingIpRateResetAfterSeconds = $meta->rateLimits['billing-ip-rate']['resetAfterSeconds'] ?? null;
+        $meta->visitorRateLimit = $meta->rateLimitPolicies['visitor-rate']['quota'] ?? null;
+        $meta->visitorRateRemaining = $meta->rateLimits['visitor-rate']['remaining'] ?? null;
+        $meta->visitorRateUnit = $meta->rateLimitPolicies['visitor-rate']['unit'] ?? ($meta->rateLimits['visitor-rate']['unit'] ?? null);
+        $meta->visitorRateWindowSeconds = $meta->rateLimitPolicies['visitor-rate']['windowSeconds'] ?? null;
+        $meta->visitorRateResetAfterSeconds = $meta->rateLimits['visitor-rate']['resetAfterSeconds'] ?? null;
         return $meta;
     }
 
