@@ -11,7 +11,7 @@
 ## 快速开始
 
 ```bash
-composer require axt-team/uapi-sdk-php
+composer require AxT-Team/uapi-sdk-php
 ```
 
 ```php
@@ -19,11 +19,9 @@ composer require axt-team/uapi-sdk-php
 require 'vendor/autoload.php';
 
 $client = new Uapi\Client('https://uapis.cn', 'YOUR_API_KEY');
-$result = $client->misc()->getMiscHotboard(['type' => 'weibo']);
+$result = $client->social()->getSocialQqUserinfo(['qq' => '10001']);
 var_dump($result);
 ```
-
-这个接口默认只要传 `type` 就可以拿当前热榜。`time`、`keyword`、`time_start`、`time_end`、`limit`、`sources` 都是按场景再传的可选参数。
 
 ## 特性
 
@@ -38,67 +36,6 @@ var_dump($result);
 HTTP 层基于 Guzzle，构造函数会自动设置 Base URL、追加 `Authorization` 头并关闭 `http_errors`，方便你直接读取 JSON/字节响应；需要更细致的超时或代理策略时，可以按需扩展这段初始化逻辑。
 
 如果你需要查看字段细节或内部逻辑，仓库中的 `./internal` 目录同步保留了由 `openapi-generator` 生成的完整结构体，随时可供参考。
-
-## 响应元信息
-
-每次请求完成后，SDK 会自动把响应 Header 解析成结构化的 `ResponseMeta`，你不用自己拆原始字符串。
-
-成功时可以通过 `$client->lastResponseMeta` 读取，失败时可以通过 `$e->meta` 读取，两条路径拿到的是同一套字段。
-
-```php
-<?php
-require 'vendor/autoload.php';
-
-use Uapi\Client;
-use Uapi\UapiError;
-
-$client = new Client('https://uapis.cn', 'YOUR_API_KEY');
-
-// 成功路径
-$client->social()->getSocialQqUserinfo(['qq' => '10001']);
-$meta = $client->lastResponseMeta;
-if ($meta) {
-    echo '这次请求原价: ' . ($meta->creditsRequested ?? 0) . " 积分\n";
-    echo '这次实际扣费: ' . ($meta->creditsCharged ?? 0) . " 积分\n";
-    echo '特殊计价: ' . ($meta->creditsPricing ?? '原价') . "\n";
-    echo '余额剩余: ' . ($meta->balanceRemainingCents ?? 0) . " 分\n";
-    echo '资源包剩余: ' . ($meta->quotaRemainingCredits ?? 0) . " 积分\n";
-    echo '当前有效额度桶: ' . ($meta->activeQuotaBuckets ?? 0) . "\n";
-    echo '额度用空即停: ' . var_export($meta->stopOnEmpty, true) . "\n";
-    echo 'Key QPS: ' . ($meta->billingKeyRateRemaining ?? 0) . ' / ' . ($meta->billingKeyRateLimit ?? 0) . ' ' . ($meta->billingKeyRateUnit ?? 'req') . "\n";
-    echo 'Request ID: ' . ($meta->requestId ?? '-') . "\n";
-}
-
-// 失败路径
-try {
-    $client->social()->getSocialQqUserinfo(['qq' => '10001']);
-} catch (UapiError $e) {
-    if ($e->meta) {
-        echo 'Retry-After 秒数: ' . var_export($e->meta->retryAfterSeconds, true) . "\n";
-        echo 'Retry-After 原始值: ' . ($e->meta->retryAfterRaw ?? '-') . "\n";
-        echo '访客 QPS: ' . ($e->meta->visitorRateRemaining ?? 0) . ' / ' . ($e->meta->visitorRateLimit ?? 0) . "\n";
-        echo 'Request ID: ' . ($e->meta->requestId ?? '-') . "\n";
-    }
-}
-```
-
-常用字段一览：
-
-| 字段 | 说明 |
-|------|------|
-| `creditsRequested` | 这次请求原本要扣多少积分，也就是请求价 |
-| `creditsCharged` | 这次请求实际扣了多少积分 |
-| `creditsPricing` | 特殊计价原因，例如缓存半价 `cache-hit-half-price` |
-| `balanceRemainingCents` | 账户余额剩余（分） |
-| `quotaRemainingCredits` | 资源包剩余积分 |
-| `activeQuotaBuckets` | 当前还有多少个有效额度桶参与计费 |
-| `stopOnEmpty` | 额度耗尽后是否直接停止服务 |
-| `retryAfterSeconds` / `retryAfterRaw` | 限流后的等待时长；当服务端返回 HTTP 时间字符串时看 `retryAfterRaw` |
-| `requestId` | 请求唯一 ID，排障时使用 |
-| `billingKeyRateLimit` / `billingKeyRateRemaining` | Billing Key 当前 QPS 规则的上限与剩余 |
-| `billingIpRateLimit` / `billingIpRateRemaining` | Billing Key 单 IP 当前 QPS 规则的上限与剩余 |
-| `visitorRateLimit` / `visitorRateRemaining` | 访客当前 QPS 规则的上限与剩余 |
-| `rateLimitPolicies` / `rateLimits` | 完整结构化限流策略数据 |
 
 ## 错误模型概览
 
