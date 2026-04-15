@@ -419,6 +419,21 @@ class ImageApi {
         $query = [];
         $body = [];
         $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('date', $args)) $query['date'] = $args['date'];
+        if (array_key_exists('resolution', $args)) $query['resolution'] = $args['resolution'];
+        if (array_key_exists('format', $args)) $query['format'] = $args['format'];
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+    }
+    function getImageBingDailyHistory(array $args = []) {
+        $path='/api/v1/image/bing-daily/history';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('date', $args)) $query['date'] = $args['date'];
+        if (array_key_exists('resolution', $args)) $query['resolution'] = $args['resolution'];
+        if (array_key_exists('page', $args)) $query['page'] = $args['page'];
+        if (array_key_exists('page_size', $args)) $query['page_size'] = $args['page_size'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
     }
@@ -466,6 +481,24 @@ class ImageApi {
         if (array_key_exists('file', $args)) $body['file'] = $args['file'];
         return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
     }
+    function postImageDecode(array $args = []) {
+        $path='/api/v1/image/decode';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('width', $args)) $query['width'] = $args['width'];
+        if (array_key_exists('height', $args)) $query['height'] = $args['height'];
+        if (array_key_exists('max_width', $args)) $query['max_width'] = $args['max_width'];
+        if (array_key_exists('max_height', $args)) $query['max_height'] = $args['max_height'];
+        if (array_key_exists('format', $args)) $query['format'] = $args['format'];
+        if (array_key_exists('color_mode', $args)) $query['color_mode'] = $args['color_mode'];
+        if (array_key_exists('fit', $args)) $query['fit'] = $args['fit'];
+        if (array_key_exists('background', $args)) $query['background'] = $args['background'];
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        if (array_key_exists('file', $args)) $body['file'] = $args['file'];
+        if (array_key_exists('url', $args)) $body['url'] = $args['url'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+    }
     function postImageFrombase64(array $args = []) {
         $path='/api/v1/image/frombase64';
         $query = [];
@@ -493,6 +526,21 @@ class ImageApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('file', $args)) $body['file'] = $args['file'];
+        if (array_key_exists('url', $args)) $body['url'] = $args['url'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+    }
+    function postImageOcr(array $args = []) {
+        $path='/api/v1/image/ocr';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        if (array_key_exists('enable_cls', $args)) $body['enable_cls'] = $args['enable_cls'];
+        if (array_key_exists('file', $args)) $body['file'] = $args['file'];
+        if (array_key_exists('image_base64', $args)) $body['image_base64'] = $args['image_base64'];
+        if (array_key_exists('image_name', $args)) $body['image_name'] = $args['image_name'];
+        if (array_key_exists('need_location', $args)) $body['need_location'] = $args['need_location'];
+        if (array_key_exists('return_markdown', $args)) $body['return_markdown'] = $args['return_markdown'];
         if (array_key_exists('url', $args)) $body['url'] = $args['url'];
         return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
     }
@@ -567,6 +615,7 @@ class MiscApi {
         if (array_key_exists('holiday_type', $args)) $query['holiday_type'] = $args['holiday_type'];
         if (array_key_exists('include_nearby', $args)) $query['include_nearby'] = $args['include_nearby'];
         if (array_key_exists('nearby_limit', $args)) $query['nearby_limit'] = $args['nearby_limit'];
+        if (array_key_exists('exclude_past', $args)) $query['exclude_past'] = $args['exclude_past'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
     }
@@ -581,7 +630,6 @@ class MiscApi {
         if (array_key_exists('time_start', $args)) $query['time_start'] = $args['time_start'];
         if (array_key_exists('time_end', $args)) $query['time_end'] = $args['time_end'];
         if (array_key_exists('limit', $args)) $query['limit'] = $args['limit'];
-        if (array_key_exists('sources', $args)) $query['sources'] = $args['sources'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
     }
@@ -652,6 +700,7 @@ class MiscApi {
         if (array_key_exists('tracking_number', $args)) $query['tracking_number'] = $args['tracking_number'];
         if (array_key_exists('carrier_code', $args)) $query['carrier_code'] = $args['carrier_code'];
         if (array_key_exists('phone', $args)) $query['phone'] = $args['phone'];
+        if (array_key_exists('full', $args)) $query['full'] = $args['full'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
     }
@@ -852,6 +901,18 @@ class SocialApi {
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
     }
+    function getGithubUser(array $args = []) {
+        $path='/api/v1/github/user';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('user', $args)) $query['user'] = $args['user'];
+        if (array_key_exists('activity', $args)) $query['activity'] = $args['activity'];
+        if (array_key_exists('activity_scope', $args)) $query['activity_scope'] = $args['activity_scope'];
+        if (array_key_exists('org', $args)) $query['org'] = $args['org'];
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+    }
     function getSocialBilibiliArchives(array $args = []) {
         $path='/api/v1/social/bilibili/archives';
         $query = [];
@@ -1043,6 +1104,28 @@ class TextApi {
         if (array_key_exists('to', $args)) $body['to'] = $args['to'];
         return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
     }
+    function postTextMarkdownToHtml(array $args = []) {
+        $path='/api/v1/text/markdown-to-html';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        if (array_key_exists('format', $args)) $body['format'] = $args['format'];
+        if (array_key_exists('sanitize', $args)) $body['sanitize'] = $args['sanitize'];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+    }
+    function postTextMarkdownToPdf(array $args = []) {
+        $path='/api/v1/text/markdown-to-pdf';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        if (array_key_exists('paper_size', $args)) $body['paper_size'] = $args['paper_size'];
+        if (array_key_exists('text', $args)) $body['text'] = $args['text'];
+        if (array_key_exists('theme', $args)) $body['theme'] = $args['theme'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+    }
     function postTextMd5(array $args = []) {
         $path='/api/v1/text/md5';
         $query = [];
@@ -1201,7 +1284,6 @@ class ZhiNengSouSuoApi {
         if (array_key_exists('site', $args)) $body['site'] = $args['site'];
         if (array_key_exists('sort', $args)) $body['sort'] = $args['sort'];
         if (array_key_exists('time_range', $args)) $body['time_range'] = $args['time_range'];
-        if (array_key_exists('timeout_ms', $args)) $body['timeout_ms'] = $args['timeout_ms'];
         return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
     }
 }
