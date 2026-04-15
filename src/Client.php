@@ -94,10 +94,16 @@ class Client {
         return $normalized;
     }
     /** @internal */
-    public function request(string $method, string $path, array $query = [], $body = null, ?bool $disableCache = null) {
+    public function request(string $method, string $path, array $query = [], $body = null, ?bool $disableCache = null, bool $multipart = false, array $fileFields = []) {
         $query = $this->applyCacheControl($method, $query, $disableCache);
         $path = ltrim($path, '/');
-        $res = $this->http->request($method, $path, ['query'=>$query, 'json'=>$body]);
+        $options = ['query' => $query];
+        if ($multipart) {
+            $options['multipart'] = $this->buildMultipartBody(is_array($body) ? $body : [], $fileFields);
+        } elseif ($body !== null) {
+            $options['json'] = $body;
+        }
+        $res = $this->http->request($method, $path, $options);
         $this->lastResponseMeta = $this->extractMeta($res->getHeaders());
         $status = $res->getStatusCode();
         if ($status >= 400) {
@@ -110,6 +116,62 @@ class Client {
         }
         $ct = $res->getHeaderLine('content-type');
         return str_contains($ct, 'application/json') ? json_decode((string)$res->getBody(), true) : (string)$res->getBody();
+    }
+
+    private function buildMultipartBody(array $body, array $fileFields): array {
+        $parts = [];
+        $fileFieldSet = array_fill_keys($fileFields, true);
+        foreach ($body as $name => $value) {
+            if ($value === null) {
+                continue;
+            }
+            if (isset($fileFieldSet[$name])) {
+                $parts[] = $this->makeMultipartFilePart($name, $value);
+                continue;
+            }
+            $parts[] = [
+                'name' => $name,
+                'contents' => $this->stringifyFormValue($value),
+            ];
+        }
+        return $parts;
+    }
+
+    private function makeMultipartFilePart(string $name, mixed $value): array {
+        if (is_resource($value)) {
+            return ['name' => $name, 'contents' => $value, 'filename' => 'upload.bin'];
+        }
+        if ($value instanceof \SplFileInfo) {
+            $path = $value->getPathname();
+            if (!is_file($path)) {
+                throw new \InvalidArgumentException("File not found: {$path}");
+            }
+            return ['name' => $name, 'contents' => fopen($path, 'rb'), 'filename' => $value->getBasename()];
+        }
+        if (is_array($value) && array_key_exists('contents', $value)) {
+            return [
+                'name' => $name,
+                'contents' => $value['contents'],
+                'filename' => $value['filename'] ?? 'upload.bin',
+            ];
+        }
+        if (is_string($value)) {
+            if (!is_file($value)) {
+                throw new \InvalidArgumentException("File not found: {$value}");
+            }
+            return ['name' => $name, 'contents' => fopen($value, 'rb'), 'filename' => basename($value)];
+        }
+        throw new \InvalidArgumentException(sprintf('Unsupported multipart file value for %s: %s', $name, get_debug_type($value)));
+    }
+
+    private function stringifyFormValue(mixed $value): string {
+        if (is_bool($value)) {
+            return $value ? 'true' : 'false';
+        }
+        if (is_array($value)) {
+            return json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?: '';
+        }
+        return (string) $value;
     }
     private function classByCode(string $code) {
         return match ($code) {
@@ -293,7 +355,7 @@ class ClipzyZaiXianJianTieBanApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('id', $args)) $query['id'] = $args['id'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getClipzyRaw(array $args = []) {
         $path='/api/v1/api/raw/{id}';
@@ -303,7 +365,7 @@ class ClipzyZaiXianJianTieBanApi {
         if (array_key_exists('id', $args)) $path = str_replace('{'.'id'.'}', strval($args['id']), $path);
         if (array_key_exists('key', $args)) $query['key'] = $args['key'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postClipzyStore(array $args = []) {
         $path='/api/v1/api/store';
@@ -313,7 +375,7 @@ class ClipzyZaiXianJianTieBanApi {
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('compressedData', $args)) $body['compressedData'] = $args['compressedData'];
         if (array_key_exists('ttl', $args)) $body['ttl'] = $args['ttl'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class ConvertApi {
@@ -325,7 +387,7 @@ class ConvertApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('time', $args)) $query['time'] = $args['time'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postConvertJson(array $args = []) {
         $path='/api/v1/convert/json';
@@ -334,7 +396,7 @@ class ConvertApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('content', $args)) $body['content'] = $args['content'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class DailyApi {
@@ -345,7 +407,7 @@ class DailyApi {
         $body = [];
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class GameApi {
@@ -356,7 +418,7 @@ class GameApi {
         $body = [];
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getGameMinecraftHistoryid(array $args = []) {
         $path='/api/v1/game/minecraft/historyid';
@@ -366,7 +428,7 @@ class GameApi {
         if (array_key_exists('name', $args)) $query['name'] = $args['name'];
         if (array_key_exists('uuid', $args)) $query['uuid'] = $args['uuid'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getGameMinecraftServerstatus(array $args = []) {
         $path='/api/v1/game/minecraft/serverstatus';
@@ -375,7 +437,7 @@ class GameApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('server', $args)) $query['server'] = $args['server'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getGameMinecraftUserinfo(array $args = []) {
         $path='/api/v1/game/minecraft/userinfo';
@@ -384,7 +446,7 @@ class GameApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('username', $args)) $query['username'] = $args['username'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getGameSteamSummary(array $args = []) {
         $path='/api/v1/game/steam/summary';
@@ -396,7 +458,7 @@ class GameApi {
         if (array_key_exists('id3', $args)) $query['id3'] = $args['id3'];
         if (array_key_exists('key', $args)) $query['key'] = $args['key'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class ImageApi {
@@ -412,7 +474,7 @@ class ImageApi {
         if (array_key_exists('d', $args)) $query['d'] = $args['d'];
         if (array_key_exists('r', $args)) $query['r'] = $args['r'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getImageBingDaily(array $args = []) {
         $path='/api/v1/image/bing-daily';
@@ -423,7 +485,7 @@ class ImageApi {
         if (array_key_exists('resolution', $args)) $query['resolution'] = $args['resolution'];
         if (array_key_exists('format', $args)) $query['format'] = $args['format'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getImageBingDailyHistory(array $args = []) {
         $path='/api/v1/image/bing-daily/history';
@@ -435,7 +497,7 @@ class ImageApi {
         if (array_key_exists('page', $args)) $query['page'] = $args['page'];
         if (array_key_exists('page_size', $args)) $query['page_size'] = $args['page_size'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getImageMotou(array $args = []) {
         $path='/api/v1/image/motou';
@@ -445,7 +507,7 @@ class ImageApi {
         if (array_key_exists('qq', $args)) $query['qq'] = $args['qq'];
         if (array_key_exists('bg_color', $args)) $query['bg_color'] = $args['bg_color'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getImageQrcode(array $args = []) {
         $path='/api/v1/image/qrcode';
@@ -459,7 +521,7 @@ class ImageApi {
         if (array_key_exists('fgcolor', $args)) $query['fgcolor'] = $args['fgcolor'];
         if (array_key_exists('bgcolor', $args)) $query['bgcolor'] = $args['bgcolor'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getImageTobase64(array $args = []) {
         $path='/api/v1/image/tobase64';
@@ -468,7 +530,7 @@ class ImageApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('url', $args)) $query['url'] = $args['url'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postImageCompress(array $args = []) {
         $path='/api/v1/image/compress';
@@ -479,7 +541,7 @@ class ImageApi {
         if (array_key_exists('format', $args)) $query['format'] = $args['format'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('file', $args)) $body['file'] = $args['file'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, true, ['file']);
     }
     function postImageDecode(array $args = []) {
         $path='/api/v1/image/decode';
@@ -497,7 +559,7 @@ class ImageApi {
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('file', $args)) $body['file'] = $args['file'];
         if (array_key_exists('url', $args)) $body['url'] = $args['url'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, true, ['file']);
     }
     function postImageFrombase64(array $args = []) {
         $path='/api/v1/image/frombase64';
@@ -506,7 +568,7 @@ class ImageApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('imageData', $args)) $body['imageData'] = $args['imageData'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postImageMotou(array $args = []) {
         $path='/api/v1/image/motou';
@@ -517,7 +579,7 @@ class ImageApi {
         if (array_key_exists('bg_color', $args)) $body['bg_color'] = $args['bg_color'];
         if (array_key_exists('file', $args)) $body['file'] = $args['file'];
         if (array_key_exists('image_url', $args)) $body['image_url'] = $args['image_url'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, true, ['file']);
     }
     function postImageNsfw(array $args = []) {
         $path='/api/v1/image/nsfw';
@@ -527,7 +589,7 @@ class ImageApi {
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('file', $args)) $body['file'] = $args['file'];
         if (array_key_exists('url', $args)) $body['url'] = $args['url'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, true, ['file']);
     }
     function postImageOcr(array $args = []) {
         $path='/api/v1/image/ocr';
@@ -542,7 +604,7 @@ class ImageApi {
         if (array_key_exists('need_location', $args)) $body['need_location'] = $args['need_location'];
         if (array_key_exists('return_markdown', $args)) $body['return_markdown'] = $args['return_markdown'];
         if (array_key_exists('url', $args)) $body['url'] = $args['url'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, true, ['file']);
     }
     function postImageSpeechless(array $args = []) {
         $path='/api/v1/image/speechless';
@@ -552,7 +614,7 @@ class ImageApi {
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('bottom_text', $args)) $body['bottom_text'] = $args['bottom_text'];
         if (array_key_exists('top_text', $args)) $body['top_text'] = $args['top_text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postImageSvg(array $args = []) {
         $path='/api/v1/image/svg';
@@ -565,7 +627,7 @@ class ImageApi {
         if (array_key_exists('quality', $args)) $query['quality'] = $args['quality'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('file', $args)) $body['file'] = $args['file'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, true, ['file']);
     }
 }
 class MiscApi {
@@ -578,7 +640,7 @@ class MiscApi {
         if (array_key_exists('month', $args)) $query['month'] = $args['month'];
         if (array_key_exists('day', $args)) $query['day'] = $args['day'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getHistoryProgrammerToday(array $args = []) {
         $path='/api/v1/history/programmer/today';
@@ -586,7 +648,7 @@ class MiscApi {
         $body = [];
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getMiscDistrict(array $args = []) {
         $path='/api/v1/misc/district';
@@ -601,7 +663,7 @@ class MiscApi {
         if (array_key_exists('country', $args)) $query['country'] = $args['country'];
         if (array_key_exists('limit', $args)) $query['limit'] = $args['limit'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getMiscHolidayCalendar(array $args = []) {
         $path='/api/v1/misc/holiday-calendar';
@@ -617,7 +679,7 @@ class MiscApi {
         if (array_key_exists('nearby_limit', $args)) $query['nearby_limit'] = $args['nearby_limit'];
         if (array_key_exists('exclude_past', $args)) $query['exclude_past'] = $args['exclude_past'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getMiscHotboard(array $args = []) {
         $path='/api/v1/misc/hotboard';
@@ -631,7 +693,7 @@ class MiscApi {
         if (array_key_exists('time_end', $args)) $query['time_end'] = $args['time_end'];
         if (array_key_exists('limit', $args)) $query['limit'] = $args['limit'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getMiscLunartime(array $args = []) {
         $path='/api/v1/misc/lunartime';
@@ -641,7 +703,7 @@ class MiscApi {
         if (array_key_exists('ts', $args)) $query['ts'] = $args['ts'];
         if (array_key_exists('timezone', $args)) $query['timezone'] = $args['timezone'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getMiscPhoneinfo(array $args = []) {
         $path='/api/v1/misc/phoneinfo';
@@ -650,7 +712,7 @@ class MiscApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('phone', $args)) $query['phone'] = $args['phone'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getMiscRandomnumber(array $args = []) {
         $path='/api/v1/misc/randomnumber';
@@ -664,7 +726,7 @@ class MiscApi {
         if (array_key_exists('allow_decimal', $args)) $query['allow_decimal'] = $args['allow_decimal'];
         if (array_key_exists('decimal_places', $args)) $query['decimal_places'] = $args['decimal_places'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getMiscTimestamp(array $args = []) {
         $path='/api/v1/misc/timestamp';
@@ -673,7 +735,7 @@ class MiscApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('ts', $args)) $query['ts'] = $args['ts'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getMiscTrackingCarriers(array $args = []) {
         $path='/api/v1/misc/tracking/carriers';
@@ -681,7 +743,7 @@ class MiscApi {
         $body = [];
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getMiscTrackingDetect(array $args = []) {
         $path='/api/v1/misc/tracking/detect';
@@ -690,7 +752,7 @@ class MiscApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('tracking_number', $args)) $query['tracking_number'] = $args['tracking_number'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getMiscTrackingQuery(array $args = []) {
         $path='/api/v1/misc/tracking/query';
@@ -702,7 +764,7 @@ class MiscApi {
         if (array_key_exists('phone', $args)) $query['phone'] = $args['phone'];
         if (array_key_exists('full', $args)) $query['full'] = $args['full'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getMiscWeather(array $args = []) {
         $path='/api/v1/misc/weather';
@@ -718,7 +780,7 @@ class MiscApi {
         if (array_key_exists('indices', $args)) $query['indices'] = $args['indices'];
         if (array_key_exists('lang', $args)) $query['lang'] = $args['lang'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getMiscWorldtime(array $args = []) {
         $path='/api/v1/misc/worldtime';
@@ -727,7 +789,7 @@ class MiscApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('city', $args)) $query['city'] = $args['city'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postMiscDateDiff(array $args = []) {
         $path='/api/v1/misc/date-diff';
@@ -738,7 +800,7 @@ class MiscApi {
         if (array_key_exists('end_date', $args)) $body['end_date'] = $args['end_date'];
         if (array_key_exists('format', $args)) $body['format'] = $args['format'];
         if (array_key_exists('start_date', $args)) $body['start_date'] = $args['start_date'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class NetworkApi {
@@ -751,7 +813,7 @@ class NetworkApi {
         if (array_key_exists('domain', $args)) $query['domain'] = $args['domain'];
         if (array_key_exists('type', $args)) $query['type'] = $args['type'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getNetworkIcp(array $args = []) {
         $path='/api/v1/network/icp';
@@ -760,7 +822,7 @@ class NetworkApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('domain', $args)) $query['domain'] = $args['domain'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getNetworkIpinfo(array $args = []) {
         $path='/api/v1/network/ipinfo';
@@ -770,7 +832,7 @@ class NetworkApi {
         if (array_key_exists('ip', $args)) $query['ip'] = $args['ip'];
         if (array_key_exists('source', $args)) $query['source'] = $args['source'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getNetworkMyip(array $args = []) {
         $path='/api/v1/network/myip';
@@ -779,7 +841,7 @@ class NetworkApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('source', $args)) $query['source'] = $args['source'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getNetworkPing(array $args = []) {
         $path='/api/v1/network/ping';
@@ -788,7 +850,7 @@ class NetworkApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('host', $args)) $query['host'] = $args['host'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getNetworkPingmyip(array $args = []) {
         $path='/api/v1/network/pingmyip';
@@ -796,7 +858,7 @@ class NetworkApi {
         $body = [];
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getNetworkPortscan(array $args = []) {
         $path='/api/v1/network/portscan';
@@ -807,7 +869,7 @@ class NetworkApi {
         if (array_key_exists('port', $args)) $query['port'] = $args['port'];
         if (array_key_exists('protocol', $args)) $query['protocol'] = $args['protocol'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getNetworkUrlstatus(array $args = []) {
         $path='/api/v1/network/urlstatus';
@@ -816,7 +878,7 @@ class NetworkApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('url', $args)) $query['url'] = $args['url'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getNetworkWhois(array $args = []) {
         $path='/api/v1/network/whois';
@@ -826,7 +888,7 @@ class NetworkApi {
         if (array_key_exists('domain', $args)) $query['domain'] = $args['domain'];
         if (array_key_exists('format', $args)) $query['format'] = $args['format'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getNetworkWxdomain(array $args = []) {
         $path='/api/v1/network/wxdomain';
@@ -835,7 +897,7 @@ class NetworkApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('domain', $args)) $query['domain'] = $args['domain'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class PoemApi {
@@ -846,7 +908,7 @@ class PoemApi {
         $body = [];
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class RandomApi {
@@ -858,7 +920,7 @@ class RandomApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('question', $args)) $query['question'] = $args['question'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getRandomImage(array $args = []) {
         $path='/api/v1/random/image';
@@ -868,7 +930,7 @@ class RandomApi {
         if (array_key_exists('category', $args)) $query['category'] = $args['category'];
         if (array_key_exists('type', $args)) $query['type'] = $args['type'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getRandomString(array $args = []) {
         $path='/api/v1/random/string';
@@ -878,7 +940,7 @@ class RandomApi {
         if (array_key_exists('length', $args)) $query['length'] = $args['length'];
         if (array_key_exists('type', $args)) $query['type'] = $args['type'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postAnswerbookAsk(array $args = []) {
         $path='/api/v1/answerbook/ask';
@@ -887,7 +949,7 @@ class RandomApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('question', $args)) $body['question'] = $args['question'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class SocialApi {
@@ -899,7 +961,7 @@ class SocialApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('repo', $args)) $query['repo'] = $args['repo'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getGithubUser(array $args = []) {
         $path='/api/v1/github/user';
@@ -911,7 +973,7 @@ class SocialApi {
         if (array_key_exists('activity_scope', $args)) $query['activity_scope'] = $args['activity_scope'];
         if (array_key_exists('org', $args)) $query['org'] = $args['org'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getSocialBilibiliArchives(array $args = []) {
         $path='/api/v1/social/bilibili/archives';
@@ -924,7 +986,7 @@ class SocialApi {
         if (array_key_exists('ps', $args)) $query['ps'] = $args['ps'];
         if (array_key_exists('pn', $args)) $query['pn'] = $args['pn'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getSocialBilibiliLiveroom(array $args = []) {
         $path='/api/v1/social/bilibili/liveroom';
@@ -934,7 +996,7 @@ class SocialApi {
         if (array_key_exists('mid', $args)) $query['mid'] = $args['mid'];
         if (array_key_exists('room_id', $args)) $query['room_id'] = $args['room_id'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getSocialBilibiliReplies(array $args = []) {
         $path='/api/v1/social/bilibili/replies';
@@ -946,7 +1008,7 @@ class SocialApi {
         if (array_key_exists('ps', $args)) $query['ps'] = $args['ps'];
         if (array_key_exists('pn', $args)) $query['pn'] = $args['pn'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getSocialBilibiliUserinfo(array $args = []) {
         $path='/api/v1/social/bilibili/userinfo';
@@ -955,7 +1017,7 @@ class SocialApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('uid', $args)) $query['uid'] = $args['uid'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getSocialBilibiliVideoinfo(array $args = []) {
         $path='/api/v1/social/bilibili/videoinfo';
@@ -965,7 +1027,7 @@ class SocialApi {
         if (array_key_exists('aid', $args)) $query['aid'] = $args['aid'];
         if (array_key_exists('bvid', $args)) $query['bvid'] = $args['bvid'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getSocialQqGroupinfo(array $args = []) {
         $path='/api/v1/social/qq/groupinfo';
@@ -974,7 +1036,7 @@ class SocialApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('group_id', $args)) $query['group_id'] = $args['group_id'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getSocialQqUserinfo(array $args = []) {
         $path='/api/v1/social/qq/userinfo';
@@ -983,7 +1045,7 @@ class SocialApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('qq', $args)) $query['qq'] = $args['qq'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class StatusApi {
@@ -994,7 +1056,7 @@ class StatusApi {
         $body = [];
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getStatusUsage(array $args = []) {
         $path='/api/v1/status/usage';
@@ -1003,7 +1065,7 @@ class StatusApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('path', $args)) $query['path'] = $args['path'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class TextApi {
@@ -1015,7 +1077,7 @@ class TextApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('text', $args)) $query['text'] = $args['text'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTextAesDecrypt(array $args = []) {
         $path='/api/v1/text/aes/decrypt';
@@ -1026,7 +1088,7 @@ class TextApi {
         if (array_key_exists('key', $args)) $body['key'] = $args['key'];
         if (array_key_exists('nonce', $args)) $body['nonce'] = $args['nonce'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTextAesDecryptAdvanced(array $args = []) {
         $path='/api/v1/text/aes/decrypt-advanced';
@@ -1039,7 +1101,7 @@ class TextApi {
         if (array_key_exists('mode', $args)) $body['mode'] = $args['mode'];
         if (array_key_exists('padding', $args)) $body['padding'] = $args['padding'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTextAesEncrypt(array $args = []) {
         $path='/api/v1/text/aes/encrypt';
@@ -1049,7 +1111,7 @@ class TextApi {
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('key', $args)) $body['key'] = $args['key'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTextAesEncryptAdvanced(array $args = []) {
         $path='/api/v1/text/aes/encrypt-advanced';
@@ -1063,7 +1125,7 @@ class TextApi {
         if (array_key_exists('output_format', $args)) $body['output_format'] = $args['output_format'];
         if (array_key_exists('padding', $args)) $body['padding'] = $args['padding'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTextAnalyze(array $args = []) {
         $path='/api/v1/text/analyze';
@@ -1072,7 +1134,7 @@ class TextApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTextBase64Decode(array $args = []) {
         $path='/api/v1/text/base64/decode';
@@ -1081,7 +1143,7 @@ class TextApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTextBase64Encode(array $args = []) {
         $path='/api/v1/text/base64/encode';
@@ -1090,7 +1152,7 @@ class TextApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTextConvert(array $args = []) {
         $path='/api/v1/text/convert';
@@ -1102,7 +1164,7 @@ class TextApi {
         if (array_key_exists('options', $args)) $body['options'] = $args['options'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
         if (array_key_exists('to', $args)) $body['to'] = $args['to'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTextMarkdownToHtml(array $args = []) {
         $path='/api/v1/text/markdown-to-html';
@@ -1113,7 +1175,7 @@ class TextApi {
         if (array_key_exists('format', $args)) $body['format'] = $args['format'];
         if (array_key_exists('sanitize', $args)) $body['sanitize'] = $args['sanitize'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTextMarkdownToPdf(array $args = []) {
         $path='/api/v1/text/markdown-to-pdf';
@@ -1124,7 +1186,7 @@ class TextApi {
         if (array_key_exists('paper_size', $args)) $body['paper_size'] = $args['paper_size'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
         if (array_key_exists('theme', $args)) $body['theme'] = $args['theme'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTextMd5(array $args = []) {
         $path='/api/v1/text/md5';
@@ -1133,7 +1195,7 @@ class TextApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTextMd5Verify(array $args = []) {
         $path='/api/v1/text/md5/verify';
@@ -1143,7 +1205,7 @@ class TextApi {
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('hash', $args)) $body['hash'] = $args['hash'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class TranslateApi {
@@ -1154,7 +1216,7 @@ class TranslateApi {
         $body = [];
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postAiTranslate(array $args = []) {
         $path='/api/v1/ai/translate';
@@ -1168,7 +1230,7 @@ class TranslateApi {
         if (array_key_exists('source_lang', $args)) $body['source_lang'] = $args['source_lang'];
         if (array_key_exists('style', $args)) $body['style'] = $args['style'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTranslateStream(array $args = []) {
         $path='/api/v1/translate/stream';
@@ -1180,7 +1242,7 @@ class TranslateApi {
         if (array_key_exists('query', $args)) $body['query'] = $args['query'];
         if (array_key_exists('to_lang', $args)) $body['to_lang'] = $args['to_lang'];
         if (array_key_exists('tone', $args)) $body['tone'] = $args['tone'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postTranslateText(array $args = []) {
         $path='/api/v1/translate/text';
@@ -1190,7 +1252,7 @@ class TranslateApi {
         if (array_key_exists('to_lang', $args)) $query['to_lang'] = $args['to_lang'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class WebparseApi {
@@ -1202,7 +1264,7 @@ class WebparseApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('task_id', $args)) $path = str_replace('{'.'task_id'.'}', strval($args['task_id']), $path);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getWebparseExtractimages(array $args = []) {
         $path='/api/v1/webparse/extractimages';
@@ -1211,7 +1273,7 @@ class WebparseApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('url', $args)) $query['url'] = $args['url'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function getWebparseMetadata(array $args = []) {
         $path='/api/v1/webparse/metadata';
@@ -1220,7 +1282,7 @@ class WebparseApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('url', $args)) $query['url'] = $args['url'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postWebTomarkdownAsync(array $args = []) {
         $path='/api/v1/web/tomarkdown/async';
@@ -1229,7 +1291,7 @@ class WebparseApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('url', $args)) $query['url'] = $args['url'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class MinGanCiShiBieApi {
@@ -1241,7 +1303,7 @@ class MinGanCiShiBieApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('keyword', $args)) $query['keyword'] = $args['keyword'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postSensitiveWordAnalyze(array $args = []) {
         $path='/api/v1/sensitive-word/analyze';
@@ -1250,7 +1312,7 @@ class MinGanCiShiBieApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('keywords', $args)) $body['keywords'] = $args['keywords'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postSensitiveWordQuickCheck(array $args = []) {
         $path='/api/v1/text/profanitycheck';
@@ -1259,7 +1321,7 @@ class MinGanCiShiBieApi {
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         if (array_key_exists('text', $args)) $body['text'] = $args['text'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
 class ZhiNengSouSuoApi {
@@ -1270,7 +1332,7 @@ class ZhiNengSouSuoApi {
         $body = [];
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
-        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
     function postSearchAggregate(array $args = []) {
         $path='/api/v1/search/aggregate';
@@ -1284,6 +1346,6 @@ class ZhiNengSouSuoApi {
         if (array_key_exists('site', $args)) $body['site'] = $args['site'];
         if (array_key_exists('sort', $args)) $body['sort'] = $args['sort'];
         if (array_key_exists('time_range', $args)) $body['time_range'] = $args['time_range'];
-        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache);
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
