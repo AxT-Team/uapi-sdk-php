@@ -1,6 +1,44 @@
 {
   "name": "axt-team/uapi-sdk-php",
+  "description": "Official PHP SDK for UAPI / uapis.cn — typed PHP 8.1+ wrapper around 100+ free public-API endpoints (network, text, image, social, translation, search). Generated from the live OpenAPI 3.1 spec.",
   "type": "library",
-  "require": { "php": ">=8.1", "guzzlehttp/guzzle": "^7.8" },
-  "autoload": { "psr-4": { "Uapi\\": "src/" } }
+  "license": "MIT",
+  "homepage": "https://uapis.cn/docs/sdk/php",
+  "keywords": [
+    "uapi",
+    "uapis",
+    "uapis.cn",
+    "sdk",
+    "php",
+    "public-api",
+    "free-api",
+    "rest",
+    "rest-api",
+    "openapi",
+    "client",
+    "http",
+    "ai",
+    "agent"
+  ],
+  "authors": [
+    {
+      "name": "UAPI",
+      "email": "dev@uapis.cn",
+      "homepage": "https://uapis.cn"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/AxT-Team/uapi-sdk-php/issues",
+    "source": "https://github.com/AxT-Team/uapi-sdk-php",
+    "docs": "https://uapis.cn/docs"
+  },
+  "require": {
+    "php": ">=8.1",
+    "guzzlehttp/guzzle": "^7.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Uapi\\": "src/"
+    }
+  }
 }
