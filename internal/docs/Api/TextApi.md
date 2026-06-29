@@ -1,8 +1,8 @@
 # OpenAPI\Client\TextApi
 
-提供一系列文本处理工具，包括加解密、哈希计算、内容分析等。
 
-All URIs are relative to https://uapis.cn/api/v1, except if the operation defines another base path.
+
+All URIs are relative to https://uapis.cn, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |

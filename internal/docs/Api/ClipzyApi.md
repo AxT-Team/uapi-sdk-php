@@ -2,7 +2,7 @@
 
 
 
-All URIs are relative to https://uapis.cn/api/v1, except if the operation defines another base path.
+All URIs are relative to https://uapis.cn, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -133,7 +133,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `text/plain`, `application/json`
+- **Accept**: `text/plain; charset=utf-8`, `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

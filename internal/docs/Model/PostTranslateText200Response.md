@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_lang** | **string** | The source language detected. | [optional]
-**translated_text** | **string** | The translated text. | [optional]
+**text** | **string** | 原始文本。 | [optional]
+**translate** | **string** | 翻译后的文本。 | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

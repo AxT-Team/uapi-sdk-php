@@ -1,8 +1,8 @@
 # OpenAPI\Client\StatusApi
 
-提供API自身的状态、监控和使用情况统计。通常需要管理员权限才能访问。
 
-All URIs are relative to https://uapis.cn/api/v1, except if the operation defines another base path.
+
+All URIs are relative to https://uapis.cn, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |

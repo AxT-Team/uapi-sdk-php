@@ -1,8 +1,8 @@
 # OpenAPI\Client\MiscApi
 
-一个“百宝箱”，集合了各种实用但不好归类的API，从查天气到查热榜，应有尽有。
 
-All URIs are relative to https://uapis.cn/api/v1, except if the operation defines another base path.
+
+All URIs are relative to https://uapis.cn, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -12,6 +12,8 @@ All URIs are relative to https://uapis.cn/api/v1, except if the operation define
 | [**getMiscHolidayCalendar()**](MiscApi.md#getMiscHolidayCalendar) | **GET** /misc/holiday-calendar | 查询节假日与万年历 |
 | [**getMiscHotboard()**](MiscApi.md#getMiscHotboard) | **GET** /misc/hotboard | 查询热榜 |
 | [**getMiscLunartime()**](MiscApi.md#getMiscLunartime) | **GET** /misc/lunartime | 查询农历时间 |
+| [**getMiscMovieBoxOffice()**](MiscApi.md#getMiscMovieBoxOffice) | **GET** /misc/movie-box-office | 查询电影票房 |
+| [**getMiscMovieRatingRank()**](MiscApi.md#getMiscMovieRatingRank) | **GET** /misc/movie-rating-rank | 电影收视排行查询 |
 | [**getMiscPhoneinfo()**](MiscApi.md#getMiscPhoneinfo) | **GET** /misc/phoneinfo | 查询手机归属地 |
 | [**getMiscRandomnumber()**](MiscApi.md#getMiscRandomnumber) | **GET** /misc/randomnumber | 随机数生成 |
 | [**getMiscTimestamp()**](MiscApi.md#getMiscTimestamp) | **GET** /misc/timestamp | 转换时间戳 (旧版，推荐使用/convert/unixtime) |
@@ -19,6 +21,7 @@ All URIs are relative to https://uapis.cn/api/v1, except if the operation define
 | [**getMiscTrackingDetect()**](MiscApi.md#getMiscTrackingDetect) | **GET** /misc/tracking/detect | 识别快递公司 |
 | [**getMiscTrackingQuery()**](MiscApi.md#getMiscTrackingQuery) | **GET** /misc/tracking/query | 查询快递物流信息 |
 | [**getMiscWeather()**](MiscApi.md#getMiscWeather) | **GET** /misc/weather | 查询天气 |
+| [**getMiscWeatherHistory()**](MiscApi.md#getMiscWeatherHistory) | **GET** /misc/weather/history | 查询历史天气 |
 | [**getMiscWorldtime()**](MiscApi.md#getMiscWorldtime) | **GET** /misc/worldtime | 查询世界时间 |
 | [**postMiscDateDiff()**](MiscApi.md#postMiscDateDiff) | **POST** /misc/date-diff | 计算两个日期之间的时间差值 |
 
@@ -225,7 +228,7 @@ $apiInstance = new OpenAPI\Client\Api\MiscApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$date = 2025-10-01; // string | 按天查询时填写这个参数，例如查某一天。格式：`YYYY-MM-DD`。和 `month`、`year` 三选一。
+$date = 'date_example'; // string | 按天查询时填写这个参数，例如查某一天。格式：`YYYY-MM-DD`。和 `month`、`year` 三选一。
 $month = 'month_example'; // string | 按月查询时填写这个参数，例如查某个月。格式：`YYYY-MM`。和 `date`、`year` 三选一。
 $year = 'year_example'; // string | 按年查询时填写这个参数，例如查某一年。格式：`YYYY`。和 `date`、`month` 三选一。
 $timezone = Asia/Shanghai; // string | 时区名称，默认 Asia/Shanghai。
@@ -280,7 +283,7 @@ getMiscHotboard($type, $time, $keyword, $time_start, $time_end, $limit): \OpenAP
 
 查询热榜
 
-想快速跟上网络热点？这个接口让你一网打尽各大主流平台的实时热榜/热搜！  ## 功能概述 你只需要指定一个平台类型，就能获取到该平台当前的热榜数据列表。每个热榜条目都包含标题、热度值和原始链接。非常适合用于制作信息聚合类应用或看板。  ## 三种使用模式  ### 默认模式 只传 `type` 参数，返回该平台当前的实时热榜。  ### 时光机模式 传 `type` + `time` 参数，返回最接近指定时间的热榜快照。如果不可用或无数据，会返回空。  ### 搜索模式 传 `type` + `keyword` + `time_start` + `time_end` 参数，在指定时间范围内搜索包含关键词的热榜条目。可选传 `limit` 限制返回数量。
+想快速跟上网络热点？这个接口让你一网打尽各大主流平台的实时热榜/热搜！  ## 功能概述 你只需要指定一个平台类型，就能获取到该平台当前的热榜数据列表。每个热榜条目都包含标题、热度值和原始链接。非常适合用于制作信息聚合类应用或看板。  ## 三种使用模式  ### 默认模式 只传 `type` 参数，返回该平台当前的实时热榜。  ### 时光机模式 传 `type` + `time` 参数，返回指定时间附近最近可展示的历史热榜快照。  ### 搜索模式 传 `type` + `keyword` + `time_start` + `time_end` 参数，在指定历史时间范围内搜索包含关键词的热榜条目。可选传 `limit` 限制返回数量。
 
 ### Example
 
@@ -296,10 +299,10 @@ $apiInstance = new OpenAPI\Client\Api\MiscApi(
     new GuzzleHttp\Client()
 );
 $type = weibo; // string | 你想要查询的热榜平台。请从[支持的平台列表](#enum-list)中选择。
-$time = 56; // int | 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。
-$keyword = 'keyword_example'; // string | 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。
-$time_start = 56; // int | 搜索模式必填：搜索起始时间戳（毫秒）。
-$time_end = 56; // int | 搜索模式必填：搜索结束时间戳（毫秒）。
+$time = 56; // int | 时光机模式：毫秒时间戳，返回该时间附近最近可展示的历史热榜快照。不传则返回当前实时热榜。
+$keyword = 'keyword_example'; // string | 搜索模式：搜索关键词，在指定历史时间范围内搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。
+$time_start = 56; // int | 搜索模式必填：搜索起始时间戳（毫秒），需位于该平台历史数据覆盖范围内。
+$time_end = 56; // int | 搜索模式必填：搜索结束时间戳（毫秒），需晚于 time_start 且位于该平台历史数据覆盖范围内。
 $limit = 56; // int | 搜索模式下最大返回条数，默认 50，最大 200。
 
 try {
@@ -315,10 +318,10 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **type** | **string**| 你想要查询的热榜平台。请从[支持的平台列表](#enum-list)中选择。 | |
-| **time** | **int**| 时光机模式：毫秒时间戳，返回最接近该时间的热榜快照。不传则返回当前实时热榜。 | [optional] |
-| **keyword** | **string**| 搜索模式：搜索关键词，在历史热榜中搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 | [optional] |
-| **time_start** | **int**| 搜索模式必填：搜索起始时间戳（毫秒）。 | [optional] |
-| **time_end** | **int**| 搜索模式必填：搜索结束时间戳（毫秒）。 | [optional] |
+| **time** | **int**| 时光机模式：毫秒时间戳，返回该时间附近最近可展示的历史热榜快照。不传则返回当前实时热榜。 | [optional] |
+| **keyword** | **string**| 搜索模式：搜索关键词，在指定历史时间范围内搜索包含该关键词的条目。需配合 time_start 和 time_end 使用。 | [optional] |
+| **time_start** | **int**| 搜索模式必填：搜索起始时间戳（毫秒），需位于该平台历史数据覆盖范围内。 | [optional] |
+| **time_end** | **int**| 搜索模式必填：搜索结束时间戳（毫秒），需晚于 time_start 且位于该平台历史数据覆盖范围内。 | [optional] |
 | **limit** | **int**| 搜索模式下最大返回条数，默认 50，最大 200。 | [optional] |
 
 ### Return type
@@ -382,6 +385,123 @@ try {
 ### Return type
 
 [**\OpenAPI\Client\Model\GetMiscLunartime200Response**](../Model/GetMiscLunartime200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getMiscMovieBoxOffice()`
+
+```php
+getMiscMovieBoxOffice(): \OpenAPI\Client\Model\GetMiscMovieBoxOffice200Response
+```
+
+查询电影票房
+
+正在做影视类应用，想直观展示今天哪部电影最卖座？大盘总票房突破了多少？这个接口能帮你实时获取院线大盘和影片票房排名。  ## 功能概述 调用此接口，无需任何参数，即可获取当前实时的电影市场大盘数据（包含总票房、总场次、总人次），以及每一部上映影片的具体表现（包括票房明细、排片占比、上座率、场均人次和累计票房等）。
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\MiscApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+
+try {
+    $result = $apiInstance->getMiscMovieBoxOffice();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MiscApi->getMiscMovieBoxOffice: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetMiscMovieBoxOffice200Response**](../Model/GetMiscMovieBoxOffice200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getMiscMovieRatingRank()`
+
+```php
+getMiscMovieRatingRank($channel, $platform, $limit, $period, $date): \OpenAPI\Client\Model\GetMiscMovieRatingRank200Response
+```
+
+电影收视排行查询
+
+想做影视榜单页或选题分析？这个接口提供影视的收视、热度和评分排行，既能查实时榜，也能按日、周、月回看历史快照。  ## 功能概述 用 `channel` 切换全网、卫视、网络平台或院线榜单，用 `period` + `date` 查询历史日榜、周榜和月榜。适合影视资讯页、数据看板、自媒体选题和内容运营分析。
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\MiscApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$channel = 'all'; // string | 渠道：all（全网）、tv（卫视）、web（网络平台）、cinema（院线），默认 all。
+$platform = 爱奇艺; // string | 按渠道或平台关键字过滤，例如 卫视、爱奇艺。
+$limit = 10; // int | 每个渠道仅返回前 N 条。
+$period = 'realtime'; // string | 排行周期：realtime、day、week、month，默认 realtime。
+$date = 2026-06-08; // string | 历史快照日期，格式 YYYY-MM-DD；用于 day/week/month。
+
+try {
+    $result = $apiInstance->getMiscMovieRatingRank($channel, $platform, $limit, $period, $date);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MiscApi->getMiscMovieRatingRank: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **channel** | **string**| 渠道：all（全网）、tv（卫视）、web（网络平台）、cinema（院线），默认 all。 | [optional] [default to &#39;all&#39;] |
+| **platform** | **string**| 按渠道或平台关键字过滤，例如 卫视、爱奇艺。 | [optional] |
+| **limit** | **int**| 每个渠道仅返回前 N 条。 | [optional] |
+| **period** | **string**| 排行周期：realtime、day、week、month，默认 realtime。 | [optional] [default to &#39;realtime&#39;] |
+| **date** | **string**| 历史快照日期，格式 YYYY-MM-DD；用于 day/week/month。 | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetMiscMovieRatingRank200Response**](../Model/GetMiscMovieRatingRank200Response.md)
 
 ### Authorization
 
@@ -460,7 +580,7 @@ getMiscRandomnumber($min, $max, $count, $allow_repeat, $allow_decimal, $decimal_
 
 随机数生成
 
-需要一个简单的随机数，还是需要一串不重复的、带小数的随机数？这个接口都能满足你！  ## 功能概述 这是一个强大的随机数生成器。你可以指定生成的范围（最大/最小值）、数量、是否允许重复、以及是否生成小数（并指定小数位数）。  ## 流程图 ```mermaid graph TD     A[开始] --> B{参数校验};     B --> |通过| C{是否允许小数?};     C --> |是| D[生成随机小数];     C --> |否| E[生成随机整数];     D --> F{是否允许重复?};     E --> F;     F --> |是| G[直接生成指定数量];     F --> |否| H[生成不重复的数字];     G --> I[返回结果];     H --> I;     B --> |失败| J[返回 400 错误]; ``` ## 使用须知 > [!WARNING] > **不重复生成的逻辑限制** > 当设置 `allow_repeat=false` 时，请确保取值范围 `(max - min + 1)` 大于或等于你请求的数量 `count`。否则，系统将无法生成足够的不重复数字，请求会失败并返回 400 错误。
+需要一个简单的随机数，还是需要一串不重复的、带小数的随机数？这个接口都能满足你！  ## 功能概述 这是一个强大的随机数生成器。你可以指定生成的范围（最大/最小值）、数量、是否允许重复、以及是否生成小数（并指定小数位数）。  ## 使用须知 > [!WARNING] > **不重复生成的逻辑限制** > 当设置 `allow_repeat=false` 时，请确保取值范围 `(max - min + 1)` 大于或等于你请求的数量 `count`。否则，系统将无法生成足够的不重复数字，请求会失败并返回 400 错误。
 
 ### Example
 
@@ -686,7 +806,7 @@ No authorization required
 ## `getMiscTrackingQuery()`
 
 ```php
-getMiscTrackingQuery($tracking_number, $carrier_code, $phone, $full): \OpenAPI\Client\Model\GetMiscTrackingQuery200Response
+getMiscTrackingQuery($tracking_number, $carrier_code, $phone): \OpenAPI\Client\Model\GetMiscTrackingQuery200Response
 ```
 
 查询快递物流信息
@@ -709,10 +829,9 @@ $apiInstance = new OpenAPI\Client\Api\MiscApi(
 $tracking_number = YT1234567890123; // string | 快递单号，通常是一串10-20位的数字或字母数字组合。
 $carrier_code = 'carrier_code_example'; // string | 快递公司编码（可选）。不填写时系统会自动识别，填写后可加快查询速度。
 $phone = 'phone_example'; // string | 收件人手机尾号，4位数字（可选）。部分快递公司需要验证手机尾号才能查询详细物流信息。
-$full = True; // bool | 使用这个参数可以获得完整的物流信息。但会消耗34积分/一次（不过缓存命中半价）。因为成本实在太贵了，否则非常非常亏说是
 
 try {
-    $result = $apiInstance->getMiscTrackingQuery($tracking_number, $carrier_code, $phone, $full);
+    $result = $apiInstance->getMiscTrackingQuery($tracking_number, $carrier_code, $phone);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MiscApi->getMiscTrackingQuery: ', $e->getMessage(), PHP_EOL;
@@ -726,7 +845,6 @@ try {
 | **tracking_number** | **string**| 快递单号，通常是一串10-20位的数字或字母数字组合。 | |
 | **carrier_code** | **string**| 快递公司编码（可选）。不填写时系统会自动识别，填写后可加快查询速度。 | [optional] |
 | **phone** | **string**| 收件人手机尾号，4位数字（可选）。部分快递公司需要验证手机尾号才能查询详细物流信息。 | [optional] |
-| **full** | **bool**| 使用这个参数可以获得完整的物流信息。但会消耗34积分/一次（不过缓存命中半价）。因为成本实在太贵了，否则非常非常亏说是 | [optional] |
 
 ### Return type
 
@@ -815,6 +933,72 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getMiscWeatherHistory()`
+
+```php
+getMiscWeatherHistory($city, $adcode, $start_date, $end_date, $days, $lang): \OpenAPI\Client\Model\GetMiscWeatherHistory200Response
+```
+
+查询历史天气
+
+想知道某个城市过去一段时间有没有下雨、降雨量是多少？这个接口用于查询过去最多 366 天的城市每日历史天气。  ## 功能概述 支持按 `city`、`adcode` 或客户端 IP 自动定位查询。你可以传 `start_date` + `end_date` 指定日期范围，也可以只传 `days` 回看最近若干天。返回结果重点包含 `rained` 与 `rain`，适合做出行复盘、农业记录、气象看板和数据分析。  ## 使用须知 > [!NOTE] > 定位优先级：`adcode` > `city` > IP 自动定位。同时传 `start_date` 和 `days` 时，以 `start_date` + `end_date` 区间为准。
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\MiscApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$city = 北京; // string | 城市名称，支持中文或英文；可选，不传 city/adcode 时会尝试 IP 自动定位。
+$adcode = 110000; // string | 6 位行政区划代码，优先级高于 city。
+$start_date = 2026-05-01; // string | 起始日期，格式 YYYY-MM-DD；与 end_date 搭配使用。
+$end_date = 2026-05-31; // string | 结束日期，格式 YYYY-MM-DD，默认昨天。
+$days = 30; // int | 回看天数，1-366，默认 365；仅在未指定 start_date 时生效。
+$lang = 'zh'; // string | 返回语言：zh（默认）或 en。
+
+try {
+    $result = $apiInstance->getMiscWeatherHistory($city, $adcode, $start_date, $end_date, $days, $lang);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MiscApi->getMiscWeatherHistory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **city** | **string**| 城市名称，支持中文或英文；可选，不传 city/adcode 时会尝试 IP 自动定位。 | [optional] |
+| **adcode** | **string**| 6 位行政区划代码，优先级高于 city。 | [optional] |
+| **start_date** | **string**| 起始日期，格式 YYYY-MM-DD；与 end_date 搭配使用。 | [optional] |
+| **end_date** | **string**| 结束日期，格式 YYYY-MM-DD，默认昨天。 | [optional] |
+| **days** | **int**| 回看天数，1-366，默认 365；仅在未指定 start_date 时生效。 | [optional] [default to 365] |
+| **lang** | **string**| 返回语言：zh（默认）或 en。 | [optional] [default to &#39;zh&#39;] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetMiscWeatherHistory200Response**](../Model/GetMiscWeatherHistory200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getMiscWorldtime()`
 
 ```php
@@ -838,7 +1022,7 @@ $apiInstance = new OpenAPI\Client\Api\MiscApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$city = Asia/Shanghai; // string | 你需要查询的城市或地区，请使用标准的 IANA 时区数据库名称，例如 'Shanghai', 'Asia/Tokyo', 'America/New_York'。
+$city = Asia/Shanghai; // string | 你需要查询的城市或地区。请从[支持的时区列表](#enum-list)中选择标准 IANA 时区名称，例如 'Asia/Shanghai', 'Asia/Tokyo', 'America/New_York'。
 
 try {
     $result = $apiInstance->getMiscWorldtime($city);
@@ -852,7 +1036,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **city** | **string**| 你需要查询的城市或地区，请使用标准的 IANA 时区数据库名称，例如 &#39;Shanghai&#39;, &#39;Asia/Tokyo&#39;, &#39;America/New_York&#39;。 | |
+| **city** | **string**| 你需要查询的城市或地区。请从[支持的时区列表](#enum-list)中选择标准 IANA 时区名称，例如 &#39;Asia/Shanghai&#39;, &#39;Asia/Tokyo&#39;, &#39;America/New_York&#39;。 | |
 
 ### Return type
 

@@ -1,8 +1,8 @@
 # OpenAPI\Client\TranslateApi
 
-提供文本翻译服务，打破语言的壁垒。
 
-All URIs are relative to https://uapis.cn/api/v1, except if the operation defines another base path.
+
+All URIs are relative to https://uapis.cn, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |

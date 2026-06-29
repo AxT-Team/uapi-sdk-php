@@ -1,8 +1,8 @@
 # OpenAPI\Client\WebParseApi
 
-提供网页内容解析和提取的工具。
 
-All URIs are relative to https://uapis.cn/api/v1, except if the operation defines another base path.
+
+All URIs are relative to https://uapis.cn, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |

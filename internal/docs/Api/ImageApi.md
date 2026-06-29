@@ -1,8 +1,8 @@
 # OpenAPI\Client\ImageApi
 
-提供一系列与图片处理和获取相关的功能，从生成二维码到获取壁纸，应有尽有。
 
-All URIs are relative to https://uapis.cn/api/v1, except if the operation defines another base path.
+
+All URIs are relative to https://uapis.cn, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -80,7 +80,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `image/*`, `application/json`
+- **Accept**: `image/png`, `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -89,7 +89,7 @@ No authorization required
 ## `getImageBingDaily()`
 
 ```php
-getImageBingDaily($date, $resolution, $format): \SplFileObject
+getImageBingDaily($date, $random, $resolution, $format): \SplFileObject
 ```
 
 获取必应每日壁纸
@@ -110,11 +110,12 @@ $apiInstance = new OpenAPI\Client\Api\ImageApi(
     new GuzzleHttp\Client()
 );
 $date = 'date_example'; // string | 壁纸日期，格式是 `YYYY-MM-DD`。不传时返回当天壁纸。
+$random = true; // bool | 是否每次请求随机返回一张历史壁纸。传 `true` 时生效；不能和 `date` 同时使用。不传或传 `false` 时保持默认当天/指定日期逻辑。
 $resolution = 4k; // string | 返回图片的目标分辨率。可以传 `4k` 或 `1080`，不传时默认是 `4k`。
 $format = 'image'; // string | 响应格式。可以传 `image`、`json` 或 `redirect`。不传时默认是 `image`。
 
 try {
-    $result = $apiInstance->getImageBingDaily($date, $resolution, $format);
+    $result = $apiInstance->getImageBingDaily($date, $random, $resolution, $format);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ImageApi->getImageBingDaily: ', $e->getMessage(), PHP_EOL;
@@ -126,6 +127,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **date** | **string**| 壁纸日期，格式是 &#x60;YYYY-MM-DD&#x60;。不传时返回当天壁纸。 | [optional] |
+| **random** | **bool**| 是否每次请求随机返回一张历史壁纸。传 &#x60;true&#x60; 时生效；不能和 &#x60;date&#x60; 同时使用。不传或传 &#x60;false&#x60; 时保持默认当天/指定日期逻辑。 | [optional] [default to false] |
 | **resolution** | **string**| 返回图片的目标分辨率。可以传 &#x60;4k&#x60; 或 &#x60;1080&#x60;，不传时默认是 &#x60;4k&#x60;。 | [optional] [default to &#39;4k&#39;] |
 | **format** | **string**| 响应格式。可以传 &#x60;image&#x60;、&#x60;json&#x60; 或 &#x60;redirect&#x60;。不传时默认是 &#x60;image&#x60;。 | [optional] [default to &#39;image&#39;] |
 
@@ -442,7 +444,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: `multipart/form-data`
-- **Accept**: `image/*`, `application/json`
+- **Accept**: `image/png`, `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -471,8 +473,8 @@ $apiInstance = new OpenAPI\Client\Api\ImageApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$width = 56; // int | 目标宽度，单位是像素。可以单独传，也可以和 `height` 一起传。与 `max_width`、`max_height` 互斥。
-$height = 56; // int | 目标高度，单位是像素。可以单独传，也可以和 `width` 一起传。与 `max_width`、`max_height` 互斥。
+$width = 800; // int | 目标宽度，单位是像素。可以单独传，也可以和 `height` 一起传。与 `max_width`、`max_height` 互斥。
+$height = 600; // int | 目标高度，单位是像素。可以单独传，也可以和 `width` 一起传。与 `max_width`、`max_height` 互斥。
 $max_width = 56; // int | 最大宽度，单位是像素。只有在不传 `width`、`height` 时才生效，会按原比例缩放。
 $max_height = 56; // int | 最大高度，单位是像素。只有在不传 `width`、`height` 时才生效，会按原比例缩放。
 $format = 'bmp'; // string | 输出格式。可以传 `bmp`、`rgb565` 或 `rgb888`，不传时默认是 `bmp`。
@@ -581,7 +583,7 @@ No authorization required
 ## `postImageMotou()`
 
 ```php
-postImageMotou($image_url, $file, $bg_color): \SplFileObject
+postImageMotou($bg_color, $file, $image_url): \SplFileObject
 ```
 
 生成摸摸头GIF
@@ -601,12 +603,12 @@ $apiInstance = new OpenAPI\Client\Api\ImageApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$image_url = 'image_url_example'; // string | 图片的URL地址。如果提供此项，将优先使用该URL的图片。
-$file = '/path/to/file.txt'; // \SplFileObject | 上传的图片文件。支持JPG、PNG、GIF等常见格式。
 $bg_color = 'bg_color_example'; // string | GIF的背景颜色。可选值为 'white', 'black', 'transparent'。
+$file = '/path/to/file.txt'; // \SplFileObject | 上传的图片文件。支持JPG、PNG、GIF等常见格式。
+$image_url = 'image_url_example'; // string | 图片的URL地址。如果提供此项，将优先使用该URL的图片。
 
 try {
-    $result = $apiInstance->postImageMotou($image_url, $file, $bg_color);
+    $result = $apiInstance->postImageMotou($bg_color, $file, $image_url);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ImageApi->postImageMotou: ', $e->getMessage(), PHP_EOL;
@@ -617,9 +619,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **image_url** | **string**| 图片的URL地址。如果提供此项，将优先使用该URL的图片。 | [optional] |
-| **file** | **\SplFileObject****\SplFileObject**| 上传的图片文件。支持JPG、PNG、GIF等常见格式。 | [optional] |
 | **bg_color** | **string**| GIF的背景颜色。可选值为 &#39;white&#39;, &#39;black&#39;, &#39;transparent&#39;。 | [optional] |
+| **file** | **\SplFileObject****\SplFileObject**| 上传的图片文件。支持JPG、PNG、GIF等常见格式。 | [optional] |
+| **image_url** | **string**| 图片的URL地址。如果提供此项，将优先使用该URL的图片。 | [optional] |
 
 ### Return type
 
@@ -655,11 +657,15 @@ postImageNsfw($file, $url): \OpenAPI\Client\Model\PostImageNsfw200Response
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer (JWT) authorization: BearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\ImageApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $file = '/path/to/file.txt'; // \SplFileObject | 要检测的图片文件。支持 JPG、JPEG、PNG、GIF、WebP 格式，最大 20MB。
 $url = 'url_example'; // string | 图片的 URL 地址。如果同时提供 file 和 url，将优先使用 file。
@@ -685,7 +691,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -699,7 +705,7 @@ No authorization required
 ## `postImageOcr()`
 
 ```php
-postImageOcr($file, $url, $image_base64, $image_name, $need_location, $return_markdown, $enable_cls): \OpenAPI\Client\Model\PostImageOcr200Response
+postImageOcr($enable_cls, $file, $image_base64, $image_name, $need_location, $return_markdown, $url): \OpenAPI\Client\Model\PostImageOcr200Response
 ```
 
 通用 OCR 文字识别
@@ -719,16 +725,16 @@ $apiInstance = new OpenAPI\Client\Api\ImageApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$enable_cls = 'false'; // string | 是否开启额外的文字方向校正。请传 `true` 或 `false`，不传时默认是 `false`。
 $file = '/path/to/file.txt'; // \SplFileObject | 待识别的图片文件。支持 JPG、JPEG、PNG、BMP、GIF、WebP 等常见格式，最大不超过 10MB。请勿与 url 或 image_base64 同时提交。
-$url = 'url_example'; // string | 公网可直接访问的图片地址。请勿与 file 或 image_base64 同时提交。
 $image_base64 = 'image_base64_example'; // string | 图片的 Base64 字符串。可以传完整 Data URI，也可以只传纯 Base64 内容。请勿与 file 或 url 同时提交。
 $image_name = 'image_name_example'; // string | 自定义图片文件名。传链接或纯 Base64 时建议一起传，便于保留或推断扩展名。
 $need_location = 'true'; // string | 是否返回文字坐标信息。请传 `true` 或 `false`，不传时默认是 `true`。
 $return_markdown = 'false'; // string | 是否额外返回整理后的 Markdown 文本。请传 `true` 或 `false`，不传时默认是 `false`。
-$enable_cls = 'false'; // string | 是否开启额外的文字方向校正。请传 `true` 或 `false`，不传时默认是 `false`。
+$url = 'url_example'; // string | 公网可直接访问的图片地址。请勿与 file 或 image_base64 同时提交。
 
 try {
-    $result = $apiInstance->postImageOcr($file, $url, $image_base64, $image_name, $need_location, $return_markdown, $enable_cls);
+    $result = $apiInstance->postImageOcr($enable_cls, $file, $image_base64, $image_name, $need_location, $return_markdown, $url);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ImageApi->postImageOcr: ', $e->getMessage(), PHP_EOL;
@@ -739,13 +745,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **enable_cls** | **string**| 是否开启额外的文字方向校正。请传 &#x60;true&#x60; 或 &#x60;false&#x60;，不传时默认是 &#x60;false&#x60;。 | [optional] [default to &#39;false&#39;] |
 | **file** | **\SplFileObject****\SplFileObject**| 待识别的图片文件。支持 JPG、JPEG、PNG、BMP、GIF、WebP 等常见格式，最大不超过 10MB。请勿与 url 或 image_base64 同时提交。 | [optional] |
-| **url** | **string**| 公网可直接访问的图片地址。请勿与 file 或 image_base64 同时提交。 | [optional] |
 | **image_base64** | **string**| 图片的 Base64 字符串。可以传完整 Data URI，也可以只传纯 Base64 内容。请勿与 file 或 url 同时提交。 | [optional] |
 | **image_name** | **string**| 自定义图片文件名。传链接或纯 Base64 时建议一起传，便于保留或推断扩展名。 | [optional] |
 | **need_location** | **string**| 是否返回文字坐标信息。请传 &#x60;true&#x60; 或 &#x60;false&#x60;，不传时默认是 &#x60;true&#x60;。 | [optional] [default to &#39;true&#39;] |
 | **return_markdown** | **string**| 是否额外返回整理后的 Markdown 文本。请传 &#x60;true&#x60; 或 &#x60;false&#x60;，不传时默认是 &#x60;false&#x60;。 | [optional] [default to &#39;false&#39;] |
-| **enable_cls** | **string**| 是否开启额外的文字方向校正。请传 &#x60;true&#x60; 或 &#x60;false&#x60;，不传时默认是 &#x60;false&#x60;。 | [optional] [default to &#39;false&#39;] |
+| **url** | **string**| 公网可直接访问的图片地址。请勿与 file 或 image_base64 同时提交。 | [optional] |
 
 ### Return type
 
@@ -878,7 +884,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: `multipart/form-data`
-- **Accept**: `image/*`, `application/json`
+- **Accept**: `image/png`, `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

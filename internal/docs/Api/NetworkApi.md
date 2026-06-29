@@ -1,8 +1,8 @@
 # OpenAPI\Client\NetworkApi
 
-提供一系列网络诊断和查询工具，帮助你快速定位网络问题或获取网络信息。
 
-All URIs are relative to https://uapis.cn/api/v1, except if the operation defines another base path.
+
+All URIs are relative to https://uapis.cn, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |

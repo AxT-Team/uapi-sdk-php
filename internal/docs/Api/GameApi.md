@@ -1,15 +1,18 @@
 # OpenAPI\Client\GameApi
 
-提供一系列与游戏相关的查询服务，涵盖 Minecraft、Steam 等平台。
 
-All URIs are relative to https://uapis.cn/api/v1, except if the operation defines another base path.
+
+All URIs are relative to https://uapis.cn, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getGameEpicFree()**](GameApi.md#getGameEpicFree) | **GET** /game/epic-free | Epic 免费游戏 |
 | [**getGameMinecraftHistoryid()**](GameApi.md#getGameMinecraftHistoryid) | **GET** /game/minecraft/historyid | 查询 MC 曾用名 |
+| [**getGameMinecraftMods()**](GameApi.md#getGameMinecraftMods) | **GET** /game/minecraft/mods | 搜索 MC Mod/插件 |
 | [**getGameMinecraftServerstatus()**](GameApi.md#getGameMinecraftServerstatus) | **GET** /game/minecraft/serverstatus | 查询 MC 服务器 |
 | [**getGameMinecraftUserinfo()**](GameApi.md#getGameMinecraftUserinfo) | **GET** /game/minecraft/userinfo | 查询 MC 玩家 |
+| [**getGameMinecraftVersion()**](GameApi.md#getGameMinecraftVersion) | **GET** /game/minecraft/version | Minecraft 最新版本 |
+| [**getGameSteamServers()**](GameApi.md#getGameSteamServers) | **GET** /game/steam/servers | 查询 Steam 游戏服务器 |
 | [**getGameSteamSummary()**](GameApi.md#getGameSteamSummary) | **GET** /game/steam/summary | 查询 Steam 用户 |
 
 
@@ -124,6 +127,70 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getGameMinecraftMods()`
+
+```php
+getGameMinecraftMods($query, $source, $type, $limit, $enrich): \OpenAPI\Client\Model\GetGameMinecraftMods200Response
+```
+
+搜索 MC Mod/插件
+
+想给你的启动器、服务器面板或资源推荐页加上 Mod/插件搜索？这个接口一次帮你检索 Modrinth 与 SpigotMC 上的资源。  ## 功能概述 传入关键词，即可拿到资源名称、简介、作者、下载量、评分、项目页和下载地址。可以用 `source` 指定只搜某个平台，用 `type` 过滤资源类型，用 `limit` 控制每个平台返回的数量。  ## 使用须知 > [!NOTE] > 默认会补全作者名与下载直链。如果只想要更快的基础搜索结果，设置 `enrich=false` 即可降低延迟。
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\GameApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$query = sodium; // string | 搜索关键词，也可使用别名 `q`。
+$source = 'all'; // string | 搜索来源，默认 all。
+$type = mod; // string | 资源类型过滤，例如 mod 或 plugin。
+$limit = 10; // int | 每个来源返回的最大条数，默认 10，最大 50。
+$enrich = true; // bool | 是否补全下载直链与作者名，默认 true；传 false 可降低延迟。
+
+try {
+    $result = $apiInstance->getGameMinecraftMods($query, $source, $type, $limit, $enrich);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling GameApi->getGameMinecraftMods: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **query** | **string**| 搜索关键词，也可使用别名 &#x60;q&#x60;。 | |
+| **source** | **string**| 搜索来源，默认 all。 | [optional] [default to &#39;all&#39;] |
+| **type** | **string**| 资源类型过滤，例如 mod 或 plugin。 | [optional] |
+| **limit** | **int**| 每个来源返回的最大条数，默认 10，最大 50。 | [optional] [default to 10] |
+| **enrich** | **bool**| 是否补全下载直链与作者名，默认 true；传 false 可降低延迟。 | [optional] [default to true] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetGameMinecraftMods200Response**](../Model/GetGameMinecraftMods200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getGameMinecraftServerstatus()`
 
 ```php
@@ -222,6 +289,119 @@ try {
 ### Return type
 
 [**\OpenAPI\Client\Model\GetGameMinecraftUserinfo200Response**](../Model/GetGameMinecraftUserinfo200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getGameMinecraftVersion()`
+
+```php
+getGameMinecraftVersion(): \OpenAPI\Client\Model\GetGameMinecraftVersion200Response
+```
+
+Minecraft 最新版本
+
+需要在启动器、服务器面板或机器人里实时显示 Minecraft 的最新版本？这个接口帮你一键拿到当前的正式版和快照版。  ## 功能概述 无需任何参数，直接返回最新正式版（latest release）、最新快照版（latest snapshot）以及完整的版本列表。适合做版本提示、更新检测或服务端版本看板。  ## 使用须知 > [!NOTE] > 数据会随新版本发布而更新，建议在客户端适当缓存，无需高频轮询。
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\GameApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+
+try {
+    $result = $apiInstance->getGameMinecraftVersion();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling GameApi->getGameMinecraftVersion: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetGameMinecraftVersion200Response**](../Model/GetGameMinecraftVersion200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getGameSteamServers()`
+
+```php
+getGameSteamServers($appid, $name, $limit): \OpenAPI\Client\Model\GetGameSteamServers200Response
+```
+
+查询 Steam 游戏服务器
+
+想在自己的面板或社区里展示某款游戏的在线服务器？这个接口支持查询使用 A2S/Steam 服务器列表的多人游戏，例如 SCUM、ARK、Rust、CS2 等。  ## 功能概述 传入游戏的 Steam AppID，即可获取当前在线的服务器列表，包含名称、IP、端口、当前/最大人数、地图等信息。你还可以用 `name` 做服务器名称模糊搜索，用 `limit` 控制返回数量。  ## 常见 AppID - SCUM：`513710` - ARK：`346110` - Rust：`252490` - Counter-Strike 2：`730`  ## 使用须知 > [!NOTE] > 不确定游戏的 AppID？可以在 Steam 商店页地址中找到，或参考上面的常见 AppID 列表。
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\GameApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$appid = 513710; // int | Steam 游戏 AppID，必须是正整数。
+$name = SCUM; // string | 服务器名称关键词，可选，支持模糊搜索。
+$limit = 20; // int | 返回数量上限，默认 20，最大 100。
+
+try {
+    $result = $apiInstance->getGameSteamServers($appid, $name, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling GameApi->getGameSteamServers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **appid** | **int**| Steam 游戏 AppID，必须是正整数。 | |
+| **name** | **string**| 服务器名称关键词，可选，支持模糊搜索。 | [optional] |
+| **limit** | **int**| 返回数量上限，默认 20，最大 100。 | [optional] [default to 20] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetGameSteamServers200Response**](../Model/GetGameSteamServers200Response.md)
 
 ### Authorization
 

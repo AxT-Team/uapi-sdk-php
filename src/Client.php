@@ -332,6 +332,7 @@ class Client {
     function clipzyZaiXianJianTieBan() { return new ClipzyZaiXianJianTieBanApi($this); }
     function convert() { return new ConvertApi($this); }
     function daily() { return new DailyApi($this); }
+    function dictionary() { return new DictionaryApi($this); }
     function game() { return new GameApi($this); }
     function image() { return new ImageApi($this); }
     function misc() { return new MiscApi($this); }
@@ -345,6 +346,7 @@ class Client {
     function webparse() { return new WebparseApi($this); }
     function minGanCiShiBie() { return new MinGanCiShiBieApi($this); }
     function zhiNengSouSuo() { return new ZhiNengSouSuoApi($this); }
+    function shuiYinYuAigcBiaoShi() { return new ShuiYinYuAigcBiaoShiApi($this); }
 }
 class ClipzyZaiXianJianTieBanApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
@@ -409,6 +411,45 @@ class DailyApi {
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
+    function getDailyWord(array $args = []) {
+        $path='/api/v1/daily/word';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('lang', $args)) $query['lang'] = $args['lang'];
+        if (array_key_exists('category', $args)) $query['category'] = $args['category'];
+        if (array_key_exists('count', $args)) $query['count'] = $args['count'];
+        if (array_key_exists('date', $args)) $query['date'] = $args['date'];
+        if (array_key_exists('seed', $args)) $query['seed'] = $args['seed'];
+        if (array_key_exists('example', $args)) $query['example'] = $args['example'];
+        if (array_key_exists('phonetic', $args)) $query['phonetic'] = $args['phonetic'];
+        if (array_key_exists('define', $args)) $query['define'] = $args['define'];
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
+    }
+}
+class DictionaryApi {
+    private Client $c; function __construct(Client $c){ $this->c=$c; }
+    function getDictionaryAudio(array $args = []) {
+        $path='/api/v1/dictionary/audio';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('word', $args)) $query['word'] = $args['word'];
+        if (array_key_exists('accent', $args)) $query['accent'] = $args['accent'];
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
+    }
+    function getDictionaryLookup(array $args = []) {
+        $path='/api/v1/dictionary/lookup';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('word', $args)) $query['word'] = $args['word'];
+        if (array_key_exists('lang', $args)) $query['lang'] = $args['lang'];
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
+    }
 }
 class GameApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
@@ -430,6 +471,19 @@ class GameApi {
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
+    function getGameMinecraftMods(array $args = []) {
+        $path='/api/v1/game/minecraft/mods';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('query', $args)) $query['query'] = $args['query'];
+        if (array_key_exists('source', $args)) $query['source'] = $args['source'];
+        if (array_key_exists('type', $args)) $query['type'] = $args['type'];
+        if (array_key_exists('limit', $args)) $query['limit'] = $args['limit'];
+        if (array_key_exists('enrich', $args)) $query['enrich'] = $args['enrich'];
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
+    }
     function getGameMinecraftServerstatus(array $args = []) {
         $path='/api/v1/game/minecraft/serverstatus';
         $query = [];
@@ -445,6 +499,25 @@ class GameApi {
         $body = [];
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('username', $args)) $query['username'] = $args['username'];
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
+    }
+    function getGameMinecraftVersion(array $args = []) {
+        $path='/api/v1/game/minecraft/version';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
+    }
+    function getGameSteamServers(array $args = []) {
+        $path='/api/v1/game/steam/servers';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('appid', $args)) $query['appid'] = $args['appid'];
+        if (array_key_exists('name', $args)) $query['name'] = $args['name'];
+        if (array_key_exists('limit', $args)) $query['limit'] = $args['limit'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
@@ -482,6 +555,7 @@ class ImageApi {
         $body = [];
         $disableCache = $this->c->readDisableCacheFlag($args);
         if (array_key_exists('date', $args)) $query['date'] = $args['date'];
+        if (array_key_exists('random', $args)) $query['random'] = $args['random'];
         if (array_key_exists('resolution', $args)) $query['resolution'] = $args['resolution'];
         if (array_key_exists('format', $args)) $query['format'] = $args['format'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
@@ -705,6 +779,27 @@ class MiscApi {
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
+    function getMiscMovieBoxOffice(array $args = []) {
+        $path='/api/v1/misc/movie-box-office';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
+    }
+    function getMiscMovieRatingRank(array $args = []) {
+        $path='/api/v1/misc/movie-rating-rank';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('channel', $args)) $query['channel'] = $args['channel'];
+        if (array_key_exists('platform', $args)) $query['platform'] = $args['platform'];
+        if (array_key_exists('limit', $args)) $query['limit'] = $args['limit'];
+        if (array_key_exists('period', $args)) $query['period'] = $args['period'];
+        if (array_key_exists('date', $args)) $query['date'] = $args['date'];
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
+    }
     function getMiscPhoneinfo(array $args = []) {
         $path='/api/v1/misc/phoneinfo';
         $query = [];
@@ -762,7 +857,6 @@ class MiscApi {
         if (array_key_exists('tracking_number', $args)) $query['tracking_number'] = $args['tracking_number'];
         if (array_key_exists('carrier_code', $args)) $query['carrier_code'] = $args['carrier_code'];
         if (array_key_exists('phone', $args)) $query['phone'] = $args['phone'];
-        if (array_key_exists('full', $args)) $query['full'] = $args['full'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
@@ -778,6 +872,20 @@ class MiscApi {
         if (array_key_exists('hourly', $args)) $query['hourly'] = $args['hourly'];
         if (array_key_exists('minutely', $args)) $query['minutely'] = $args['minutely'];
         if (array_key_exists('indices', $args)) $query['indices'] = $args['indices'];
+        if (array_key_exists('lang', $args)) $query['lang'] = $args['lang'];
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
+    }
+    function getMiscWeatherHistory(array $args = []) {
+        $path='/api/v1/misc/weather/history';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('city', $args)) $query['city'] = $args['city'];
+        if (array_key_exists('adcode', $args)) $query['adcode'] = $args['adcode'];
+        if (array_key_exists('start_date', $args)) $query['start_date'] = $args['start_date'];
+        if (array_key_exists('end_date', $args)) $query['end_date'] = $args['end_date'];
+        if (array_key_exists('days', $args)) $query['days'] = $args['days'];
         if (array_key_exists('lang', $args)) $query['lang'] = $args['lang'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
@@ -910,6 +1018,19 @@ class PoemApi {
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
+    function getSayingRandom(array $args = []) {
+        $path='/api/v1/saying/random';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('mode', $args)) $query['mode'] = $args['mode'];
+        if (array_key_exists('scene', $args)) $query['scene'] = $args['scene'];
+        if (array_key_exists('source', $args)) $query['source'] = $args['source'];
+        if (array_key_exists('category', $args)) $query['category'] = $args['category'];
+        if (array_key_exists('tag', $args)) $query['tag'] = $args['tag'];
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
+    }
 }
 class RandomApi {
     private Client $c; function __construct(Client $c){ $this->c=$c; }
@@ -972,6 +1093,9 @@ class SocialApi {
         if (array_key_exists('activity', $args)) $query['activity'] = $args['activity'];
         if (array_key_exists('activity_scope', $args)) $query['activity_scope'] = $args['activity_scope'];
         if (array_key_exists('org', $args)) $query['org'] = $args['org'];
+        if (array_key_exists('pinned', $args)) $query['pinned'] = $args['pinned'];
+        if (array_key_exists('repos', $args)) $query['repos'] = $args['repos'];
+        if (array_key_exists('repos_limit', $args)) $query['repos_limit'] = $args['repos_limit'];
         if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
         return $this->c->request('GET', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
@@ -1346,6 +1470,78 @@ class ZhiNengSouSuoApi {
         if (array_key_exists('site', $args)) $body['site'] = $args['site'];
         if (array_key_exists('sort', $args)) $body['sort'] = $args['sort'];
         if (array_key_exists('time_range', $args)) $body['time_range'] = $args['time_range'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
+    }
+}
+class ShuiYinYuAigcBiaoShiApi {
+    private Client $c; function __construct(Client $c){ $this->c=$c; }
+    function postWatermarkDecode(array $args = []) {
+        $path='/api/v1/watermark/decode';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        if (array_key_exists('ecc', $args)) $body['ecc'] = $args['ecc'];
+        if (array_key_exists('file', $args)) $body['file'] = $args['file'];
+        if (array_key_exists('image_base64', $args)) $body['image_base64'] = $args['image_base64'];
+        if (array_key_exists('model_type', $args)) $body['model_type'] = $args['model_type'];
+        if (array_key_exists('url', $args)) $body['url'] = $args['url'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, true, ['file']);
+    }
+    function postWatermarkEmbed(array $args = []) {
+        $path='/api/v1/watermark/embed';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        if (array_key_exists('ecc', $args)) $body['ecc'] = $args['ecc'];
+        if (array_key_exists('file', $args)) $body['file'] = $args['file'];
+        if (array_key_exists('image_base64', $args)) $body['image_base64'] = $args['image_base64'];
+        if (array_key_exists('jpeg_quality', $args)) $body['jpeg_quality'] = $args['jpeg_quality'];
+        if (array_key_exists('model_type', $args)) $body['model_type'] = $args['model_type'];
+        if (array_key_exists('out_format', $args)) $body['out_format'] = $args['out_format'];
+        if (array_key_exists('payload', $args)) $body['payload'] = $args['payload'];
+        if (array_key_exists('strength', $args)) $body['strength'] = $args['strength'];
+        if (array_key_exists('url', $args)) $body['url'] = $args['url'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, true, ['file']);
+    }
+    function postWatermarkLabel(array $args = []) {
+        $path='/api/v1/watermark/label';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        if (array_key_exists('content_producer', $args)) $body['content_producer'] = $args['content_producer'];
+        if (array_key_exists('content_propagator', $args)) $body['content_propagator'] = $args['content_propagator'];
+        if (array_key_exists('embed_watermark', $args)) $body['embed_watermark'] = $args['embed_watermark'];
+        if (array_key_exists('explicit_height_ratio', $args)) $body['explicit_height_ratio'] = $args['explicit_height_ratio'];
+        if (array_key_exists('explicit_label', $args)) $body['explicit_label'] = $args['explicit_label'];
+        if (array_key_exists('explicit_position', $args)) $body['explicit_position'] = $args['explicit_position'];
+        if (array_key_exists('explicit_text', $args)) $body['explicit_text'] = $args['explicit_text'];
+        if (array_key_exists('file', $args)) $body['file'] = $args['file'];
+        if (array_key_exists('image_base64', $args)) $body['image_base64'] = $args['image_base64'];
+        if (array_key_exists('jpeg_quality', $args)) $body['jpeg_quality'] = $args['jpeg_quality'];
+        if (array_key_exists('label', $args)) $body['label'] = $args['label'];
+        if (array_key_exists('out_format', $args)) $body['out_format'] = $args['out_format'];
+        if (array_key_exists('produce_id', $args)) $body['produce_id'] = $args['produce_id'];
+        if (array_key_exists('propagate_id', $args)) $body['propagate_id'] = $args['propagate_id'];
+        if (array_key_exists('skip_metadata', $args)) $body['skip_metadata'] = $args['skip_metadata'];
+        if (array_key_exists('url', $args)) $body['url'] = $args['url'];
+        if (array_key_exists('watermark_payload', $args)) $body['watermark_payload'] = $args['watermark_payload'];
+        return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, true, ['file']);
+    }
+    function postWatermarkProducerCode(array $args = []) {
+        $path='/api/v1/watermark/producer-code';
+        $query = [];
+        $body = [];
+        $disableCache = $this->c->readDisableCacheFlag($args);
+        if (array_key_exists('_t', $args)) $query['_t'] = $args['_t'];
+        if (array_key_exists('binding', $args)) $body['binding'] = $args['binding'];
+        if (array_key_exists('code', $args)) $body['code'] = $args['code'];
+        if (array_key_exists('identifier', $args)) $body['identifier'] = $args['identifier'];
+        if (array_key_exists('model_code', $args)) $body['model_code'] = $args['model_code'];
+        if (array_key_exists('service_type', $args)) $body['service_type'] = $args['service_type'];
+        if (array_key_exists('subject_type', $args)) $body['subject_type'] = $args['subject_type'];
         return $this->c->request('POST', $path, $query, empty($body) ? null : $body, $disableCache, false, []);
     }
 }
